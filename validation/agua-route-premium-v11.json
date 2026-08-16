@@ -1,0 +1,16 @@
+{
+  "id":"QA-AB-ROUTE-PREMIUM-V11",
+  "styleFamilyId":"STYLE-LIQUID-LUMINOUS",
+  "motionModuleIds":["PMM-TYPE-001","PMM-TYPE-003","PMM-ROUTE-003","PMM-WATER-003","PMM-ROUTE-001","PMM-WATER-002","PMM-ROUTE-002","PMM-ROUTE-005","PMM-ROUTE-004","PMM-DATA-001","PMM-WATER-005","PMM-TRANS-003","PMM-WATER-004"],
+  "externalMotionAssetIds":[],
+  "factsReference":"QA-AB-ROUTE-45S-V1",
+  "production":{"operationalMasterId":"AB-MASTER-02","productionMasterId":"PM-ROUTE","compositionId":"CE-RouteJourney","architectureId":"VIS-ROUTE-JOURNEY","durationSeconds":45,"format":"9:16"},
+  "scenes":[
+    {"id":"hook","surfaceRole":"surface","layoutFamily":"headline-mask","decorativeElements":0,"purposefulElements":4,"notes":"Large type, selective accent only; no full-blue cover."},
+    {"id":"territory","surfaceRole":"surfaceAlt","layoutFamily":"territory-drift","decorativeElements":1,"purposefulElements":5,"generative":{"semanticClass":"SCENE-TRANSITION","providerId":"GEN-MINIMAX-HAILUO-23","bakesFactualOverlay":false},"notes":"Optional abstract transition only. All place names remain deterministic overlays."},
+    {"id":"journey","surfaceRole":"neutral","layoutFamily":"continuous-route","decorativeElements":1,"purposefulElements":6,"notes":"Path-linked water object; no fake official vehicle."},
+    {"id":"nodes","surfaceRole":"surface","layoutFamily":"route-lens","decorativeElements":0,"purposefulElements":7,"notes":"Day-to-day handoff; destinations resolve over time instead of microtext."},
+    {"id":"value","surfaceRole":"accent","layoutFamily":"datum-stage","decorativeElements":0,"purposefulElements":5,"notes":"20 L and $10 remain deterministic factual text."},
+    {"id":"close","surfaceRole":"surface","layoutFamily":"editorial-close","decorativeElements":0,"purposefulElements":5,"notes":"Information line and sanitary wording remain deterministic; official marks from active Design System."}
+  ]
+}
