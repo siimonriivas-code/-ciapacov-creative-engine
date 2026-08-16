@@ -1,0 +1,121 @@
+name: Validate Premium Expansion v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/run-premium-expansion-v11.txt'
+      - '.github/workflows/validate-premium-expansion-v11.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Generate and validate first-party Lottie pack
+        run: |
+          node scripts/build-first-party-lottie.mjs
+          node scripts/validate-first-party-lottie.mjs
+      - name: Validate premium registries and recipes
+        run: |
+          node scripts/validate-v11.mjs
+          node scripts/validate-premium-recipes.mjs
+          node scripts/validate-premium-materials.mjs
+          node scripts/validate-premium-template-kits.mjs
+      - name: Validate positive anti-generic production plans
+        run: |
+          node scripts/audit-premium-production.mjs validation/premium-plan-pass.json
+          node scripts/audit-premium-production.mjs validation/agua-route-premium-v11.json
+      - name: Confirm generic/factual-unsafe negative fixture fails
+        run: |
+          if node scripts/audit-premium-production.mjs validation/premium-plan-fail.json; then
+            echo 'Negative fixture unexpectedly passed'
+            exit 1
+          fi
+      - name: TypeScript and production build
+        run: npm run build
+      - name: Factual Agua Bienestar QA
+        run: npm run qa:real
+      - name: Prepare premium Agua route props
+        run: |
+          cat > /tmp/ab-route.json <<'JSON'
+          {
+            "brand":{"surface":"#ffffff","surfaceAlt":"#f5f7f8","ink":"#1D1D1B","muted":"#68727a","primary":"#00AAED","secondary":"#B5F6FF","accent":"#89033A","line":"#dce5e8"},
+            "title":"Rutas semanales","kicker":"RUTAS PROGRAMADAS",
+            "stops":["Benito Juárez","Palo Alto","Buenavista","Villa Flores"],
+            "groups":[
+              {"label":"LUNES","items":["Benito Juárez","Palo Alto","Buenavista","Villa Flores"]},
+              {"label":"MARTES Y VIERNES","items":["Mirador de la Cumbre I y II","Moctezuma","Paraíso","Jardines del Sol"]},
+              {"label":"MIÉRCOLES","items":["Del Valle","San Isidro","Lo de Villa"]},
+              {"label":"JUEVES","items":["Tierra y Libertad","Palo Alto","Buenavista","Villa Flores"]},
+              {"label":"SÁBADO","items":["Tierra y Libertad","El Moralete","De los Trabajadores","Patios del Ferrocarril","La Albarrada"]}
+            ],
+            "highlight":"Garrafón de 20 L · $10 a domicilio","footer":"Información: 312 311 9041","durationSeconds":45
+          }
+          JSON
+      - name: Render refined Route Journey across timeline
+        run: |
+          mkdir -p /tmp/premium-v11
+          for FRAME in 30 180 510 870 1050 1320; do
+            npx remotion still src/remotion/index.ts CE-RouteJourney "/tmp/premium-v11/route-$FRAME.png" --frame=$FRAME --props=/tmp/ab-route.json
+            test -s "/tmp/premium-v11/route-$FRAME.png"
+          done
+      - name: Render representative production masters
+        run: |
+          for SPEC in 'CE-LaunchEditorial:180' 'CE-DataCascade:300' 'CE-ProcessConnected:450' 'CE-DocumentaryEvidence:300' 'CE-BeforeAfter:450'; do
+            ID="${SPEC%%:*}"; FRAME="${SPEC##*:}"
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/premium-v11/$ID.png" --frame="$FRAME"
+            test -s "/tmp/premium-v11/$ID.png"
+          done
+      - name: Render Lottie runtime QA
+        run: |
+          npx remotion still src/remotion/index.ts CE-QA-LottieRuntime /tmp/premium-v11/lottie.png --frame=45
+          test -s /tmp/premium-v11/lottie.png
+      - name: Validate MiniMax governed executor dry-run
+        run: |
+          cat > /tmp/minimax.json <<'JSON'
+          {"id":"QA-CONCEPT-EXPANSION","semanticClass":"SCENE-CONCEPTUAL","purpose":"Abstract water transition","prompt":"Abstract translucent water ribbon over a neutral editorial field, controlled motion, no text, no logo, no real place.","mode":"text-to-video","model":"MiniMax-Hailuo-2.3","durationSeconds":6,"resolution":"1080P","cameraCommands":["Static shot"]}
+          JSON
+          node scripts/generate-minimax-video.mjs /tmp/minimax.json | tee /tmp/minimax.out
+          grep -q 'DRY RUN ONLY' /tmp/minimax.out
+      - name: Upload inspection frames
+        uses: actions/upload-artifact@v4
+        with:
+          name: premium-expansion-v11-${{ github.run_id }}
+          path: /tmp/premium-v11/*.png
+          retention-days: 14
+      - name: Record successful tracked validation
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          git reset --hard origin/main
+          cat > validation/PREMIUM_EXPANSION_STATUS.md <<EOF
+          # Premium Expansion v1.1 — latest validated run
+
+          STATUS=success
+          RUN_ID=${GITHUB_RUN_ID}
+          RUN_NUMBER=${GITHUB_RUN_NUMBER}
+          VALIDATED_HEAD=${GITHUB_SHA}
+          FIRST_PARTY_LOTTIE=18
+          PREMIUM_MATERIALS=18
+          PREMIUM_TEMPLATE_KITS=27
+          PREMIUM_MOTION_EXECUTABLE=39
+          CURATED_STYLE_DIRECTIONS=36
+          PRODUCTION_RECIPES=9
+          BEAT_PLANS=54
+          EOF
+          git add validation/PREMIUM_EXPANSION_STATUS.md
+          git commit -m "chore: record premium expansion validation ${GITHUB_RUN_ID}"
+          git push origin HEAD:main
