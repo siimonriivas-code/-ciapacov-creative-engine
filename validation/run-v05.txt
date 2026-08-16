@@ -1,1 +1,1 @@
-Trigger remote validation for CIAPACOV Creative Ecosystem v0.5 — retry 3 with persisted logs.
+Trigger remote validation for CIAPACOV Creative Ecosystem v0.5 — retry 4 after registry repair.
