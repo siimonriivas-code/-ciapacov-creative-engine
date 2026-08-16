@@ -1,0 +1,61 @@
+name: Render Premium Kit Gallery v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/render-premium-kits-v11.yml'
+      - 'validation/run-premium-kit-gallery-v11.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gallery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Discover premium kits
+        run: |
+          npx remotion compositions src/remotion/index.ts | tee /tmp/comps.txt
+          grep -oE 'CE-KIT-[A-Za-z0-9-]+' /tmp/comps.txt | sort -u > /tmp/kits.txt
+          test "$(wc -l < /tmp/kits.txt)" -eq 27
+
+      - name: Render all 27 premium kit contact stills
+        run: |
+          mkdir -p gallery
+          while read -r ID; do
+            npx remotion still src/remotion/index.ts "$ID" "gallery/$ID.png" --frame=90
+            test -s "gallery/$ID.png"
+          done < /tmp/kits.txt
+          test "$(find gallery -name 'CE-KIT-*.png' | wc -l)" -eq 27
+
+      - name: Render route style states
+        run: |
+          for ID in CE-KIT-ROUTE-LIQUID CE-KIT-ROUTE-SPATIAL CE-KIT-ROUTE-TECH; do
+            npx remotion still src/remotion/index.ts "$ID" "gallery/${ID}-MID.png" --frame=600
+            test -s "gallery/${ID}-MID.png"
+          done
+
+      - name: Upload premium visual QA gallery
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciapacov-v11-premium-kit-gallery
+          path: gallery/*.png
+          if-no-files-found: error
+          retention-days: 14
