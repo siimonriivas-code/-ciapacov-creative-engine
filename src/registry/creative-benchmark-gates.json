@@ -1,0 +1,38 @@
+{
+  "version":"1.1",
+  "purpose":"Quality gates for premium production. These are guardrails, not a mandate to make every piece busy.",
+  "passScore":82,
+  "gates":[
+    {"id":"BENCH-HIERARCHY","name":"Hierarchy clarity","weight":12,"target":"Every scene has one obvious primary reading order; no more than two simultaneous high-priority messages."},
+    {"id":"BENCH-COMPOSITION","name":"Composition variety","weight":12,"target":"At least three materially distinct scene compositions in pieces longer than 20 seconds; no identical card grammar for more than two consecutive scenes."},
+    {"id":"BENCH-COLOR","name":"Color discipline","weight":10,"target":"Primary brand color should not become the default full-frame surface. Prefer neutral/media-led breathing surfaces unless the brief or Design System explicitly calls for a brand field."},
+    {"id":"BENCH-MATERIAL","name":"Material richness","weight":9,"target":"Use at least two purposeful material systems in premium motion longer than 15 seconds, or intentionally choose a quiet single-material direction and document why."},
+    {"id":"BENCH-MOTION","name":"Motion purpose","weight":12,"target":"Every major motion must explain hierarchy, continuity, state, depth or narrative progression; decorative motion cannot dominate."},
+    {"id":"BENCH-TRANSITION","name":"Transition continuity","weight":9,"target":"Prefer transitions that carry an object, mask, baseline, path, camera move or visual state across scenes. Avoid random transition packs."},
+    {"id":"BENCH-HERO","name":"Hero moments","weight":8,"target":"Pieces of 20 seconds or more should contain at least one deliberate hero beat or visual payoff rather than maintaining one flat intensity."},
+    {"id":"BENCH-DEPTH","name":"Depth and spatial staging","weight":7,"target":"When compatible with the style, use foreground/background separation, occlusion, parallax, scale or material depth instead of stacking flat cards."},
+    {"id":"BENCH-TYPE","name":"Typography as composition","weight":8,"target":"Typography must contribute to composition through scale, alignment, weight or staged reveal. Avoid reducing all text to utility labels."},
+    {"id":"BENCH-READABILITY","name":"Readability and safe areas","weight":7,"target":"No microtext, overflow or safe-area violations. Dense information must be staged over time rather than shrunk."},
+    {"id":"BENCH-FACTUAL","name":"Factual separation","weight":6,"target":"Facts, official identity and documentary evidence remain deterministic/verified. Generative pixels never fabricate official or documentary reality."}
+  ],
+  "automaticBlockers":[
+    "generated-documentary-evidence",
+    "invented-official-map",
+    "invented-official-vehicle",
+    "unverified-testimonial",
+    "facts-baked-into-generative-video",
+    "safe-area-failure",
+    "unreadable-critical-text"
+  ],
+  "antiPatterns":[
+    "full-frame-primary-color-by-default",
+    "same-rounded-card-layout-every-scene",
+    "floating-object-without-narrative-anchor",
+    "random-icon-decoration",
+    "all-elements-enter-with-same-animation",
+    "continuous-motion-without-rest-beats",
+    "template-transition-for-transition-sake",
+    "fake-3d-official-infrastructure",
+    "microtext-to-fit-more-information"
+  ]
+}
