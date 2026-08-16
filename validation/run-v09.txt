@@ -1,1 +1,1 @@
-Validate v0.9 Brand Bridge, real-production QA, dynamic durations and Agua Bienestar route fixture.
+Final validation v0.9 after Brand Bridge, QA reports, duration-aware runtime, compact indexes and resolver cleanup.
