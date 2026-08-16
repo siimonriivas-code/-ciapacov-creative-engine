@@ -6,12 +6,16 @@ on:
     paths:
       - 'bootstrap/v03-delta.b64'
       - '.github/workflows/bootstrap-v03.yml'
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
   bootstrap:
+    if: ${{ hashFiles('bootstrap/v03-delta.b64') != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
