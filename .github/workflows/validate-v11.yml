@@ -5,12 +5,19 @@ on:
     branches: [main]
     paths:
       - 'validation/run-v11.txt'
+      - 'validation/premium-plan-pass.json'
+      - 'validation/premium-plan-fail.json'
       - '.github/workflows/validate-v11.yml'
       - 'package.json'
       - 'scripts/validate-v11.mjs'
       - 'scripts/generate-minimax-video.mjs'
+      - 'scripts/audit-premium-production.mjs'
+      - 'src/App.tsx'
+      - 'src/styles.v11.css'
+      - 'src/components/PremiumVisualLab.tsx'
       - 'src/registry/creative-style-families.json'
       - 'src/registry/premium-motion-modules.json'
+      - 'src/registry/premium-motion-implementations.json'
       - 'src/registry/generative-video-providers.json'
       - 'src/registry/generative-scene-policies.json'
       - 'src/lib/creative-style-director.ts'
@@ -52,11 +59,24 @@ jobs:
           node --check scripts/validate-v11.mjs
           node --check scripts/ingest-motion-asset.mjs
           node --check scripts/generate-minimax-video.mjs
+          node --check scripts/audit-premium-production.mjs
 
       - name: Check v1.1 compact handoff contract
         run: |
-          node -e "const h=require('./claude/handoff.compact.json');if(h.version!=='1.1'||h.inventory.premiumStyleFamilies!==12||h.inventory.premiumMotionModules!==39||h.rules.antiGenericAuditBeforePremiumExport!==true||h.rules.generativeEvidenceForbidden!==true)process.exit(1);console.log(h.inventory)"
-          node -e "const p=require('./claude/premium.compact.json');if(p.version!=='1.1'||p.motionLibrary.moduleCount!==39||p.generativeVideo.providers.length<2)process.exit(1);console.log('premium handoff ok')"
+          node -e "const h=require('./claude/handoff.compact.json');if(h.version!=='1.1'||h.inventory.premiumStyleFamilies!==12||h.inventory.premiumMotionModules!==39||h.inventory.premiumMotionExecutable!==16||h.rules.antiGenericAuditBeforePremiumExport!==true||h.rules.generativeEvidenceForbidden!==true)process.exit(1);console.log(h.inventory)"
+          node -e "const p=require('./claude/premium.compact.json');if(p.version!=='1.1'||p.motionLibrary.moduleCount!==39||p.motionLibrary.executableCount!==16||p.generativeVideo.providers.length<2||p.antiGeneric.passScore!==80)process.exit(1);console.log('premium handoff ok')"
+
+      - name: Premium anti-generic positive fixture
+        run: node scripts/audit-premium-production.mjs validation/premium-plan-pass.json
+
+      - name: Premium anti-generic negative fixture must fail
+        run: |
+          if node scripts/audit-premium-production.mjs validation/premium-plan-fail.json; then
+            echo 'ERROR: deliberately generic/factual-unsafe fixture passed unexpectedly'
+            exit 1
+          else
+            echo 'Expected failure confirmed for generic/factual-unsafe fixture'
+          fi
 
       - name: TypeScript and Vite build
         run: npm run build
@@ -78,7 +98,7 @@ jobs:
             npx remotion still src/remotion/index.ts "$ID" "/tmp/remotion-v11/$ID.png" --frame=30
             test -s "/tmp/remotion-v11/$ID.png"
           done
-          test "$(find /tmp/remotion-v11 -name '*.png' | wc -l)" -eq 9
+          test "$(find /tmp/remotion-v11 -name 'CE-*.png' | wc -l)" -eq 9
 
       - name: Build controlled 45s route props
         run: |
@@ -161,4 +181,4 @@ jobs:
 
       - name: v1.1 release summary
         run: |
-          node -e "const p=require('./package.json');const h=require('./claude/handoff.compact.json');const s=require('./src/registry/creative-style-families.json');const m=require('./src/registry/premium-motion-modules.json');console.log('version:',p.version,'handoff:',h.version,'styles:',s.length,'premium modules:',m.length)"
+          node -e "const p=require('./package.json');const h=require('./claude/handoff.compact.json');const s=require('./src/registry/creative-style-families.json');const m=require('./src/registry/premium-motion-modules.json');const i=require('./src/registry/premium-motion-implementations.json');console.log('version:',p.version,'handoff:',h.version,'styles:',s.length,'premium modules:',m.length,'executable:',i.length)"
