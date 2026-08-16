@@ -1,0 +1,31 @@
+name: Sync v0.8 package lock
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/sync-lock-v08.txt'
+      - '.github/workflows/sync-lock-v08.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --package-lock-only --no-audit --no-fund
+      - run: |
+          git config user.name 'ciapacov-creative-engine-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add package-lock.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Sync package lock for v0.8'
+          git pull --rebase origin main
+          git push origin main
