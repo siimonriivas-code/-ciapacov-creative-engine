@@ -25,6 +25,19 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Restore exact templates registry if missing
+        id: restore
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f src/registry/templates.json ] && [ -f validation/templates-json.gz.b64 ]; then
+            mkdir -p src/registry
+            base64 -d validation/templates-json.gz.b64 | gzip -dc > src/registry/templates.json
+            node -e "const fs=require('fs'); const x=JSON.parse(fs.readFileSync('src/registry/templates.json','utf8')); if(x.length!==80) throw new Error('Expected 80 templates, got '+x.length); console.log('Restored '+x.length+' templates');"
+          else
+            echo 'templates.json already present or repair payload unavailable'
+          fi
+
       - name: Install dependencies
         id: install
         if: always()
@@ -92,13 +105,15 @@ jobs:
             echo 'Detailed logs are stored in `validation/logs/`.'
           } > validation/BUILD_STATUS.md
 
-      - name: Commit report
+      - name: Commit repair and report
         if: always()
         shell: bash
         run: |
           git config user.name 'ciapacov-creative-engine-bot'
           git config user.email 'actions@users.noreply.github.com'
+          if [ -f src/registry/templates.json ]; then git add src/registry/templates.json; fi
           git add validation/BUILD_STATUS.md validation/logs/*.txt
+          if [ -f validation/templates-json.gz.b64 ]; then git rm validation/templates-json.gz.b64; fi
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Validate CIAPACOV Creative Ecosystem v0.5 build'
+          git commit -m 'Repair and validate CIAPACOV Creative Ecosystem v0.5'
           git push origin main
