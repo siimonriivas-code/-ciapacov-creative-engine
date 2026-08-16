@@ -1,0 +1,210 @@
+[
+  {
+    "id": "SB-AB-01",
+    "masterId": "AB-MASTER-01",
+    "name": "Lanzamiento de programa",
+    "formatStrategy": "adaptive",
+    "beats": [
+      {"id":"hook","purpose":"Qué cambia","fields":["headline","program_name"],"capability":"launch-frame","motion":"MOT-001"},
+      {"id":"context","purpose":"Por qué existe","fields":["problem","context"],"capability":"water-symbol","motion":"MOT-002"},
+      {"id":"benefit","purpose":"Beneficio concreto","fields":["benefit","key_metric"],"capability":"data-ring","motion":"MOT-004"},
+      {"id":"how","purpose":"Cómo funciona","fields":["steps"],"capability":"process-line","motion":"MOT-008"},
+      {"id":"close","purpose":"Cierre y siguiente paso","fields":["cta","contact"],"capability":"cta-strip","motion":"MOT-024"}
+    ],
+    "rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-AB-02","masterId":"AB-MASTER-02","name":"Rutas semanales","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"hook","purpose":"Día / servicio protagonista","fields":["day","service"],"capability":"institutional-footer","motion":"MOT-019"},
+      {"id":"map","purpose":"Territorio y ruta","fields":["destinations"],"capability":"map-grid","motion":"MOT-006"},
+      {"id":"journey","purpose":"Recorrido continuo","fields":["destinations"],"capability":"route-path","motion":"MOT-007"},
+      {"id":"nodes","purpose":"Llegadas / colonias","fields":["destinations"],"capability":"location-node","motion":"MOT-008"},
+      {"id":"value","purpose":"Precio y condición de servicio","fields":["price","service_rule"],"capability":"data-ring","motion":"MOT-004"},
+      {"id":"close","purpose":"Contacto y siguiente día","fields":["contact","next_day"],"capability":"cta-strip","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-AB-03","masterId":"AB-MASTER-03","name":"Testimonios","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"hook","purpose":"Voz protagonista","fields":["quote"],"capability":"quote-frame","motion":"MOT-001"},
+      {"id":"person","purpose":"Quién habla","fields":["name","location"],"capability":"lower-third","motion":"MOT-018"},
+      {"id":"context","purpose":"Qué experiencia describe","fields":["context"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"benefit","purpose":"Beneficio concreto","fields":["benefit"],"capability":"data-ring","motion":"MOT-004"},
+      {"id":"close","purpose":"Cierre sobrio","fields":["closing"],"capability":"brand-logo-slot","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-AB-04","masterId":"AB-MASTER-04","name":"Cómo funciona","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"hook","purpose":"Pregunta simple","fields":["question"],"capability":"water-symbol","motion":"MOT-001"},
+      {"id":"step1","purpose":"Paso 1","fields":["step_1"],"capability":"process-line","motion":"MOT-020"},
+      {"id":"step2","purpose":"Paso 2","fields":["step_2"],"capability":"process-line","motion":"MOT-020"},
+      {"id":"step3","purpose":"Paso 3","fields":["step_3"],"capability":"process-line","motion":"MOT-020"},
+      {"id":"value","purpose":"Precio / cobertura","fields":["price","coverage"],"capability":"data-ring","motion":"MOT-004"},
+      {"id":"close","purpose":"Contacto","fields":["contact"],"capability":"cta-strip","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-OBRA-01","masterId":"OBRA-MASTER-01","name":"Rehabilitación de pozo","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"problem","purpose":"Situación previa","fields":["before_state"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"intervention","purpose":"Qué se rehabilitó","fields":["intervention"],"capability":"pipeline-section","motion":"MOT-002"},
+      {"id":"capacity","purpose":"Capacidad recuperada","fields":["before_metric","after_metric"],"capability":"metric-bars","motion":"MOT-004"},
+      {"id":"evidence","purpose":"Evidencia de campo","fields":["photos"],"capability":"photo-mask","motion":"MOT-015"},
+      {"id":"impact","purpose":"Impacto esperado","fields":["beneficiaries","impact"],"capability":"data-ring","motion":"MOT-004"},
+      {"id":"close","purpose":"Cierre técnico-social","fields":["closing"],"capability":"institutional-footer","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-OBRA-02","masterId":"OBRA-MASTER-02","name":"Sustitución de tubería","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"cause","purpose":"Problema / causa","fields":["cause"],"capability":"pipeline-section","motion":"MOT-001"},
+      {"id":"before","purpose":"Material anterior","fields":["old_material"],"capability":"comparison-arrow","motion":"MOT-022"},
+      {"id":"work","purpose":"Tramo intervenido","fields":["length","new_material"],"capability":"pipeline-section","motion":"MOT-002"},
+      {"id":"after","purpose":"Nueva condición","fields":["result"],"capability":"comparison-arrow","motion":"MOT-022"},
+      {"id":"impact","purpose":"Beneficio operativo","fields":["impact"],"capability":"metric-bars","motion":"MOT-004"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-OBRA-03","masterId":"OBRA-MASTER-03","name":"Gran infraestructura","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"hook","purpose":"Escala de la obra","fields":["project_name","key_metric"],"capability":"launch-frame","motion":"MOT-001"},
+      {"id":"why","purpose":"Problema que resuelve","fields":["problem"],"capability":"map-grid","motion":"MOT-002"},
+      {"id":"investment","purpose":"Inversión y alcance","fields":["investment","beneficiaries"],"capability":"metric-bars","motion":"MOT-004"},
+      {"id":"stages","purpose":"Etapas","fields":["stages"],"capability":"timeline-node","motion":"MOT-016"},
+      {"id":"territory","purpose":"Cobertura territorial","fields":["territory"],"capability":"map-grid","motion":"MOT-006"},
+      {"id":"evidence","purpose":"Avance / evidencia","fields":["photos"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"close","purpose":"Resultado esperado","fields":["impact"],"capability":"institutional-footer","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-OBRA-04","masterId":"OBRA-MASTER-04","name":"Antes / después","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"before","purpose":"Antes","fields":["before_state"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"divider","purpose":"Cambio","fields":["delta"],"capability":"comparison-arrow","motion":"MOT-022"},
+      {"id":"after","purpose":"Después","fields":["after_state"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"metric","purpose":"Delta verificable","fields":["before_metric","after_metric"],"capability":"metric-bars","motion":"MOT-004"},
+      {"id":"close","purpose":"Qué significa","fields":["impact"],"capability":"institutional-footer","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-BRIG-01","masterId":"BRIG-MASTER-01","name":"Reparación operativa","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"issue","purpose":"Problema detectado","fields":["issue"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"action","purpose":"Intervención en curso","fields":["action"],"capability":"lower-third","motion":"MOT-002"},
+      {"id":"status","purpose":"Estado actual","fields":["status"],"capability":"notice-frame","motion":"MOT-005"},
+      {"id":"impact","purpose":"Efecto esperado","fields":["impact"],"capability":"cta-strip","motion":"MOT-004"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-BRIG-02","masterId":"BRIG-MASTER-02","name":"Drenaje y colectores","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"issue","purpose":"Obstrucción / falla","fields":["issue"],"capability":"pipeline-section","motion":"MOT-001"},
+      {"id":"diagnosis","purpose":"Qué se encontró","fields":["diagnosis"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"action","purpose":"Limpieza / reparación","fields":["action"],"capability":"process-line","motion":"MOT-008"},
+      {"id":"result","purpose":"Resultado operativo","fields":["result"],"capability":"pipeline-section","motion":"MOT-005"},
+      {"id":"close","purpose":"Seguimiento","fields":["follow_up"],"capability":"cta-strip","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-BRIG-03","masterId":"BRIG-MASTER-03","name":"Atención extraordinaria","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"hook","purpose":"Jornada / periodo","fields":["period"],"capability":"timeline-node","motion":"MOT-001"},
+      {"id":"fronts","purpose":"Frentes de trabajo","fields":["work_fronts"],"capability":"map-grid","motion":"MOT-008"},
+      {"id":"evidence","purpose":"Trabajo continuo","fields":["photos"],"capability":"real-photo-slot","motion":"MOT-014"},
+      {"id":"status","purpose":"Avance","fields":["status"],"capability":"metric-bars","motion":"MOT-004"},
+      {"id":"impact","purpose":"Impacto territorial","fields":["impact"],"capability":"map-grid","motion":"MOT-006"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-CULT-01","masterId":"CULT-MASTER-01","name":"Taller / escuela","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"hook","purpose":"Tema del aprendizaje","fields":["topic"],"capability":"water-symbol","motion":"MOT-001"},
+      {"id":"activity","purpose":"Qué se hizo","fields":["activity"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"participation","purpose":"Participación","fields":["participants"],"capability":"data-ring","motion":"MOT-004"},
+      {"id":"learning","purpose":"Aprendizaje clave","fields":["learning"],"capability":"quote-frame","motion":"MOT-002"},
+      {"id":"close","purpose":"Acción cotidiana","fields":["cta"],"capability":"cta-strip","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-CULT-02","masterId":"CULT-MASTER-02","name":"Campaña de cuidado","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"hook","purpose":"Hábito protagonista","fields":["message"],"capability":"water-symbol","motion":"MOT-001"},
+      {"id":"tip1","purpose":"Consejo 1","fields":["tip_1"],"capability":"process-line","motion":"MOT-020"},
+      {"id":"tip2","purpose":"Consejo 2","fields":["tip_2"],"capability":"process-line","motion":"MOT-020"},
+      {"id":"tip3","purpose":"Consejo 3","fields":["tip_3"],"capability":"process-line","motion":"MOT-020"},
+      {"id":"close","purpose":"Llamado claro","fields":["cta"],"capability":"cta-strip","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-TEST-01","masterId":"TEST-MASTER-01","name":"Testimonio corto","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"quote","purpose":"Cita protagonista","fields":["quote"],"capability":"quote-frame","motion":"MOT-001"},
+      {"id":"identity","purpose":"Identificación autorizada","fields":["name","context"],"capability":"lower-third","motion":"MOT-018"},
+      {"id":"evidence","purpose":"Imagen real","fields":["media"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"meaning","purpose":"Qué demuestra","fields":["takeaway"],"capability":"data-ring","motion":"MOT-004"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-AMBI-01","masterId":"AMBI-MASTER-01","name":"Acción ambiental","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"why","purpose":"Propósito ambiental","fields":["purpose"],"capability":"water-symbol","motion":"MOT-001"},
+      {"id":"action","purpose":"Acción realizada","fields":["activity"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"participation","purpose":"Participación","fields":["participants"],"capability":"data-ring","motion":"MOT-004"},
+      {"id":"territory","purpose":"Lugar / ecosistema","fields":["territory"],"capability":"map-grid","motion":"MOT-006"},
+      {"id":"impact","purpose":"Impacto","fields":["impact"],"capability":"metric-bars","motion":"MOT-004"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-AVIS-01","masterId":"AVIS-MASTER-01","name":"Aviso de servicio","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"alert","purpose":"Qué ocurre","fields":["issue"],"capability":"notice-frame","motion":"MOT-001"},
+      {"id":"where","purpose":"Zona general","fields":["area"],"capability":"map-grid","motion":"MOT-006"},
+      {"id":"action","purpose":"Qué se está haciendo","fields":["action"],"capability":"process-line","motion":"MOT-008"},
+      {"id":"recommendation","purpose":"Recomendación","fields":["recommendation"],"capability":"cta-strip","motion":"MOT-005"},
+      {"id":"contact","purpose":"Canal de información","fields":["contact"],"capability":"institutional-footer","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-AVIS-02","masterId":"AVIS-MASTER-02","name":"Contingencia / emergencia","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"alert","purpose":"Situación extraordinaria","fields":["situation"],"capability":"notice-frame","motion":"MOT-001"},
+      {"id":"priority","purpose":"Prioridades","fields":["priorities"],"capability":"priority-marker","motion":"MOT-008"},
+      {"id":"territory","purpose":"Zona afectada","fields":["area"],"capability":"map-grid","motion":"MOT-006"},
+      {"id":"response","purpose":"Acciones de respuesta","fields":["actions"],"capability":"process-line","motion":"MOT-008"},
+      {"id":"recovery","purpose":"Recuperación","fields":["recovery_status"],"capability":"metric-bars","motion":"MOT-004"},
+      {"id":"contact","purpose":"Información oficial","fields":["contact"],"capability":"institutional-footer","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-RES-01","masterId":"RES-MASTER-01","name":"Informe de resultados","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"hook","purpose":"Resultado principal","fields":["headline_metric"],"capability":"data-ring","motion":"MOT-004"},
+      {"id":"metrics","purpose":"Indicadores","fields":["metrics"],"capability":"metric-bars","motion":"MOT-005"},
+      {"id":"evidence","purpose":"Evidencia","fields":["evidence"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"meaning","purpose":"Qué significan","fields":["finding"],"capability":"quote-frame","motion":"MOT-002"},
+      {"id":"source","purpose":"Periodo y fuente","fields":["period","source"],"capability":"institutional-footer","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-RES-02","masterId":"RES-MASTER-02","name":"Contraste histórico","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"baseline","purpose":"Punto de partida","fields":["before_metric","period_before"],"capability":"timeline-node","motion":"MOT-016"},
+      {"id":"change","purpose":"Evolución","fields":["series"],"capability":"metric-bars","motion":"MOT-004"},
+      {"id":"now","purpose":"Situación actual","fields":["after_metric","period_after"],"capability":"comparison-arrow","motion":"MOT-022"},
+      {"id":"meaning","purpose":"Lectura del cambio","fields":["finding"],"capability":"data-ring","motion":"MOT-004"},
+      {"id":"source","purpose":"Fuente","fields":["source"],"capability":"institutional-footer","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  },
+  {
+    "id":"SB-INST-01","masterId":"INST-MASTER-01","name":"Reunión / colaboración","formatStrategy":"adaptive",
+    "beats":[
+      {"id":"context","purpose":"Encuentro","fields":["institutions"],"capability":"real-photo-slot","motion":"MOT-013"},
+      {"id":"purpose","purpose":"Objetivo común","fields":["objective"],"capability":"quote-frame","motion":"MOT-002"},
+      {"id":"agreement","purpose":"Acuerdo / coordinación","fields":["agreement"],"capability":"process-line","motion":"MOT-008"},
+      {"id":"next","purpose":"Siguiente paso","fields":["next_step"],"capability":"cta-strip","motion":"MOT-005"},
+      {"id":"close","purpose":"Cierre institucional","fields":["closing"],"capability":"brand-logo-slot","motion":"MOT-024"}
+    ],"rules":{"demoData":"forbidden-in-production","brand":"inherit-active-design-system","overflow":"split-or-paginate-never-shrink-to-illegible"},"status":"production-ready"
+  }
+]
