@@ -6,16 +6,18 @@ The active Design System remains the sole identity authority. This premium layer
 
 ## Minimal loading order
 
-1. Read `claude/premium-v11.manifest.json`.
-2. Read the single matching architecture record in `src/registry/premium-style-presets.json` and expose exactly its three curated premium style directions.
-3. After a style is selected, read only that style record from `src/registry/creative-style-families.json`.
-4. Read the matching Production Master recipe from `src/registry/production-style-recipes.json`.
-5. Prefer a matching preset from `src/registry/premium-template-kits.json` when it solves the brief; do not force one if the storyboard requires a bespoke composition.
-6. Read only material systems needed by the selected style from `claude/premium-materials.compact.json`.
-7. Read only relevant first-party animated assets from `claude/lottie-pack.compact.json`.
-8. Read only the motion module IDs required by the selected premium recipe/template kit.
-9. If generative video is useful, classify the scene before reading provider details. Never generate factual/documentary evidence, official marks, official vehicles, official maps, beneficiaries or authoritative text/data inside generated pixels.
-10. Build a scene-level production plan and apply factual QA + safe areas + readability + anti-generic QA before export.
+1. Read `claude/premium.compact.json`.
+2. If the user supplied a visual/video reference, read `claude/REFERENCE_TO_PREMIUM.md` and extract only the needed Visual DNA dimensions. Never recreate a marketplace/source design one-to-one.
+3. Read the single matching architecture record in `src/registry/premium-style-presets.json` and expose/use exactly its three curated premium style directions.
+4. After a style is selected, read only that style record from `src/registry/creative-style-families.json`.
+5. Read the matching Production Master recipe from `src/registry/production-style-recipes.json`.
+6. Prefer the closest compatible executable Premium Template Kit in `src/registry/premium-template-kits.json`. Each Production Master now has exactly three materially distinct executable kits. The runtime is `src/remotion/compositions/PremiumTemplateKit.tsx` and compositions use `CE-KIT-*` IDs.
+7. Read only material systems needed by the selected kit/style from `claude/premium-materials.compact.json`.
+8. Read only relevant first-party animated assets from `claude/lottie-pack.compact.json`.
+9. Read only the motion module IDs required by the selected premium recipe/template kit.
+10. If generative video adds real value, select one governed archetype from `src/registry/generative-shot-archetypes.json`. Prefer approved-first-frame image-to-video when composition must be constrained.
+11. Keep names, routes, prices, phone numbers, metrics, official marks, official vehicles, maps and documentary evidence in deterministic/verified layers.
+12. Build a scene-level production plan and run factual QA, safe areas, readability, anti-generic QA and `scripts/audit-creative-benchmark.mjs` before final export.
 
 ## Premium quality rule
 
@@ -26,10 +28,13 @@ A piece is not premium because it uses more effects. It is premium when:
 - primary brand color does not flood most scenes by default;
 - motion has narrative purpose;
 - real evidence remains real;
-- typography remains readable;
-- materials support hierarchy rather than fill empty space;
+- typography participates in the composition while remaining readable;
+- materials support hierarchy, atmosphere or depth rather than fill empty space;
 - transitions hand narrative focus from one beat to the next;
+- at least one deliberate hero/payoff beat exists in longer motion pieces when appropriate;
 - the output remains recognizable as the active Design System, not as a marketplace template pasted on top of it.
+
+The measurable creative benchmark is a **floor of 82/100 with zero factual/readability blockers**. A passing score is not proof of beauty: inspect the rendered output visually too.
 
 ## Current v1.1 inventories
 
@@ -37,11 +42,14 @@ A piece is not premium because it uses more effects. It is premium when:
 - 36 curated style directions
 - 39 premium motion modules / 39 executable implementations
 - 18 procedural material systems / 18 executable variants
-- 27 premium template kits / 3 per Production Master
+- 27 Premium Template Kits / **27 executable Remotion compositions**, exactly 3 per Production Master
 - 18 first-party Lottie presets across 8 semantic categories
 - 9 Production Master premium recipes / 54 beat-level plans
+- 18 governed cinematic/generative shot archetypes
+- 12 Visual DNA dimensions for reference analysis
 - 2 MiniMax Hailuo provider profiles
 - 5 generative scene classes
+- 37 total Remotion compositions: 9 base Production Masters + 1 Lottie QA + 27 Premium Template Kits
 - external licensed motion assets: 0 until specifically ingested with provenance/license
 - verified factual media: 0 until specifically ingested and approved
 
