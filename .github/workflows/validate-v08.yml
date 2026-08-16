@@ -25,12 +25,20 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Validate complete ecosystem
         run: npm run validate:all
+      - name: Validate media tooling syntax
+        run: |
+          node --check scripts/ingest-media.mjs
+          node --check scripts/build-production-compact.mjs
       - name: Regenerate compact catalogs
         run: npm run catalog:all
       - name: TypeScript and Vite build
         run: npm run build
       - name: Remotion composition check
-        run: npx remotion compositions src/remotion/index.ts
+        run: |
+          npx remotion compositions src/remotion/index.ts | tee /tmp/remotion-v08.txt
+          COUNT=$(grep -oE 'CE-[A-Za-z-]+' /tmp/remotion-v08.txt | sort -u | wc -l)
+          echo "Detected Remotion compositions: $COUNT"
+          test "$COUNT" -eq 9
       - name: Production registry summary
         run: |
           node -e "const p=require('./src/registry/production-masters.json');const r=require('./src/registry/media-roles.json');const m=require('./src/registry/media-library.json');console.log('production masters:',p.length,'media roles:',r.length,'verified media:',m.length)"
