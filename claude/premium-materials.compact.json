@@ -1,0 +1,31 @@
+{
+  "version":"1.1",
+  "purpose":"Procedural premium surface/material layer. Load only after visual architecture and premium style are selected.",
+  "authority":"All colors are semantic roles from the active Design System. Material systems never replace brand identity or factual media.",
+  "registry":"src/registry/premium-material-systems.json",
+  "implementation":"src/remotion/components/PremiumMaterials.tsx",
+  "count":18,
+  "families":["liquid","tactile","editorial","territory","technical","data","documentary","cinematic","modular"],
+  "rules":[
+    "Use one dominant material language per scene and no more than two supporting material accents.",
+    "Material must support hierarchy, evidence or motion; do not add material only to fill empty space.",
+    "Prefer neutral or surfaceAlt breathing fields when a Design System primary role would otherwise dominate the frame.",
+    "Never use abstract territory, contour, mesh or technical materials as if they were factual maps, engineering drawings or measurements.",
+    "Documentary materials organize verified media; they never substitute for verified media.",
+    "Cinematic materials may frame conceptual/generative media but cannot turn generated pixels into documentary evidence."
+  ],
+  "selectionHints":{
+    "STYLE-LIQUID-LUMINOUS":["MAT-LIQUID-GLASS","MAT-REFRACTION-POOL","MAT-CAUSTIC-LINES"],
+    "STYLE-DOCUMENTARY-COLLAGE":["MAT-DOCUMENTARY-TAPE","MAT-CONTACT-SHEET","MAT-PAPER-LAYER"],
+    "STYLE-TACTILE-PAPER":["MAT-PAPER-LAYER","MAT-CUTOUT-SHADOW","MAT-ASYMMETRIC-FRAME"],
+    "STYLE-EDITORIAL-CONTRAST":["MAT-EDITORIAL-RULES","MAT-ASYMMETRIC-FRAME","MAT-DATA-STAGE"],
+    "STYLE-SPATIAL-DEPTH":["MAT-DEPTH-FOG","MAT-CINEMA-MATTE","MAT-REFRACTION-POOL"],
+    "STYLE-TECHNICAL-GRID":["MAT-TECHNICAL-GRID","MAT-SCAN-WINDOW","MAT-TERRITORY-MESH"],
+    "STYLE-DATA-THEATER":["MAT-DATA-STAGE","MAT-DATA-ORBIT","MAT-EDITORIAL-RULES"],
+    "STYLE-CINEMATIC-MASKS":["MAT-CINEMA-MATTE","MAT-DEPTH-FOG","MAT-ASYMMETRIC-FRAME"],
+    "STYLE-MODULAR-MOSAIC":["MAT-MOSAIC-CELLS","MAT-CONTACT-SHEET","MAT-CUTOUT-SHADOW"],
+    "STYLE-QUIET-LUXURY":["MAT-EDITORIAL-RULES","MAT-ASYMMETRIC-FRAME","MAT-PAPER-LAYER"],
+    "STYLE-PLAYFUL-GEOMETRY":["MAT-MOSAIC-CELLS","MAT-CUTOUT-SHADOW","MAT-REFRACTION-POOL"],
+    "STYLE-KINETIC-TYPE":["MAT-EDITORIAL-RULES","MAT-ASYMMETRIC-FRAME","MAT-CINEMA-MATTE"]
+  }
+}
