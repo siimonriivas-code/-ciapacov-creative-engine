@@ -6,40 +6,9 @@
 > ciapacov-creative-engine@0.5.0 validate
 > node scripts/validate-registry.mjs
 
-CAR-003: unknown recipe hero-stat
-CAR-005: unknown recipe step-explainer
-CAR-007: unknown recipe photo-statement
-CAR-009: unknown recipe qa-stack
-CAR-012: unknown recipe close-institutional
-CAR-013: unknown recipe typographic-manifesto
-REEL-002: unknown recipe reel-kinetic-data
-REEL-005: unknown recipe reel-transform
-REEL-006: unknown recipe reel-program-story
-REEL-007: unknown recipe reel-route-calendar
-REEL-008: unknown recipe reel-quote-led
-REEL-009: unknown recipe reel-network
-REEL-010: unknown recipe reel-extended
-REEL-011: unknown recipe reel-kinetic-manifesto
-STO-001: unknown recipe story-announcement
-STO-002: unknown recipe story-data
-STO-003: unknown recipe story-route
-STO-004: unknown recipe story-photo
-STO-005: unknown recipe story-cta
-STO-006: unknown recipe story-comparison
-STO-007: unknown recipe story-steps
-STO-008: unknown recipe story-notice
-DAT-001: unknown recipe data-hero
-DAT-002: unknown recipe data-comparison
-DAT-003: unknown recipe data-coverage
-DAT-004: unknown recipe data-price
-DAT-005: unknown recipe data-results
-DAT-006: unknown recipe data-evidence
-RTE-001: unknown recipe route-single-day
-RTE-002: unknown recipe route-week
-RTE-004: unknown recipe route-notice
-PRE-001: unknown recipe presentation-cover
-PRE-002: unknown recipe presentation-section
-PRE-003: unknown recipe presentation-data
-PRE-004: unknown recipe presentation-photo
-PRE-005: unknown recipe presentation-comparison
-PRE-006: unknown recipe presentation-close
+OK: 80 templates, 48 motions, 79 recipes, 8 campaigns
+
+> ciapacov-creative-engine@0.5.0 validate:ecosystem
+> node scripts/validate-ecosystem.mjs
+
+OK: 9 domains, 20 masters, 34 assets (25 bundled), 7 reference sources
