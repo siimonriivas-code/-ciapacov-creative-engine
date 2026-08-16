@@ -1,4 +1,5 @@
 import {useMemo,useState} from 'react'
+import '../styles.v11.curated.css'
 
 type StyleFamily={id:string;name:string;intent:string;surfaceStrategy:string;contrastStrategy:string;motionSignature:string;colorBehavior:{maxDominantBrandRoles:number;requireNeutralSurface:boolean;avoidMonochromeFlood:boolean};bestFor:string[];avoid:string[];compatibleArchitectures:string[]}
 type StylePreset={architectureId:string;directions:{styleId:string;role:string;reason:string}[]}
