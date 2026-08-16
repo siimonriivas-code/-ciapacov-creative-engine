@@ -1,0 +1,50 @@
+[
+  {
+    "id":"INT-AB-ROUTE-45",
+    "name":"Agua Bienestar · rutas semanales · Reel 45 s",
+    "brandBridgeId":"BRIDGE-AGUA-BIENESTAR-V1",
+    "brief":{"topic":"Agua Bienestar rutas semanales de reparto a domicilio","format":"reel","objective":"Explicar rutas programadas, calendario, precio social y línea de información.","duration":45,"materials":["calendario validado","destinos","precio","línea de información"]},
+    "expected":{"domainId":"DOM-AB","operationalMasterId":"AB-MASTER-02","productionMasterId":"PM-ROUTE","compositionId":"CE-RouteJourney","primaryArchitectureId":"VIS-ROUTE-JOURNEY"},
+    "policy":"qa-scenario:QA-AB-ROUTE-45S-V1"
+  },
+  {
+    "id":"INT-OBRA-POZO-45",
+    "name":"Obra · rehabilitación de pozo · Reel 45 s",
+    "brandBridgeId":"BRIDGE-GENERIC",
+    "brief":{"topic":"Rehabilitación de pozo","format":"reel","objective":"Explicar condición previa, intervención, capacidad recuperada e impacto.","duration":45,"materials":["fotos reales","capacidad antes y ahora","intervención","impacto"]},
+    "expected":{"domainId":"DOM-OBRA","operationalMasterId":"OBRA-MASTER-01","productionMasterId":"PM-DOCUMENTARY","compositionId":"CE-DocumentaryEvidence","primaryArchitectureId":"VIS-DOCUMENTARY-HERO"},
+    "policy":"factual-media-required"
+  },
+  {
+    "id":"INT-BRIG-DRENAJE-30",
+    "name":"Brigada · drenaje y colectores · Reel 30 s",
+    "brandBridgeId":"BRIDGE-GENERIC",
+    "brief":{"topic":"Drenaje y colectores","format":"reel","objective":"Explicar problema, intervención, tramo general y resultado con lectura técnica accesible.","duration":30,"materials":["problema","intervención","tramo general","resultado"]},
+    "expected":{"domainId":"DOM-BRIG","operationalMasterId":"BRIG-MASTER-02","productionMasterId":"PM-PROCESS","compositionId":"CE-ProcessConnected","primaryArchitectureId":"VIS-NETWORK-PROCESS"},
+    "policy":"no-specific-addresses-in-public-copy"
+  },
+  {
+    "id":"INT-AVISO-CONTINGENCIA-20",
+    "name":"Aviso · contingencia · Reel 20 s",
+    "brandBridgeId":"BRIDGE-GENERIC",
+    "brief":{"topic":"Contingencia emergencia restablecimiento gradual","format":"reel","objective":"Comunicar situación, prioridades, acciones y recuperación gradual con claridad.","duration":20,"materials":["situación verificada","prioridades","acciones","contacto"]},
+    "expected":{"domainId":"DOM-AVIS","operationalMasterId":"AVIS-MASTER-02","productionMasterId":"PM-ALERT","compositionId":"CE-NoticeAlert","primaryArchitectureId":"VIS-NOTICE-CLEAR"},
+    "policy":"no-unverified-restoration-times"
+  },
+  {
+    "id":"INT-RESULTADOS-30",
+    "name":"Resultados · informe ejecutivo · Reel 30 s",
+    "brandBridgeId":"BRIDGE-GENERIC",
+    "brief":{"topic":"Informe de resultados cifras métricas avance","format":"reel","objective":"Sintetizar métricas verificadas, periodo, hallazgo y fuente.","duration":30,"materials":["cifras verificadas","periodo","hallazgo","fuente"]},
+    "expected":{"domainId":"DOM-RES","operationalMasterId":"RES-MASTER-01","productionMasterId":"PM-DATA","compositionId":"CE-DataCascade","primaryArchitectureId":"VIS-DATA-CASCADE"},
+    "policy":"source-required-for-data"
+  },
+  {
+    "id":"INT-TESTIMONIO-30",
+    "name":"Testimonio · voz real · Reel 30 s",
+    "brandBridgeId":"BRIDGE-GENERIC",
+    "brief":{"topic":"Testimonio corto entrevista cita","format":"reel","objective":"Dar protagonismo a una voz real con cita, contexto y evidencia documental.","duration":30,"materials":["video real","cita autorizada","nombre autorizado","contexto"]},
+    "expected":{"domainId":"DOM-TEST","operationalMasterId":"TEST-MASTER-01","productionMasterId":"PM-TESTIMONIAL","compositionId":"CE-TestimonialQuote","primaryArchitectureId":"VIS-QUOTE-DOCUMENTARY"},
+    "policy":"consent-required"
+  }
+]
