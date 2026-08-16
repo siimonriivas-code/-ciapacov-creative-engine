@@ -1,0 +1,34 @@
+[
+  {
+    "id":"GEN-MINIMAX-HAILUO-23",
+    "provider":"MiniMax",
+    "model":"MiniMax-Hailuo-2.3",
+    "status":"supported",
+    "modes":["text-to-video","image-to-video"],
+    "api":{"endpoint":"https://api.minimax.io/v1/video_generation","async":true,"taskFlow":["create","poll","download"]},
+    "durations":{"768P":[6,10],"1080P":[6]},
+    "fps":24,
+    "promptLimit":2000,
+    "cameraCommands":["Truck left","Truck right","Pan left","Pan right","Push in","Pull out","Pedestal up","Pedestal down","Tilt up","Tilt down","Zoom in","Zoom out","Shake","Tracking shot","Static shot"],
+    "strengths":["conceptual-cinematic-scenes","physical-motion","camera-control","image-to-video","short-transition-clips"],
+    "preferredUse":["conceptual-scene","illustrative-transition","atmospheric-broll","controlled-image-animation"],
+    "forbiddenUse":["fabricated-documentary-evidence","fake-official-event","fake-beneficiary-testimony","fake-official-vehicle","fake-geographic-evidence"],
+    "notes":"Use image-to-video when a controlled approved first frame is available. Keep factual overlays, logos, names, figures and claims in deterministic runtime. API key is external and never stored in the repository."
+  },
+  {
+    "id":"GEN-MINIMAX-HAILUO-23-FAST",
+    "provider":"MiniMax",
+    "model":"MiniMax-Hailuo-2.3-Fast",
+    "status":"supported-i2v",
+    "modes":["image-to-video"],
+    "api":{"endpoint":"https://api.minimax.io/v1/video_generation","async":true,"taskFlow":["create","poll","download"]},
+    "durations":{"768P":[6,10],"1080P":[6]},
+    "fps":24,
+    "promptLimit":2000,
+    "cameraCommands":["Truck left","Truck right","Pan left","Pan right","Push in","Pull out","Pedestal up","Pedestal down","Tilt up","Tilt down","Zoom in","Zoom out","Shake","Tracking shot","Static shot"],
+    "strengths":["cost-efficient-image-animation","rapid-visual-iteration","short-conceptual-clips"],
+    "preferredUse":["preview","concept-iteration","controlled-image-animation"],
+    "forbiddenUse":["fabricated-documentary-evidence","fake-official-event","fake-beneficiary-testimony","fake-official-vehicle","fake-geographic-evidence"],
+    "notes":"Use for lower-cost I2V iteration where final quality requirements permit. Promote a generated clip to production only after creative and factual review."
+  }
+]
