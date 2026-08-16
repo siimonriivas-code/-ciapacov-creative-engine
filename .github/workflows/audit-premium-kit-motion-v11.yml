@@ -1,0 +1,69 @@
+name: Audit Premium Kit Motion v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-premium-kit-motion-v11.yml'
+      - 'validation/run-premium-motion-audit-v11.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  motion-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Discover premium kits
+        run: |
+          npx remotion compositions src/remotion/index.ts | tee /tmp/comps.txt
+          grep -oE 'CE-KIT-[A-Za-z0-9-]+' /tmp/comps.txt | sort -u > /tmp/kits.txt
+          test "$(wc -l < /tmp/kits.txt)" -eq 27
+
+      - name: Render temporal samples for all kits
+        run: |
+          mkdir -p /tmp/motion-audit
+          while read -r ID; do
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/motion-audit/${ID}-A.png" --frame=30
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/motion-audit/${ID}-B.png" --frame=240
+          done < /tmp/kits.txt
+
+      - name: Require visible temporal change in all animated kits
+        run: |
+          STATIC=0
+          : > /tmp/motion-audit/report.txt
+          while read -r ID; do
+            if cmp -s "/tmp/motion-audit/${ID}-A.png" "/tmp/motion-audit/${ID}-B.png"; then
+              echo "STATIC $ID" | tee -a /tmp/motion-audit/report.txt
+              STATIC=$((STATIC+1))
+            else
+              echo "ANIMATED $ID" >> /tmp/motion-audit/report.txt
+            fi
+          done < /tmp/kits.txt
+          echo "static_count=$STATIC" | tee -a /tmp/motion-audit/report.txt
+          cat /tmp/motion-audit/report.txt
+          test "$STATIC" -eq 0
+
+      - name: Upload temporal QA contact material
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciapacov-v11-premium-motion-audit
+          path: |
+            /tmp/motion-audit/*.png
+            /tmp/motion-audit/report.txt
+          if-no-files-found: error
+          retention-days: 7
