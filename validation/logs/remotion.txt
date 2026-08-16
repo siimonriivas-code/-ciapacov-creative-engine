@@ -1,0 +1,32 @@
+Bundling code        [34m━[39m[2m╺━━━━━━━━━━━━━━━━[22m 6%
+Bundling code        [34m━━━━[39m[2m╺━━━━━━━━━━━━━[22m 24%
+Bundling code        [34m━━━━━━╸[39m[2m━━━━━━━━━━━[22m 38%
+Bundling code        [34m━━━━━━━━━[39m[2m╺━━━━━━━━[22m 51%
+Bundling code        [34m━━━━━━━━━━━╸[39m[2m━━━━━━[22m 65%
+Bundling code        [34m━━━━━━━━━━━━╸[39m[2m━━━━━[22m 71%
+Bundling code        [34m━━━━━━━━━━━━━╸[39m[2m━━━━[22m 76%
+Bundling code        [34m━━━━━━━━━━━━━━╸[39m[2m━━━[22m 81%
+Bundling code        [34m━━━━━━━━━━━━━━━[39m[2m╺━━[22m 86%
+Bundling code        [34m━━━━━━━━━━━━━━━━[39m[2m╺━[22m 91%
+Bundling code        [34m━━━━━━━━━━━━━━━━━╸[39m 98%
+Bundling code        [34m━━━━━━━━━━━━━━━━━━[39m 100%
+Bundled code         [34m━━━━━━━━━━━━━━━━━━[39m [90m6493ms[39m
+⚡️ Cached bundle. Subsequent renders will be faster.
+[90mDownloading Chrome Headless Shell https://www.remotion.dev/chrome-headless-shell[39m
+Downloading from: https://remotion.media/chromium-headless-shell-linux-x64-149.0.7790.0.zip?clear
+Getting Headless Shell - 9.5 Mb/91.9 Mb
+Getting Headless Shell - 19.1 Mb/91.9 Mb
+Getting Headless Shell - 28.6 Mb/91.9 Mb
+Getting Headless Shell - 38.2 Mb/91.9 Mb
+Getting Headless Shell - 47.7 Mb/91.9 Mb
+Getting Headless Shell - 57.3 Mb/91.9 Mb
+Getting Headless Shell - 66.8 Mb/91.9 Mb
+Getting Headless Shell - 76.3 Mb/91.9 Mb
+Getting Headless Shell - 85.9 Mb/91.9 Mb
+Got Headless Shell
+
+The following compositions are available:
+
+CE-RouteJourney        30      1080x1920      900 (30.00 sec)
+CE-DataCascade         30      1080x1920      600 (20.00 sec)
+CE-ProcessConnected    30      1080x1920      900 (30.00 sec)
