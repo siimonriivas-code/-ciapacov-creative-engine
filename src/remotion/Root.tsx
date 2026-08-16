@@ -3,6 +3,7 @@ import { RouteJourneyVertical } from './compositions/RouteJourneyVertical'
 import { DataCascadeVertical } from './compositions/DataCascadeVertical'
 import { ProcessConnectedVertical } from './compositions/ProcessConnectedVertical'
 import { ProductionMasterVertical } from './compositions/ProductionMasterVertical'
+import { LottieRuntimeQA } from './compositions/LottieRuntimeQA'
 
 const demoBrand={surface:'#ffffff',surfaceAlt:'#f4f7f8',ink:'#172126',muted:'#627078',primary:'#087fb6',secondary:'#d8f2fa',accent:'#8a2f53',line:'#d8e1e5'}
 const base={brand:demoBrand,title:'Título de producción',subtitle:'Contenido de demostración. Sustituir por información verificada.'}
@@ -18,4 +19,5 @@ export const RemotionRoot=()=> <>
   <Composition id="CE-TimelineTerritory" component={ProductionMasterVertical} width={1080} height={1920} fps={30} durationInFrames={1350} calculateMetadata={durationMetadata(45)} defaultProps={{...base,variant:'timeline' as const,kicker:'ETAPAS',items:['Etapa 1','Etapa 2','Etapa 3','Etapa 4'],durationSeconds:45}}/>
   <Composition id="CE-TestimonialQuote" component={ProductionMasterVertical} width={1080} height={1920} fps={30} durationInFrames={900} calculateMetadata={durationMetadata(30)} defaultProps={{...base,variant:'testimonial' as const,kicker:'TESTIMONIO',quote:'Cita autorizada',attribution:'Identidad autorizada',durationSeconds:30}}/>
   <Composition id="CE-NoticeAlert" component={ProductionMasterVertical} width={1080} height={1920} fps={30} durationInFrames={600} calculateMetadata={durationMetadata(20)} defaultProps={{...base,variant:'alert' as const,kicker:'AVISO',label:'AVISO OPERATIVO',items:['Situación confirmada','Zona, acción y siguiente actualización verificadas.'],durationSeconds:20}}/>
+  <Composition id="CE-QA-LottieRuntime" component={LottieRuntimeQA} width={400} height={400} fps={30} durationInFrames={90}/>
 </>
