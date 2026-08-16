@@ -1,0 +1,12 @@
+{
+  "id":"PREMIUM-QA-FAIL-01",
+  "styleFamilyId":"STYLE-LIQUID-LUMINOUS",
+  "motionModuleIds":["PMM-WATER-003"],
+  "externalMotionAssetIds":[],
+  "scenes":[
+    {"id":"one","surfaceRole":"primary","layoutFamily":"same-card","decorativeElements":4,"purposefulElements":1},
+    {"id":"two","surfaceRole":"primary","layoutFamily":"same-card","decorativeElements":4,"purposefulElements":1},
+    {"id":"three","surfaceRole":"primary","layoutFamily":"same-card","decorativeElements":4,"purposefulElements":1},
+    {"id":"four","surfaceRole":"primary","layoutFamily":"same-card","decorativeElements":4,"purposefulElements":1,"generative":{"semanticClass":"SCENE-FACTUAL-EVIDENCE","providerId":"GEN-MINIMAX-HAILUO-23","bakesFactualOverlay":true},"claimsDocumentary":true,"mediaStatus":"generated"}
+  ]
+}
