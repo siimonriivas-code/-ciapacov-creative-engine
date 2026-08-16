@@ -4,7 +4,7 @@ import {PersistentChrome,SafeFrame,clamp,ease,type VideoBrand} from './shared'
 type Variant='launch'|'documentary'|'before-after'|'timeline'|'testimonial'|'alert'
 type Props={
   brand:VideoBrand; variant:Variant; title:string; subtitle?:string; kicker?:string; quote?:string; attribution?:string;
-  items?:string[]; metrics?:{value:string;label:string}[]; media?:{hero?:string;before?:string;after?:string}; label?:string
+  items?:string[]; metrics?:{value:string;label:string}[]; media?:{hero?:string;before?:string;after?:string}; label?:string; durationSeconds?:number
 }
 
 const card=(brand:VideoBrand)=>({background:brand.surface,border:`2px solid ${brand.line}`,borderRadius:30,boxShadow:'0 20px 55px rgba(0,0,0,.08)'})
