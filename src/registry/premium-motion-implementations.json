@@ -1,0 +1,18 @@
+[
+  {"id":"PMM-WATER-001","implementation":["src/motion/premiumPrimitives.tsx#LiquidAperture"],"runtime":"motion-react","status":"executable"},
+  {"id":"PMM-WATER-002","implementation":["src/motion/premiumPrimitives.tsx#PathDroplet","src/remotion/compositions/RouteJourneyVertical.tsx"],"runtime":"motion-react+remotion","status":"executable"},
+  {"id":"PMM-ROUTE-001","implementation":["src/remotion/compositions/RouteJourneyVertical.tsx"],"runtime":"remotion","status":"executable"},
+  {"id":"PMM-ROUTE-002","implementation":["src/remotion/compositions/RouteJourneyVertical.tsx"],"runtime":"remotion","status":"executable"},
+  {"id":"PMM-ROUTE-004","implementation":["src/remotion/compositions/RouteJourneyVertical.tsx"],"runtime":"remotion","status":"executable"},
+  {"id":"PMM-TYPE-001","implementation":["src/remotion/components/PremiumMotion.tsx#HeadlineMaskStack"],"runtime":"remotion","status":"executable"},
+  {"id":"PMM-TYPE-003","implementation":["src/motion/premiumPrimitives.tsx#AccentStrike"],"runtime":"motion-react","status":"executable"},
+  {"id":"PMM-DATA-001","implementation":["src/motion/premiumPrimitives.tsx#DatumStage","src/remotion/compositions/DataCascadeVertical.tsx"],"runtime":"motion-react+remotion","status":"executable"},
+  {"id":"PMM-DATA-002","implementation":["src/remotion/components/PremiumMotion.tsx#MetricHandoff","src/remotion/compositions/DataCascadeVertical.tsx"],"runtime":"remotion","status":"executable"},
+  {"id":"PMM-DATA-003","implementation":["src/remotion/components/PremiumMotion.tsx#ChartFocusSweep"],"runtime":"remotion","status":"executable"},
+  {"id":"PMM-DOC-001","implementation":["src/remotion/components/PremiumMotion.tsx#EvidenceStack"],"runtime":"remotion","status":"executable"},
+  {"id":"PMM-TRANS-001","implementation":["src/remotion/components/PremiumMotion.tsx#TravelingMatte"],"runtime":"remotion","status":"executable"},
+  {"id":"PMM-SPATIAL-001","implementation":["src/motion/premiumPrimitives.tsx#DepthPlanes","src/remotion/components/PremiumMotion.tsx#ThreePlaneParallax"],"runtime":"motion-react+remotion","status":"executable"},
+  {"id":"PMM-SYSTEM-001","implementation":["src/remotion/components/PremiumMotion.tsx#NetworkBuild","src/remotion/compositions/ProcessConnectedVertical.tsx"],"runtime":"remotion","status":"executable"},
+  {"id":"PMM-SYSTEM-002","implementation":["src/remotion/components/PremiumMotion.tsx#FlowPulse","src/remotion/compositions/ProcessConnectedVertical.tsx"],"runtime":"remotion","status":"executable"},
+  {"id":"PMM-UTILITY-001","implementation":["src/motion/premiumPrimitives.tsx#SafeAreaGuide"],"runtime":"motion-react","status":"executable"}
+]
