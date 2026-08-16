@@ -10,9 +10,9 @@ const external=read('src/registry/external-motion-assets.json')
 const fail=[]
 const ids=a=>new Set(a.map(x=>x.id))
 
-if(styles.length<12)fail.push(`expected >=12 creative style families, got ${styles.length}`)
-if(modules.length<36)fail.push(`expected >=36 premium motion modules, got ${modules.length}`)
-if(implementations.length<16)fail.push(`expected >=16 executable premium motion implementations, got ${implementations.length}`)
+if(styles.length!==12)fail.push(`expected exactly 12 creative style families, got ${styles.length}`)
+if(modules.length!==39)fail.push(`expected exactly 39 premium motion modules, got ${modules.length}`)
+if(implementations.length!==modules.length)fail.push(`expected executable coverage for all ${modules.length} premium modules, got ${implementations.length}`)
 if(providers.length<2)fail.push(`expected >=2 generative provider profiles, got ${providers.length}`)
 if(policies.classes?.length<5)fail.push('expected >=5 generative scene classes')
 if(!Array.isArray(external.assets))fail.push('external motion registry assets must be an array')
@@ -36,6 +36,7 @@ for(const m of modules){
 }
 const implementationIds=ids(implementations)
 if(implementationIds.size!==implementations.length)fail.push('duplicate premium motion implementation ID')
+for(const id of moduleIds)if(!implementationIds.has(id))fail.push(`${id}: premium module lacks executable implementation`)
 for(const impl of implementations){
   if(!moduleIds.has(impl.id))fail.push(`${impl.id}: implementation has no matching module spec`)
   if(impl.status!=='executable')fail.push(`${impl.id}: implementation status must be executable`)
@@ -58,7 +59,7 @@ if(factual?.generativeAllowed!==false)fail.push('factual evidence must forbid ge
 if(conceptual?.generativeAllowed!==true)fail.push('conceptual scenes should allow governed generation')
 if(!policies.preflight?.some(x=>x.includes('logos')))fail.push('generative preflight must keep official identity/text outside generated pixels')
 
-for(const file of ['src/lib/creative-style-director.ts','src/lib/generative-video.ts','src/motion/premiumPrimitives.tsx','src/remotion/components/PremiumMotion.tsx','src/remotion/components/GovernedLottie.tsx','scripts/ingest-motion-asset.mjs','scripts/generate-minimax-video.mjs','scripts/audit-premium-production.mjs','src/components/PremiumVisualLab.tsx','src/styles.v11.css','claude/premium.compact.json','docs/PREMIUM_VISUAL_GENERATIVE_LAYER.md','validation/premium-plan-pass.json','validation/premium-plan-fail.json']){
+for(const file of ['src/lib/creative-style-director.ts','src/lib/generative-video.ts','src/motion/premiumPrimitives.tsx','src/remotion/components/PremiumMotion.tsx','src/remotion/components/PremiumMotionExtended.tsx','src/remotion/components/GovernedLottie.tsx','scripts/ingest-motion-asset.mjs','scripts/generate-minimax-video.mjs','scripts/audit-premium-production.mjs','src/components/PremiumVisualLab.tsx','src/styles.v11.css','claude/premium.compact.json','docs/PREMIUM_VISUAL_GENERATIVE_LAYER.md','validation/premium-plan-pass.json','validation/premium-plan-fail.json']){
   if(!fs.existsSync(new URL(`../${file}`,import.meta.url)))fail.push(`missing v1.1 file ${file}`)
 }
 if(fs.existsSync(new URL('../src/lib/creative-style-director.ts',import.meta.url))){
@@ -75,4 +76,4 @@ if(fs.existsSync(new URL('../scripts/audit-premium-production.mjs',import.meta.u
 }
 
 if(fail.length){console.error(fail.join('\n'));process.exit(1)}
-console.log(`OK v1.1 premium layer: ${styles.length} style families; ${modules.length} motion modules; ${implementations.length} executable modules; ${providers.length} provider profiles; ${policies.classes.length} scene classes`)
+console.log(`OK v1.1 premium layer: ${styles.length} style families; ${modules.length} motion modules; ${implementations.length}/${modules.length} executable; ${providers.length} provider profiles; ${policies.classes.length} scene classes`)
