@@ -22,7 +22,7 @@ on:
       - 'src/registry/generative-scene-policies.json'
       - 'src/lib/creative-style-director.ts'
       - 'src/lib/generative-video.ts'
-      - 'src/motion/premiumPrimitives.tsx'
+      - 'src/motion/**'
       - 'src/remotion/**'
       - 'claude/premium.compact.json'
       - 'claude/handoff.compact.json'
@@ -88,14 +88,17 @@ jobs:
       - name: Run factual Agua Bienestar QA
         run: npm run qa:real
 
-      - name: Discover all Remotion compositions
+      - name: Discover Production Master and QA compositions
         run: |
           npx remotion compositions src/remotion/index.ts | tee /tmp/remotion-v11.txt
-          COUNT=$(grep -oE 'CE-[A-Za-z-]+' /tmp/remotion-v11.txt | sort -u | wc -l)
-          echo "Detected Remotion compositions: $COUNT"
-          test "$COUNT" -eq 9
+          TOTAL=$(grep -oE 'CE-[A-Za-z-]+' /tmp/remotion-v11.txt | sort -u | wc -l)
+          echo "Detected Remotion compositions: $TOTAL"
+          test "$TOTAL" -eq 10
+          for ID in CE-RouteJourney CE-DataCascade CE-ProcessConnected CE-LaunchEditorial CE-DocumentaryEvidence CE-BeforeAfter CE-TimelineTerritory CE-TestimonialQuote CE-NoticeAlert CE-QA-LottieRuntime; do
+            grep -q "$ID" /tmp/remotion-v11.txt
+          done
 
-      - name: Smoke render all Production Masters
+      - name: Smoke render all nine Production Masters
         run: |
           mkdir -p /tmp/remotion-v11
           for ID in CE-RouteJourney CE-DataCascade CE-ProcessConnected CE-LaunchEditorial CE-DocumentaryEvidence CE-BeforeAfter CE-TimelineTerritory CE-TestimonialQuote CE-NoticeAlert; do
@@ -103,6 +106,13 @@ jobs:
             test -s "/tmp/remotion-v11/$ID.png"
           done
           test "$(find /tmp/remotion-v11 -name 'CE-*.png' | wc -l)" -eq 9
+
+      - name: Render first-party Lottie through Remotion
+        run: |
+          for FRAME in 0 45 89; do
+            npx remotion still src/remotion/index.ts CE-QA-LottieRuntime "/tmp/remotion-v11/lottie-$FRAME.png" --frame=$FRAME
+            test -s "/tmp/remotion-v11/lottie-$FRAME.png"
+          done
 
       - name: Build controlled 45s route props
         run: |
@@ -185,4 +195,4 @@ jobs:
 
       - name: v1.1 release summary
         run: |
-          node -e "const p=require('./package.json');const h=require('./claude/handoff.compact.json');const s=require('./src/registry/creative-style-families.json');const m=require('./src/registry/premium-motion-modules.json');const i=require('./src/registry/premium-motion-implementations.json');console.log('version:',p.version,'handoff:',h.version,'styles:',s.length,'premium modules:',m.length,'executable:',i.length)"
+          node -e "const p=require('./package.json');const h=require('./claude/handoff.compact.json');const s=require('./src/registry/creative-style-families.json');const m=require('./src/registry/premium-motion-modules.json');const i=require('./src/registry/premium-motion-implementations.json');console.log('version:',p.version,'handoff:',h.version,'styles:',s.length,'premium modules:',m.length,'executable:',i.length,'production masters:',h.inventory.productionMasters,'qa compositions: 1')"
