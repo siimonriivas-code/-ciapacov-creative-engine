@@ -1,1 +1,1 @@
-Validate v1.0 production handoff, six integration scenarios, compact loading contract, full build and Remotion runtime.
+Final validation for v1.0 after handoff sync, UI label bump and one-time workflow cleanup.
