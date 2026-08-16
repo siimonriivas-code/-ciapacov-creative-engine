@@ -66,18 +66,19 @@ jobs:
           const materials=require('./src/registry/premium-material-systems.json')
           const kits=require('./src/registry/premium-template-kits.json')
           const lotties=require('./src/registry/first-party-lottie-presets.json')
+          const transitions=require('./src/registry/premium-transition-systems.json')
           const shots=require('./src/registry/generative-shot-archetypes.json')
           const providers=require('./src/registry/generative-provider-catalog.json')
           const benchmark=require('./src/registry/creative-benchmark-gates.json')
           const dna=require('./src/registry/reference-analysis-dimensions.json')
           const dirCount=directions.reduce((n,x)=>n+x.directions.length,0)
-          if(styles.length!==12||dirCount!==36||motion.length!==39||implementations.length!==39||materials.length!==18||kits.length!==27||lotties.length!==18||shots.shots.length!==18||providers.providers.length!==10||benchmark.passScore!==82||dna.dimensions.length!==12)process.exit(1)
+          if(styles.length!==12||dirCount!==36||motion.length!==39||implementations.length!==39||materials.length!==18||kits.length!==27||lotties.length!==18||transitions.transitions.length!==12||shots.shots.length!==18||providers.providers.length!==10||benchmark.passScore!==82||dna.dimensions.length!==12)process.exit(1)
           const masters=new Map()
           for(const kit of kits)masters.set(kit.productionMasterId,(masters.get(kit.productionMasterId)||0)+1)
           if(masters.size!==9||[...masters.values()].some(v=>v!==3))process.exit(1)
           const executableProviders=providers.providers.filter(p=>p.executionStatus==='integrated-live'||p.executionStatus==='integrated-dry-run')
           if(executableProviders.length!==1||executableProviders[0].provider!=='MiniMax')process.exit(1)
-          console.log({styles:styles.length,directions:dirCount,motion:motion.length,implementations:implementations.length,materials:materials.length,kits:kits.length,lotties:lotties.length,generativeShots:shots.shots.length,providerProfiles:providers.providers.length,integratedProviderProfiles:executableProviders.length,referenceDnaDimensions:dna.dimensions.length,benchmarkPassScore:benchmark.passScore,masters:[...masters.entries()]})
+          console.log({styles:styles.length,directions:dirCount,motion:motion.length,implementations:implementations.length,materials:materials.length,kits:kits.length,lotties:lotties.length,transitions:transitions.transitions.length,generativeShots:shots.shots.length,providerProfiles:providers.providers.length,integratedProviderProfiles:executableProviders.length,referenceDnaDimensions:dna.dimensions.length,benchmarkPassScore:benchmark.passScore,masters:[...masters.entries()]})
           NODE
 
       - name: Anti-generic and factual safety gates
@@ -125,9 +126,9 @@ jobs:
           TOTAL=$(grep -oE 'CE-[A-Za-z0-9-]+' /tmp/remotion-v11.txt | sort -u | wc -l)
           KIT_TOTAL=$(grep -oE 'CE-KIT-[A-Za-z0-9-]+' /tmp/remotion-v11.txt | sort -u | wc -l)
           echo "Total compositions: $TOTAL · premium kits: $KIT_TOTAL"
-          test "$TOTAL" -eq 37
+          test "$TOTAL" -eq 38
           test "$KIT_TOTAL" -eq 27
-          for ID in CE-RouteJourney CE-DataCascade CE-ProcessConnected CE-LaunchEditorial CE-DocumentaryEvidence CE-BeforeAfter CE-TimelineTerritory CE-TestimonialQuote CE-NoticeAlert CE-QA-LottieRuntime; do
+          for ID in CE-RouteJourney CE-DataCascade CE-ProcessConnected CE-LaunchEditorial CE-DocumentaryEvidence CE-BeforeAfter CE-TimelineTerritory CE-TestimonialQuote CE-NoticeAlert CE-QA-LottieRuntime CE-QA-PremiumTransitions; do
             grep -q "$ID" /tmp/remotion-v11.txt
           done
 
@@ -159,6 +160,16 @@ jobs:
           node -e "import('@remotion/lottie').then(()=>console.log('@remotion/lottie ok'))"
           node -e "import('lottie-web').then(()=>console.log('lottie-web ok'))"
 
+      - name: Validate all 12 transition primitives
+        run: |
+          mkdir -p /tmp/remotion-v11/transitions
+          for I in $(seq 0 11); do
+            FRAME=$((I*60+30))
+            npx remotion still src/remotion/index.ts CE-QA-PremiumTransitions "/tmp/remotion-v11/transitions/transition-$I.png" --frame=$FRAME
+            test -s "/tmp/remotion-v11/transitions/transition-$I.png"
+          done
+          test "$(find /tmp/remotion-v11/transitions -name '*.png' | wc -l)" -eq 12
+
       - name: Validate MiniMax governed executor in dry-run mode
         run: |
           cat > /tmp/minimax-concept.json <<'JSON'
@@ -180,4 +191,4 @@ jobs:
       - name: v1.1 premium release summary
         run: |
           echo 'Creative Ecosystem v1.1 validated'
-          echo '12 style families · 36 directions · 39 executable motion modules · 18 material systems · 18 first-party Lotties · 27 executable premium template kits · 18 governed generative shot archetypes · 10 provider capability profiles across 6 provider families · 12 reference-DNA dimensions · creative benchmark >=82 · 9 Production Masters'
+          echo '12 style families · 36 directions · 39 executable motion modules · 18 material systems · 18 first-party Lotties · 12 first-party transition systems · 27 executable premium template kits · 18 governed generative shot archetypes · 10 provider capability profiles across 6 provider families · 12 reference-DNA dimensions · creative benchmark >=82 · 9 Production Masters'
