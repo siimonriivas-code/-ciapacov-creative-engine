@@ -1,7 +1,7 @@
 # QA-AB-ROUTE-45S-V1 — Agua Bienestar weekly routes
 
 Status: **PASS · 100/100**  
-Validated source commit: `b70f89ef42c4722a7240c87ceb1a3b9954361861`
+Validated source commit: `6fbdf65aaceb4f280fcd44e56381c531106be0df`
 
 ## Routing lock
 - Brand Bridge: `BRIDGE-AGUA-BIENESTAR-V1`
