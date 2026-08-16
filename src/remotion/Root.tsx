@@ -4,6 +4,7 @@ import { DataCascadeVertical } from './compositions/DataCascadeVertical'
 import { ProcessConnectedVertical } from './compositions/ProcessConnectedVertical'
 import { ProductionMasterVertical } from './compositions/ProductionMasterVertical'
 import { LottieRuntimeQA } from './compositions/LottieRuntimeQA'
+import {PremiumTransitionQA} from './compositions/PremiumTransitionQA'
 import {PremiumDirectedKitComposition,premiumDirectedKits,type PremiumDirectedKitProps} from './compositions/PremiumDirectedKitComposition'
 
 const demoBrand={surface:'#ffffff',surfaceAlt:'#f4f7f8',ink:'#172126',muted:'#627078',primary:'#087fb6',secondary:'#d8f2fa',accent:'#8a2f53',line:'#d8e1e5'}
@@ -33,5 +34,6 @@ export const RemotionRoot=()=> <>
   <Composition id="CE-TestimonialQuote" component={ProductionMasterVertical} width={1080} height={1920} fps={30} durationInFrames={900} calculateMetadata={durationMetadata(30)} defaultProps={{...base,variant:'testimonial' as const,kicker:'TESTIMONIO',quote:'Cita autorizada',attribution:'Identidad autorizada',durationSeconds:30}}/>
   <Composition id="CE-NoticeAlert" component={ProductionMasterVertical} width={1080} height={1920} fps={30} durationInFrames={600} calculateMetadata={durationMetadata(20)} defaultProps={{...base,variant:'alert' as const,kicker:'AVISO',label:'AVISO OPERATIVO',items:['Situación confirmada','Zona, acción y siguiente actualización verificadas.'],durationSeconds:20}}/>
   <Composition id="CE-QA-LottieRuntime" component={LottieRuntimeQA} width={400} height={400} fps={30} durationInFrames={90}/>
+  <Composition id="CE-QA-PremiumTransitions" component={PremiumTransitionQA} width={1080} height={1920} fps={30} durationInFrames={720}/>
   {premiumDirectedKits.map(kit=>{const fallback=kit.durations.includes(30)?30:kit.durations[0];return <Composition key={kit.id} id={`CE-KIT-${kit.id.replace('PTK-','')}`} component={PremiumDirectedKitComposition} width={1080} height={1920} fps={30} durationInFrames={fallback*30} calculateMetadata={durationMetadata(fallback)} defaultProps={kitDefaults(kit.productionMasterId,kit.id,fallback)}/>})}
 </>
