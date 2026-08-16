@@ -63,8 +63,12 @@ jobs:
 
       - name: Check v1.1 compact handoff contract
         run: |
-          node -e "const h=require('./claude/handoff.compact.json');if(h.version!=='1.1'||h.inventory.premiumStyleFamilies!==12||h.inventory.premiumMotionModules!==39||h.inventory.premiumMotionExecutable!==16||h.rules.antiGenericAuditBeforePremiumExport!==true||h.rules.generativeEvidenceForbidden!==true)process.exit(1);console.log(h.inventory)"
-          node -e "const p=require('./claude/premium.compact.json');if(p.version!=='1.1'||p.motionLibrary.moduleCount!==39||p.motionLibrary.executableCount!==16||p.generativeVideo.providers.length<2||p.antiGeneric.passScore!==80)process.exit(1);console.log('premium handoff ok')"
+          node -e "const h=require('./claude/handoff.compact.json');if(h.version!=='1.1'||h.inventory.premiumStyleFamilies!==12||h.inventory.premiumMotionModules!==39||h.inventory.premiumMotionExecutable!==39||h.rules.antiGenericAuditBeforePremiumExport!==true||h.rules.generativeEvidenceForbidden!==true)process.exit(1);console.log(h.inventory)"
+          node -e "const p=require('./claude/premium.compact.json');if(p.version!=='1.1'||p.motionLibrary.moduleCount!==39||p.motionLibrary.executableCount!==39||p.generativeVideo.providers.length<2||p.antiGeneric.passScore!==80)process.exit(1);console.log('premium handoff ok')"
+
+      - name: Check exact premium implementation coverage
+        run: |
+          node -e "const m=require('./src/registry/premium-motion-modules.json');const i=require('./src/registry/premium-motion-implementations.json');const ms=new Set(m.map(x=>x.id));const is=new Set(i.map(x=>x.id));if(m.length!==39||i.length!==39||[...ms].some(x=>!is.has(x))||[...is].some(x=>!ms.has(x)))process.exit(1);console.log('39/39 premium motion modules executable')"
 
       - name: Premium anti-generic positive fixture
         run: node scripts/audit-premium-production.mjs validation/premium-plan-pass.json
