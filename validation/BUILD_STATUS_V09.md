@@ -1,6 +1,6 @@
 # CIAPACOV Creative Ecosystem v0.9 — Build Validation
 
-Validation source commit: `b70f89ef42c4722a7240c87ceb1a3b9954361861`
+Validation source commit: `6fbdf65aaceb4f280fcd44e56381c531106be0df`
 
 GitHub-hosted Ubuntu / Node 22 validation completed successfully.
 
