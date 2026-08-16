@@ -1,0 +1,9 @@
+import type {MediaRecord,MediaRole,OperationalMaster,ProductionMaster} from '../types'
+import {buildMediaPlan} from '../lib/mediaIntelligence'
+
+export function ProductionMasterLibrary({productionMasters,masters,mediaRoles,mediaLibrary,query}:{productionMasters:ProductionMaster[];masters:OperationalMaster[];mediaRoles:MediaRole[];mediaLibrary:MediaRecord[];query:string}){
+  const q=query.trim().toLowerCase()
+  const masterById=new Map(masters.map(m=>[m.id,m]))
+  const filtered=productionMasters.filter(pm=>!q||[pm.id,pm.name,pm.compositionId,...pm.masterIds,...pm.visualArchitectures].join(' ').toLowerCase().includes(q))
+  return <section className="productionMasterView"><div className="campaignView__intro"><span className="kicker">EXECUTABLE PRODUCTION</span><h2>Masters que ya saben cómo renderizar.</h2><p>Cada Production Master conecta Operational Masters, direcciones visuales, roles de media y una composición Remotion ejecutable.</p></div><div className="productionMasterGrid">{filtered.map(pm=>{const domain=masterById.get(pm.masterIds[0])?.domain;const media=buildMediaPlan(pm,mediaRoles,mediaLibrary,domain);return <article className="productionMasterCard" key={pm.id}><div className="productionMasterCard__top"><span>{pm.id}</span><b>{pm.status}</b></div><h3>{pm.name}</h3><code>{pm.compositionId}</code><div className="productionMasterCard__metrics"><span><b>{pm.masterIds.length}</b> Masters</span><span><b>{pm.visualArchitectures.length}</b> direcciones</span><span><b>{media.readiness}%</b> media</span></div><div className="productionMasterCard__durations">{pm.durationSeconds.map(x=><span key={x}>{x}s</span>)}</div><small>Usado por</small><p>{pm.masterIds.map(id=>masterById.get(id)?.name||id).join(' · ')}</p>{media.blockers.length>0&&<div className="productionMasterCard__block"><b>Media requerida pendiente</b>{media.blockers.map(x=><span key={x}>{x}</span>)}</div>}</article>})}</div></section>
+}
