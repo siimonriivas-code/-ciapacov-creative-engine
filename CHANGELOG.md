@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.0 — Production Planning
+- added 20 production storyboards, one per Operational Master
+- added Production Planner: brief → domain → Master → storyboard → templates → asset readiness → blockers
+- added copy-ready Claude production prompts with strict low-context loading
+- added production-readiness scoring and explicit official-asset blockers
+- upgraded Brief Workbench to show storyboard beats and alternate Masters
+- added storyboard validation against Masters, Asset Vault capabilities and motion IDs
+- added v0.6 CI validation for npm install, registries, TypeScript/Vite and Remotion
+- extended compact-catalog generator to include storyboard summaries
+- retained 80 templates, 48 motions, 8 Campaign Kits, 9 domains, 20 Masters, 34 asset records and 7 reference sources
+
 ## 0.5.0 — Creative Ecosystem
 - added 9 Domain Libraries
 - added 20 Operational Master Templates
