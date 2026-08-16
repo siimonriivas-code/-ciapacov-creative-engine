@@ -1,0 +1,23 @@
+{
+  "version":"1.1",
+  "purpose":"Premium Visual & Generative Motion Layer. Load only after Operational Master + visual architecture are known.",
+  "authority":{"identity":"active-design-system","composition":"creative-ecosystem","factualTruth":"qa-and-verified-media","generativePixels":"illustrative-only-unless-source-media-is-factual-and-unchanged"},
+  "antiGeneric":{"required":true,"gates":["avoid-primary-color-flood","minimum-composition-variety","neutral-breathing-surfaces-when-compatible","no-repeated-card-grammar","decoration-must-have-narrative-purpose"],"audit":"auditAntiGeneric"},
+  "styleFamilies":[
+    "STYLE-EDITORIAL-CONTRAST","STYLE-LIQUID-LUMINOUS","STYLE-DOCUMENTARY-COLLAGE","STYLE-TACTILE-PAPER","STYLE-KINETIC-TYPE","STYLE-SPATIAL-DEPTH","STYLE-TECHNICAL-GRID","STYLE-DATA-THEATER","STYLE-CINEMATIC-MASKS","STYLE-MODULAR-MOSAIC","STYLE-QUIET-LUXURY","STYLE-PLAYFUL-GEOMETRY"
+  ],
+  "motionLibrary":{"moduleCount":39,"registry":"src/registry/premium-motion-modules.json","categories":["water","route","typography","data","documentary","transition","spatial","system","utility"],"thirdPartyRegistry":"src/registry/external-motion-assets.json","thirdPartyRule":"license + provenance + deterministic smoke render required before production"},
+  "generativeVideo":{"registry":"src/registry/generative-video-providers.json","policy":"src/registry/generative-scene-policies.json","providers":["GEN-MINIMAX-HAILUO-23","GEN-MINIMAX-HAILUO-23-FAST"],"preferredMode":"image-to-video when an approved first frame can constrain composition","neverGenerate":["documentary evidence","official logos","official vehicles","beneficiary testimony","official maps","names/prices/routes/phone numbers/metrics baked into pixels"]},
+  "runtime":{"deterministic":"Remotion + Motion + GSAP + SVG","lottie":"@remotion/lottie + lottie-web; evaluate expressions case-by-case","generative":"short conceptual clips assembled under deterministic overlays"},
+  "selectionProtocol":[
+    "1. Keep the selected visual architecture from claude/visual-directions.compact.json.",
+    "2. Read only this compact file, then choose three materially different style families compatible with the architecture.",
+    "3. Prefer a style family that solves the brief without defaulting to full-frame primary color.",
+    "4. Read only motion modules relevant to the selected style + storyboard beats.",
+    "5. Use external Lottie/video only if its specific license/provenance is recorded; otherwise use it as inspiration only.",
+    "6. Classify every proposed generated scene before calling a video provider.",
+    "7. Keep all facts and official identity in deterministic layers.",
+    "8. Run anti-generic + factual + safe-area + readability preflight before export."
+  ],
+  "nextReads":{"styles":"src/registry/creative-style-families.json","motion":"src/registry/premium-motion-modules.json","generativeProviders":"src/registry/generative-video-providers.json","generativePolicy":"src/registry/generative-scene-policies.json","externalMotion":"src/registry/external-motion-assets.json"}
+}
