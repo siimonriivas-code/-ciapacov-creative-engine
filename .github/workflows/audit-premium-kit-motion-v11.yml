@@ -6,6 +6,12 @@ on:
     paths:
       - '.github/workflows/audit-premium-kit-motion-v11.yml'
       - 'validation/run-premium-motion-audit-v11.txt'
+      - 'src/remotion/Root.tsx'
+      - 'src/remotion/compositions/PremiumDirectedContent.tsx'
+      - 'src/remotion/compositions/PremiumDirectedKitComposition.tsx'
+      - 'src/remotion/components/PremiumMaterials.tsx'
+      - 'src/registry/premium-template-kits.json'
+      - 'src/registry/premium-material-systems.json'
   workflow_dispatch:
 
 permissions:
@@ -41,7 +47,7 @@ jobs:
             npx remotion still src/remotion/index.ts "$ID" "/tmp/motion-audit/${ID}-B.png" --frame=240
           done < /tmp/kits.txt
 
-      - name: Require visible temporal change in all animated kits
+      - name: Require visible temporal change in all motion templates
         run: |
           STATIC=0
           : > /tmp/motion-audit/report.txt
