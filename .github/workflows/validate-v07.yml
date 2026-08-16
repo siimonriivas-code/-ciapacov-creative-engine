@@ -1,0 +1,81 @@
+name: Validate Creative Ecosystem v0.7
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/run-v07.txt'
+      - '.github/workflows/validate-v07.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        id: install
+        continue-on-error: true
+        run: npm install --no-audit --no-fund
+      - name: Validate registries, ecosystem and visual library
+        id: validators
+        if: always()
+        continue-on-error: true
+        run: npm run validate:all
+      - name: Regenerate compact and offline catalogs
+        id: catalogs
+        if: always()
+        continue-on-error: true
+        run: npm run catalog:all
+      - name: TypeScript and Vite build
+        id: build
+        if: always()
+        continue-on-error: true
+        run: npm run build
+      - name: Remotion composition check
+        id: remotion
+        if: always()
+        continue-on-error: true
+        run: npx remotion compositions src/remotion/index.ts
+      - name: Write validation report
+        if: always()
+        env:
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          VALIDATOR_OUTCOME: ${{ steps.validators.outcome }}
+          CATALOG_OUTCOME: ${{ steps.catalogs.outcome }}
+          BUILD_OUTCOME: ${{ steps.build.outcome }}
+          REMOTION_OUTCOME: ${{ steps.remotion.outcome }}
+        run: |
+          cat > validation/BUILD_STATUS_V07.md <<EOF
+          # CIAPACOV Creative Ecosystem v0.7 — Build Validation
+
+          | Check | Outcome |
+          |---|---|
+          | npm install | ${INSTALL_OUTCOME} |
+          | registry/ecosystem/visual validators | ${VALIDATOR_OUTCOME} |
+          | compact + offline catalogs | ${CATALOG_OUTCOME} |
+          | TypeScript + Vite build | ${BUILD_OUTCOME} |
+          | Remotion compositions | ${REMOTION_OUTCOME} |
+
+          Source commit: ${GITHUB_SHA}
+          EOF
+      - name: Commit report
+        if: always()
+        run: |
+          git config user.name 'ciapacov-creative-engine-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add claude catalog validation/BUILD_STATUS_V07.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Validate CIAPACOV Creative Ecosystem v0.7'
+          git pull --rebase origin main || true
+          git push origin main
