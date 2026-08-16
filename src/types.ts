@@ -34,8 +34,29 @@ export type VisualArchitecture = {
 export type MasterVisualDirection = { architectureId:string; label:string; reason:string; priority:number }
 export type MasterVisualMap = { masterId:string; directions:MasterVisualDirection[] }
 export type ResolvedVisualDirection = MasterVisualDirection & { architecture:VisualArchitecture; formatFit:boolean }
+
+export type MediaKind='photo'|'video'|'audio'|'map'|'logo'|'image'|'document'
+export type MediaOrientation='portrait'|'landscape'|'square'|'any'
+export type MediaRole={
+  id:string; name:string; kinds:MediaKind[]; orientation:MediaOrientation; requiredTags:string[]; preferredTags:string[];
+  realOnly:boolean; allowDemo:boolean; notes:string
+}
+export type MediaRecord={
+  id:string; title:string; kind:MediaKind; uri:string; status:'approved'|'review'|'blocked'|'demo'; orientation:MediaOrientation;
+  tags:string[]; domains:string[]; locations:string[]; capturedAt?:string; source:string;
+  license:{kind:string;usage:string;expiresAt?:string}; consent?:'verified'|'not-required'|'unknown';
+  checksum?:string; notes?:string
+}
+export type MediaMatch={role:MediaRole;media:MediaRecord|null;score:number;state:'ready'|'missing'|'review';reasons:string[]}
+export type MediaPlan={required:MediaMatch[];recommended:MediaMatch[];readiness:number;blockers:string[]}
+export type ProductionMaster={
+  id:string; name:string; compositionId:string; variant:string; masterIds:string[]; formats:string[]; durationSeconds:number[];
+  visualArchitectures:string[]; requiredMediaRoles:string[]; recommendedMediaRoles:string[]; status:'production-ready'|'draft'
+}
+export type ProductionRuntimePlan={productionMaster:ProductionMaster|null;mediaPlan:MediaPlan|null;compositionId:string|null;durationSeconds:number|null}
+
 export type ProductionPlan = {
   master:OperationalMaster; storyboard:MasterStoryboard; templates:Template[];
   requiredAssets:AssetResolution[]; recommendedAssets:AssetResolution[]; readiness:number;
-  blockers:string[]
+  blockers:string[]; runtime?:ProductionRuntimePlan
 }
