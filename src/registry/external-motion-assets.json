@@ -1,0 +1,20 @@
+{
+  "version":"1.1",
+  "policy":{
+    "purpose":"Curated external motion assets may enrich production but never override the active Design System or factual QA.",
+    "allowedFormats":["lottie-json","dotlottie","svg","video-alpha","video"],
+    "licenseRequired":true,
+    "provenanceRequired":true,
+    "redistributionDefault":false,
+    "thirdPartyBinaryBundlingDefault":false,
+    "rules":[
+      "Reference marketplaces and galleries for discovery only until the specific asset license is recorded.",
+      "Do not copy, scrape or redistribute a third-party asset merely because it is publicly viewable.",
+      "Prefer first-party recreation or a licensed local file for production.",
+      "Record whether colors can be adapted safely; never recolor protected official marks inside a motion asset.",
+      "Reject assets whose expressions or effects render non-deterministically in the target runtime.",
+      "Use preview or review status until a smoke render passes."
+    ]
+  },
+  "assets":[]
+}
