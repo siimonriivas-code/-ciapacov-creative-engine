@@ -42,6 +42,13 @@ jobs:
       - name: Validate registries and ecosystem contracts
         run: npm run validate:all
 
+      - name: Validate premium tooling syntax
+        run: |
+          node --check scripts/audit-creative-benchmark.mjs
+          node --check scripts/build-generative-shot-plan.mjs
+          node --check scripts/generate-minimax-video.mjs
+          node --check scripts/audit-premium-production.mjs
+
       - name: Validate production build
         run: npm run build
 
@@ -58,12 +65,15 @@ jobs:
           const materials=require('./src/registry/premium-material-systems.json')
           const kits=require('./src/registry/premium-template-kits.json')
           const lotties=require('./src/registry/first-party-lottie-presets.json')
+          const shots=require('./src/registry/generative-shot-archetypes.json')
+          const benchmark=require('./src/registry/creative-benchmark-gates.json')
+          const dna=require('./src/registry/reference-analysis-dimensions.json')
           const dirCount=directions.reduce((n,x)=>n+x.directions.length,0)
-          if(styles.length!==12||dirCount!==36||motion.length!==39||implementations.length!==39||materials.length!==18||kits.length!==27||lotties.length!==18)process.exit(1)
+          if(styles.length!==12||dirCount!==36||motion.length!==39||implementations.length!==39||materials.length!==18||kits.length!==27||lotties.length!==18||shots.shots.length!==18||benchmark.passScore!==82||dna.dimensions.length!==12)process.exit(1)
           const masters=new Map()
           for(const kit of kits)masters.set(kit.productionMasterId,(masters.get(kit.productionMasterId)||0)+1)
           if(masters.size!==9||[...masters.values()].some(v=>v!==3))process.exit(1)
-          console.log({styles:styles.length,directions:dirCount,motion:motion.length,implementations:implementations.length,materials:materials.length,kits:kits.length,lotties:lotties.length,masters:[...masters.entries()]})
+          console.log({styles:styles.length,directions:dirCount,motion:motion.length,implementations:implementations.length,materials:materials.length,kits:kits.length,lotties:lotties.length,generativeShots:shots.shots.length,referenceDnaDimensions:dna.dimensions.length,benchmarkPassScore:benchmark.passScore,masters:[...masters.entries()]})
           NODE
 
       - name: Anti-generic and factual safety gates
@@ -74,6 +84,23 @@ jobs:
             echo 'ERROR: intentionally generic/factual-unsafe fixture passed'
             exit 1
           fi
+
+      - name: Premium creative benchmark positive fixture
+        run: node scripts/audit-creative-benchmark.mjs validation/creative-benchmark-pass.json
+
+      - name: Premium creative benchmark negative fixture must fail
+        run: |
+          if node scripts/audit-creative-benchmark.mjs validation/creative-benchmark-fail.json; then
+            echo 'ERROR: deliberately weak/factual-unsafe creative benchmark fixture passed unexpectedly'
+            exit 1
+          else
+            echo 'Expected creative benchmark failure confirmed'
+          fi
+
+      - name: Build governed generative shot plan
+        run: |
+          node scripts/build-generative-shot-plan.mjs GENSHOT-WATER-RIBBON /tmp/genshot.json --mode=text-to-video --duration=6 --resolution=1080P
+          node -e "const p=require('/tmp/genshot.json');if(p.archetypeId!=='GENSHOT-WATER-RIBBON'||p.semanticClass!=='SCENE-CONCEPTUAL'||p.deterministicOverlayContract.facts!==true)process.exit(1);console.log('generative shot plan ok')"
 
       - name: Discover base and premium Remotion compositions
         run: |
@@ -136,4 +163,4 @@ jobs:
       - name: v1.1 premium release summary
         run: |
           echo 'Creative Ecosystem v1.1 validated'
-          echo '12 style families · 36 directions · 39 executable motion modules · 18 material systems · 18 first-party Lotties · 27 executable premium template kits · 9 Production Masters'
+          echo '12 style families · 36 directions · 39 executable motion modules · 18 material systems · 18 first-party Lotties · 27 executable premium template kits · 18 governed generative shot archetypes · 12 reference-DNA dimensions · creative benchmark >=82 · 9 Production Masters'
