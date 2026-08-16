@@ -1,23 +1,25 @@
-# CIAPACOV Creative Engine v0.5 · Creative Ecosystem
+# CIAPACOV Creative Engine v0.6 · Production Planning
 
-Private creative-direction, reusable-template, domain-master, asset-vault, reference-library and motion system for Claude Design / Claude Code workflows.
+Private creative-direction, reusable-template, domain-master, asset-vault, reference-library, storyboard and motion system for Claude Design / Claude Code workflows.
 
 The repository remains **brand-agnostic**. The active Design System is always the authority for identity, official logos, typography, approved colors, safe areas, accessibility and governance.
 
-## What ships in v0.5
+## What ships in v0.6
 - **80** searchable template records
 - **48** curated motion recipes
 - **8** multi-format Campaign Kits
 - **9** Domain Libraries mapped to real communication work
-- **20** Operational Master Templates above the generic template layer
+- **20** Operational Master Templates
+- **20 production storyboards**, one for every Operational Master
+- Production Planner: brief → domain → Master → storyboard → templates → asset readiness → blockers
+- Copy-ready production prompt that tells Claude to load only the selected Master, storyboard, template, recipe, motions and resolved assets
 - **34** Asset Vault records, including **25 bundled original SVG primitives** and controlled semantic slots for official/real assets
 - **7** Reference Library source profiles with usage boundaries
-- Structured Brief Router: topic → domain → master → templates → asset readiness
 - Asset Resolver with explicit `ready / slot / missing` states
 - License-aware local ingest pipeline; no automated marketplace scraping
 - Offline Contact Sheets generator
 - Separate Media Library contract for large photo/video archives
-- Motion + GSAP primitives and optional Remotion video pack retained from v0.4
+- Motion + GSAP primitives and optional Remotion video pack
 - Compact catalogs so Claude can load only what it needs
 
 ## Quick start
@@ -38,20 +40,25 @@ Ingest a user-owned/licensed local asset:
 npm run ingest:asset -- ingest/examples/asset-manifest.example.json /absolute/path/to/file.svg
 ```
 
-## AI routing rule
+## Production routing rule
 For normal work, Claude should not scan the repo.
 
 1. Read `claude/ecosystem.compact.json` when the request maps to a real work domain.
-2. Read `claude/catalog.compact.json` for template candidates.
-3. Add `claude/motions.compact.json` only for motion/video.
-4. Add `claude/campaigns.compact.json` only for multi-format campaigns.
-5. After selection, inspect only the chosen Master, template recipe, asset records and implementation.
+2. Select an Operational Master.
+3. Read only its storyboard from `src/registry/storyboards.json`.
+4. Read `claude/catalog.compact.json` for its template candidates.
+5. Add `claude/motions.compact.json` only for motion/video.
+6. Resolve required and recommended capabilities against the Asset Vault.
+7. If an official/real slot is unresolved, report it; never fabricate it.
+8. After selection, inspect only the chosen template recipe, motion primitives and assets.
 
 ## Architecture boundary
 **Design System** = identity and governance.  
 **Creative Engine** = composition and motion.  
 **Domain Library** = work-specific logic.  
+**Operational Master** = reusable production strategy.  
+**Storyboard Library** = narrative beats and required fields.  
 **Asset Vault** = reusable approved primitives + semantic slots.  
 **Media Library** = real photo/video stored outside the code repo when appropriate.  
 **Reference Library** = inspiration and provenance, not a redistribution mirror.  
-**Creative Director** = brief router and selector.
+**Production Planner** = brief router, readiness checker and production-prompt generator.
