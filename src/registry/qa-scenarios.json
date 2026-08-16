@@ -1,0 +1,21 @@
+[
+  {
+    "id":"QA-AB-ROUTE-45S-V1",
+    "name":"Agua Bienestar · rutas semanales · Reel 45 s",
+    "brandBridgeId":"BRIDGE-AGUA-BIENESTAR-V1",
+    "brief":{"topic":"Agua Bienestar rutas semanales de reparto a domicilio","format":"reel","objective":"Explicar calendario, funcionamiento, precio social y línea de información con continuidad territorial.","duration":45,"materials":["calendario validado","destinos","precio","línea de información"]},
+    "expected":{"operationalMasterId":"AB-MASTER-02","productionMasterId":"PM-ROUTE","compositionId":"CE-RouteJourney","primaryArchitectureId":"VIS-ROUTE-JOURNEY"},
+    "facts":{"garrafonLiters":20,"deliveryPriceMxn":10,"infoLine":"312 311 9041","purifiersOperating":25,"sanitaryWording":"Acompañamiento de COESPRIS"},
+    "schedule":[
+      {"day":"LUNES","destinations":["Benito Juárez","Palo Alto","Buenavista","Villa Flores"]},
+      {"day":"MARTES Y VIERNES","destinations":["Mirador de la Cumbre I y II","Moctezuma","Paraíso","Jardines del Sol"]},
+      {"day":"MIÉRCOLES","destinations":["Del Valle","San Isidro","Lo de Villa"]},
+      {"day":"JUEVES","destinations":["Tierra y Libertad","Palo Alto","Buenavista","Villa Flores"]},
+      {"day":"SÁBADO","destinations":["Tierra y Libertad","El Moralete","De los Trabajadores","Patios del Ferrocarril","La Albarrada"]}
+    ],
+    "requiredPhrases":["rutas programadas","Acompañamiento de COESPRIS"],
+    "forbiddenPhrases":["rutas oficiales","certificado por COESPRIS","certificada por COESPRIS","avalado por COESPRIS","avalada por COESPRIS","garantizado por COESPRIS","garantizada por COESPRIS"],
+    "rules":["Buenavista se escribe junto","No mostrar municipios dentro del calendario","La línea 312 311 9041 es para consultas e información; no para solicitar garrafones","No inventar vivienda, cuadras, certificaciones ni cobertura no incluida en el brief","Design System Agua Bienestar v1.0 gobierna identidad; el Creative Engine gobierna composición"],
+    "sourceStatus":"project-validated-internal-reference"
+  }
+]
