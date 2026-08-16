@@ -1,0 +1,119 @@
+[
+  {
+    "productionMasterId":"PM-LAUNCH",
+    "primaryStyleId":"STYLE-EDITORIAL-CONTRAST",
+    "principle":"Build anticipation through hierarchy changes, not through repeated cards or full-frame color swaps.",
+    "beats":[
+      {"id":"hook","purpose":"Immediate statement","motion":["PMM-TYPE-001","PMM-TRANS-005"]},
+      {"id":"context","purpose":"Open contextual surface","motion":["PMM-TRANS-001","PMM-TYPE-005"]},
+      {"id":"benefit","purpose":"Stage one verified benefit","motion":["PMM-DATA-001","PMM-TYPE-003"]},
+      {"id":"proof","purpose":"Hand focus to evidence or second datum","motion":["PMM-DATA-002","PMM-DOC-005"]},
+      {"id":"statement","purpose":"Return to decisive language","motion":["PMM-TYPE-004","PMM-TRANS-003"]},
+      {"id":"close","purpose":"Quiet branded closure","motion":["PMM-TRANS-005"]}
+    ]
+  },
+  {
+    "productionMasterId":"PM-ROUTE",
+    "primaryStyleId":"STYLE-LIQUID-LUMINOUS",
+    "principle":"The route is one continuous journey. Movement must remain attached to the path and day changes must hand off rather than restart.",
+    "beats":[
+      {"id":"hook","purpose":"Name service and week","motion":["PMM-TYPE-001","PMM-TYPE-003"]},
+      {"id":"territory","purpose":"Establish abstract territory without fake cartography","motion":["PMM-ROUTE-003","PMM-WATER-003"]},
+      {"id":"journey","purpose":"Start continuous movement","motion":["PMM-ROUTE-001","PMM-WATER-002"]},
+      {"id":"nodes","purpose":"Resolve destinations only when reached","motion":["PMM-ROUTE-002","PMM-ROUTE-005","PMM-ROUTE-004"]},
+      {"id":"value","purpose":"Introduce price/service value without stopping continuity","motion":["PMM-DATA-001","PMM-WATER-005"]},
+      {"id":"close","purpose":"Carry visual anchor into factual contact closure","motion":["PMM-TRANS-003","PMM-WATER-004"]}
+    ]
+  },
+  {
+    "productionMasterId":"PM-TESTIMONIAL",
+    "primaryStyleId":"STYLE-DOCUMENTARY-COLLAGE",
+    "principle":"The authorized voice and verified media stay dominant. Motion should deepen evidence, never manufacture emotion or testimony.",
+    "beats":[
+      {"id":"identity","purpose":"Establish authorized subject","motion":["PMM-DOC-005","PMM-DOC-003"]},
+      {"id":"quote","purpose":"Give the voice typographic hierarchy","motion":["PMM-TYPE-003","PMM-TYPE-005"]},
+      {"id":"context","purpose":"Tie quote to evidence","motion":["PMM-DOC-001","PMM-DOC-004"]},
+      {"id":"detail","purpose":"Hold on one meaningful verified detail","motion":["PMM-DOC-005","PMM-DOC-003"]},
+      {"id":"handoff","purpose":"Shift from person to program/context","motion":["PMM-TRANS-004","PMM-TRANS-005"]},
+      {"id":"close","purpose":"Resolve attribution and official identity","motion":["PMM-TYPE-005"]}
+    ]
+  },
+  {
+    "productionMasterId":"PM-PROCESS",
+    "primaryStyleId":"STYLE-TECHNICAL-GRID",
+    "principle":"Explain dependency and direction of flow. Connectors appear in operational order and labels remain readable.",
+    "beats":[
+      {"id":"problem","purpose":"Define the system state","motion":["PMM-TYPE-001","PMM-TYPE-005"]},
+      {"id":"network","purpose":"Build real conceptual dependencies","motion":["PMM-SYSTEM-001","PMM-SYSTEM-002"]},
+      {"id":"step-sequence","purpose":"Advance one process stage at a time","motion":["PMM-SYSTEM-003","PMM-TRANS-003"]},
+      {"id":"technical-detail","purpose":"Reveal one verified technical callout","motion":["PMM-DOC-004","PMM-DATA-003"]},
+      {"id":"result","purpose":"Stage verified outcome","motion":["PMM-DATA-001","PMM-DATA-002"]},
+      {"id":"close","purpose":"Resolve system and next state","motion":["PMM-TRANS-005"]}
+    ]
+  },
+  {
+    "productionMasterId":"PM-DOCUMENTARY",
+    "primaryStyleId":"STYLE-DOCUMENTARY-COLLAGE",
+    "principle":"Real evidence controls the composition. Brand color organizes context but never covers or substitutes the evidence.",
+    "beats":[
+      {"id":"hero","purpose":"Open on strongest verified evidence","motion":["PMM-DOC-005","PMM-TRANS-004"]},
+      {"id":"context","purpose":"Assemble supporting proof","motion":["PMM-DOC-002","PMM-DOC-001"]},
+      {"id":"annotation","purpose":"Identify one factual detail","motion":["PMM-DOC-004","PMM-TYPE-005"]},
+      {"id":"progress","purpose":"Show sequence without generic slideshow behavior","motion":["PMM-DOC-003","PMM-TRANS-001"]},
+      {"id":"impact","purpose":"Stage one verified result","motion":["PMM-DATA-001","PMM-DATA-002"]},
+      {"id":"close","purpose":"Resolve evidence to institutional context","motion":["PMM-TRANS-005"]}
+    ]
+  },
+  {
+    "productionMasterId":"PM-BEFORE-AFTER",
+    "primaryStyleId":"STYLE-CINEMATIC-MASKS",
+    "principle":"The change itself is the visual mechanism. Before and after evidence must be comparable and the divider must never imply a false match.",
+    "beats":[
+      {"id":"before","purpose":"Establish verified initial state","motion":["PMM-DOC-005","PMM-TYPE-005"]},
+      {"id":"gate","purpose":"Introduce comparison boundary","motion":["PMM-DATA-004","PMM-TRANS-002"]},
+      {"id":"match","purpose":"Reveal final state through shared geometry","motion":["PMM-TRANS-003","PMM-DOC-005"]},
+      {"id":"detail","purpose":"Call out one verified change","motion":["PMM-DOC-004","PMM-TYPE-003"]},
+      {"id":"delta","purpose":"Stage quantitative or qualitative delta","motion":["PMM-DATA-001","PMM-DATA-004"]},
+      {"id":"close","purpose":"Resolve the matched states cleanly","motion":["PMM-TRANS-005"]}
+    ]
+  },
+  {
+    "productionMasterId":"PM-TIMELINE",
+    "primaryStyleId":"STYLE-TECHNICAL-GRID",
+    "principle":"Chronology must remain spatially clear. Active stage expands while previous and next stages stay contextual rather than shrinking into microtext.",
+    "beats":[
+      {"id":"origin","purpose":"Set initial time/state","motion":["PMM-TYPE-001","PMM-TYPE-005"]},
+      {"id":"line","purpose":"Build chronology","motion":["PMM-SYSTEM-001","PMM-ROUTE-002"]},
+      {"id":"stage-focus","purpose":"Scan one stage at a time","motion":["PMM-SYSTEM-003","PMM-ROUTE-005"]},
+      {"id":"evidence","purpose":"Attach verified support where available","motion":["PMM-DOC-003","PMM-DOC-004"]},
+      {"id":"current-state","purpose":"Stage present result","motion":["PMM-DATA-001","PMM-TYPE-003"]},
+      {"id":"close","purpose":"Resolve chronology to next step","motion":["PMM-TRANS-005"]}
+    ]
+  },
+  {
+    "productionMasterId":"PM-ALERT",
+    "primaryStyleId":"STYLE-EDITORIAL-CONTRAST",
+    "principle":"Urgency comes from hierarchy and clarity, not alarmist motion or full-screen warning color.",
+    "beats":[
+      {"id":"status","purpose":"State confirmed situation","motion":["PMM-TYPE-001","PMM-TYPE-003"]},
+      {"id":"zone","purpose":"Name affected area without fake mapping","motion":["PMM-TYPE-005","PMM-TRANS-005"]},
+      {"id":"action","purpose":"Explain current operational action","motion":["PMM-SYSTEM-001","PMM-SYSTEM-003"]},
+      {"id":"guidance","purpose":"Surface useful user action","motion":["PMM-TYPE-004","PMM-TRANS-001"]},
+      {"id":"update","purpose":"Show next verified update state","motion":["PMM-DATA-002","PMM-TYPE-005"]},
+      {"id":"close","purpose":"Calm official closure","motion":["PMM-TRANS-005"]}
+    ]
+  },
+  {
+    "productionMasterId":"PM-DATA",
+    "primaryStyleId":"STYLE-DATA-THEATER",
+    "principle":"One verified datum owns each beat. Do not animate a wall of charts simultaneously.",
+    "beats":[
+      {"id":"hook","purpose":"Lead with one decisive metric","motion":["PMM-DATA-001","PMM-TYPE-001"]},
+      {"id":"handoff","purpose":"Transfer attention to supporting metric","motion":["PMM-DATA-002","PMM-TYPE-004"]},
+      {"id":"trend","purpose":"Reveal only active chart segment","motion":["PMM-DATA-003","PMM-TYPE-005"]},
+      {"id":"comparison","purpose":"Explain delta or comparison honestly","motion":["PMM-DATA-004","PMM-TRANS-003"]},
+      {"id":"impact","purpose":"Connect related verified metrics","motion":["PMM-DATA-005","PMM-TYPE-003"]},
+      {"id":"close","purpose":"Return to one final datum and source","motion":["PMM-TRANS-005"]}
+    ]
+  }
+]
