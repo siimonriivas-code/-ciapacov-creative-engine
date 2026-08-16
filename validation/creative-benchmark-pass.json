@@ -1,0 +1,13 @@
+{
+  "id":"BENCHMARK-PASS-V11",
+  "durationSeconds":45,
+  "styleAllowsDepth":true,
+  "scenes":[
+    {"id":"S1","layoutFamily":"hero-editorial","surfaceRole":"neutral","highPriorityMessages":1,"materialIds":["MAT-EDITORIAL-RULES"],"motions":[{"purpose":"hierarchy"},{"purpose":"narrative"}],"hero":true,"depth":"layered-2d","typographyRole":"hero","safeAreaPass":true,"criticalTextReadable":true},
+    {"id":"S2","layoutFamily":"territory-field","surfaceRole":"media-led","highPriorityMessages":1,"materialIds":["MAT-CONTOUR-FIELD","MAT-DEPTH-FOG"],"motions":[{"purpose":"continuity"},{"purpose":"depth"}],"transition":"object-continuity","depth":"multi-plane","typographyRole":"editorial","safeAreaPass":true,"criticalTextReadable":true},
+    {"id":"S3","layoutFamily":"route-journey","surfaceRole":"neutral","highPriorityMessages":2,"materialIds":["MAT-LIQUID-GLASS"],"motions":[{"purpose":"continuity"},{"purpose":"state"},{"purpose":"focus"}],"transition":"liquid-handoff","depth":"parallax","typographyRole":"caption-led","safeAreaPass":true,"criticalTextReadable":true},
+    {"id":"S4","layoutFamily":"node-focus","surfaceRole":"primary-accent","highPriorityMessages":2,"materialIds":["MAT-REFRACTION-POOL"],"motions":[{"purpose":"state"},{"purpose":"hierarchy"}],"transition":"mask-handoff","depth":"layered-2d","typographyRole":"editorial","safeAreaPass":true,"criticalTextReadable":true},
+    {"id":"S5","layoutFamily":"value-stage","surfaceRole":"neutral","highPriorityMessages":1,"materialIds":["MAT-DATA-STAGE"],"motions":[{"purpose":"data"},{"purpose":"hierarchy"}],"transition":"typographic-wipe","depth":"layered-2d","typographyRole":"number-led","safeAreaPass":true,"criticalTextReadable":true},
+    {"id":"S6","layoutFamily":"close-editorial","surfaceRole":"neutral","highPriorityMessages":1,"materialIds":["MAT-ASYMMETRIC-FRAME"],"motions":[{"purpose":"focus"}],"transition":"hard-editorial-cut","depth":"flat","typographyRole":"editorial","safeAreaPass":true,"criticalTextReadable":true}
+  ]
+}
