@@ -97,6 +97,6 @@ export default function App(){
     :<section className="campaignView"><div className="campaignView__intro"><span className="kicker">REFERENCE LIBRARY</span><h2>Inspiración sin convertir el repo en un espejo de marketplaces.</h2><p>La referencia puede orientar; la ingestión requiere licencia, procedencia y control.</p></div><div className="referenceGrid">{references.map(r=><ReferenceCard key={r.id} item={r}/>)}</div></section>}
     <DetailPanel t={selected} onClose={()=>setSelected(null)}/>
     <CompareTray items={compare} onRemove={id=>setCompare(x=>x.filter(t=>t.id!==id))} onClear={()=>setCompare([])} onOpen={setSelected}/>
-    <footer><b>CIAPACOV Creative Engine v0.9 · Real Production QA & Brand Bridge</b><span>{templates.length} templates · {productionMasters.length} executable masters · {brandBridges.length} brand bridges · {qaScenarios.length} reproducible QA scenarios · {mediaRoles.length} media roles</span><span>Active Design System controls identity. QA locks factual language and routing before production.</span></footer>
+    <footer><b>CIAPACOV Creative Ecosystem v1.0 · Production Handoff</b><span>{templates.length} templates · {productionMasters.length} executable masters · {brandBridges.length} brand bridges · {qaScenarios.length} factual QA scenarios · 6 integration scenarios · {mediaRoles.length} media roles</span><span>Active Design System controls identity. QA locks factual language and routing before production.</span></footer>
   </main>
 }
