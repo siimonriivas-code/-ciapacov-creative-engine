@@ -1,0 +1,36 @@
+name: Validate Creative Ecosystem v0.8
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/run-v08.txt'
+      - '.github/workflows/validate-v08.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Validate complete ecosystem
+        run: npm run validate:all
+      - name: Regenerate compact catalogs
+        run: npm run catalog:all
+      - name: TypeScript and Vite build
+        run: npm run build
+      - name: Remotion composition check
+        run: npx remotion compositions src/remotion/index.ts
+      - name: Production registry summary
+        run: |
+          node -e "const p=require('./src/registry/production-masters.json');const r=require('./src/registry/media-roles.json');const m=require('./src/registry/media-library.json');console.log('production masters:',p.length,'media roles:',r.length,'verified media:',m.length)"
