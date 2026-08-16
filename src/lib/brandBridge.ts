@@ -7,10 +7,8 @@ const css=(token:{cssVar:string;fallback:string})=>`var(${token.cssVar}, ${token
 export function suggestBrandBridge(brief:CreativeBrief|string,bridges:BrandBridge[]){
   const text=norm(typeof brief==='string'?brief:[brief.topic,brief.objective||'',...(brief.materials||[])].join(' '))
   const ranked=bridges.map(bridge=>({bridge,score:bridge.keywords.reduce((n,k)=>n+(text.includes(norm(k))?1:0),0)})).sort((a,b)=>b.score-a.score)
-  return ranked[0]?.score?ranged(ranked[0].bridge):bridges.find(x=>x.id==='BRIDGE-GENERIC')||bridges[0]||null
+  return ranked[0]?.score?ranked[0].bridge:bridges.find(x=>x.id==='BRIDGE-GENERIC')||bridges[0]||null
 }
-
-function ranged<T>(value:T){return value}
 
 export function bridgeToBrandContract(bridge:BrandBridge):BrandContract{
   return {
