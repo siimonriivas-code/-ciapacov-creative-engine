@@ -1,0 +1,18 @@
+[
+  {
+    "id":"FP-LOTTIE-QA-001",
+    "name":"CE Water Orbit QA",
+    "format":"lottie-json",
+    "category":"runtime-qa",
+    "file":"src/motion/lottie/ce-water-orbit-qa.json",
+    "creator":"CIAPACOV Creative Ecosystem",
+    "provenance":"first-party-original",
+    "license":"internal-first-party",
+    "redistribution":"repository-internal",
+    "factual":false,
+    "officialAsset":false,
+    "brandIdentity":false,
+    "purpose":"Deterministic @remotion/lottie runtime smoke test. Not an official brand animation.",
+    "status":"approved-runtime-qa"
+  }
+]
