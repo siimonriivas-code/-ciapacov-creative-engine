@@ -55,6 +55,23 @@ export type ProductionMaster={
 }
 export type ProductionRuntimePlan={productionMaster:ProductionMaster|null;mediaPlan:MediaPlan|null;compositionId:string|null;durationSeconds:number|null}
 
+export type BridgeToken={cssVar:string;fallback:string}
+export type BrandBridge={
+  id:string; name:string; designSystem:string; keywords:string[]; tokenStrategy:'css-var-with-fallback';
+  tokens:{primary:BridgeToken;secondary:BridgeToken;accent:BridgeToken;surface:BridgeToken;surfaceAlt:BridgeToken;ink:BridgeToken;muted:BridgeToken;line:BridgeToken;fontFamily:BridgeToken};
+  governance:{identityAuthority:'active-design-system';bundleOfficialAssets:boolean;bundleFonts:boolean;demoFallbackOnly:boolean};
+  safeAreas:Record<string,Record<string,number>>; motionRules:string[];
+  contentRules:{preferredTerms:string[];forbiddenTerms:string[]}; notes:string
+}
+export type QAScenario={
+  id:string; name:string; brandBridgeId:string; brief:CreativeBrief;
+  expected:{operationalMasterId:string;productionMasterId:string;compositionId:string;primaryArchitectureId:string};
+  facts:Record<string,string|number>; schedule?:{day:string;destinations:string[]}[];
+  requiredPhrases:string[]; forbiddenPhrases:string[]; rules:string[]; sourceStatus:string
+}
+export type QACheck={id:string;label:string;pass:boolean;detail:string}
+export type QAResult={scenarioId:string;score:number;checks:QACheck[];blocking:string[]}
+
 export type ProductionPlan = {
   master:OperationalMaster; storyboard:MasterStoryboard; templates:Template[];
   requiredAssets:AssetResolution[]; recommendedAssets:AssetResolution[]; readiness:number;
