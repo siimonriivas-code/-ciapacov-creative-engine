@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validate:
@@ -17,8 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -47,7 +45,7 @@ jobs:
         if: always()
         continue-on-error: true
         run: npx remotion compositions src/remotion/index.ts
-      - name: Write validation report
+      - name: Publish validation summary
         if: always()
         env:
           INSTALL_OUTCOME: ${{ steps.install.outcome }}
@@ -56,26 +54,28 @@ jobs:
           BUILD_OUTCOME: ${{ steps.build.outcome }}
           REMOTION_OUTCOME: ${{ steps.remotion.outcome }}
         run: |
-          cat > validation/BUILD_STATUS_V07.md <<EOF
-          # CIAPACOV Creative Ecosystem v0.7 — Build Validation
-
-          | Check | Outcome |
-          |---|---|
-          | npm install | ${INSTALL_OUTCOME} |
-          | registry/ecosystem/visual validators | ${VALIDATOR_OUTCOME} |
-          | compact + offline catalogs | ${CATALOG_OUTCOME} |
-          | TypeScript + Vite build | ${BUILD_OUTCOME} |
-          | Remotion compositions | ${REMOTION_OUTCOME} |
-
-          Source commit: ${GITHUB_SHA}
-          EOF
-      - name: Commit report
+          {
+            echo '# CIAPACOV Creative Ecosystem v0.7 — Validation'
+            echo
+            echo '| Check | Outcome |'
+            echo '|---|---|'
+            echo "| npm install | ${INSTALL_OUTCOME} |"
+            echo "| registry/ecosystem/visual validators | ${VALIDATOR_OUTCOME} |"
+            echo "| compact + offline catalogs | ${CATALOG_OUTCOME} |"
+            echo "| TypeScript + Vite build | ${BUILD_OUTCOME} |"
+            echo "| Remotion compositions | ${REMOTION_OUTCOME} |"
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Assert all checks passed
         if: always()
+        env:
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          VALIDATOR_OUTCOME: ${{ steps.validators.outcome }}
+          CATALOG_OUTCOME: ${{ steps.catalogs.outcome }}
+          BUILD_OUTCOME: ${{ steps.build.outcome }}
+          REMOTION_OUTCOME: ${{ steps.remotion.outcome }}
         run: |
-          git config user.name 'ciapacov-creative-engine-bot'
-          git config user.email 'actions@users.noreply.github.com'
-          git add claude catalog validation/BUILD_STATUS_V07.md
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Validate CIAPACOV Creative Ecosystem v0.7'
-          git pull --rebase origin main || true
-          git push origin main
+          test "$INSTALL_OUTCOME" = success
+          test "$VALIDATOR_OUTCOME" = success
+          test "$CATALOG_OUTCOME" = success
+          test "$BUILD_OUTCOME" = success
+          test "$REMOTION_OUTCOME" = success
