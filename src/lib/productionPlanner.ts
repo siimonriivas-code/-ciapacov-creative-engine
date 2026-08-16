@@ -1,8 +1,9 @@
-import type {AssetRecord, CreativeBrief, Domain, MasterStoryboard, MediaRecord, MediaRole, OperationalMaster, ProductionMaster, ProductionPlan, ResolvedVisualDirection, Template} from '../types'
+import type {AssetRecord, BrandBridge, CreativeBrief, Domain, MasterStoryboard, MediaRecord, MediaRole, OperationalMaster, ProductionMaster, ProductionPlan, QAScenario, ResolvedVisualDirection, Template} from '../types'
 import {routeMasters} from './domainRouter'
 import {resolveAssets} from './assetResolver'
 import {visualDirectionPrompt} from './visualDirector'
 import {resolveProductionRuntime,runtimePrompt} from './productionRuntime'
+import {bridgePrompt} from './brandBridge'
 
 export function buildProductionPlans(args:{
   brief:CreativeBrief|string;
@@ -46,12 +47,14 @@ export function buildProductionPlans(args:{
   })
 }
 
-export function productionPrompt(plan:ProductionPlan,direction?:ResolvedVisualDirection){
+export function productionPrompt(plan:ProductionPlan,direction?:ResolvedVisualDirection,brandBridge?:BrandBridge,qaScenario?:QAScenario){
   const beats=plan.storyboard.beats.map((b,i)=>`${i+1}. ${b.purpose} [${b.fields.join(', ')}]`).join('\n')
   const templates=plan.templates.slice(0,4).map(t=>`${t.id} · ${t.name}`).join('\n')
   const blockers=[...plan.blockers,...(plan.runtime?.mediaPlan?.blockers||[])]
   const blockerText=blockers.length?blockers.map(x=>`- ${x}`).join('\n'):'- ninguno'
   const visual=direction?`\n\n${visualDirectionPrompt(direction)}\nLa dirección visual define composición; el Design System activo sigue controlando identidad.`:''
   const runtime=plan.runtime?`\n\n${runtimePrompt(plan.runtime)}\nNo sustituyas media factual faltante con generación sintética.`:''
-  return `Usa ${plan.master.id} · ${plan.master.name} como Master operativo.\nDesign System activo = autoridad de identidad.\nNo inventes datos ni assets oficiales.${visual}${runtime}\n\nStoryboard:\n${beats}\n\nTemplates candidatos:\n${templates}\n\nBloqueos:\n${blockerText}\n\nCarga únicamente el Master, storyboard, dirección visual, Production Master, template elegido, recipe, motions y media/assets resueltos.`
+  const bridge=brandBridge?`\n\n${bridgePrompt(brandBridge)}`:''
+  const qa=qaScenario?`\n\nEscenario QA: ${qaScenario.id} · ${qaScenario.name}\nFrases requeridas: ${qaScenario.requiredPhrases.join(' | ')||'ninguna'}\nFrases prohibidas: ${qaScenario.forbiddenPhrases.join(' | ')||'ninguna'}\nReglas QA:\n${qaScenario.rules.map(x=>`- ${x}`).join('\n')}`:''
+  return `Usa ${plan.master.id} · ${plan.master.name} como Master operativo.\nDesign System activo = autoridad de identidad.\nNo inventes datos ni assets oficiales.${bridge}${visual}${runtime}${qa}\n\nStoryboard:\n${beats}\n\nTemplates candidatos:\n${templates}\n\nBloqueos:\n${blockerText}\n\nCarga únicamente el Brand Bridge, Master, storyboard, dirección visual, Production Master, template elegido, recipe, motions y media/assets resueltos.`
 }
