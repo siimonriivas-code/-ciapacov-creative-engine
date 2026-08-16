@@ -9,6 +9,6 @@ Validation executed automatically on GitHub-hosted Ubuntu with Node 22.
 | TypeScript + Vite build | success |
 | Remotion compositions | success |
 
-Source commit triggering this run: adf300e9a9ac91fc42e5d2a8b4fed4dba1547189
+Source commit triggering this run: 2629bc186e6415e3d6b79b4b243eeeccb612164c
 
 Detailed logs are stored in `validation/logs/`.

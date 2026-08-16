@@ -6,36 +6,6 @@
 > ciapacov-creative-engine@0.5.0 validate
 > node scripts/validate-registry.mjs
 
-duplicate template CAR-015
-duplicate template CAR-016
-duplicate template CAR-017
-duplicate template CAR-018
-duplicate template CAR-019
-duplicate template CAR-020
-duplicate template CAR-021
-duplicate template CAR-022
-duplicate template REEL-012
-duplicate template REEL-013
-duplicate template REEL-014
-duplicate template REEL-015
-duplicate template REEL-016
-duplicate template REEL-017
-duplicate template REEL-018
-duplicate template REEL-019
-duplicate template REEL-020
-duplicate template STO-009
-duplicate template STO-010
-duplicate template STO-011
-duplicate template STO-012
-duplicate template DAT-007
-duplicate template DAT-008
-duplicate template DAT-009
-duplicate template DAT-010
-duplicate template RTE-006
-duplicate template RTE-007
-duplicate template RTE-008
-duplicate template PRE-007
-duplicate template PRE-008
 CAR-003: unknown recipe hero-stat
 CAR-005: unknown recipe step-explainer
 CAR-007: unknown recipe photo-statement
