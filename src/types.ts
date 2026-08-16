@@ -22,3 +22,13 @@ export type ReferenceSource = {
 }
 export type CreativeBrief = { topic:string; format?:string; objective?:string; tone?:string; materials?:string[]; duration?:number; constraints?:string[] }
 export type AssetResolution = { capability:string; asset:AssetRecord|null; state:'ready'|'slot'|'missing' }
+export type StoryboardBeat = { id:string; purpose:string; fields:string[]; capability:string; motion:string }
+export type MasterStoryboard = {
+  id:string; masterId:string; name:string; formatStrategy:string; beats:StoryboardBeat[];
+  rules:{demoData:string;brand:string;overflow:string}; status:'production-ready'|'draft'
+}
+export type ProductionPlan = {
+  master:OperationalMaster; storyboard:MasterStoryboard; templates:Template[];
+  requiredAssets:AssetResolution[]; recommendedAssets:AssetResolution[]; readiness:number;
+  blockers:string[]
+}
