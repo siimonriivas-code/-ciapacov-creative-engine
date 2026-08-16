@@ -1,0 +1,95 @@
+name: Validate Creative Ecosystem v0.6
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/run-v06.txt'
+      - '.github/workflows/validate-v06.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        id: install
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm install --no-audit --no-fund 2>&1 | tee /tmp/install-v06.txt
+      - name: Registry, ecosystem and storyboard validation
+        id: registries
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run validate:all 2>&1 | tee /tmp/registries-v06.txt
+      - name: TypeScript and Vite build
+        id: build
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee /tmp/build-v06.txt
+      - name: Remotion composition check
+        id: remotion
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npx remotion compositions src/remotion/index.ts 2>&1 | tee /tmp/remotion-v06.txt
+      - name: Write validation report
+        if: always()
+        shell: bash
+        env:
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          REGISTRY_OUTCOME: ${{ steps.registries.outcome }}
+          BUILD_OUTCOME: ${{ steps.build.outcome }}
+          REMOTION_OUTCOME: ${{ steps.remotion.outcome }}
+        run: |
+          mkdir -p validation/logs
+          cp /tmp/install-v06.txt validation/logs/install-v06.txt 2>/dev/null || true
+          cp /tmp/registries-v06.txt validation/logs/registries-v06.txt 2>/dev/null || true
+          cp /tmp/build-v06.txt validation/logs/build-v06.txt 2>/dev/null || true
+          cp /tmp/remotion-v06.txt validation/logs/remotion-v06.txt 2>/dev/null || true
+          {
+            echo '# CIAPACOV Creative Ecosystem v0.6 — Build Validation'
+            echo
+            echo 'Validation executed automatically on GitHub-hosted Ubuntu with Node 22.'
+            echo
+            echo '| Check | Outcome |'
+            echo '|---|---|'
+            echo "| npm install | ${INSTALL_OUTCOME} |"
+            echo "| registry/ecosystem/storyboard validators | ${REGISTRY_OUTCOME} |"
+            echo "| TypeScript + Vite build | ${BUILD_OUTCOME} |"
+            echo "| Remotion compositions | ${REMOTION_OUTCOME} |"
+            echo
+            echo "Source commit triggering this run: ${GITHUB_SHA}"
+          } > validation/BUILD_STATUS_V06.md
+      - name: Commit report
+        if: always()
+        shell: bash
+        run: |
+          git config user.name 'ciapacov-creative-engine-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add validation/BUILD_STATUS_V06.md validation/logs/*-v06.txt
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Validate CIAPACOV Creative Ecosystem v0.6'
+          git push origin main
