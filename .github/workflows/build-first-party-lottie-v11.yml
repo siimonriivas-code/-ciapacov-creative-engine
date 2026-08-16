@@ -1,0 +1,58 @@
+name: Build First-Party Lottie Pack v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/run-lottie-pack-v11.txt'
+      - '.github/workflows/build-first-party-lottie-v11.yml'
+      - 'src/registry/first-party-lottie-presets.json'
+      - 'scripts/build-first-party-lottie.mjs'
+      - 'scripts/validate-first-party-lottie.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-lottie:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Generate first-party Lottie pack
+        run: node scripts/build-first-party-lottie.mjs
+
+      - name: Validate first-party Lottie pack
+        run: node scripts/validate-first-party-lottie.mjs
+
+      - name: Confirm exact pack inventory
+        run: |
+          COUNT=$(find public/motion/first-party -maxdepth 1 -name 'FP-LOT-*.json' | wc -l)
+          echo "Generated Lottie assets: $COUNT"
+          test "$COUNT" -eq 18
+          node -e "const r=require('./validation/first-party-lottie-report.json');if(r.count!==18||r.categories.length!==8)process.exit(1);console.log(r.categories)"
+
+      - name: Commit deterministic generated pack and report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          git reset --hard origin/main
+          node scripts/build-first-party-lottie.mjs
+          node scripts/validate-first-party-lottie.mjs
+          git add public/motion/first-party validation/first-party-lottie-report.json
+          if git diff --cached --quiet; then
+            echo 'Generated Lottie pack already synchronized'
+          else
+            git commit -m 'build: synchronize first-party premium Lottie pack'
+            git push origin HEAD:main
+          fi
