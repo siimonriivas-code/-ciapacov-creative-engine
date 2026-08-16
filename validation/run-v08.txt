@@ -1,1 +1,1 @@
-Final remote validation for CIAPACOV Creative Ecosystem v0.8 after production runtime, media tooling and lockfile synchronization.
+Final v0.8 validation: production runtime, consent-aware Media Intelligence, synchronized compact catalog, TypeScript/Vite and nine Remotion render smoke tests.
