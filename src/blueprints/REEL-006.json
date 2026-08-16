@@ -1,0 +1,26 @@
+{
+  "templateId": "REEL-006",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "open",
+    "network-build",
+    "hero-data",
+    "route-or-process",
+    "human-impact",
+    "close"
+  ],
+  "motion": [
+    "MOT-003",
+    "MOT-006",
+    "MOT-009",
+    "MOT-011",
+    "MOT-024"
+  ],
+  "rules": [
+    "45s master can extend only for legibility",
+    "one persistent visual motif",
+    "avoid generic slideshow cuts"
+  ]
+}

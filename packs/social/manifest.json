@@ -1,0 +1,29 @@
+{
+  "pack": "social",
+  "version": "0.2.0",
+  "loadPolicy": "on-demand",
+  "items": [
+    "CAR-001",
+    "CAR-002",
+    "CAR-003",
+    "CAR-004",
+    "CAR-005",
+    "CAR-006",
+    "CAR-007",
+    "CAR-008",
+    "CAR-009",
+    "CAR-010",
+    "CAR-011",
+    "CAR-012",
+    "CAR-013",
+    "CAR-014",
+    "STO-001",
+    "STO-002",
+    "STO-003",
+    "STO-004",
+    "STO-005",
+    "STO-006",
+    "STO-007",
+    "STO-008"
+  ]
+}

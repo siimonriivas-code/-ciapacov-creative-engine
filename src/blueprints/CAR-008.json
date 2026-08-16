@@ -1,0 +1,22 @@
+{
+  "templateId": "CAR-008",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "photo",
+    "hero-stat",
+    "unit",
+    "context",
+    "source"
+  ],
+  "motion": [
+    "MOT-004",
+    "MOT-013"
+  ],
+  "rules": [
+    "stat requires context",
+    "source/period when applicable",
+    "photo cannot compete with stat"
+  ]
+}

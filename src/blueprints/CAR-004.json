@@ -1,0 +1,21 @@
+{
+  "templateId": "CAR-004",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "before",
+    "divider",
+    "after",
+    "delta",
+    "source"
+  ],
+  "motion": [
+    "MOT-022"
+  ],
+  "rules": [
+    "same comparison axis",
+    "label dates/periods",
+    "do not imply causality without support"
+  ]
+}

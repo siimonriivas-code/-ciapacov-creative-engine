@@ -1,0 +1,24 @@
+{
+  "templateId": "REEL-004",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "hook",
+    "photo-beat-1",
+    "evidence",
+    "photo-beat-2",
+    "impact",
+    "close"
+  ],
+  "motion": [
+    "MOT-013",
+    "MOT-014",
+    "MOT-015"
+  ],
+  "rules": [
+    "photos remain documentary",
+    "motion supports not obscures",
+    "use captions sparingly"
+  ]
+}

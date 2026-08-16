@@ -1,0 +1,13 @@
+{
+  "pack": "presentation",
+  "version": "0.2.0",
+  "loadPolicy": "on-demand",
+  "items": [
+    "PRE-001",
+    "PRE-002",
+    "PRE-003",
+    "PRE-004",
+    "PRE-005",
+    "PRE-006"
+  ]
+}

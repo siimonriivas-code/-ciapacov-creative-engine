@@ -1,0 +1,31 @@
+{
+  "pack": "motion",
+  "version": "0.2.0",
+  "loadPolicy": "on-demand",
+  "items": [
+    "MOT-001",
+    "MOT-002",
+    "MOT-003",
+    "MOT-004",
+    "MOT-005",
+    "MOT-006",
+    "MOT-007",
+    "MOT-008",
+    "MOT-009",
+    "MOT-010",
+    "MOT-011",
+    "MOT-012",
+    "MOT-013",
+    "MOT-014",
+    "MOT-015",
+    "MOT-016",
+    "MOT-017",
+    "MOT-018",
+    "MOT-019",
+    "MOT-020",
+    "MOT-021",
+    "MOT-022",
+    "MOT-023",
+    "MOT-024"
+  ]
+}

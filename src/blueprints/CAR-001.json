@@ -1,0 +1,21 @@
+{
+  "templateId": "CAR-001",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "eyebrow",
+    "hero-title",
+    "supporting-line",
+    "visual-anchor",
+    "footer"
+  ],
+  "motion": [
+    "MOT-001"
+  ],
+  "rules": [
+    "1 dominant message",
+    "max 2 supporting lines",
+    "visual anchor 30–45% canvas"
+  ]
+}

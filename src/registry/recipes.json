@@ -1,0 +1,14 @@
+{
+  "hero-editorial":{"primitiveSet":["EditorialFrame","VisualAnchor","BrandFooter"],"supports":["photo","illustration","geometry"]},
+  "documentary-story":{"primitiveSet":["PhotoFrame","EvidenceCaption","EditorialFrame"],"supports":["photo"]},
+  "comparison-photo":{"primitiveSet":["CompareSplit","MetricDelta","SourceNote"],"supports":["photo","data"]},
+  "route-calendar":{"primitiveSet":["RouteDayBlock","OverflowPager","NoticeBlock"],"supports":["route"]},
+  "data-photo":{"primitiveSet":["HeroStat","PhotoFrame","SourceNote"],"supports":["photo","data"]},
+  "network-system":{"primitiveSet":["NetworkNode","ConnectorPath","TakeawayBlock"],"supports":["route","concept"]},
+  "evidence-grid":{"primitiveSet":["EvidenceCell","MicroStat","Caption"],"supports":["photo","data"]},
+  "reel-route-journey":{"primitiveSet":["AnimatedPath","MotionObject","DestinationNode"],"supports":["motion","route"]},
+  "reel-continuous":{"primitiveSet":["SceneCarry","EditorialFrame","PersistentHeader"],"supports":["motion","data","photo"]},
+  "reel-documentary":{"primitiveSet":["PhotoMatte","EvidenceCascade","LowerThird"],"supports":["motion","photo"]},
+  "reel-45-master":{"primitiveSet":["SceneRouter","PersistentHeader","BrandFooter","DataBeat"],"supports":["motion","route","data","photo"]},
+  "route-journey":{"primitiveSet":["AnimatedPath","DestinationNode","MotionObject"],"supports":["motion","route"]}
+}

@@ -1,0 +1,22 @@
+{
+  "templateId": "CAR-014",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "headline",
+    "evidence-grid",
+    "micro-stats",
+    "caption",
+    "source"
+  ],
+  "motion": [
+    "MOT-015",
+    "MOT-017"
+  ],
+  "rules": [
+    "2–6 evidence cells",
+    "consistent evidence type labels",
+    "no collage without hierarchy"
+  ]
+}

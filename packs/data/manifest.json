@@ -1,0 +1,13 @@
+{
+  "pack": "data",
+  "version": "0.2.0",
+  "loadPolicy": "on-demand",
+  "items": [
+    "DAT-001",
+    "DAT-002",
+    "DAT-003",
+    "DAT-004",
+    "DAT-005",
+    "DAT-006"
+  ]
+}

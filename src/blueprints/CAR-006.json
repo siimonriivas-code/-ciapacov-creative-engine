@@ -1,0 +1,21 @@
+{
+  "templateId": "CAR-006",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "period",
+    "day-blocks",
+    "destinations",
+    "notice",
+    "footer"
+  ],
+  "motion": [
+    "MOT-023"
+  ],
+  "rules": [
+    "DAY → LOCATIONS",
+    "auto paginate before shrinking",
+    "preserve exact names"
+  ]
+}

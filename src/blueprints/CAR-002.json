@@ -1,0 +1,22 @@
+{
+  "templateId": "CAR-002",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "cover-photo",
+    "context",
+    "evidence",
+    "impact",
+    "close"
+  ],
+  "motion": [
+    "MOT-013",
+    "MOT-015"
+  ],
+  "rules": [
+    "documentary photo is evidence",
+    "caption every contextual photo",
+    "no decorative fake documentary imagery"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "templateId": "REEL-001",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "hook",
+    "route-origin",
+    "journey",
+    "destinations",
+    "resolve"
+  ],
+  "motion": [
+    "MOT-006",
+    "MOT-007",
+    "MOT-008"
+  ],
+  "rules": [
+    "path is narrative spine",
+    "object follows actual path",
+    "persistent orientation cue"
+  ]
+}

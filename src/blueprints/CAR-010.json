@@ -1,0 +1,22 @@
+{
+  "templateId": "CAR-010",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "system-title",
+    "central-node",
+    "satellite-nodes",
+    "connections",
+    "takeaway"
+  ],
+  "motion": [
+    "MOT-006",
+    "MOT-008"
+  ],
+  "rules": [
+    "max 7 nodes per frame",
+    "connections encode meaning",
+    "avoid pseudo-map if geography is not real"
+  ]
+}

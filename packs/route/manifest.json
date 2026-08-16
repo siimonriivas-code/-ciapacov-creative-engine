@@ -1,0 +1,12 @@
+{
+  "pack": "route",
+  "version": "0.2.0",
+  "loadPolicy": "on-demand",
+  "items": [
+    "RTE-001",
+    "RTE-002",
+    "RTE-003",
+    "RTE-004",
+    "RTE-005"
+  ]
+}

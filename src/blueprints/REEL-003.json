@@ -1,0 +1,23 @@
+{
+  "templateId": "REEL-003",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "hook",
+    "scene-chain",
+    "data-beat",
+    "explanation",
+    "close"
+  ],
+  "motion": [
+    "MOT-011",
+    "MOT-012",
+    "MOT-019"
+  ],
+  "rules": [
+    "carry one element between scenes",
+    "no full reset between every scene",
+    "3–5 second readable beats"
+  ]
+}

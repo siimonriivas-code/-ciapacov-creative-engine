@@ -1,0 +1,23 @@
+{
+  "templateId": "RTE-005",
+  "version": "0.2.0",
+  "quality": "premium",
+  "loadPolicy": "on-demand",
+  "zones": [
+    "origin",
+    "path",
+    "nodes",
+    "moving-object",
+    "destination-summary"
+  ],
+  "motion": [
+    "MOT-006",
+    "MOT-007",
+    "MOT-008"
+  ],
+  "rules": [
+    "use geography only when verified",
+    "stylized route must not masquerade as a map",
+    "nodes must map to provided data"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "pack": "video",
+  "version": "0.2.0",
+  "loadPolicy": "on-demand",
+  "items": [
+    "REEL-001",
+    "REEL-002",
+    "REEL-003",
+    "REEL-004",
+    "REEL-005",
+    "REEL-006",
+    "REEL-007",
+    "REEL-008",
+    "REEL-009",
+    "REEL-010",
+    "REEL-011"
+  ]
+}
