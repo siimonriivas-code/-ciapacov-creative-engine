@@ -14,7 +14,7 @@
     "validate:production": "node scripts/validate-v08.mjs",
     "validate:brandqa": "node scripts/validate-v09.mjs",
     "validate:integration": "node scripts/validate-v10.mjs",
-    "validate:premium": "node scripts/validate-v11.mjs",
+    "validate:premium": "node scripts/validate-v11.mjs && node scripts/validate-premium-recipes.mjs",
     "validate:all": "npm run validate && npm run validate:ecosystem && npm run validate:visuals && npm run validate:production && npm run validate:brandqa && npm run validate:integration && npm run validate:premium",
     "catalog:build": "node scripts/build-compact-catalog.mjs",
     "ecosystem:build": "node scripts/build-ecosystem-compact.mjs",
