@@ -1,0 +1,52 @@
+name: Validate Creative Ecosystem v0.9
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/run-v09.txt'
+      - '.github/workflows/validate-v09.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Validate complete ecosystem v0.9
+        run: npm run validate:all
+      - name: Validate QA tooling syntax
+        run: |
+          node --check scripts/validate-v09.mjs
+          node --check scripts/build-qa-compact.mjs
+          node --check scripts/run-real-qa.mjs
+      - name: Regenerate compact catalogs
+        run: npm run catalog:all
+      - name: TypeScript and Vite build
+        run: npm run build
+      - name: Run real Agua Bienestar routing QA
+        run: npm run qa:real
+      - name: Remotion composition discovery
+        run: |
+          npx remotion compositions src/remotion/index.ts | tee /tmp/remotion-v09.txt
+          COUNT=$(grep -oE 'CE-[A-Za-z-]+' /tmp/remotion-v09.txt | sort -u | wc -l)
+          echo "Detected Remotion compositions: $COUNT"
+          test "$COUNT" -eq 9
+      - name: Prove 45 second dynamic route runtime with real QA props
+        run: |
+          npx remotion still src/remotion/index.ts CE-RouteJourney /tmp/ab-route-qa.png --frame=1200 --props=/tmp/ab-route-qa-props.json
+          test -s /tmp/ab-route-qa.png
+          echo "Rendered Agua Bienestar QA frame 1200 successfully; runtime exceeds 30 seconds."
+      - name: Production QA summary
+        run: |
+          node -e "const b=require('./src/registry/brand-bridges.json');const q=require('./src/registry/qa-scenarios.json');const p=require('./src/registry/production-masters.json');console.log('brand bridges:',b.length,'qa scenarios:',q.length,'production masters:',p.length)"
