@@ -1,0 +1,25 @@
+{
+  "version":"1.1",
+  "purpose":"Describe why a reference feels premium without copying protected artwork, layouts, assets or source templates.",
+  "dimensions":[
+    {"id":"DNA-COMPOSITION","name":"Composition grammar","values":["asymmetric-editorial","single-hero","multi-plane-spatial","modular-mosaic","full-bleed-documentary","split-stage","kinetic-type-stage","territorial-field","diagrammatic-system"],"capture":["dominant-axis","negative-space","hero-zone","secondary-zones","edge-usage"]},
+    {"id":"DNA-HIERARCHY","name":"Hierarchy behavior","values":["one-dominant-message","progressive-reveal","scale-jump","contrast-shift","focus-isolation","editorial-stack"],"capture":["largest-element-share","headline-body-ratio","number-of-simultaneous-priorities"]},
+    {"id":"DNA-COLOR","name":"Color distribution","values":["neutral-led","media-led","accent-led","dark-cinematic","soft-tonal","controlled-brand-field"],"capture":["primary-share","neutral-share","accent-share","contrast-pairs","full-frame-color-count"]},
+    {"id":"DNA-MATERIAL","name":"Materiality","values":["liquid-glass","refraction","paper-cutout","documentary-tape","technical-grid","soft-depth","cinema-matte","data-stage","mesh","clean-flat"],"capture":["surface-count","shadow-language","blur-language","texture-role","border-language"]},
+    {"id":"DNA-MOTION","name":"Motion grammar","values":["continuous-flow","staged-editorial","path-follow","depth-travel","mask-reveal","kinetic-type","node-progression","quiet-hold","data-cascade","camera-led"],"capture":["primary-motion","secondary-motion","easing-character","average-hold","motion-purpose"]},
+    {"id":"DNA-TRANSITION","name":"Transition grammar","values":["match-cut","mask-handoff","object-continuity","camera-continuity","typographic-wipe","liquid-handoff","hard-editorial-cut","depth-pass","timeline-carry"],"capture":["transition-count","unique-transition-types","continuity-object"]},
+    {"id":"DNA-TYPE","name":"Typography behavior","values":["oversized-editorial","compact-technical","kinetic-scale","quiet-luxury","caption-led","number-led","mixed-weight-stack"],"capture":["max-lines","headline-scale","weight-contrast","alignment","word-emphasis-method"]},
+    {"id":"DNA-DEPTH","name":"Spatial depth","values":["flat","layered-2d","parallax","multi-plane","pseudo-3d","camera-space"],"capture":["plane-count","foreground-use","occlusion","depth-cues"]},
+    {"id":"DNA-CAMERA","name":"Camera behavior","values":["static","push","pull","track","orbit","pan","tilt","macro-drift","handheld-documentary"],"capture":["camera-change-count","camera-purpose","speed-character"]},
+    {"id":"DNA-DENSITY","name":"Information density","values":["minimal","balanced","dense-but-staged","data-heavy","caption-heavy"],"capture":["simultaneous-text-blocks","average-words-per-frame","progressive-disclosure"]},
+    {"id":"DNA-RHYTHM","name":"Editorial rhythm","values":["slow-premium","medium-controlled","fast-kinetic","pulse-and-hold","crescendo","chaptered"],"capture":["beat-count","hero-beat","rest-beats","acceleration-pattern"]},
+    {"id":"DNA-EVIDENCE","name":"Evidence relationship","values":["illustrative-only","real-media-led","real-media-with-graphics","conceptual-plus-factual-overlay","data-led"],"capture":["factual-media-share","generated-media-share","deterministic-overlay-share"]}
+  ],
+  "nonCopyRules":[
+    "Extract principles, not pixel coordinates.",
+    "Do not reproduce proprietary illustrations, logos, characters, exact compositions or marketplace source files.",
+    "Do not infer a license from public visibility.",
+    "Use the active Design System for identity and first-party/authorized assets for production.",
+    "A reference can influence rhythm, hierarchy, materiality and motion grammar without being recreated one-to-one."
+  ]
+}
