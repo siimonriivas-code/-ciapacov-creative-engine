@@ -1,0 +1,14 @@
+{
+  "id":"PREMIUM-QA-PASS-01",
+  "styleFamilyId":"STYLE-LIQUID-LUMINOUS",
+  "motionModuleIds":["PMM-WATER-002","PMM-ROUTE-001","PMM-ROUTE-002","PMM-TYPE-001","PMM-TRANS-001"],
+  "externalMotionAssetIds":[],
+  "scenes":[
+    {"id":"hook","surfaceRole":"surface","layoutFamily":"headline-mask","decorativeElements":0,"purposefulElements":3},
+    {"id":"territory","surfaceRole":"surfaceAlt","layoutFamily":"territory-field","decorativeElements":1,"purposefulElements":4},
+    {"id":"journey","surfaceRole":"media","layoutFamily":"continuous-route","decorativeElements":1,"purposefulElements":5},
+    {"id":"nodes","surfaceRole":"surface","layoutFamily":"route-lens","decorativeElements":0,"purposefulElements":5},
+    {"id":"value","surfaceRole":"accent","layoutFamily":"datum-stage","decorativeElements":0,"purposefulElements":4,"generative":{"semanticClass":"SCENE-TRANSITION","providerId":"GEN-MINIMAX-HAILUO-23","bakesFactualOverlay":false}},
+    {"id":"close","surfaceRole":"surface","layoutFamily":"editorial-close","decorativeElements":0,"purposefulElements":4}
+  ]
+}
