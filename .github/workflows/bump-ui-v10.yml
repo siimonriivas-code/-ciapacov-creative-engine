@@ -1,0 +1,46 @@
+name: Bump v1.0 UI labels
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bump-ui-v10.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: |
+          python - <<'PY'
+          from pathlib import Path
+          replacements={
+            Path('src/App.tsx'):[
+              ('CIAPACOV Creative Engine v0.9 · Real Production QA & Brand Bridge','CIAPACOV Creative Ecosystem v1.0 · Production Handoff'),
+              ('{qaScenarios.length} reproducible QA scenarios · {mediaRoles.length} media roles','{qaScenarios.length} factual QA scenarios · 6 integration scenarios · {mediaRoles.length} media roles')
+            ],
+            Path('src/components/BriefWorkbench.tsx'):[
+              ('PRODUCTION PLANNER v0.9','PRODUCTION PLANNER v1.0'),
+              ('Del brief a producción con Brand Bridge y QA.','Del brief a producción con handoff, Brand Bridge y QA.')
+            ]
+          }
+          for path,pairs in replacements.items():
+            text=path.read_text()
+            for old,new in pairs:
+              if old not in text:
+                raise SystemExit(f'missing expected UI label: {old}')
+              text=text.replace(old,new)
+            path.write_text(text)
+          PY
+      - run: |
+          git config user.name 'ciapacov-creative-engine-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add src/App.tsx src/components/BriefWorkbench.tsx
+          git commit -m 'Bump production UI labels to v1.0'
+          git pull --rebase origin main
+          git push origin main
