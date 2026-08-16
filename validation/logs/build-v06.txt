@@ -1,0 +1,13 @@
+
+> ciapacov-creative-engine@0.6.0 build
+> tsc -b && vite build
+
+[36mvite v8.2.1 [32mbuilding client environment for production...[36m[39m
+[2Ktransforming...✓ 451 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:   0.29 kB
+dist/assets/index-CwGKrErt.css   13.43 kB │ gzip:   2.95 kB
+dist/assets/index-DcyV3fmf.js   433.45 kB │ gzip: 123.12 kB
+
+[32m✓ built in 300ms[39m

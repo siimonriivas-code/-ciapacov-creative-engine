@@ -1,0 +1,14 @@
+
+> ciapacov-creative-engine@0.6.0 validate:all
+> npm run validate && npm run validate:ecosystem
+
+
+> ciapacov-creative-engine@0.6.0 validate
+> node scripts/validate-registry.mjs
+
+OK: 80 templates, 48 motions, 79 recipes, 8 campaigns
+
+> ciapacov-creative-engine@0.6.0 validate:ecosystem
+> node scripts/validate-ecosystem.mjs
+
+OK: 9 domains, 20 masters, 20 storyboards, 34 assets (25 bundled), 7 reference sources
