@@ -1,0 +1,39 @@
+[
+  {
+    "id": "CAR-015",
+    "name": "Portada de lanzamiento",
+    "type": "carousel",
+    "subtype": "launch-cover",
+    "format": "4:5",
+    "density": "medium",
+    "motion": "low",
+    "photo": "optional",
+    "route": false,
+    "data": false,
+    "status": "premium",
+    "tags": ["lanzamiento","programa","portada","hero"],
+    "description": "Portada con titular, sello temático y ancla visual modular.",
+    "recipe": "launch-hero","pack": "social","loadPolicy": "on-demand","brandMode": "inherit-active-design-system","demoContent": "non-production","implementation": "premium-runtime-v0.3"
+  },
+  {
+    "id": "CAR-016","name": "Cronología narrativa","type": "carousel","subtype": "timeline","format": "4:5","density": "high","motion": "low","photo": "optional","route": false,"data": true,"status": "premium","tags": ["historia","cronologia","proceso","hitos"],"description": "Secuencia de hitos con lectura vertical y jerarquía editorial.","recipe": "timeline-editorial","pack": "social","loadPolicy": "on-demand","brandMode": "inherit-active-design-system","demoContent": "non-production","implementation": "premium-runtime-v0.3"
+  },
+  {
+    "id": "CAR-017","name": "Tres beneficios","type": "carousel","subtype": "benefits","format": "4:5","density": "medium","motion": "low","photo": "optional","route": false,"data": false,"status": "approved","tags": ["beneficios","servicio","programa","tres"],"description": "Tres beneficios con iconos, microcopy y cierre.","recipe": "three-benefits","pack": "social","loadPolicy": "on-demand","brandMode": "inherit-active-design-system","demoContent": "non-production","implementation": "recipe-v0.3"
+  },
+  {
+    "id": "CAR-018","name": "Problema → acción → resultado","type": "carousel","subtype": "logic-chain","format": "4:5","density": "medium","motion": "low","photo": "optional","route": false,"data": true,"status": "premium","tags": ["problema","accion","resultado","explicador"],"description": "Cadena causal con tres momentos y evidencia final.","recipe": "logic-chain","pack": "social","loadPolicy": "on-demand","brandMode": "inherit-active-design-system","demoContent": "non-production","implementation": "premium-runtime-v0.3"
+  },
+  {
+    "id": "CAR-019","name": "Cita + evidencia","type": "carousel","subtype": "quote-evidence","format": "4:5","density": "medium","motion": "low","photo": "required","route": false,"data": true,"status": "approved","tags": ["cita","foto","evidencia","territorio"],"description": "Cita protagonista acompañada por evidencia visual y dato.","recipe": "quote-evidence","pack": "social","loadPolicy": "on-demand","brandMode": "inherit-active-design-system","demoContent": "non-production","implementation": "recipe-v0.3"
+  },
+  {
+    "id": "CAR-020","name": "Mapa conceptual editorial","type": "carousel","subtype": "concept-map","format": "4:5","density": "high","motion": "low","photo": "none","route": true,"data": false,"status": "approved","tags": ["red","conceptos","conexiones","sistema"],"description": "Conceptos conectados con nodos y relaciones claras.","recipe": "concept-network","pack": "social","loadPolicy": "on-demand","brandMode": "inherit-active-design-system","demoContent": "non-production","implementation": "recipe-v0.3"
+  },
+  {
+    "id": "CAR-021","name": "Preguntas frecuentes premium","type": "carousel","subtype": "faq","format": "4:5","density": "high","motion": "low","photo": "optional","route": false,"data": false,"status": "approved","tags": ["faq","preguntas","respuestas","servicio"],"description": "FAQ con navegación visual y respuestas cortas de alta legibilidad.","recipe": "faq-editorial","pack": "social","loadPolicy": "on-demand","brandMode": "inherit-active-design-system","demoContent": "non-production","implementation": "recipe-v0.3"
+  },
+  {
+    "id": "CAR-022","name": "Reporte visual","type": "carousel","subtype": "report","format": "4:5","density": "high","motion": "low","photo": "optional","route": false,"data": true,"status": "premium","tags": ["informe","resultados","datos","gestion"],"description": "Mini informe con 3–5 métricas, hallazgo y cierre.","recipe": "visual-report","pack": "social","loadPolicy": "on-demand","brandMode": "inherit-active-design-system","demoContent": "non-production","implementation": "premium-runtime-v0.3"
+  }
+]

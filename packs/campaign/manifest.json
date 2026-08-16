@@ -1,0 +1,7 @@
+{
+  "pack":"campaign",
+  "version":"0.4.0",
+  "purpose":"Coordinated multi-format campaign kits that point to existing templates without duplicating implementations.",
+  "registry":"src/registry/campaigns.json",
+  "loadPolicy":"Load campaign registry only when the user asks for a campaign, content package, several formats, or a coordinated rollout."
+}

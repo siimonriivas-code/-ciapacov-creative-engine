@@ -1,0 +1,7 @@
+import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
+import type { ReactNode } from 'react'
+export type VideoBrand={surface:string;ink:string;primary:string;secondary:string;accent:string;line:string}
+export const ease=Easing.bezier(.16,1,.3,1)
+export const clamp={extrapolateLeft:'clamp' as const,extrapolateRight:'clamp' as const}
+export function PersistentChrome({brand,label='CREATIVE ENGINE'}:{brand:VideoBrand;label?:string}){const frame=useCurrentFrame();const {fps}=useVideoConfig();const y=interpolate(frame,[0,.6*fps],[28,0],{...clamp,easing:ease});const opacity=interpolate(frame,[0,.45*fps],[0,1],clamp);return <><div style={{position:'absolute',top:70,left:78,right:78,height:58,borderTop:`8px solid ${brand.accent}`,display:'flex',alignItems:'center',fontSize:22,fontWeight:800,letterSpacing:3,color:brand.ink,translate:`0 ${y}px`,opacity}}>{label}</div><div style={{position:'absolute',left:0,right:0,bottom:0,height:150,background:brand.surface,borderTop:`6px solid ${brand.accent}`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:20,letterSpacing:2,color:brand.ink}}>BRAND ASSETS FROM ACTIVE DESIGN SYSTEM</div></>}
+export function SafeFrame({children,brand}:{children:ReactNode;brand:VideoBrand}){return <AbsoluteFill style={{background:brand.surface,color:brand.ink,fontFamily:'Arial, sans-serif'}}><div style={{position:'absolute',inset:'180px 88px 210px 88px'}}>{children}</div></AbsoluteFill>}

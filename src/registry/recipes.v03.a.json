@@ -1,0 +1,115 @@
+{
+  "reel-executive-report": {
+    "primitiveSet": [
+      "SectionRail",
+      "DataBeat",
+      "EvidenceFrame",
+      "ClosingResolve"
+    ],
+    "supports": [
+      "motion",
+      "data",
+      "photo"
+    ]
+  },
+  "data-time-series": {
+    "primitiveSet": [
+      "SeriesLine",
+      "MilestoneMarker",
+      "SourceNote"
+    ],
+    "supports": [
+      "data"
+    ]
+  },
+  "reel-longform": {
+    "primitiveSet": [
+      "ChapterRail",
+      "PersistentHeader",
+      "SceneCarry",
+      "DataBeat",
+      "AnimatedRoute",
+      "BrandFooter"
+    ],
+    "supports": [
+      "motion",
+      "route",
+      "data",
+      "photo"
+    ]
+  },
+  "route-priority": {
+    "primitiveSet": [
+      "RoutePath",
+      "PriorityNode",
+      "Legend"
+    ],
+    "supports": [
+      "route"
+    ]
+  },
+  "three-benefits": {
+    "primitiveSet": [
+      "BenefitModule",
+      "IconSlot",
+      "ClosingLine"
+    ],
+    "supports": [
+      "icon",
+      "photo"
+    ]
+  },
+  "data-progress": {
+    "primitiveSet": [
+      "ProgressArc",
+      "HeroStat",
+      "ContextLine"
+    ],
+    "supports": [
+      "data"
+    ]
+  },
+  "quote-evidence": {
+    "primitiveSet": [
+      "QuoteHero",
+      "PhotoFrame",
+      "EvidenceNote"
+    ],
+    "supports": [
+      "photo",
+      "data"
+    ]
+  },
+  "presentation-roadmap": {
+    "primitiveSet": [
+      "PhaseRail",
+      "Milestone",
+      "MetricNote"
+    ],
+    "supports": [
+      "route",
+      "data"
+    ]
+  },
+  "logic-chain": {
+    "primitiveSet": [
+      "ProblemBlock",
+      "ActionConnector",
+      "ResultBlock"
+    ],
+    "supports": [
+      "data",
+      "icon"
+    ]
+  },
+  "faq-editorial": {
+    "primitiveSet": [
+      "QuestionIndex",
+      "AnswerPanel",
+      "ProgressRail"
+    ],
+    "supports": [
+      "text"
+    ]
+  }
+}

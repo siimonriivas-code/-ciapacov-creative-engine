@@ -1,7 +1,9 @@
 import { motion } from 'motion/react'
 import type { Template } from '../types'
+import { PremiumRenderer } from '../premium/PremiumRenderer'
 
 export function TemplatePreview({template:t}:{template:Template}){
+  if(t.status==='premium' || t.implementation.includes('premium-runtime')) return <PremiumRenderer t={t}/>
   const route=t.route
   const data=t.data
   return <div className={`preview preview--${t.type}`}>

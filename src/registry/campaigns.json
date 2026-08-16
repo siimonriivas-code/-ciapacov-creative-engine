@@ -1,0 +1,42 @@
+[
+  {
+    "id":"KIT-001","name":"Lanzamiento de programa","status":"premium","tags":["lanzamiento","programa","anuncio","arranque"],
+    "description":"Sistema coordinado para presentar un programa: portada, explicación, Reel, Story y cierre ejecutivo.",
+    "templates":["CAR-015","CAR-005","REEL-020","STO-001","PRE-001"]
+  },
+  {
+    "id":"KIT-002","name":"Obra e infraestructura","status":"premium","tags":["obra","infraestructura","territorio","antes despues","resultados"],
+    "description":"Cobertura visual de obra con evidencia fotográfica, comparativo, cifras y Reel documental.",
+    "templates":["CAR-002","CAR-004","CAR-008","REEL-014","DAT-009"]
+  },
+  {
+    "id":"KIT-003","name":"Rutas y calendario semanal","status":"premium","tags":["ruta","calendario","colonias","horarios","territorio"],
+    "description":"Paquete semanal para comunicar rutas con carrusel, Story del día y Reel territorial animado.",
+    "templates":["CAR-006","STO-011","RTE-007","REEL-018","RTE-008"]
+  },
+  {
+    "id":"KIT-004","name":"Informe de resultados","status":"premium","tags":["informe","resultados","gestion","datos","cifras"],
+    "description":"Narrativa de rendición de resultados con reporte visual, métricas, Reel ejecutivo y presentación.",
+    "templates":["CAR-022","DAT-009","DAT-010","REEL-019","PRE-008"]
+  },
+  {
+    "id":"KIT-005","name":"Cómo funciona","status":"approved","tags":["explicador","proceso","como funciona","pasos","servicio"],
+    "description":"Arquitecturas para explicar un proceso sin saturación: pasos, lógica causa-acción-resultado y video conectado.",
+    "templates":["CAR-005","CAR-018","CAR-020","REEL-015","STO-007"]
+  },
+  {
+    "id":"KIT-006","name":"Testimonios y territorio","status":"approved","tags":["testimonio","foto","territorio","personas","evidencia"],
+    "description":"Sistema documental para piezas con fotografía real, citas y contexto territorial.",
+    "templates":["CAR-007","CAR-019","REEL-014","STO-004","PRE-004"]
+  },
+  {
+    "id":"KIT-007","name":"Campaña de datos","status":"premium","tags":["datos","cifras","impacto","avance","comparativo"],
+    "description":"Familia de visualizaciones para convertir cifras verificadas en contenido social y ejecutivo.",
+    "templates":["CAR-003","DAT-007","DAT-008","DAT-009","REEL-013"]
+  },
+  {
+    "id":"KIT-008","name":"Aviso operativo","status":"approved","tags":["aviso","operativo","recordatorio","servicio","ruta"],
+    "description":"Sistema rápido para avisos claros con prioridad móvil y adaptaciones de Story, ruta y carrusel.",
+    "templates":["STO-008","STO-012","RTE-003","CAR-021","CAR-012"]
+  }
+]

@@ -1,0 +1,5 @@
+import type {Template} from '../types'
+import {EditorialFamily,LaunchFamily,DataFamily,ReportFamily} from './editorialFamilies'
+import {RouteFamily,CinematicRouteFamily,CalendarFamily} from './journeyFamilies'
+import {PhotoFamily,ComparisonFamily,SystemFamily,TimelineFamily,ManifestoFamily,LongformFamily} from './narrativeFamilies'
+export function PremiumRenderer({t}:{t:Template}){const r=t.recipe;if(/launch/.test(r))return <LaunchFamily t={t}/>;if(/longform/.test(r))return <LongformFamily t={t}/>;if(/calendar/.test(r))return <CalendarFamily t={t}/>;if(/cinematic|route-premium/.test(r))return <CinematicRouteFamily t={t}/>;if(t.route||/route|journey/.test(r))return <RouteFamily t={t}/>;if(/comparison/.test(r))return <ComparisonFamily t={t}/>;if(/three-metrics|report|one-page/.test(r))return <ReportFamily t={t}/>;if(/data|stat|metric/.test(r)||t.data)return <DataFamily t={t}/>;if(/documentary|photo|evidence|quote/.test(r))return <PhotoFamily t={t}/>;if(/timeline|roadmap/.test(r))return <TimelineFamily t={t}/>;if(/logic|process|network/.test(r))return <SystemFamily t={t}/>;if(/manifesto/.test(r))return <ManifestoFamily t={t}/>;return <EditorialFamily t={t}/>}

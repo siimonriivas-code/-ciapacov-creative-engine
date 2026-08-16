@@ -1,0 +1,120 @@
+{
+  "story-reminder": {
+    "primitiveSet": [
+      "DateBadge",
+      "ActionHero",
+      "NoticeBlock"
+    ],
+    "supports": [
+      "text",
+      "photo"
+    ]
+  },
+  "reel-comparison": {
+    "primitiveSet": [
+      "SplitCompare",
+      "DeltaMarker",
+      "MatchCutAnchor"
+    ],
+    "supports": [
+      "motion",
+      "photo",
+      "data"
+    ]
+  },
+  "route-cinematic": {
+    "primitiveSet": [
+      "StreetParallax",
+      "RouteVehicle",
+      "DestinationNode",
+      "PersistentHeader"
+    ],
+    "supports": [
+      "motion",
+      "route",
+      "photo"
+    ]
+  },
+  "timeline-editorial": {
+    "primitiveSet": [
+      "TimelineRail",
+      "Milestone",
+      "EvidenceNote"
+    ],
+    "supports": [
+      "data",
+      "photo"
+    ]
+  },
+  "reel-photo-premium": {
+    "primitiveSet": [
+      "PhotoMatte",
+      "KenBurnsControlled",
+      "CaptionDock",
+      "BrandFooter"
+    ],
+    "supports": [
+      "motion",
+      "photo"
+    ]
+  },
+  "concept-network": {
+    "primitiveSet": [
+      "NetworkNode",
+      "ConnectorCascade",
+      "TakeawayBlock"
+    ],
+    "supports": [
+      "route",
+      "concept"
+    ]
+  },
+  "reel-manifesto": {
+    "primitiveSet": [
+      "TextRail",
+      "WordAccentSweep",
+      "InstitutionalClose"
+    ],
+    "supports": [
+      "motion",
+      "text"
+    ]
+  },
+  "presentation-one-page": {
+    "primitiveSet": [
+      "ExecutiveHeadline",
+      "MetricTriplet",
+      "EvidenceFrame"
+    ],
+    "supports": [
+      "data",
+      "photo"
+    ]
+  },
+  "reel-route-premium": {
+    "primitiveSet": [
+      "PersistentHeader",
+      "AnimatedStreet",
+      "RouteVehicle",
+      "DestinationNode",
+      "BrandFooter"
+    ],
+    "supports": [
+      "motion",
+      "route",
+      "photo"
+    ]
+  },
+  "reel-calendar-premium": {
+    "primitiveSet": [
+      "DayHero",
+      "AnimatedPath",
+      "DestinationList",
+      "PersistentFooter"
+    ],
+    "supports": [
+      "motion",
+      "route"
+    ]
+  }
+}

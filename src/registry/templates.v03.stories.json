@@ -1,0 +1,103 @@
+[
+  {
+    "id": "STO-009",
+    "name": "Encuesta editorial",
+    "type": "story",
+    "subtype": "poll",
+    "format": "9:16",
+    "density": "medium",
+    "motion": "low",
+    "photo": "optional",
+    "route": false,
+    "data": false,
+    "status": "approved",
+    "tags": [
+      "encuesta",
+      "pregunta",
+      "participacion"
+    ],
+    "description": "Story preparada para pregunta y dos opciones visuales.",
+    "recipe": "story-poll",
+    "pack": "social",
+    "loadPolicy": "on-demand",
+    "brandMode": "inherit-active-design-system",
+    "demoContent": "non-production",
+    "implementation": "recipe-v0.3"
+  },
+  {
+    "id": "STO-010",
+    "name": "Dato + explicación",
+    "type": "story",
+    "subtype": "data-explain",
+    "format": "9:16",
+    "density": "medium",
+    "motion": "low",
+    "photo": "none",
+    "route": false,
+    "data": true,
+    "status": "approved",
+    "tags": [
+      "dato",
+      "explicacion",
+      "cifra"
+    ],
+    "description": "Dato hero y una explicación de máximo dos líneas.",
+    "recipe": "story-data-explain",
+    "pack": "social",
+    "loadPolicy": "on-demand",
+    "brandMode": "inherit-active-design-system",
+    "demoContent": "non-production",
+    "implementation": "recipe-v0.3"
+  },
+  {
+    "id": "STO-011",
+    "name": "Ruta hoy",
+    "type": "story",
+    "subtype": "route-today",
+    "format": "9:16",
+    "density": "high",
+    "motion": "medium",
+    "photo": "none",
+    "route": true,
+    "data": false,
+    "status": "premium",
+    "tags": [
+      "ruta",
+      "hoy",
+      "colonias",
+      "horario"
+    ],
+    "description": "Ruta de un solo día con path y lista legible.",
+    "recipe": "story-route-today",
+    "pack": "social",
+    "loadPolicy": "on-demand",
+    "brandMode": "inherit-active-design-system",
+    "demoContent": "non-production",
+    "implementation": "premium-runtime-v0.3"
+  },
+  {
+    "id": "STO-012",
+    "name": "Recordatorio operativo",
+    "type": "story",
+    "subtype": "reminder",
+    "format": "9:16",
+    "density": "medium",
+    "motion": "low",
+    "photo": "optional",
+    "route": false,
+    "data": false,
+    "status": "approved",
+    "tags": [
+      "recordatorio",
+      "aviso",
+      "operativo"
+    ],
+    "description": "Aviso con fecha, acción principal y nota secundaria.",
+    "recipe": "story-reminder",
+    "pack": "social",
+    "loadPolicy": "on-demand",
+    "brandMode": "inherit-active-design-system",
+    "demoContent": "non-production",
+    "implementation": "recipe-v0.3"
+  }
+]

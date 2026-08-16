@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"Creative Engine Motion Recipe","type":"object","required":["id","name","engine","category","intensity","tags","bestFor","description","params"],"properties":{"id":{"type":"string","pattern":"^MOT-[0-9]{3}$"},"engine":{"enum":["motion","gsap"]}}}

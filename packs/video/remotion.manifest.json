@@ -1,0 +1,11 @@
+{
+  "engine": "remotion",
+  "version": "4.0.506",
+  "compositions": [
+    "CE-RouteJourney",
+    "CE-DataCascade",
+    "CE-ProcessConnected"
+  ],
+  "policy": "optional-render-pack",
+  "brandMode": "inherit-active-design-system"
+}

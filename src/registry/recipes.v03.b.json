@@ -1,0 +1,111 @@
+{
+  "launch-hero": {
+    "primitiveSet": [
+      "PremiumFrame",
+      "HeadlineBlock",
+      "VisualAnchor",
+      "BrandFooter"
+    ],
+    "supports": [
+      "photo",
+      "geometry"
+    ]
+  },
+  "story-data-explain": {
+    "primitiveSet": [
+      "HeroStat",
+      "ExplanationBlock",
+      "SourceNote"
+    ],
+    "supports": [
+      "data"
+    ]
+  },
+  "data-waterfall": {
+    "primitiveSet": [
+      "WaterfallBar",
+      "TotalHero",
+      "SourceNote"
+    ],
+    "supports": [
+      "data"
+    ]
+  },
+  "reel-process-connected": {
+    "primitiveSet": [
+      "ProcessNode",
+      "ConnectorCascade",
+      "SceneCarry"
+    ],
+    "supports": [
+      "motion",
+      "route",
+      "icon"
+    ]
+  },
+  "story-poll": {
+    "primitiveSet": [
+      "QuestionHero",
+      "OptionPair",
+      "BrandFooter"
+    ],
+    "supports": [
+      "text"
+    ]
+  },
+  "story-route-today": {
+    "primitiveSet": [
+      "DayHero",
+      "RoutePath",
+      "DestinationList"
+    ],
+    "supports": [
+      "route"
+    ]
+  },
+  "reel-data-cascade": {
+    "primitiveSet": [
+      "KineticHeadline",
+      "NumberReveal",
+      "MetricRail",
+      "SourceNote"
+    ],
+    "supports": [
+      "motion",
+      "data"
+    ]
+  },
+  "route-directory": {
+    "primitiveSet": [
+      "RouteBlock",
+      "DirectoryBlock",
+      "NoticeBlock"
+    ],
+    "supports": [
+      "route"
+    ]
+  },
+  "visual-report": {
+    "primitiveSet": [
+      "ExecutiveHeadline",
+      "MetricTriplet",
+      "EvidenceFrame",
+      "SourceNote"
+    ],
+    "supports": [
+      "data",
+      "photo"
+    ]
+  },
+  "data-three-metrics": {
+    "primitiveSet": [
+      "MetricTriplet",
+      "InsightBlock",
+      "SourceNote"
+    ],
+    "supports": [
+      "data",
+      "photo"
+    ]
+  }
+}
