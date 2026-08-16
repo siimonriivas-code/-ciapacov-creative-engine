@@ -1,0 +1,9 @@
+{
+  "mode":"image-to-video",
+  "durationSeconds":6,
+  "portrait":true,
+  "firstFrame":true,
+  "minResolution":"1080P",
+  "preferExplicitCamera":true,
+  "preferIntegrated":true
+}
