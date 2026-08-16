@@ -1,0 +1,27 @@
+name: Validate Premium Template Kits v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/registry/premium-template-kits.json'
+      - 'src/registry/premium-material-systems.json'
+      - 'scripts/validate-premium-template-kits.mjs'
+      - 'scripts/validate-premium-materials.mjs'
+      - 'src/remotion/components/PremiumMaterials.tsx'
+      - '.github/workflows/validate-premium-kits-v11.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-kits:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: node scripts/validate-premium-materials.mjs
+      - run: node scripts/validate-premium-template-kits.mjs
+      - run: npm run build
