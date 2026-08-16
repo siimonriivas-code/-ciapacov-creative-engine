@@ -1,0 +1,18 @@
+[
+  {
+    "id":"MEDIA-EXAMPLE-001",
+    "title":"Ejemplo no productivo — evidencia vertical",
+    "kind":"photo",
+    "uri":"/ruta/local/o-referencia-controlada/evidencia.jpg",
+    "status":"demo",
+    "orientation":"portrait",
+    "tags":["real","work","evidence"],
+    "domains":["DOM-OBRA"],
+    "locations":["territorio-verificado"],
+    "capturedAt":"2026-01-01",
+    "source":"example-only",
+    "license":{"kind":"example","usage":"NO PRODUCTIVO"},
+    "consent":"not-required",
+    "notes":"Este archivo documenta el esquema. No se carga en media-library.json y nunca debe tratarse como evidencia real."
+  }
+]
