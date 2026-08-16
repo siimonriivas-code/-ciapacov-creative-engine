@@ -1,0 +1,11 @@
+{
+  "id":"BENCHMARK-FAIL-V11",
+  "durationSeconds":30,
+  "styleAllowsDepth":true,
+  "scenes":[
+    {"id":"S1","layoutFamily":"rounded-card-grid","surfaceRole":"primary-full","highPriorityMessages":4,"materialIds":[],"motions":[{"purpose":"decorative"},{"purpose":"decorative"}],"hero":false,"depth":"flat","typographyRole":"utility","safeAreaPass":true,"criticalTextReadable":true},
+    {"id":"S2","layoutFamily":"rounded-card-grid","surfaceRole":"primary-full","highPriorityMessages":4,"materialIds":[],"motions":[{"purpose":"decorative"}],"transition":"random-pack","hero":false,"depth":"flat","typographyRole":"utility","safeAreaPass":false,"criticalTextReadable":true},
+    {"id":"S3","layoutFamily":"rounded-card-grid","surfaceRole":"primary-full","highPriorityMessages":3,"materialIds":[],"motions":[{"purpose":"decorative"}],"transition":"random-pack","hero":false,"depth":"flat","typographyRole":"utility","safeAreaPass":true,"criticalTextReadable":false,"inventedOfficialVehicle":true},
+    {"id":"S4","layoutFamily":"rounded-card-grid","surfaceRole":"primary-full","highPriorityMessages":3,"materialIds":[],"motions":[{"purpose":"decorative"}],"transition":"random-pack","hero":false,"depth":"flat","typographyRole":"utility","safeAreaPass":true,"criticalTextReadable":true,"generatedDocumentary":true,"factsBakedIntoGenerativeVideo":true}
+  ]
+}
