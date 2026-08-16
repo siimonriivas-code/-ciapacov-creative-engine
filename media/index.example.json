@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "items": [
+    {
+      "id": "MEDIA-EXAMPLE-001",
+      "type": "photo",
+      "path": "external://media-library/example.jpg",
+      "status": "verified",
+      "rights": "owned-or-authorized",
+      "tags": ["obra", "territorio"],
+      "peopleConsent": "required-when-applicable",
+      "production": false,
+      "notes": "Example metadata only. Do not use as real content."
+    }
+  ]
+}

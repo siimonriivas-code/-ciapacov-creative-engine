@@ -1,0 +1,2 @@
+import type {ReferenceSource} from '../types'
+export function ReferenceCard({item}:{item:ReferenceSource}){return <article className="referenceCard"><code>{item.id}</code><h3>{item.name}</h3><p>{item.allowed}</p><div className="chips">{item.strengths.map(x=><span key={x}>{x}</span>)}</div><div className="referenceCard__rule"><b>POLICY</b><span>{item.policy}</span></div><small>{item.forbidden}</small></article>}

@@ -1,7 +1,7 @@
 {
   "name": "ciapacov-creative-engine",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,13 @@
     "validate": "node scripts/validate-registry.mjs",
     "catalog:build": "node scripts/build-compact-catalog.mjs",
     "remotion:studio": "remotion studio src/remotion/index.ts --no-open",
-    "remotion:render:route": "remotion render src/remotion/index.ts CE-RouteJourney out/route-journey.mp4"
+    "remotion:render:route": "remotion render src/remotion/index.ts CE-RouteJourney out/route-journey.mp4",
+    "validate:ecosystem": "node scripts/validate-ecosystem.mjs",
+    "validate:all": "npm run validate && npm run validate:ecosystem",
+    "ecosystem:build": "node scripts/build-ecosystem-compact.mjs",
+    "contact-sheets": "node scripts/build-contact-sheets.mjs",
+    "catalog:all": "npm run catalog:build && npm run ecosystem:build && npm run contact-sheets",
+    "ingest:asset": "node scripts/ingest-asset.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.0.4",

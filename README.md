@@ -1,39 +1,57 @@
-# CIAPACOV Creative Engine v0.4
+# CIAPACOV Creative Engine v0.5 · Creative Ecosystem
 
-Private creative-direction, reusable-template, campaign-kit and motion library for Claude Design / Claude Code workflows. It is intentionally **brand-agnostic**: the active brand Design System remains authoritative.
+Private creative-direction, reusable-template, domain-master, asset-vault, reference-library and motion system for Claude Design / Claude Code workflows.
 
-## What ships now
-- **80** searchable template records across carousels, Reels, Stories, data, routes and presentations
+The repository remains **brand-agnostic**. The active Design System is always the authority for identity, official logos, typography, approved colors, safe areas, accessibility and governance.
+
+## What ships in v0.5
+- **80** searchable template records
 - **48** curated motion recipes
-- **8 multi-format Campaign Kits** for launches, infrastructure, routes, reports, explainers, testimony, data and operational notices
-- art-directed premium runtime families with materially different compositions, not one generic preview repeated
-- favorites and 3-up comparison in the gallery
-- Motion + GSAP primitives for editorial, data, routes, continuity and photo treatments
-- optional **Remotion** vertical video pack with 3 renderable masters
-- compact AI catalogs to reduce context/credit usage
-- registry validation + compact-catalog generation
-- copy/paste Claude Design usage prompts
-- strict demo-data firewall and third-party resource policy
+- **8** multi-format Campaign Kits
+- **9** Domain Libraries mapped to real communication work
+- **20** Operational Master Templates above the generic template layer
+- **34** Asset Vault records, including **25 bundled original SVG primitives** and controlled semantic slots for official/real assets
+- **7** Reference Library source profiles with usage boundaries
+- Structured Brief Router: topic → domain → master → templates → asset readiness
+- Asset Resolver with explicit `ready / slot / missing` states
+- License-aware local ingest pipeline; no automated marketplace scraping
+- Offline Contact Sheets generator
+- Separate Media Library contract for large photo/video archives
+- Motion + GSAP primitives and optional Remotion video pack retained from v0.4
+- Compact catalogs so Claude can load only what it needs
 
 ## Quick start
 ```bash
 npm install
-npm run validate
+npm run validate:all
+npm run catalog:all
 npm run dev
 ```
 
-Optional video studio:
+Generate visual contact sheets without Claude:
 ```bash
-npm run remotion:studio
+npm run contact-sheets
 ```
 
-## Low-context AI routing
-1. Single piece → read `claude/catalog.compact.json`.
-2. Motion/video → add `claude/motions.compact.json`.
-3. Multi-format campaign → read `claude/campaigns.compact.json` first.
-4. Only after selection, inspect the chosen full record and implementation.
+Ingest a user-owned/licensed local asset:
+```bash
+npm run ingest:asset -- ingest/examples/asset-manifest.example.json /absolute/path/to/file.svg
+```
 
-**Never load the whole repo just to propose directions.**
+## AI routing rule
+For normal work, Claude should not scan the repo.
 
-## Brand boundary
-Layout, composition and motion come from this engine. Identity, official logos/assets, typography, approved colors, safe areas, accessibility and governance come from the active Design System.
+1. Read `claude/ecosystem.compact.json` when the request maps to a real work domain.
+2. Read `claude/catalog.compact.json` for template candidates.
+3. Add `claude/motions.compact.json` only for motion/video.
+4. Add `claude/campaigns.compact.json` only for multi-format campaigns.
+5. After selection, inspect only the chosen Master, template recipe, asset records and implementation.
+
+## Architecture boundary
+**Design System** = identity and governance.  
+**Creative Engine** = composition and motion.  
+**Domain Library** = work-specific logic.  
+**Asset Vault** = reusable approved primitives + semantic slots.  
+**Media Library** = real photo/video stored outside the code repo when appropriate.  
+**Reference Library** = inspiration and provenance, not a redistribution mirror.  
+**Creative Director** = brief router and selector.

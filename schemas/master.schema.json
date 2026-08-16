@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Operational Master",
+  "type": "object",
+  "required": ["id","domain","name","objective","formats","templateIds","requiredCapabilities","recommendedCapabilities","materials","status"],
+  "properties": {
+    "id":{"type":"string"},"domain":{"type":"string"},"name":{"type":"string"},"objective":{"type":"string"},
+    "formats":{"type":"array","items":{"type":"string"}},"templateIds":{"type":"array","items":{"type":"string"}},
+    "requiredCapabilities":{"type":"array","items":{"type":"string"}},"recommendedCapabilities":{"type":"array","items":{"type":"string"}},
+    "materials":{"type":"array","items":{"type":"string"}},"status":{"enum":["premium","approved","experimental"]}
+  }
+}

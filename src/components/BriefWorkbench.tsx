@@ -1,0 +1,12 @@
+import {useMemo,useState} from 'react'
+import type {AssetRecord,CreativeBrief,Domain,OperationalMaster,Template} from '../types'
+import {resolveCreativeBrief} from '../lib/creativeDirectorV2'
+export function BriefWorkbench({domains,masters,templates,assets,onOpen}:{domains:Domain[];masters:OperationalMaster[];templates:Template[];assets:AssetRecord[];onOpen:(t:Template)=>void}){
+  const[topic,setTopic]=useState('')
+  const[format,setFormat]=useState('')
+  const[objective,setObjective]=useState('')
+  const[materials,setMaterials]=useState('')
+  const brief:CreativeBrief=useMemo(()=>({topic,format:format||undefined,objective:objective||undefined,materials:materials.split(',').map(x=>x.trim()).filter(Boolean)}),[topic,format,objective,materials])
+  const result=useMemo(()=>topic.trim()?resolveCreativeBrief({brief,domains,masters,templates,assets}):null,[brief,domains,masters,templates,assets,topic])
+  return <section className="briefWorkbench"><div className="briefWorkbench__intro"><span className="kicker">STRUCTURED BRIEF ROUTER</span><h2>Piensa en el trabajo, no en los IDs.</h2><p>El motor detecta dominio, Master operativo, templates y faltantes de assets antes de diseñar.</p></div><div className="briefWorkbench__form"><input value={topic} onChange={e=>setTopic(e.target.value)} placeholder="Tema: rehabilitación de pozo, rutas semanales, brigada…"/><div className="briefWorkbench__row"><select value={format} onChange={e=>setFormat(e.target.value)}><option value="">Formato automático</option><option value="reel">Reel</option><option value="carousel">Carrusel</option><option value="story">Story</option><option value="data">Datos</option><option value="presentation">Presentación</option></select><input value={objective} onChange={e=>setObjective(e.target.value)} placeholder="Objetivo: explicar beneficio…"/></div><input value={materials} onChange={e=>setMaterials(e.target.value)} placeholder="Material: 6 fotos, inversión, beneficiarios…"/></div>{result&&<div className="briefWorkbench__result"><div><small>DOMINIO</small><strong>{result.domain?.name||'General'}</strong></div><div><small>MASTER RECOMENDADO</small><strong>{result.masters[0]?.id} · {result.masters[0]?.name}</strong></div><div><small>ASSET READINESS</small><strong>{result.assetPlan?.gaps.length?`${result.assetPlan.gaps.length} requisito(s) externo(s)`:'Base lista'}</strong></div><div className="briefWorkbench__templates">{result.templates.slice(0,4).map(t=><button key={t.id} onClick={()=>onOpen(t)}><b>{t.id}</b><span>{t.name}</span></button>)}</div></div>}</section>
+}

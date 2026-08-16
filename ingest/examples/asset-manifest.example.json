@@ -1,0 +1,11 @@
+{
+  "id": "AST-LOCAL-001",
+  "name": "Nombre del recurso",
+  "category": "component",
+  "capabilities": ["example-capability"],
+  "status": "approved",
+  "source": "user-supplied",
+  "license": {"kind": "owned", "redistributable": false},
+  "tags": ["ejemplo"],
+  "notes": "Adjunta evidencia/licencia cuando aplique."
+}
