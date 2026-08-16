@@ -1,7 +1,7 @@
 {
   "name": "ciapacov-creative-engine",
   "private": true,
-  "version": "0.7.0",
+  "version": "0.8.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,15 +11,19 @@
     "validate": "node scripts/validate-registry.mjs",
     "validate:ecosystem": "node scripts/validate-ecosystem.mjs",
     "validate:visuals": "node scripts/validate-v07.mjs",
-    "validate:all": "npm run validate && npm run validate:ecosystem && npm run validate:visuals",
+    "validate:production": "node scripts/validate-v08.mjs",
+    "validate:all": "npm run validate && npm run validate:ecosystem && npm run validate:visuals && npm run validate:production",
     "catalog:build": "node scripts/build-compact-catalog.mjs",
     "ecosystem:build": "node scripts/build-ecosystem-compact.mjs",
     "visuals:build": "node scripts/build-visual-library.mjs",
+    "production:build": "node scripts/build-production-compact.mjs",
     "contact-sheets": "node scripts/build-contact-sheets.mjs",
-    "catalog:all": "npm run catalog:build && npm run ecosystem:build && npm run visuals:build && npm run contact-sheets",
+    "catalog:all": "npm run catalog:build && npm run ecosystem:build && npm run visuals:build && npm run production:build && npm run contact-sheets",
     "ingest:asset": "node scripts/ingest-asset.mjs",
     "remotion:studio": "remotion studio src/remotion/index.ts --no-open",
-    "remotion:render:route": "remotion render src/remotion/index.ts CE-RouteJourney out/route-journey.mp4"
+    "remotion:render:route": "remotion render src/remotion/index.ts CE-RouteJourney out/route-journey.mp4",
+    "remotion:render:documentary": "remotion render src/remotion/index.ts CE-DocumentaryEvidence out/documentary-evidence.mp4",
+    "remotion:render:before-after": "remotion render src/remotion/index.ts CE-BeforeAfter out/before-after.mp4"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.0.4",
