@@ -1,0 +1,51 @@
+{
+  "version":"1.1",
+  "principle":"Generative video may add visual imagination, never factual evidence.",
+  "classes":[
+    {
+      "id":"SCENE-FACTUAL-EVIDENCE",
+      "label":"Factual evidence",
+      "generativeAllowed":false,
+      "examples":["actual work site","actual beneficiary","actual official vehicle","actual event","actual purifier","actual location presented as documentary"],
+      "rule":"Use verified real media only. If unavailable, report the media gap or redesign the scene without pretending to show the fact."
+    },
+    {
+      "id":"SCENE-FACTUAL-OVERLAY",
+      "label":"Factual overlay",
+      "generativeAllowed":false,
+      "examples":["names","dates","prices","routes","phone numbers","metrics","logos","official marks","legal or sanitary claims"],
+      "rule":"Render deterministically in Remotion/HTML/SVG using validated facts and the active Design System. Never bake factual text into AI video."
+    },
+    {
+      "id":"SCENE-CONCEPTUAL",
+      "label":"Conceptual illustration",
+      "generativeAllowed":true,
+      "examples":["abstract water flow","conceptual infrastructure","non-geographic city metaphor","atmospheric transition","symbolic community scene"],
+      "rule":"May use generative video if the scene is not presented as documentary evidence and does not impersonate official assets."
+    },
+    {
+      "id":"SCENE-CONTROLLED-I2V",
+      "label":"Controlled image-to-video",
+      "generativeAllowed":true,
+      "examples":["approved illustration animated with camera motion","designed first frame brought to life","abstract route environment"],
+      "rule":"Preferred generative mode when composition, identity and key geometry must remain controlled. First frame must be approved for the intended semantic role."
+    },
+    {
+      "id":"SCENE-TRANSITION",
+      "label":"Transition-only generative clip",
+      "generativeAllowed":true,
+      "examples":["liquid passage","texture motion","light sweep","abstract depth travel"],
+      "rule":"Keep short, semantically neutral and free of factual claims. Deterministic layers must handle official identity and text."
+    }
+  ],
+  "preflight":[
+    "Classify every proposed AI-generated scene before generation.",
+    "Reject any prompt that asks the model to fabricate documentary evidence or an official asset.",
+    "Prefer image-to-video over text-to-video when an approved first frame can constrain composition.",
+    "Keep logos, legal text, names, routes, prices, phone numbers and metrics outside the generated pixels.",
+    "Record provider, model, prompt, source frame, generation date and review status for every retained clip.",
+    "Do not promote a generated clip from review to approved without human visual review.",
+    "If the generated scene could reasonably be mistaken for a real event or location, label/redesign it as illustrative or do not use it."
+  ],
+  "metadataRequired":["providerId","model","mode","prompt","generatedAt","sourceFrameUri","semanticClass","reviewStatus","rightsStatus","notes"]
+}
