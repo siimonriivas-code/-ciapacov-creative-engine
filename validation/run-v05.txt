@@ -1,1 +1,1 @@
-Trigger remote validation for CIAPACOV Creative Ecosystem v0.5 — retry 5 after validator fix.
+Trigger remote validation for CIAPACOV Creative Ecosystem v0.5 — retry 6 after canonical registry consolidation.
