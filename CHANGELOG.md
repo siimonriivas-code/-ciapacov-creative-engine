@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.8.0 — Production Masters & Media Intelligence
+- added 9 executable Production Masters covering all 20 Operational Masters exactly once
+- expanded Remotion runtime from 3 to 9 registered compositions
+- added Launch Editorial, Documentary Evidence, Before/After, Timeline Territory, Testimonial Quote and Notice/Alert production compositions
+- added 12 factual Media Intelligence roles
+- added empty-by-default verified Media Library registry plus non-production schema example
+- added media matching by kind, mandatory/preferred tags, orientation, domain and approval state
+- added production runtime resolver with composition ID, target duration and media readiness
+- upgraded Production Planner to surface executable Production Master and factual-media blockers
+- added Production Masters and Media Intelligence browsing modes in the React gallery
+- added `claude/production.compact.json`
+- added v0.8 validators for full Operational Master coverage, media roles, visual architecture references and production state
+- added v0.8 read-only GitHub Actions validation for install, full validators, compact catalogs, TypeScript/Vite and Remotion
+- kept the Engine brand-agnostic; active Design System remains authoritative for identity and official brand assets
+
 ## 0.7.0 — Visual Production Library
 - added 12 reusable brand-agnostic visual architectures
 - added exactly 3 visual directions for each of 20 Operational Masters (60 total)
