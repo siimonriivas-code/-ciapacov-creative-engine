@@ -1,0 +1,116 @@
+name: Render Tracked Premium Preview v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/run-preview-v11-tracked.txt'
+      - '.github/workflows/render-preview-v11-tracked.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Prepare Agua Bienestar 45s props
+        run: |
+          cat > /tmp/ab-route-preview.json <<'JSON'
+          {
+            "brand": {
+              "surface":"#ffffff",
+              "surfaceAlt":"#f5f7f8",
+              "ink":"#1D1D1B",
+              "muted":"#68727a",
+              "primary":"#00AAED",
+              "secondary":"#B5F6FF",
+              "accent":"#89033A",
+              "line":"#dce5e8"
+            },
+            "title":"Rutas semanales",
+            "kicker":"RUTAS PROGRAMADAS",
+            "stops":["Benito Juárez","Palo Alto","Buenavista","Villa Flores"],
+            "groups":[
+              {"label":"LUNES","items":["Benito Juárez","Palo Alto","Buenavista","Villa Flores"]},
+              {"label":"MARTES Y VIERNES","items":["Mirador de la Cumbre I y II","Moctezuma","Paraíso","Jardines del Sol"]},
+              {"label":"MIÉRCOLES","items":["Del Valle","San Isidro","Lo de Villa"]},
+              {"label":"JUEVES","items":["Tierra y Libertad","Palo Alto","Buenavista","Villa Flores"]},
+              {"label":"SÁBADO","items":["Tierra y Libertad","El Moralete","De los Trabajadores","Patios del Ferrocarril","La Albarrada"]}
+            ],
+            "highlight":"Garrafón de 20 L · $10 a domicilio",
+            "footer":"Información: 312 311 9041",
+            "durationSeconds":45
+          }
+          JSON
+
+      - name: Render route contact frames
+        run: |
+          mkdir -p preview
+          for FRAME in 30 180 330 510 690 870 1050 1230 1320; do
+            npx remotion still src/remotion/index.ts CE-RouteJourney "preview/route-$FRAME.png" --frame=$FRAME --props=/tmp/ab-route-preview.json
+          done
+
+      - name: Render representative master gallery
+        run: |
+          for SPEC in 'CE-LaunchEditorial:180' 'CE-DataCascade:300' 'CE-ProcessConnected:450' 'CE-DocumentaryEvidence:300' 'CE-BeforeAfter:450' 'CE-TimelineTerritory:600' 'CE-TestimonialQuote:300' 'CE-NoticeAlert:240' 'CE-QA-LottieRuntime:45'; do
+            ID="${SPEC%%:*}"
+            FRAME="${SPEC##*:}"
+            npx remotion still src/remotion/index.ts "$ID" "preview/$ID.png" --frame=$FRAME
+          done
+
+      - name: Upload premium preview stills
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciapacov-v11-premium-preview-${{ github.run_id }}
+          path: preview/*.png
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Record run locator
+        run: |
+          mkdir -p validation
+          cat > validation/LATEST_PREVIEW_V11.md <<EOF
+          # Latest tracked premium preview
+
+          RUN_ID=${GITHUB_RUN_ID}
+          RUN_NUMBER=${GITHUB_RUN_NUMBER}
+          HEAD_SHA=${GITHUB_SHA}
+          ARTIFACT_NAME=ciapacov-v11-premium-preview-${GITHUB_RUN_ID}
+          STATUS=success
+          EOF
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          git reset --hard origin/main
+          git checkout "${GITHUB_SHA}" -- preview 2>/dev/null || true
+          cat > validation/LATEST_PREVIEW_V11.md <<EOF
+          # Latest tracked premium preview
+
+          RUN_ID=${GITHUB_RUN_ID}
+          RUN_NUMBER=${GITHUB_RUN_NUMBER}
+          HEAD_SHA=${GITHUB_SHA}
+          ARTIFACT_NAME=ciapacov-v11-premium-preview-${GITHUB_RUN_ID}
+          STATUS=success
+          EOF
+          git add validation/LATEST_PREVIEW_V11.md
+          git commit -m "chore: record premium preview run ${GITHUB_RUN_ID}"
+          git push origin HEAD:main
