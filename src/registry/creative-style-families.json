@@ -9,7 +9,7 @@
     "colorBehavior":{"mode":"design-system-roles","maxDominantBrandRoles":2,"requireNeutralSurface":true,"avoidMonochromeFlood":true},
     "bestFor":["launch","results","institutional","report","carousel"],
     "avoid":["full-frame-primary-color-on-every-scene","equal-weight-cards","decorative-icons-without-purpose"],
-    "compatibleArchitectures":["VIS-EDITORIAL-SPLIT","VIS-DATA-CASCADE","VIS-DOCUMENTARY-HERO"]
+    "compatibleArchitectures":["VIS-EDITORIAL-SPLIT","VIS-DATA-CASCADE","VIS-DOCUMENTARY-HERO","VIS-TIMELINE-FIELD","VIS-QUOTE-DOCUMENTARY","VIS-NOTICE-CLEAR"]
   },
   {
     "id":"STYLE-LIQUID-LUMINOUS",
@@ -33,7 +33,7 @@
     "colorBehavior":{"mode":"design-system-roles","maxDominantBrandRoles":2,"requireNeutralSurface":true,"avoidMonochromeFlood":true},
     "bestFor":["works","brigades","testimony","community","environment"],
     "avoid":["fake-documentary-media","stock-photo-presented-as-evidence","overfiltered-photography"],
-    "compatibleArchitectures":["VIS-DOCUMENTARY-HERO","VIS-MOSAIC-EVIDENCE","VIS-QUOTE-DOCUMENTARY"]
+    "compatibleArchitectures":["VIS-DOCUMENTARY-HERO","VIS-MOSAIC-EVIDENCE","VIS-QUOTE-DOCUMENTARY","VIS-BEFORE-AFTER"]
   },
   {
     "id":"STYLE-TACTILE-PAPER",
@@ -69,7 +69,7 @@
     "colorBehavior":{"mode":"design-system-roles","maxDominantBrandRoles":3,"requireNeutralSurface":false,"avoidMonochromeFlood":true},
     "bestFor":["route","infrastructure","launch","cinematic","explainer"],
     "avoid":["fake-3d-city-presented-as-real","unmotivated-camera-motion","constant-zoom"],
-    "compatibleArchitectures":["VIS-ROUTE-JOURNEY","VIS-DOCUMENTARY-HERO","VIS-BEFORE-AFTER"]
+    "compatibleArchitectures":["VIS-ROUTE-JOURNEY","VIS-DOCUMENTARY-HERO","VIS-BEFORE-AFTER","VIS-NETWORK-PROCESS","VIS-MAP-STORY"]
   },
   {
     "id":"STYLE-TECHNICAL-GRID",
@@ -81,7 +81,7 @@
     "colorBehavior":{"mode":"design-system-roles","maxDominantBrandRoles":2,"requireNeutralSurface":true,"avoidMonochromeFlood":true},
     "bestFor":["process","infrastructure","network","works","explainer"],
     "avoid":["fake-engineering-dimensions","decorative-blueprint-noise","unreadable-micro-labels"],
-    "compatibleArchitectures":["VIS-NETWORK-PROCESS","VIS-TIMELINE-FIELD","VIS-DATA-CASCADE"]
+    "compatibleArchitectures":["VIS-NETWORK-PROCESS","VIS-TIMELINE-FIELD","VIS-DATA-CASCADE","VIS-ROUTE-JOURNEY","VIS-BEFORE-AFTER","VIS-NOTICE-CLEAR","VIS-MAP-STORY"]
   },
   {
     "id":"STYLE-DATA-THEATER",
@@ -129,7 +129,7 @@
     "colorBehavior":{"mode":"design-system-roles","maxDominantBrandRoles":2,"requireNeutralSurface":true,"avoidMonochromeFlood":true},
     "bestFor":["institutional","announcement","recognition","report-cover","formal"],
     "avoid":["busy-icons","constant-motion","gradient-overload","cheap-glow"],
-    "compatibleArchitectures":["VIS-EDITORIAL-SPLIT","VIS-DOCUMENTARY-HERO","VIS-QUOTE-DOCUMENTARY"]
+    "compatibleArchitectures":["VIS-EDITORIAL-SPLIT","VIS-DOCUMENTARY-HERO","VIS-QUOTE-DOCUMENTARY","VIS-NOTICE-CLEAR"]
   },
   {
     "id":"STYLE-PLAYFUL-GEOMETRY",
