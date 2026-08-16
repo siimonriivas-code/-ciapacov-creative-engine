@@ -1,0 +1,63 @@
+name: Validate Creative Ecosystem v1.0
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/run-v10.txt'
+      - '.github/workflows/validate-v10.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Validate full v1.0 ecosystem
+        run: npm run validate:all
+      - name: Validate handoff tooling syntax
+        run: |
+          node --check scripts/build-handoff.mjs
+          node --check scripts/validate-v10.mjs
+      - name: Regenerate all compact catalogs
+        run: npm run catalog:all
+      - name: Check handoff contract
+        run: |
+          node -e "const h=require('./claude/handoff.compact.json');if(h.version!=='1.0'||h.inventory.integrationScenarios<6||h.rules.scanWholeRepo!==false||h.rules.activeDesignSystemWins!==true)process.exit(1);console.log(h.inventory)"
+          test -s claude/START_HERE.md
+          test -s docs/CLAUDE_DESIGN_INTEGRATION.md
+      - name: TypeScript and Vite build
+        run: npm run build
+      - name: Run factual Agua Bienestar QA
+        run: npm run qa:real
+      - name: Discover all Remotion compositions
+        run: |
+          npx remotion compositions src/remotion/index.ts | tee /tmp/remotion-v10.txt
+          COUNT=$(grep -oE 'CE-[A-Za-z-]+' /tmp/remotion-v10.txt | sort -u | wc -l)
+          echo "Detected Remotion compositions: $COUNT"
+          test "$COUNT" -eq 9
+      - name: Render smoke frames for all Production Masters
+        run: |
+          mkdir -p /tmp/remotion-v10
+          for ID in CE-RouteJourney CE-DataCascade CE-ProcessConnected CE-LaunchEditorial CE-DocumentaryEvidence CE-BeforeAfter CE-TimelineTerritory CE-TestimonialQuote CE-NoticeAlert; do
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/remotion-v10/$ID.png" --frame=30
+            test -s "/tmp/remotion-v10/$ID.png"
+          done
+          test "$(find /tmp/remotion-v10 -name '*.png' | wc -l)" -eq 9
+      - name: Prove Agua Bienestar 45 second runtime
+        run: |
+          npx remotion still src/remotion/index.ts CE-RouteJourney /tmp/ab-route-v10.png --frame=1200 --props=/tmp/ab-route-qa-props.json
+          test -s /tmp/ab-route-v10.png
+      - name: v1.0 release summary
+        run: |
+          node -e "const p=require('./package.json');const i=require('./src/registry/integration-scenarios.json');const h=require('./claude/handoff.compact.json');console.log('version:',p.version,'integration scenarios:',i.length,'handoff:',h.version)"
