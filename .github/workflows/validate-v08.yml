@@ -39,6 +39,15 @@ jobs:
           COUNT=$(grep -oE 'CE-[A-Za-z-]+' /tmp/remotion-v08.txt | sort -u | wc -l)
           echo "Detected Remotion compositions: $COUNT"
           test "$COUNT" -eq 9
+      - name: Render smoke frames for all production compositions
+        run: |
+          mkdir -p /tmp/remotion-smoke
+          for ID in CE-RouteJourney CE-DataCascade CE-ProcessConnected CE-LaunchEditorial CE-DocumentaryEvidence CE-BeforeAfter CE-TimelineTerritory CE-TestimonialQuote CE-NoticeAlert; do
+            echo "Rendering $ID"
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/remotion-smoke/$ID.png" --frame=30
+            test -s "/tmp/remotion-smoke/$ID.png"
+          done
+          echo "Rendered smoke frames: $(find /tmp/remotion-smoke -name '*.png' | wc -l)"
       - name: Production registry summary
         run: |
           node -e "const p=require('./src/registry/production-masters.json');const r=require('./src/registry/media-roles.json');const m=require('./src/registry/media-library.json');console.log('production masters:',p.length,'media roles:',r.length,'verified media:',m.length)"
