@@ -7,25 +7,33 @@ on:
       - 'validation/run-v11.txt'
       - 'validation/premium-plan-pass.json'
       - 'validation/premium-plan-fail.json'
+      - 'validation/agua-route-premium-v11.json'
       - '.github/workflows/validate-v11.yml'
       - 'package.json'
       - 'scripts/validate-v11.mjs'
+      - 'scripts/validate-premium-recipes.mjs'
       - 'scripts/generate-minimax-video.mjs'
       - 'scripts/audit-premium-production.mjs'
       - 'src/App.tsx'
       - 'src/styles.v11.css'
+      - 'src/styles.v11.curated.css'
       - 'src/components/PremiumVisualLab.tsx'
       - 'src/registry/creative-style-families.json'
+      - 'src/registry/premium-style-presets.json'
+      - 'src/registry/production-style-recipes.json'
       - 'src/registry/premium-motion-modules.json'
       - 'src/registry/premium-motion-implementations.json'
+      - 'src/registry/first-party-motion-assets.json'
       - 'src/registry/generative-video-providers.json'
       - 'src/registry/generative-scene-policies.json'
       - 'src/lib/creative-style-director.ts'
+      - 'src/lib/premium-production-planner.ts'
       - 'src/lib/generative-video.ts'
       - 'src/motion/**'
       - 'src/remotion/**'
       - 'claude/premium.compact.json'
       - 'claude/handoff.compact.json'
+      - 'claude/PREMIUM_ACCEPTANCE.md'
   workflow_dispatch:
 
 permissions:
@@ -57,14 +65,19 @@ jobs:
       - name: Validate v1.1 tooling syntax
         run: |
           node --check scripts/validate-v11.mjs
+          node --check scripts/validate-premium-recipes.mjs
           node --check scripts/ingest-motion-asset.mjs
           node --check scripts/generate-minimax-video.mjs
           node --check scripts/audit-premium-production.mjs
 
       - name: Check v1.1 compact handoff contract
         run: |
-          node -e "const h=require('./claude/handoff.compact.json');if(h.version!=='1.1'||h.inventory.premiumStyleFamilies!==12||h.inventory.premiumMotionModules!==39||h.inventory.premiumMotionExecutable!==39||h.rules.antiGenericAuditBeforePremiumExport!==true||h.rules.generativeEvidenceForbidden!==true)process.exit(1);console.log(h.inventory)"
-          node -e "const p=require('./claude/premium.compact.json');if(p.version!=='1.1'||p.motionLibrary.moduleCount!==39||p.motionLibrary.executableCount!==39||p.generativeVideo.providers.length<2||p.antiGeneric.passScore!==80)process.exit(1);console.log('premium handoff ok')"
+          node -e "const h=require('./claude/handoff.compact.json');if(h.version!=='1.1'||h.inventory.premiumStyleFamilies!==12||h.inventory.premiumStyleDirections!==36||h.inventory.premiumMotionModules!==39||h.inventory.premiumMotionExecutable!==39||h.inventory.firstPartyLottieQAAssets!==1||h.rules.antiGenericAuditBeforePremiumExport!==true||h.rules.generativeEvidenceForbidden!==true)process.exit(1);console.log(h.inventory)"
+          node -e "const p=require('./claude/premium.compact.json');if(p.version!=='1.1'||p.styleSystem.familyCount!==12||p.styleSystem.directionCount!==36||p.motionLibrary.moduleCount!==39||p.motionLibrary.executableCount!==39||p.generativeVideo.providers.length<2||p.antiGeneric.passScore!==80||p.lottie.firstPartyRuntimeQA!=='CE-QA-LottieRuntime')process.exit(1);console.log('premium handoff ok')"
+
+      - name: Check curated style and recipe counts
+        run: |
+          node -e "const a=require('./src/registry/visual-architectures.json');const p=require('./src/registry/premium-style-presets.json');const r=require('./src/registry/production-style-recipes.json');const dirs=p.reduce((n,x)=>n+x.directions.length,0);const beats=r.reduce((n,x)=>n+x.beats.length,0);if(a.length!==12||p.length!==12||dirs!==36||r.length!==9||beats!==54)process.exit(1);console.log({architectures:a.length,presets:p.length,directions:dirs,recipes:r.length,beats})"
 
       - name: Check exact premium implementation coverage
         run: |
@@ -72,6 +85,9 @@ jobs:
 
       - name: Premium anti-generic positive fixture
         run: node scripts/audit-premium-production.mjs validation/premium-plan-pass.json
+
+      - name: Premium Agua Bienestar route fixture
+        run: node scripts/audit-premium-production.mjs validation/agua-route-premium-v11.json
 
       - name: Premium anti-generic negative fixture must fail
         run: |
@@ -195,4 +211,4 @@ jobs:
 
       - name: v1.1 release summary
         run: |
-          node -e "const p=require('./package.json');const h=require('./claude/handoff.compact.json');const s=require('./src/registry/creative-style-families.json');const m=require('./src/registry/premium-motion-modules.json');const i=require('./src/registry/premium-motion-implementations.json');console.log('version:',p.version,'handoff:',h.version,'styles:',s.length,'premium modules:',m.length,'executable:',i.length,'production masters:',h.inventory.productionMasters,'qa compositions: 1')"
+          node -e "const p=require('./package.json');const h=require('./claude/handoff.compact.json');const presets=require('./src/registry/premium-style-presets.json');const recipes=require('./src/registry/production-style-recipes.json');const m=require('./src/registry/premium-motion-modules.json');const i=require('./src/registry/premium-motion-implementations.json');console.log('version:',p.version,'handoff:',h.version,'style directions:',presets.reduce((n,x)=>n+x.directions.length,0),'premium modules:',m.length,'executable:',i.length,'production recipes:',recipes.length,'beat plans:',recipes.reduce((n,x)=>n+x.beats.length,0),'production masters:',h.inventory.productionMasters,'qa compositions:',h.inventory.qaCompositions)"
