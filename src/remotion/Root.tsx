@@ -4,12 +4,12 @@ import { DataCascadeVertical } from './compositions/DataCascadeVertical'
 import { ProcessConnectedVertical } from './compositions/ProcessConnectedVertical'
 import { ProductionMasterVertical } from './compositions/ProductionMasterVertical'
 import { LottieRuntimeQA } from './compositions/LottieRuntimeQA'
-import {PremiumTemplateKitComposition,premiumTemplateKits,type PremiumKitProps} from './compositions/PremiumTemplateKit'
+import {PremiumDirectedKitComposition,premiumDirectedKits,type PremiumDirectedKitProps} from './compositions/PremiumDirectedKitComposition'
 
 const demoBrand={surface:'#ffffff',surfaceAlt:'#f4f7f8',ink:'#172126',muted:'#627078',primary:'#087fb6',secondary:'#d8f2fa',accent:'#8a2f53',line:'#d8e1e5'}
 const base={brand:demoBrand,title:'Título de producción',subtitle:'Contenido de demostración. Sustituir por información verificada.'}
 const durationMetadata=(fallback:number)=>({props}:{props:{durationSeconds?:number}})=>({durationInFrames:Math.round((props.durationSeconds??fallback)*30)})
-const kitDefaults=(productionMasterId:string,kitId:string,durationSeconds:number):PremiumKitProps=>{
+const kitDefaults=(productionMasterId:string,kitId:string,durationSeconds:number):PremiumDirectedKitProps=>{
   const common={brand:demoBrand,kitId,title:'Producción premium',subtitle:'Contenido de demostración. Sustituir por información verificada.',durationSeconds,footer:'PREVIEW · ASSETS OFICIALES DESDE DESIGN SYSTEM'}
   if(productionMasterId==='PM-ROUTE')return {...common,title:'Rutas semanales',kicker:'RUTAS PROGRAMADAS',groups:[{label:'LUNES',items:['Destino A','Destino B','Destino C']},{label:'MARTES',items:['Destino D','Destino E']},{label:'MIÉRCOLES',items:['Destino F','Destino G','Destino H']},{label:'JUEVES',items:['Destino I','Destino J']},{label:'SÁBADO',items:['Destino K','Destino L','Destino M']}],items:['Destino A','Destino B','Destino C']}
   if(productionMasterId==='PM-LAUNCH')return {...common,title:'Una idea que merece una entrada propia',kicker:'LANZAMIENTO',metrics:[{value:'01',label:'Beneficio principal'},{value:'02',label:'Dato verificable'},{value:'03',label:'Siguiente paso'}]}
@@ -33,5 +33,5 @@ export const RemotionRoot=()=> <>
   <Composition id="CE-TestimonialQuote" component={ProductionMasterVertical} width={1080} height={1920} fps={30} durationInFrames={900} calculateMetadata={durationMetadata(30)} defaultProps={{...base,variant:'testimonial' as const,kicker:'TESTIMONIO',quote:'Cita autorizada',attribution:'Identidad autorizada',durationSeconds:30}}/>
   <Composition id="CE-NoticeAlert" component={ProductionMasterVertical} width={1080} height={1920} fps={30} durationInFrames={600} calculateMetadata={durationMetadata(20)} defaultProps={{...base,variant:'alert' as const,kicker:'AVISO',label:'AVISO OPERATIVO',items:['Situación confirmada','Zona, acción y siguiente actualización verificadas.'],durationSeconds:20}}/>
   <Composition id="CE-QA-LottieRuntime" component={LottieRuntimeQA} width={400} height={400} fps={30} durationInFrames={90}/>
-  {premiumTemplateKits.map(kit=>{const fallback=kit.durations.includes(30)?30:kit.durations[0];return <Composition key={kit.id} id={`CE-KIT-${kit.id.replace('PTK-','')}`} component={PremiumTemplateKitComposition} width={1080} height={1920} fps={30} durationInFrames={fallback*30} calculateMetadata={durationMetadata(fallback)} defaultProps={kitDefaults(kit.productionMasterId,kit.id,fallback)}/>})}
+  {premiumDirectedKits.map(kit=>{const fallback=kit.durations.includes(30)?30:kit.durations[0];return <Composition key={kit.id} id={`CE-KIT-${kit.id.replace('PTK-','')}`} component={PremiumDirectedKitComposition} width={1080} height={1920} fps={30} durationInFrames={fallback*30} calculateMetadata={durationMetadata(fallback)} defaultProps={kitDefaults(kit.productionMasterId,kit.id,fallback)}/>})}
 </>
