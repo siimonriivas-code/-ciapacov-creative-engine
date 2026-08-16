@@ -1,0 +1,137 @@
+name: Validate Creative Ecosystem v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/run-v11.txt'
+      - '.github/workflows/validate-v11.yml'
+      - 'package.json'
+      - 'scripts/validate-v11.mjs'
+      - 'src/registry/creative-style-families.json'
+      - 'src/registry/premium-motion-modules.json'
+      - 'src/registry/generative-video-providers.json'
+      - 'src/registry/generative-scene-policies.json'
+      - 'src/lib/creative-style-director.ts'
+      - 'src/lib/generative-video.ts'
+      - 'src/motion/premiumPrimitives.tsx'
+      - 'src/remotion/**'
+      - 'claude/premium.compact.json'
+      - 'claude/handoff.compact.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Sync v1.1 lockfile
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+
+      - name: Install exact dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Validate full ecosystem including premium layer
+        run: npm run validate:all
+
+      - name: Validate v1.1 tooling syntax
+        run: |
+          node --check scripts/validate-v11.mjs
+          node --check scripts/ingest-motion-asset.mjs
+
+      - name: Check v1.1 compact handoff contract
+        run: |
+          node -e "const h=require('./claude/handoff.compact.json');if(h.version!=='1.1'||h.inventory.premiumStyleFamilies!==12||h.inventory.premiumMotionModules!==39||h.rules.antiGenericAuditBeforePremiumExport!==true||h.rules.generativeEvidenceForbidden!==true)process.exit(1);console.log(h.inventory)"
+          node -e "const p=require('./claude/premium.compact.json');if(p.version!=='1.1'||p.motionLibrary.moduleCount!==39||p.generativeVideo.providers.length<2)process.exit(1);console.log('premium handoff ok')"
+
+      - name: TypeScript and Vite build
+        run: npm run build
+
+      - name: Run factual Agua Bienestar QA
+        run: npm run qa:real
+
+      - name: Discover all Remotion compositions
+        run: |
+          npx remotion compositions src/remotion/index.ts | tee /tmp/remotion-v11.txt
+          COUNT=$(grep -oE 'CE-[A-Za-z-]+' /tmp/remotion-v11.txt | sort -u | wc -l)
+          echo "Detected Remotion compositions: $COUNT"
+          test "$COUNT" -eq 9
+
+      - name: Smoke render all Production Masters
+        run: |
+          mkdir -p /tmp/remotion-v11
+          for ID in CE-RouteJourney CE-DataCascade CE-ProcessConnected CE-LaunchEditorial CE-DocumentaryEvidence CE-BeforeAfter CE-TimelineTerritory CE-TestimonialQuote CE-NoticeAlert; do
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/remotion-v11/$ID.png" --frame=30
+            test -s "/tmp/remotion-v11/$ID.png"
+          done
+          test "$(find /tmp/remotion-v11 -name '*.png' | wc -l)" -eq 9
+
+      - name: Build controlled 45s route props
+        run: |
+          cat > /tmp/ab-route-v11-props.json <<'JSON'
+          {
+            "brand": {
+              "surface":"#ffffff",
+              "surfaceAlt":"#f5f7f8",
+              "ink":"#1D1D1B",
+              "muted":"#68727a",
+              "primary":"#00AAED",
+              "secondary":"#B5F6FF",
+              "accent":"#89033A",
+              "line":"#dce5e8"
+            },
+            "title":"Rutas semanales",
+            "kicker":"RUTAS PROGRAMADAS",
+            "stops":["Benito Juárez","Palo Alto","Buenavista","Villa Flores"],
+            "groups":[
+              {"label":"LUNES","items":["Benito Juárez","Palo Alto","Buenavista","Villa Flores"]},
+              {"label":"MARTES Y VIERNES","items":["Mirador de la Cumbre I y II","Moctezuma","Paraíso","Jardines del Sol"]},
+              {"label":"MIÉRCOLES","items":["Del Valle","San Isidro","Lo de Villa"]},
+              {"label":"JUEVES","items":["Tierra y Libertad","Palo Alto","Buenavista","Villa Flores"]},
+              {"label":"SÁBADO","items":["Tierra y Libertad","El Moralete","De los Trabajadores","Patios del Ferrocarril","La Albarrada"]}
+            ],
+            "highlight":"Garrafón de 20 L · $10 a domicilio",
+            "footer":"Información: 312 311 9041",
+            "durationSeconds":45
+          }
+          JSON
+
+      - name: Premium Route Journey multi-frame smoke test
+        run: |
+          for FRAME in 30 330 690 1050 1320; do
+            npx remotion still src/remotion/index.ts CE-RouteJourney "/tmp/remotion-v11/route-$FRAME.png" --frame=$FRAME --props=/tmp/ab-route-v11-props.json
+            test -s "/tmp/remotion-v11/route-$FRAME.png"
+          done
+
+      - name: Verify Lottie runtime packages resolve
+        run: |
+          node -e "import('@remotion/lottie').then(()=>console.log('@remotion/lottie ok'))"
+          node -e "import('lottie-web').then(()=>console.log('lottie-web ok'))"
+
+      - name: Commit synchronized lockfile if changed
+        run: |
+          if ! git diff --quiet -- package-lock.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add package-lock.json
+            git commit -m 'chore: sync v1.1 premium dependencies lockfile'
+            git push
+          else
+            echo 'package-lock.json already synchronized'
+          fi
+
+      - name: v1.1 release summary
+        run: |
+          node -e "const p=require('./package.json');const h=require('./claude/handoff.compact.json');const s=require('./src/registry/creative-style-families.json');const m=require('./src/registry/premium-motion-modules.json');console.log('version:',p.version,'handoff:',h.version,'styles:',s.length,'premium modules:',m.length)"
