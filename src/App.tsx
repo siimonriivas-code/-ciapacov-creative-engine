@@ -14,7 +14,9 @@ import mediaLibraryRaw from './registry/media-library.json'
 import brandBridgesRaw from './registry/brand-bridges.json'
 import qaScenariosRaw from './registry/qa-scenarios.json'
 import styleFamiliesRaw from './registry/creative-style-families.json'
+import premiumStylePresetsRaw from './registry/premium-style-presets.json'
 import premiumMotionRaw from './registry/premium-motion-modules.json'
+import premiumMotionImplementationsRaw from './registry/premium-motion-implementations.json'
 import generativeProvidersRaw from './registry/generative-video-providers.json'
 import generativePolicyRaw from './registry/generative-scene-policies.json'
 import type { AssetRecord, BrandBridge, Campaign, Domain, MasterStoryboard, MasterVisualMap, MediaRecord, MediaRole, OperationalMaster, ProductionMaster, QAScenario, ReferenceSource, Template, VisualArchitecture } from './types'
@@ -60,7 +62,9 @@ const mediaLibrary=mediaLibraryRaw as MediaRecord[]
 const brandBridges=brandBridgesRaw as BrandBridge[]
 const qaScenarios=qaScenariosRaw as QAScenario[]
 const styleFamilies=styleFamiliesRaw
+const premiumStylePresets=premiumStylePresetsRaw
 const premiumMotions=premiumMotionRaw
+const premiumMotionImplementations=premiumMotionImplementationsRaw
 const generativeProviders=generativeProvidersRaw
 const generativePolicy=generativePolicyRaw
 const TYPES=[['all','Todo'],['carousel','Carruseles'],['reel','Reels'],['story','Stories'],['data','Datos'],['route','Rutas'],['presentation','Presentaciones']] as const
@@ -95,7 +99,7 @@ export default function App(){
       <button className={mode==='assets'?'active':''} onClick={()=>setMode('assets')}>Asset Vault <span>{assets.length}</span></button>
       <button className={mode==='references'?'active':''} onClick={()=>setMode('references')}>Reference Library <span>{references.length}</span></button>
     </nav>
-    {mode==='premium'?<PremiumVisualLab styles={styleFamilies} motions={premiumMotions} providers={generativeProviders} policy={generativePolicy}/>
+    {mode==='premium'?<PremiumVisualLab styles={styleFamilies} presets={premiumStylePresets} motions={premiumMotions} implementations={premiumMotionImplementations} providers={generativeProviders} policy={generativePolicy}/>
     :mode==='templates'?<>
       <section className="toolbar"><div><div className="filters">{TYPES.map(([v,l])=><button key={v} className={type===v?'active':''} onClick={()=>setType(v)}>{l}</button>)}</div><div className="filters filters--sub">{COLLECTIONS.map(([v,l])=><button key={v} className={collection===v?'active':''} onClick={()=>setCollection(v)}>{l}</button>)}</div></div><span>{filtered.length} resultados</span></section>
       <section className="grid">{filtered.map(t=><TemplateCard key={t.id} t={t} onOpen={setSelected} isFavorite={favorites.values.has(t.id)} onFavorite={favorites.toggle} isCompared={compare.some(x=>x.id===t.id)} onCompare={toggleCompare}/>)}</section>
@@ -109,6 +113,6 @@ export default function App(){
     :<section className="campaignView"><div className="campaignView__intro"><span className="kicker">REFERENCE LIBRARY</span><h2>Inspiración sin convertir el repo en un espejo de marketplaces.</h2><p>La referencia puede orientar; la ingestión requiere licencia, procedencia y control.</p></div><div className="referenceGrid">{references.map(r=><ReferenceCard key={r.id} item={r}/>)}</div></section>}
     <DetailPanel t={selected} onClose={()=>setSelected(null)}/>
     <CompareTray items={compare} onRemove={id=>setCompare(x=>x.filter(t=>t.id!==id))} onClear={()=>setCompare([])} onOpen={setSelected}/>
-    <footer><b>CIAPACOV Creative Ecosystem v1.1 · Premium Visual + Generative Motion</b><span>{templates.length} templates · {productionMasters.length} executable masters · {styleFamilies.length} style families · {premiumMotions.length} premium motion modules · {generativeProviders.length} generative provider profiles</span><span>Active Design System controls identity. Factual QA + anti-generic QA gate premium production.</span></footer>
+    <footer><b>CIAPACOV Creative Ecosystem v1.1 · Premium Visual + Generative Motion</b><span>{templates.length} templates · {productionMasters.length} executable masters · {premiumStylePresets.length*3} curated art directions · {premiumMotionImplementations.length}/{premiumMotions.length} executable premium motion · {generativeProviders.length} generative provider profiles</span><span>Active Design System controls identity. Factual QA + anti-generic QA gate premium production.</span></footer>
   </main>
 }
