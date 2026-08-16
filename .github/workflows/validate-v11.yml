@@ -8,6 +8,7 @@ on:
       - '.github/workflows/validate-v11.yml'
       - 'package.json'
       - 'scripts/validate-v11.mjs'
+      - 'scripts/generate-minimax-video.mjs'
       - 'src/registry/creative-style-families.json'
       - 'src/registry/premium-motion-modules.json'
       - 'src/registry/generative-video-providers.json'
@@ -50,6 +51,7 @@ jobs:
         run: |
           node --check scripts/validate-v11.mjs
           node --check scripts/ingest-motion-asset.mjs
+          node --check scripts/generate-minimax-video.mjs
 
       - name: Check v1.1 compact handoff contract
         run: |
@@ -120,14 +122,39 @@ jobs:
           node -e "import('@remotion/lottie').then(()=>console.log('@remotion/lottie ok'))"
           node -e "import('lottie-web').then(()=>console.log('lottie-web ok'))"
 
+      - name: Validate MiniMax executor in dry-run mode
+        run: |
+          cat > /tmp/minimax-concept.json <<'JSON'
+          {
+            "id":"QA-CONCEPT-001",
+            "semanticClass":"SCENE-CONCEPTUAL",
+            "purpose":"Abstract water transition",
+            "prompt":"Abstract translucent water ribbon crossing a neutral editorial field, elegant controlled motion, no text, no logos, no real location.",
+            "mode":"text-to-video",
+            "model":"MiniMax-Hailuo-2.3",
+            "durationSeconds":6,
+            "resolution":"1080P",
+            "cameraCommands":["Static shot"]
+          }
+          JSON
+          node scripts/generate-minimax-video.mjs /tmp/minimax-concept.json | tee /tmp/minimax-dry-run.txt
+          grep -q 'DRY RUN ONLY' /tmp/minimax-dry-run.txt
+
       - name: Commit synchronized lockfile if changed
         run: |
           if ! git diff --quiet -- package-lock.json; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add package-lock.json
-            git commit -m 'chore: sync v1.1 premium dependencies lockfile'
-            git push
+            git fetch origin main
+            git reset --hard origin/main
+            npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+            if ! git diff --quiet -- package-lock.json; then
+              git add package-lock.json
+              git commit -m 'chore: sync v1.1 premium dependencies lockfile'
+              git push origin HEAD:main
+            else
+              echo 'Latest main already has synchronized package-lock.json'
+            fi
           else
             echo 'package-lock.json already synchronized'
           fi
