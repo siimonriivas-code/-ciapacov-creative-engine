@@ -1,0 +1,26 @@
+{
+  "version":"1.1",
+  "purpose":"First-party deterministic transition grammar. Transitions must carry focus, material, path, depth or state between beats; never exist only as spectacle.",
+  "transitions":[
+    {"id":"PTR-LIQUID-WIPE","name":"Liquid Wipe","purpose":"material-handoff","signature":"soft organic edge crosses frame while preserving visual continuity","bestFor":["water","route","launch"],"compatibleStyles":["STYLE-LIQUID-LUMINOUS","STYLE-SPATIAL-DEPTH"],"avoid":["splash-effect","logo-deformation"]},
+    {"id":"PTR-REFRACTION-PASS","name":"Refraction Pass","purpose":"focus-handoff","signature":"translucent lens band passes across content and reveals next layer","bestFor":["route","data","premium-handoff"],"compatibleStyles":["STYLE-LIQUID-LUMINOUS","STYLE-QUIET-LUXURY"],"avoid":["heavy-blur","illegible-text"]},
+    {"id":"PTR-EDITORIAL-RULE","name":"Editorial Rule Carry","purpose":"baseline-continuity","signature":"one rule extends, becomes the next scene baseline and releases focus","bestFor":["launch","alert","testimonial","data"],"compatibleStyles":["STYLE-EDITORIAL-CONTRAST","STYLE-QUIET-LUXURY"],"avoid":["random-line-decoration"]},
+    {"id":"PTR-TYPE-MASK","name":"Type Mask Handoff","purpose":"typographic-continuity","signature":"large type/block mask hands frame ownership to the next beat","bestFor":["launch","data","statement"],"compatibleStyles":["STYLE-KINETIC-TYPE","STYLE-EDITORIAL-CONTRAST"],"avoid":["generated-logo-letters","unreadable-fast-type"]},
+    {"id":"PTR-PAPER-SLIDE","name":"Paper Plane Slide","purpose":"material-continuity","signature":"tactile plane passes foreground and exposes next layer beneath","bestFor":["timeline","community","documentary"],"compatibleStyles":["STYLE-TACTILE-PAPER","STYLE-DOCUMENTARY-COLLAGE"],"avoid":["scrapbook-clutter"]},
+    {"id":"PTR-DOC-CROP","name":"Documentary Crop Match","purpose":"evidence-continuity","signature":"verified-media aperture changes crop while captions remain deterministic","bestFor":["documentary","testimonial","before-after"],"compatibleStyles":["STYLE-DOCUMENTARY-COLLAGE","STYLE-CINEMATIC-MASKS"],"avoid":["synthetic-evidence","random-zoom"]},
+    {"id":"PTR-CINEMA-MATTE","name":"Cinematic Matte Gate","purpose":"aperture-handoff","signature":"controlled top/bottom matte closes then opens into the next verified/conceptual frame","bestFor":["documentary","before-after","hero"],"compatibleStyles":["STYLE-CINEMATIC-MASKS","STYLE-QUIET-LUXURY"],"avoid":["flash-frame","cheap-lens-flare"]},
+    {"id":"PTR-DEPTH-PASS","name":"Depth Plane Pass","purpose":"spatial-continuity","signature":"foreground plane occludes frame while camera-space relationship carries forward","bestFor":["route","process","territory"],"compatibleStyles":["STYLE-SPATIAL-DEPTH","STYLE-CINEMATIC-MASKS"],"avoid":["constant-zoom","fake-3d-city"]},
+    {"id":"PTR-SCAN-LINE","name":"Technical Scan Line","purpose":"state-handoff","signature":"scan plane validates/reveals state from one side to the other","bestFor":["process","before-after","alert","route"],"compatibleStyles":["STYLE-TECHNICAL-GRID"],"avoid":["sci-fi-hud","fake-measurements"]},
+    {"id":"PTR-MOSAIC-REFLOW","name":"Mosaic Reflow","purpose":"modular-recomposition","signature":"asymmetric cells reorganize hierarchy and expose the next beat","bestFor":["process","campaign","multi-topic"],"compatibleStyles":["STYLE-MODULAR-MOSAIC","STYLE-PLAYFUL-GEOMETRY"],"avoid":["equal-card-grid","random-cell-color"]},
+    {"id":"PTR-DATA-ORBIT","name":"Data Orbit Carry","purpose":"metric-focus-handoff","signature":"focus marker travels along an orbital/system path into the next metric","bestFor":["data","results"],"compatibleStyles":["STYLE-DATA-THEATER","STYLE-TECHNICAL-GRID"],"avoid":["decorative-orbit-without-data"]},
+    {"id":"PTR-QUIET-FADE","name":"Quiet Hold Fade","purpose":"breathing-handoff","signature":"long controlled opacity/space handoff with one persistent anchor","bestFor":["testimonial","documentary","alert","close"],"compatibleStyles":["STYLE-QUIET-LUXURY","STYLE-EDITORIAL-CONTRAST"],"avoid":["generic-crossfade-without-anchor"]}
+  ],
+  "rules":[
+    "A transition must explain continuity, focus, state, depth, material or hierarchy.",
+    "Do not use more unique transition grammars than the story needs; coherence beats novelty.",
+    "No bounce, spring or elastic motion for Agua Bienestar.",
+    "Official logos and waves are never distorted to create a transition.",
+    "Factual text must remain readable and deterministic before/after the transition.",
+    "A generative transition is optional; deterministic first-party transitions remain the default."
+  ]
+}
