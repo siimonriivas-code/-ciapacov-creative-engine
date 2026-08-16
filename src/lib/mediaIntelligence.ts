@@ -9,6 +9,8 @@ export function scoreMediaForRole(role:MediaRole,media:MediaRecord,domain?:strin
   if(role.realOnly&&media.status==='demo')return {role,media:null,score:0,state:'missing',reasons:['el rol exige evidencia real']}
   if(!role.allowDemo&&media.status==='demo')return {role,media:null,score:0,state:'missing',reasons:['demo no permitido en producción']}
   if(!role.kinds.includes(media.kind))return {role,media:null,score:0,state:'missing',reasons:['tipo incompatible']}
+  if(role.id==='MEDIA-ROLE-TESTIMONIAL'&&media.consent!=='verified')return {role,media:null,score:0,state:'missing',reasons:['testimonio sin consentimiento verificado']}
+  if(role.id==='MEDIA-ROLE-VOICE'&&media.consent==='unknown')return {role,media:null,score:0,state:'missing',reasons:['estado de consentimiento de voz sin resolver']}
   const required=overlap(role.requiredTags,media.tags)
   if(required<role.requiredTags.length)return {role,media:null,score:0,state:'missing',reasons:['faltan tags obligatorios']}
   let score=50
@@ -16,6 +18,7 @@ export function scoreMediaForRole(role:MediaRole,media:MediaRecord,domain?:strin
   if(role.orientation==='any'||media.orientation==='any'||role.orientation===media.orientation){score+=12;reasons.push('orientación compatible')}
   const pref=overlap(role.preferredTags,media.tags);score+=Math.min(18,pref*6);if(pref)reasons.push(`${pref} preferencia(s) coinciden`)
   if(domain&&media.domains.includes(domain)){score+=12;reasons.push('dominio coincide')}
+  if(media.consent==='verified'){score+=4;reasons.push('consentimiento verificado')}
   if(media.status==='approved'){score+=8;reasons.push('media aprobado')}
   const state=media.status==='approved'?'ready':'review'
   return {role,media,score:Math.min(100,score),state,reasons}
