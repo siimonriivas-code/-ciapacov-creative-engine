@@ -1,0 +1,81 @@
+name: Validate Creative Ecosystem v0.5
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validation/run-v05.txt'
+      - '.github/workflows/validate-v05.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        id: install
+        continue-on-error: true
+        run: npm install --no-audit --no-fund
+
+      - name: Registry validation
+        id: registries
+        if: always()
+        continue-on-error: true
+        run: npm run validate:all
+
+      - name: TypeScript and Vite build
+        id: build
+        if: always()
+        continue-on-error: true
+        run: npm run build
+
+      - name: Remotion composition check
+        id: remotion
+        if: always()
+        continue-on-error: true
+        run: npx remotion compositions src/remotion/index.ts
+
+      - name: Write validation report
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p validation
+          cat > validation/BUILD_STATUS.md <<EOF
+          # CIAPACOV Creative Ecosystem v0.5 — Build Validation
+
+          Validation executed automatically on GitHub-hosted Ubuntu with Node 22.
+
+          | Check | Outcome |
+          |---|---|
+          | npm install | ${{ steps.install.outcome }} |
+          | registry/ecosystem validators | ${{ steps.registries.outcome }} |
+          | TypeScript + Vite build | ${{ steps.build.outcome }} |
+          | Remotion compositions | ${{ steps.remotion.outcome }} |
+
+          Source commit triggering this run: `${GITHUB_SHA}`
+          EOF
+
+      - name: Commit report
+        if: always()
+        shell: bash
+        run: |
+          git config user.name 'ciapacov-creative-engine-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add validation/BUILD_STATUS.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Validate CIAPACOV Creative Ecosystem v0.5 build'
+          git push origin main
