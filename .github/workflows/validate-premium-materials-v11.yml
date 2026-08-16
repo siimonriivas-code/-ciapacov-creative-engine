@@ -1,0 +1,26 @@
+name: Validate Premium Material Systems v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/registry/premium-material-systems.json'
+      - 'src/remotion/components/PremiumMaterials.tsx'
+      - 'scripts/validate-premium-materials.mjs'
+      - '.github/workflows/validate-premium-materials-v11.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-materials:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Validate material registry and executable variants
+        run: node scripts/validate-premium-materials.mjs
+      - name: TypeScript and production build
+        run: npm run build
