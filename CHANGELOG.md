@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.9.0 — Real Production QA & Brand Bridge
+- added Brand Bridge registry with generic external-DS adapter and Agua Bienestar v1 adapter
+- Brand Bridges map external CSS variables with demo-only fallbacks while preserving active Design System authority
+- added safe-area, motion and wording governance without bundling official logos or font binaries
+- added first reproducible real-production QA scenario: Agua Bienestar weekly routes, Reel 45 s
+- locked expected Operational Master, Production Master, Remotion composition, preferred architecture, duration, factual values, route schedule and language rules
+- added v0.9 QA validator and deterministic `npm run qa:real` runner
+- added `claude/qa.compact.json` for low-context Claude loading
+- upgraded Production Planner with automatic Brand Bridge resolution, QA scenario detection and QA score display
+- added Brand + QA gallery view
+- upgraded production prompts to include Brand Bridge and applicable QA gates
+- made Remotion Production Masters duration-aware using input props + `calculateMetadata`
+- added GitHub validation that renders a frame beyond 30 seconds from the 45-second Agua Bienestar QA fixture
+- retained strict factual-media policy: missing official/real media remains missing
+
 ## 0.8.0 — Production Masters & Media Intelligence
 - added 9 executable Production Masters covering all 20 Operational Masters exactly once
 - expanded Remotion runtime from 3 to 9 registered compositions
