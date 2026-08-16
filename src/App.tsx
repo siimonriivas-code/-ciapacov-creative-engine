@@ -13,6 +13,10 @@ import mediaRolesRaw from './registry/media-roles.json'
 import mediaLibraryRaw from './registry/media-library.json'
 import brandBridgesRaw from './registry/brand-bridges.json'
 import qaScenariosRaw from './registry/qa-scenarios.json'
+import styleFamiliesRaw from './registry/creative-style-families.json'
+import premiumMotionRaw from './registry/premium-motion-modules.json'
+import generativeProvidersRaw from './registry/generative-video-providers.json'
+import generativePolicyRaw from './registry/generative-scene-policies.json'
 import type { AssetRecord, BrandBridge, Campaign, Domain, MasterStoryboard, MasterVisualMap, MediaRecord, MediaRole, OperationalMaster, ProductionMaster, QAScenario, ReferenceSource, Template, VisualArchitecture } from './types'
 import { demoBrand, brandToCssVars } from './brand/contract'
 import { matches } from './lib/search'
@@ -31,6 +35,7 @@ import { VisualLibrary } from './components/VisualLibrary'
 import { ProductionMasterLibrary } from './components/ProductionMasterLibrary'
 import { MediaIntelligencePanel } from './components/MediaIntelligencePanel'
 import { BrandQAPanel } from './components/BrandQAPanel'
+import { PremiumVisualLab } from './components/PremiumVisualLab'
 import { useLocalSet } from './hooks'
 import './styles.css'
 import './styles.v05.css'
@@ -38,6 +43,7 @@ import './styles.v06.css'
 import './styles.v07.css'
 import './styles.v08.css'
 import './styles.v09.css'
+import './styles.v11.css'
 
 const templates=templatesRaw as Template[]
 const campaigns=campaignsRaw as Campaign[]
@@ -53,15 +59,19 @@ const mediaRoles=mediaRolesRaw as MediaRole[]
 const mediaLibrary=mediaLibraryRaw as MediaRecord[]
 const brandBridges=brandBridgesRaw as BrandBridge[]
 const qaScenarios=qaScenariosRaw as QAScenario[]
+const styleFamilies=styleFamiliesRaw
+const premiumMotions=premiumMotionRaw
+const generativeProviders=generativeProvidersRaw
+const generativePolicy=generativePolicyRaw
 const TYPES=[['all','Todo'],['carousel','Carruseles'],['reel','Reels'],['story','Stories'],['data','Datos'],['route','Rutas'],['presentation','Presentaciones']] as const
 const COLLECTIONS=[['all','Todos'],['premium','Premium'],['favorites','★ Favoritos']] as const
 
-type Mode='templates'|'visuals'|'production'|'media'|'brandqa'|'campaigns'|'masters'|'assets'|'references'
+type Mode='premium'|'templates'|'visuals'|'production'|'media'|'brandqa'|'campaigns'|'masters'|'assets'|'references'
 export default function App(){
   const[q,setQ]=useState('')
   const[type,setType]=useState('all')
   const[collection,setCollection]=useState('all')
-  const[mode,setMode]=useState<Mode>('templates')
+  const[mode,setMode]=useState<Mode>('premium')
   const[selected,setSelected]=useState<Template|null>(null)
   const[compare,setCompare]=useState<Template[]>([])
   const favorites=useLocalSet('ce-favorites-v1')
@@ -74,6 +84,7 @@ export default function App(){
     <Director templates={templates} campaigns={campaigns} query={q} setQuery={setQ} onOpen={setSelected} onCampaignMode={()=>setMode('campaigns')}/>
     <BriefWorkbench domains={domains} masters={masters} storyboards={storyboards} templates={templates} assets={assets} visualMaps={visualMaps} visualArchitectures={visualArchitectures} productionMasters={productionMasters} mediaRoles={mediaRoles} mediaLibrary={mediaLibrary} brandBridges={brandBridges} qaScenarios={qaScenarios} onOpen={setSelected}/>
     <nav className="modeTabs">
+      <button className={mode==='premium'?'active':''} onClick={()=>setMode('premium')}>Premium v1.1 <span>{premiumMotions.length}</span></button>
       <button className={mode==='templates'?'active':''} onClick={()=>setMode('templates')}>Plantillas <span>{templates.length}</span></button>
       <button className={mode==='visuals'?'active':''} onClick={()=>setMode('visuals')}>Direcciones visuales <span>{visualMaps.length*3}</span></button>
       <button className={mode==='production'?'active':''} onClick={()=>setMode('production')}>Production Masters <span>{productionMasters.length}</span></button>
@@ -84,7 +95,8 @@ export default function App(){
       <button className={mode==='assets'?'active':''} onClick={()=>setMode('assets')}>Asset Vault <span>{assets.length}</span></button>
       <button className={mode==='references'?'active':''} onClick={()=>setMode('references')}>Reference Library <span>{references.length}</span></button>
     </nav>
-    {mode==='templates'?<>
+    {mode==='premium'?<PremiumVisualLab styles={styleFamilies} motions={premiumMotions} providers={generativeProviders} policy={generativePolicy}/>
+    :mode==='templates'?<>
       <section className="toolbar"><div><div className="filters">{TYPES.map(([v,l])=><button key={v} className={type===v?'active':''} onClick={()=>setType(v)}>{l}</button>)}</div><div className="filters filters--sub">{COLLECTIONS.map(([v,l])=><button key={v} className={collection===v?'active':''} onClick={()=>setCollection(v)}>{l}</button>)}</div></div><span>{filtered.length} resultados</span></section>
       <section className="grid">{filtered.map(t=><TemplateCard key={t.id} t={t} onOpen={setSelected} isFavorite={favorites.values.has(t.id)} onFavorite={favorites.toggle} isCompared={compare.some(x=>x.id===t.id)} onCompare={toggleCompare}/>)}</section>
     </>:mode==='visuals'?<VisualLibrary masters={masters} maps={visualMaps} architectures={visualArchitectures} query={q}/>
@@ -97,6 +109,6 @@ export default function App(){
     :<section className="campaignView"><div className="campaignView__intro"><span className="kicker">REFERENCE LIBRARY</span><h2>Inspiración sin convertir el repo en un espejo de marketplaces.</h2><p>La referencia puede orientar; la ingestión requiere licencia, procedencia y control.</p></div><div className="referenceGrid">{references.map(r=><ReferenceCard key={r.id} item={r}/>)}</div></section>}
     <DetailPanel t={selected} onClose={()=>setSelected(null)}/>
     <CompareTray items={compare} onRemove={id=>setCompare(x=>x.filter(t=>t.id!==id))} onClear={()=>setCompare([])} onOpen={setSelected}/>
-    <footer><b>CIAPACOV Creative Ecosystem v1.0 · Production Handoff</b><span>{templates.length} templates · {productionMasters.length} executable masters · {brandBridges.length} brand bridges · {qaScenarios.length} factual QA scenarios · 6 integration scenarios · {mediaRoles.length} media roles</span><span>Active Design System controls identity. QA locks factual language and routing before production.</span></footer>
+    <footer><b>CIAPACOV Creative Ecosystem v1.1 · Premium Visual + Generative Motion</b><span>{templates.length} templates · {productionMasters.length} executable masters · {styleFamilies.length} style families · {premiumMotions.length} premium motion modules · {generativeProviders.length} generative provider profiles</span><span>Active Design System controls identity. Factual QA + anti-generic QA gate premium production.</span></footer>
   </main>
 }
