@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0 — Production Handoff & Integration Acceptance
+- added `claude/START_HERE.md` as the canonical low-context entrypoint for Claude Design / Claude Code
+- added `claude/handoff.compact.json` with loading order, inventory, Brand Bridges and integration routes
+- added `docs/CLAUDE_DESIGN_INTEGRATION.md` with final responsibility split and handoff protocol
+- added six cross-domain integration scenarios covering Agua Bienestar routes, well rehabilitation, drainage/collectors, contingency notices, results/data and authorized testimony
+- added v1.0 validator ensuring every integration scenario resolves to an existing domain, Operational Master, Production Master, Remotion composition, primary visual architecture and supported duration
+- linked the Agua Bienestar integration case to its reproducible factual-lock QA fixture
+- promoted package and agent contract to v1.0
+- retained strict low-context behavior: do not scan the repository for recommendations
+- retained strict factual-media policy and active Design System authority
+
 ## 0.9.0 — Real Production QA & Brand Bridge
 - added Brand Bridge registry with generic external-DS adapter and Agua Bienestar v1 adapter
 - Brand Bridges map external CSS variables with demo-only fallbacks while preserving active Design System authority
