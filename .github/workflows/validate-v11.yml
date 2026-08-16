@@ -46,6 +46,7 @@ jobs:
         run: |
           node --check scripts/audit-creative-benchmark.mjs
           node --check scripts/build-generative-shot-plan.mjs
+          node --check scripts/select-generative-provider.mjs
           node --check scripts/generate-minimax-video.mjs
           node --check scripts/audit-premium-production.mjs
 
@@ -66,14 +67,17 @@ jobs:
           const kits=require('./src/registry/premium-template-kits.json')
           const lotties=require('./src/registry/first-party-lottie-presets.json')
           const shots=require('./src/registry/generative-shot-archetypes.json')
+          const providers=require('./src/registry/generative-provider-catalog.json')
           const benchmark=require('./src/registry/creative-benchmark-gates.json')
           const dna=require('./src/registry/reference-analysis-dimensions.json')
           const dirCount=directions.reduce((n,x)=>n+x.directions.length,0)
-          if(styles.length!==12||dirCount!==36||motion.length!==39||implementations.length!==39||materials.length!==18||kits.length!==27||lotties.length!==18||shots.shots.length!==18||benchmark.passScore!==82||dna.dimensions.length!==12)process.exit(1)
+          if(styles.length!==12||dirCount!==36||motion.length!==39||implementations.length!==39||materials.length!==18||kits.length!==27||lotties.length!==18||shots.shots.length!==18||providers.providers.length!==10||benchmark.passScore!==82||dna.dimensions.length!==12)process.exit(1)
           const masters=new Map()
           for(const kit of kits)masters.set(kit.productionMasterId,(masters.get(kit.productionMasterId)||0)+1)
           if(masters.size!==9||[...masters.values()].some(v=>v!==3))process.exit(1)
-          console.log({styles:styles.length,directions:dirCount,motion:motion.length,implementations:implementations.length,materials:materials.length,kits:kits.length,lotties:lotties.length,generativeShots:shots.shots.length,referenceDnaDimensions:dna.dimensions.length,benchmarkPassScore:benchmark.passScore,masters:[...masters.entries()]})
+          const executableProviders=providers.providers.filter(p=>p.executionStatus==='integrated-live'||p.executionStatus==='integrated-dry-run')
+          if(executableProviders.length!==1||executableProviders[0].provider!=='MiniMax')process.exit(1)
+          console.log({styles:styles.length,directions:dirCount,motion:motion.length,implementations:implementations.length,materials:materials.length,kits:kits.length,lotties:lotties.length,generativeShots:shots.shots.length,providerProfiles:providers.providers.length,integratedProviderProfiles:executableProviders.length,referenceDnaDimensions:dna.dimensions.length,benchmarkPassScore:benchmark.passScore,masters:[...masters.entries()]})
           NODE
 
       - name: Anti-generic and factual safety gates
@@ -101,6 +105,19 @@ jobs:
         run: |
           node scripts/build-generative-shot-plan.mjs GENSHOT-WATER-RIBBON /tmp/genshot.json --mode=text-to-video --duration=6 --resolution=1080P
           node -e "const p=require('/tmp/genshot.json');if(p.archetypeId!=='GENSHOT-WATER-RIBBON'||p.semanticClass!=='SCENE-CONCEPTUAL'||p.deterministicOverlayContract.facts!==true)process.exit(1);console.log('generative shot plan ok')"
+
+      - name: Validate capability-aware provider routing
+        run: |
+          node scripts/select-generative-provider.mjs validation/generative-provider-route-v11.json | tee /tmp/provider-route.json
+          node - <<'NODE'
+          const fs=require('fs')
+          const x=JSON.parse(fs.readFileSync('/tmp/provider-route.json','utf8'))
+          if(!x.recommendations?.length)process.exit(1)
+          if(x.recommendations[0].provider!=='MiniMax')process.exit(1)
+          if(x.recommendations[0].executionStatus!=='integrated-dry-run')process.exit(1)
+          if(x.recommendations.some(r=>r.executionStatus==='adapter-candidate'&&r.executionAllowed===true))process.exit(1)
+          console.log('provider routing contract ok')
+          NODE
 
       - name: Discover base and premium Remotion compositions
         run: |
@@ -163,4 +180,4 @@ jobs:
       - name: v1.1 premium release summary
         run: |
           echo 'Creative Ecosystem v1.1 validated'
-          echo '12 style families · 36 directions · 39 executable motion modules · 18 material systems · 18 first-party Lotties · 27 executable premium template kits · 18 governed generative shot archetypes · 12 reference-DNA dimensions · creative benchmark >=82 · 9 Production Masters'
+          echo '12 style families · 36 directions · 39 executable motion modules · 18 material systems · 18 first-party Lotties · 27 executable premium template kits · 18 governed generative shot archetypes · 10 provider capability profiles across 6 provider families · 12 reference-DNA dimensions · creative benchmark >=82 · 9 Production Masters'
