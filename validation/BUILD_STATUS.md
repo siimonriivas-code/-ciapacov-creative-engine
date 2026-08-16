@@ -6,9 +6,9 @@ Validation executed automatically on GitHub-hosted Ubuntu with Node 22.
 |---|---|
 | npm install | success |
 | registry/ecosystem validators | failure |
-| TypeScript + Vite build | failure |
+| TypeScript + Vite build | success |
 | Remotion compositions | success |
 
-Source commit triggering this run: be712ccbbca823f164b71ab34c355ff59911a0ce
+Source commit triggering this run: adf300e9a9ac91fc42e5d2a8b4fed4dba1547189
 
 Detailed logs are stored in `validation/logs/`.

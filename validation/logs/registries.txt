@@ -6,22 +6,70 @@
 > ciapacov-creative-engine@0.5.0 validate
 > node scripts/validate-registry.mjs
 
-node:fs:560
-  return binding.open(
-                 ^
-
-Error: ENOENT: no such file or directory, open '/home/runner/work/-ciapacov-creative-engine/-ciapacov-creative-engine/src/registry/templates.json'
-    at Object.openSync (node:fs:560:18)
-    at Object.readFileSync (node:fs:444:35)
-    at load (file:///home/runner/work/-ciapacov-creative-engine/-ciapacov-creative-engine/scripts/validate-registry.mjs:3:31)
-    at file:///home/runner/work/-ciapacov-creative-engine/-ciapacov-creative-engine/scripts/validate-registry.mjs:5:6
-    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-  errno: -2,
-  code: 'ENOENT',
-  syscall: 'open',
-  path: '/home/runner/work/-ciapacov-creative-engine/-ciapacov-creative-engine/src/registry/templates.json'
-}
-
-Node.js v22.23.2
+duplicate template CAR-015
+duplicate template CAR-016
+duplicate template CAR-017
+duplicate template CAR-018
+duplicate template CAR-019
+duplicate template CAR-020
+duplicate template CAR-021
+duplicate template CAR-022
+duplicate template REEL-012
+duplicate template REEL-013
+duplicate template REEL-014
+duplicate template REEL-015
+duplicate template REEL-016
+duplicate template REEL-017
+duplicate template REEL-018
+duplicate template REEL-019
+duplicate template REEL-020
+duplicate template STO-009
+duplicate template STO-010
+duplicate template STO-011
+duplicate template STO-012
+duplicate template DAT-007
+duplicate template DAT-008
+duplicate template DAT-009
+duplicate template DAT-010
+duplicate template RTE-006
+duplicate template RTE-007
+duplicate template RTE-008
+duplicate template PRE-007
+duplicate template PRE-008
+CAR-003: unknown recipe hero-stat
+CAR-005: unknown recipe step-explainer
+CAR-007: unknown recipe photo-statement
+CAR-009: unknown recipe qa-stack
+CAR-012: unknown recipe close-institutional
+CAR-013: unknown recipe typographic-manifesto
+REEL-002: unknown recipe reel-kinetic-data
+REEL-005: unknown recipe reel-transform
+REEL-006: unknown recipe reel-program-story
+REEL-007: unknown recipe reel-route-calendar
+REEL-008: unknown recipe reel-quote-led
+REEL-009: unknown recipe reel-network
+REEL-010: unknown recipe reel-extended
+REEL-011: unknown recipe reel-kinetic-manifesto
+STO-001: unknown recipe story-announcement
+STO-002: unknown recipe story-data
+STO-003: unknown recipe story-route
+STO-004: unknown recipe story-photo
+STO-005: unknown recipe story-cta
+STO-006: unknown recipe story-comparison
+STO-007: unknown recipe story-steps
+STO-008: unknown recipe story-notice
+DAT-001: unknown recipe data-hero
+DAT-002: unknown recipe data-comparison
+DAT-003: unknown recipe data-coverage
+DAT-004: unknown recipe data-price
+DAT-005: unknown recipe data-results
+DAT-006: unknown recipe data-evidence
+RTE-001: unknown recipe route-single-day
+RTE-002: unknown recipe route-week
+RTE-004: unknown recipe route-notice
+PRE-001: unknown recipe presentation-cover
+PRE-002: unknown recipe presentation-section
+PRE-003: unknown recipe presentation-data
+PRE-004: unknown recipe presentation-photo
+PRE-005: unknown recipe presentation-comparison
+PRE-006: unknown recipe presentation-close
