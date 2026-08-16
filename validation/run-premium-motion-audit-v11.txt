@@ -1,3 +1,4 @@
 CIAPACOV Creative Ecosystem v1.1 premium temporal motion audit
-2026-08-16T17:42:00-06:00
+2026-08-16T17:49:00-06:00
 Requirement: all 27 executable premium kit compositions must show visible frame-to-frame change between representative temporal samples.
+Purposeful signatures added for editorial, quiet, documentary, cinematic and data-theater families; no decorative motion-only bypass accepted.
