@@ -28,6 +28,7 @@
     "ingest:asset": "node scripts/ingest-asset.mjs",
     "ingest:media": "node scripts/ingest-media.mjs",
     "ingest:motion": "node scripts/ingest-motion-asset.mjs",
+    "generate:minimax": "node scripts/generate-minimax-video.mjs",
     "remotion:studio": "remotion studio src/remotion/index.ts --no-open",
     "remotion:render:route": "remotion render src/remotion/index.ts CE-RouteJourney out/route-journey.mp4",
     "remotion:render:documentary": "remotion render src/remotion/index.ts CE-DocumentaryEvidence out/documentary-evidence.mp4",
