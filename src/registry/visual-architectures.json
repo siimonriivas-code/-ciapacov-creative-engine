@@ -1,0 +1,321 @@
+[
+  {
+    "id": "VIS-EDITORIAL-SPLIT",
+    "name": "Editorial Split",
+    "family": "editorial",
+    "density": "medium",
+    "motion": "low",
+    "formats": [
+      "carousel",
+      "reel",
+      "story",
+      "presentation",
+      "data"
+    ],
+    "bestFor": [
+      "launch",
+      "institutional",
+      "culture",
+      "results"
+    ],
+    "signature": "Titular dominante + bloque contextual + ancla visual lateral",
+    "requires": [],
+    "avoid": [
+      "ornamental-overload"
+    ],
+    "description": "Composición editorial sobria con jerarquía tipográfica fuerte y dos zonas de lectura."
+  },
+  {
+    "id": "VIS-DOCUMENTARY-HERO",
+    "name": "Documentary Hero",
+    "family": "photo",
+    "density": "medium",
+    "motion": "medium",
+    "formats": [
+      "carousel",
+      "reel",
+      "story",
+      "presentation"
+    ],
+    "bestFor": [
+      "obra",
+      "brigada",
+      "testimonial",
+      "environment"
+    ],
+    "signature": "Evidencia real protagonista + caption técnico + dato secundario",
+    "requires": [
+      "real-photo-slot"
+    ],
+    "avoid": [
+      "fake-photo"
+    ],
+    "description": "Prioriza fotografía o video real con tratamiento documental y apoyo de datos."
+  },
+  {
+    "id": "VIS-ROUTE-JOURNEY",
+    "name": "Route Journey",
+    "family": "route",
+    "density": "medium",
+    "motion": "high",
+    "formats": [
+      "reel",
+      "story",
+      "route",
+      "carousel"
+    ],
+    "bestFor": [
+      "routes",
+      "service",
+      "territory"
+    ],
+    "signature": "Trayectoria continua + vehículo/objeto + nodos de destino",
+    "requires": [
+      "route-path",
+      "location-node"
+    ],
+    "avoid": [
+      "floating-object"
+    ],
+    "description": "Narrativa territorial basada en recorrido continuo y llegadas legibles."
+  },
+  {
+    "id": "VIS-DATA-CASCADE",
+    "name": "Data Cascade",
+    "family": "data",
+    "density": "medium",
+    "motion": "high",
+    "formats": [
+      "reel",
+      "carousel",
+      "data",
+      "presentation",
+      "story"
+    ],
+    "bestFor": [
+      "results",
+      "investment",
+      "coverage",
+      "price"
+    ],
+    "signature": "Cifra hero + métricas escalonadas + contexto final",
+    "requires": [
+      "metric-bars"
+    ],
+    "avoid": [
+      "dashboard-clutter"
+    ],
+    "description": "Convierte cifras en una secuencia visual clara, no en un tablero saturado."
+  },
+  {
+    "id": "VIS-TIMELINE-FIELD",
+    "name": "Timeline Field",
+    "family": "timeline",
+    "density": "high",
+    "motion": "medium",
+    "formats": [
+      "reel",
+      "carousel",
+      "presentation",
+      "data"
+    ],
+    "bestFor": [
+      "infrastructure",
+      "history",
+      "extraordinary-work"
+    ],
+    "signature": "Línea temporal + hitos + evidencia asociada",
+    "requires": [
+      "timeline-node"
+    ],
+    "avoid": [
+      "microtext"
+    ],
+    "description": "Organiza procesos, etapas o evolución histórica con continuidad temporal."
+  },
+  {
+    "id": "VIS-BEFORE-AFTER",
+    "name": "Before / After Evidence",
+    "family": "comparison",
+    "density": "medium",
+    "motion": "medium",
+    "formats": [
+      "carousel",
+      "reel",
+      "story",
+      "data",
+      "presentation"
+    ],
+    "bestFor": [
+      "rehabilitation",
+      "replacement",
+      "results"
+    ],
+    "signature": "Dos estados comparables + delta protagonista + evidencia",
+    "requires": [
+      "comparison-arrow"
+    ],
+    "avoid": [
+      "unmatched-evidence"
+    ],
+    "description": "Comparación directa y verificable entre situación inicial y resultado."
+  },
+  {
+    "id": "VIS-NETWORK-PROCESS",
+    "name": "Network Process",
+    "family": "system",
+    "density": "medium",
+    "motion": "medium",
+    "formats": [
+      "carousel",
+      "reel",
+      "story",
+      "presentation"
+    ],
+    "bestFor": [
+      "how-it-works",
+      "drainage",
+      "systems"
+    ],
+    "signature": "Nodos conectados + pasos + flujo operativo",
+    "requires": [
+      "process-line"
+    ],
+    "avoid": [
+      "decorative-network"
+    ],
+    "description": "Explica procesos o sistemas mediante relaciones y secuencias conectadas."
+  },
+  {
+    "id": "VIS-QUOTE-DOCUMENTARY",
+    "name": "Quote Documentary",
+    "family": "quote",
+    "density": "low",
+    "motion": "medium",
+    "formats": [
+      "reel",
+      "carousel",
+      "story",
+      "presentation"
+    ],
+    "bestFor": [
+      "testimonial",
+      "interview",
+      "meeting"
+    ],
+    "signature": "Cita protagonista + identidad + evidencia real",
+    "requires": [
+      "quote-frame",
+      "real-photo-slot"
+    ],
+    "avoid": [
+      "manufactured-quote"
+    ],
+    "description": "Da protagonismo a una voz real sin perder contexto ni sobriedad."
+  },
+  {
+    "id": "VIS-NOTICE-CLEAR",
+    "name": "Operational Notice",
+    "family": "notice",
+    "density": "medium",
+    "motion": "low",
+    "formats": [
+      "story",
+      "carousel",
+      "route",
+      "reel"
+    ],
+    "bestFor": [
+      "notice",
+      "emergency",
+      "service"
+    ],
+    "signature": "Estado + zona + acción + siguiente actualización",
+    "requires": [
+      "notice-frame"
+    ],
+    "avoid": [
+      "alarmism"
+    ],
+    "description": "Arquitectura de aviso con prioridad visual y lectura inmediata."
+  },
+  {
+    "id": "VIS-MOSAIC-EVIDENCE",
+    "name": "Evidence Mosaic",
+    "family": "mosaic",
+    "density": "high",
+    "motion": "medium",
+    "formats": [
+      "carousel",
+      "reel",
+      "presentation",
+      "story"
+    ],
+    "bestFor": [
+      "brigades",
+      "reports",
+      "environment",
+      "events"
+    ],
+    "signature": "Múltiples evidencias + microdatos + cierre común",
+    "requires": [
+      "photo-mask"
+    ],
+    "avoid": [
+      "random-grid"
+    ],
+    "description": "Agrupa varios frentes o evidencias dentro de una retícula narrativa coherente."
+  },
+  {
+    "id": "VIS-MAP-STORY",
+    "name": "Territorial Map Story",
+    "family": "map",
+    "density": "medium",
+    "motion": "medium",
+    "formats": [
+      "reel",
+      "carousel",
+      "story",
+      "route",
+      "presentation"
+    ],
+    "bestFor": [
+      "routes",
+      "coverage",
+      "infrastructure",
+      "emergency"
+    ],
+    "signature": "Mapa abstracto/oficial + zonas + foco secuencial",
+    "requires": [
+      "map-grid"
+    ],
+    "avoid": [
+      "invented-official-map"
+    ],
+    "description": "Sitúa la historia en territorio sin confundir mapa conceptual con cartografía oficial."
+  },
+  {
+    "id": "VIS-KINETIC-MANIFESTO",
+    "name": "Kinetic Statement",
+    "family": "kinetic",
+    "density": "low",
+    "motion": "high",
+    "formats": [
+      "reel",
+      "story",
+      "carousel"
+    ],
+    "bestFor": [
+      "launch",
+      "culture",
+      "campaign"
+    ],
+    "signature": "Palabras clave + ritmo tipográfico + anclas mínimas",
+    "requires": [],
+    "avoid": [
+      "bounce",
+      "decorative-type"
+    ],
+    "description": "Dirección tipográfica dinámica para mensajes simples con énfasis controlado."
+  }
+]

@@ -1,0 +1,462 @@
+[
+  {
+    "masterId": "AB-MASTER-01",
+    "directions": [
+      {
+        "architectureId": "VIS-EDITORIAL-SPLIT",
+        "label": "Principal",
+        "reason": "Jerarquía clara para presentar un programa nuevo.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-DATA-CASCADE",
+        "label": "Dato protagonista",
+        "reason": "Convierte beneficio y cifra clave en eje narrativo.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-KINETIC-MANIFESTO",
+        "label": "Dinámica",
+        "reason": "Útil cuando el lanzamiento necesita ritmo y pocas ideas fuertes.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "AB-MASTER-02",
+    "directions": [
+      {
+        "architectureId": "VIS-ROUTE-JOURNEY",
+        "label": "Principal",
+        "reason": "Explica el recorrido como una historia territorial continua.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-MAP-STORY",
+        "label": "Territorial",
+        "reason": "Prioriza cobertura y destinos sin depender de un vehículo.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-TIMELINE-FIELD",
+        "label": "Calendario",
+        "reason": "Funciona cuando el orden por días es más importante que el trayecto.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "AB-MASTER-03",
+    "directions": [
+      {
+        "architectureId": "VIS-QUOTE-DOCUMENTARY",
+        "label": "Principal",
+        "reason": "La voz real ocupa el centro y la evidencia la sostiene.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Humana",
+        "reason": "Prioriza rostro, territorio y experiencia real.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-MOSAIC-EVIDENCE",
+        "label": "Coral",
+        "reason": "Permite combinar varios testimonios o momentos.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "AB-MASTER-04",
+    "directions": [
+      {
+        "architectureId": "VIS-NETWORK-PROCESS",
+        "label": "Principal",
+        "reason": "Explica pasos y relaciones sin convertirlos en una lista plana.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-EDITORIAL-SPLIT",
+        "label": "Sobria",
+        "reason": "Ideal para pocos pasos con contexto y dato.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-DATA-CASCADE",
+        "label": "Datos",
+        "reason": "Prioriza precio, cobertura y condiciones de operación.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "OBRA-MASTER-01",
+    "directions": [
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Principal",
+        "reason": "La evidencia de campo lidera la explicación técnica.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-BEFORE-AFTER",
+        "label": "Comparativa",
+        "reason": "Hace visible la recuperación entre condición previa y actual.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-DATA-CASCADE",
+        "label": "Métrica",
+        "reason": "Prioriza capacidad recuperada e impacto.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "OBRA-MASTER-02",
+    "directions": [
+      {
+        "architectureId": "VIS-BEFORE-AFTER",
+        "label": "Principal",
+        "reason": "Contrasta material/condición anterior con la sustitución.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-NETWORK-PROCESS",
+        "label": "Técnica",
+        "reason": "Explica causa, tramo e intervención como sistema.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Terreno",
+        "reason": "Aprovecha fotografías reales de excavación y sustitución.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "OBRA-MASTER-03",
+    "directions": [
+      {
+        "architectureId": "VIS-TIMELINE-FIELD",
+        "label": "Principal",
+        "reason": "Ordena etapas, inversión y avance de una obra mayor.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-MAP-STORY",
+        "label": "Territorial",
+        "reason": "Explica alcance y cobertura geográfica.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Evidencia",
+        "reason": "Da escala humana a infraestructura compleja.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "OBRA-MASTER-04",
+    "directions": [
+      {
+        "architectureId": "VIS-BEFORE-AFTER",
+        "label": "Principal",
+        "reason": "Comparación directa con evidencia equivalente.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Documental",
+        "reason": "Cuenta el cambio mediante fotografía real.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-DATA-CASCADE",
+        "label": "Métrica",
+        "reason": "Cuando el delta cuantificable es la prueba principal.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "BRIG-MASTER-01",
+    "directions": [
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Principal",
+        "reason": "El trabajo real y su estado son el centro.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-NOTICE-CLEAR",
+        "label": "Operativa",
+        "reason": "Funciona para actualización rápida de una intervención.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-MOSAIC-EVIDENCE",
+        "label": "Jornada",
+        "reason": "Permite mostrar varios momentos de la reparación.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "BRIG-MASTER-02",
+    "directions": [
+      {
+        "architectureId": "VIS-NETWORK-PROCESS",
+        "label": "Principal",
+        "reason": "Traduce diagnóstico e intervención a una lectura accesible.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Campo",
+        "reason": "Muestra evidencia real sin tecnicismo excesivo.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-BEFORE-AFTER",
+        "label": "Resultado",
+        "reason": "Útil cuando existe evidencia comparable del flujo o condición.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "BRIG-MASTER-03",
+    "directions": [
+      {
+        "architectureId": "VIS-MOSAIC-EVIDENCE",
+        "label": "Principal",
+        "reason": "Integra frentes simultáneos en una misma narrativa.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-MAP-STORY",
+        "label": "Territorial",
+        "reason": "Ubica múltiples zonas de atención.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-TIMELINE-FIELD",
+        "label": "Continuidad",
+        "reason": "Explica trabajo extendido por horas o días.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "CULT-MASTER-01",
+    "directions": [
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Principal",
+        "reason": "Muestra participación y aprendizaje desde evidencia real.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-QUOTE-DOCUMENTARY",
+        "label": "Voz",
+        "reason": "Da protagonismo a una idea aprendida o testimonio autorizado.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-EDITORIAL-SPLIT",
+        "label": "Didáctica",
+        "reason": "Equilibra contexto, actividad y aprendizaje clave.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "CULT-MASTER-02",
+    "directions": [
+      {
+        "architectureId": "VIS-EDITORIAL-SPLIT",
+        "label": "Principal",
+        "reason": "Consejos claros con jerarquía y aire.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-NETWORK-PROCESS",
+        "label": "Paso a paso",
+        "reason": "Relaciona hábitos con impacto cotidiano.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-KINETIC-MANIFESTO",
+        "label": "Campaña",
+        "reason": "Útil para mensajes breves y memorables.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "TEST-MASTER-01",
+    "directions": [
+      {
+        "architectureId": "VIS-QUOTE-DOCUMENTARY",
+        "label": "Principal",
+        "reason": "Construida alrededor de una cita real y autorizada.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Retrato",
+        "reason": "Prioriza persona, contexto y evidencia.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-EDITORIAL-SPLIT",
+        "label": "Sobria",
+        "reason": "Funciona para una cita corta con contexto institucional.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "AMBI-MASTER-01",
+    "directions": [
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Principal",
+        "reason": "La acción ambiental real es la evidencia central.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-MAP-STORY",
+        "label": "Territorial",
+        "reason": "Sitúa el ecosistema o zona de intervención.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-MOSAIC-EVIDENCE",
+        "label": "Participación",
+        "reason": "Agrupa actividad, personas e impacto visual.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "AVIS-MASTER-01",
+    "directions": [
+      {
+        "architectureId": "VIS-NOTICE-CLEAR",
+        "label": "Principal",
+        "reason": "Prioridad a qué ocurre, dónde y qué debe hacer la persona.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-MAP-STORY",
+        "label": "Zona",
+        "reason": "Útil cuando la afectación se entiende mejor territorialmente.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-EDITORIAL-SPLIT",
+        "label": "Sobria",
+        "reason": "Para avisos simples con poca información.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "AVIS-MASTER-02",
+    "directions": [
+      {
+        "architectureId": "VIS-NOTICE-CLEAR",
+        "label": "Principal",
+        "reason": "Comunica contingencia sin alarmismo ni saturación.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-MAP-STORY",
+        "label": "Territorial",
+        "reason": "Ordena zonas, prioridades y cobertura.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-TIMELINE-FIELD",
+        "label": "Seguimiento",
+        "reason": "Muestra evolución y recuperación gradual.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "RES-MASTER-01",
+    "directions": [
+      {
+        "architectureId": "VIS-DATA-CASCADE",
+        "label": "Principal",
+        "reason": "Jerarquiza resultados sin caer en dashboard genérico.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-MOSAIC-EVIDENCE",
+        "label": "Evidencia",
+        "reason": "Combina métricas con fotografías o frentes.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-EDITORIAL-SPLIT",
+        "label": "Ejecutiva",
+        "reason": "Resume hallazgo, dato y conclusión.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "RES-MASTER-02",
+    "directions": [
+      {
+        "architectureId": "VIS-TIMELINE-FIELD",
+        "label": "Principal",
+        "reason": "La evolución histórica se entiende cronológicamente.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-BEFORE-AFTER",
+        "label": "Comparativa",
+        "reason": "Ideal para dos periodos claramente comparables.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-DATA-CASCADE",
+        "label": "Series",
+        "reason": "Convierte varios cambios cuantitativos en secuencia.",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "masterId": "INST-MASTER-01",
+    "directions": [
+      {
+        "architectureId": "VIS-DOCUMENTARY-HERO",
+        "label": "Principal",
+        "reason": "La reunión real sostiene el mensaje de coordinación.",
+        "priority": 1
+      },
+      {
+        "architectureId": "VIS-EDITORIAL-SPLIT",
+        "label": "Ejecutiva",
+        "reason": "Equilibra foto, objetivo y siguiente paso.",
+        "priority": 2
+      },
+      {
+        "architectureId": "VIS-QUOTE-DOCUMENTARY",
+        "label": "Acuerdo",
+        "reason": "Funciona cuando existe una declaración autorizada o hallazgo central.",
+        "priority": 3
+      }
+    ]
+  }
+]

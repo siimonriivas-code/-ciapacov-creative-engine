@@ -1,0 +1,3575 @@
+{
+  "domains": [
+    {
+      "id": "DOM-AB",
+      "name": "Agua Bienestar",
+      "description": "Programas de agua purificada, rutas, purificadoras, precio social, funcionamiento y testimonios.",
+      "keywords": [
+        "agua bienestar",
+        "purificadora",
+        "garrafon",
+        "ruta",
+        "domicilio",
+        "precio social"
+      ],
+      "recommendedMasters": [
+        "AB-MASTER-01",
+        "AB-MASTER-02",
+        "AB-MASTER-03",
+        "AB-MASTER-04"
+      ]
+    },
+    {
+      "id": "DOM-OBRA",
+      "name": "Obras e infraestructura",
+      "description": "Pozos, tuberías, acueductos, válvulas, PTAR, rehabilitaciones y equipamiento mayor.",
+      "keywords": [
+        "obra",
+        "infraestructura",
+        "pozo",
+        "tuberia",
+        "acueducto",
+        "valvula",
+        "ptar",
+        "rehabilitacion"
+      ],
+      "recommendedMasters": [
+        "OBRA-MASTER-01",
+        "OBRA-MASTER-02",
+        "OBRA-MASTER-03",
+        "OBRA-MASTER-04"
+      ]
+    },
+    {
+      "id": "DOM-BRIG",
+      "name": "Brigadas y operación",
+      "description": "Trabajos operativos, fugas, drenaje, colectores, desazolve y atención extraordinaria.",
+      "keywords": [
+        "brigada",
+        "fuga",
+        "drenaje",
+        "colector",
+        "desazolve",
+        "reparacion",
+        "operativo"
+      ],
+      "recommendedMasters": [
+        "BRIG-MASTER-01",
+        "BRIG-MASTER-02",
+        "BRIG-MASTER-03"
+      ]
+    },
+    {
+      "id": "DOM-CULT",
+      "name": "Cultura del agua y educación",
+      "description": "Escuelas, talleres, campañas de cuidado, actividades didácticas y participación social.",
+      "keywords": [
+        "cultura del agua",
+        "escuela",
+        "taller",
+        "educacion",
+        "cuidado del agua",
+        "didactico"
+      ],
+      "recommendedMasters": [
+        "CULT-MASTER-01",
+        "CULT-MASTER-02"
+      ]
+    },
+    {
+      "id": "DOM-TEST",
+      "name": "Testimonios y territorio",
+      "description": "Historias de personas, citas, evidencia territorial y fotografía documental.",
+      "keywords": [
+        "testimonio",
+        "entrevista",
+        "vecinas",
+        "vecinos",
+        "colonia",
+        "territorio",
+        "cita"
+      ],
+      "recommendedMasters": [
+        "TEST-MASTER-01",
+        "AB-MASTER-03"
+      ]
+    },
+    {
+      "id": "DOM-AMBI",
+      "name": "Medio ambiente",
+      "description": "Reforestación, limpieza, ríos, sustentabilidad y acciones ambientales.",
+      "keywords": [
+        "reforestacion",
+        "medio ambiente",
+        "ambiental",
+        "rio",
+        "limpieza",
+        "sustentabilidad",
+        "arboles"
+      ],
+      "recommendedMasters": [
+        "AMBI-MASTER-01"
+      ]
+    },
+    {
+      "id": "DOM-AVIS",
+      "name": "Avisos operativos",
+      "description": "Suspensiones, recuperación gradual, contingencias, recordatorios y comunicación de servicio.",
+      "keywords": [
+        "aviso",
+        "suspension",
+        "servicio",
+        "contingencia",
+        "emergencia",
+        "restablecimiento",
+        "recordatorio"
+      ],
+      "recommendedMasters": [
+        "AVIS-MASTER-01",
+        "AVIS-MASTER-02"
+      ]
+    },
+    {
+      "id": "DOM-RES",
+      "name": "Resultados y contraste",
+      "description": "Informes, métricas, avances, inversión, cobertura, series históricas y antes/ahora.",
+      "keywords": [
+        "resultados",
+        "informe",
+        "datos",
+        "cifras",
+        "avance",
+        "inversion",
+        "beneficiarios",
+        "historico",
+        "contraste"
+      ],
+      "recommendedMasters": [
+        "RES-MASTER-01",
+        "RES-MASTER-02"
+      ]
+    },
+    {
+      "id": "DOM-INST",
+      "name": "Agenda institucional",
+      "description": "Reuniones, convenios, recorridos, coordinación y colaboración interinstitucional.",
+      "keywords": [
+        "reunion",
+        "convenio",
+        "coordinacion",
+        "institucional",
+        "recorrido",
+        "colaboracion"
+      ],
+      "recommendedMasters": [
+        "INST-MASTER-01"
+      ]
+    }
+  ],
+  "masters": [
+    {
+      "id": "AB-MASTER-01",
+      "domain": "DOM-AB",
+      "name": "Lanzamiento de programa",
+      "objective": "Presentar un programa nuevo con contexto, beneficio, dato clave y cierre.",
+      "formats": [
+        "carousel",
+        "reel",
+        "story",
+        "presentation"
+      ],
+      "templateIds": [
+        "CAR-015",
+        "CAR-017",
+        "REEL-020",
+        "STO-001",
+        "PRE-001"
+      ],
+      "requiredCapabilities": [
+        "launch-frame"
+      ],
+      "recommendedCapabilities": [
+        "brand-logo-slot",
+        "water-symbol",
+        "cta-strip"
+      ],
+      "materials": [
+        "logo",
+        "dato clave",
+        "beneficio",
+        "foto opcional"
+      ],
+      "status": "premium"
+    },
+    {
+      "id": "AB-MASTER-02",
+      "domain": "DOM-AB",
+      "name": "Rutas semanales",
+      "objective": "Explicar rutas, días, destinos, precio y contacto con continuidad territorial.",
+      "formats": [
+        "reel",
+        "carousel",
+        "story",
+        "route"
+      ],
+      "templateIds": [
+        "REEL-018",
+        "REEL-012",
+        "CAR-006",
+        "STO-011",
+        "RTE-007"
+      ],
+      "requiredCapabilities": [
+        "route-path",
+        "location-node"
+      ],
+      "recommendedCapabilities": [
+        "official-vehicle-slot",
+        "house-cluster",
+        "map-grid",
+        "institutional-footer"
+      ],
+      "materials": [
+        "calendario validado",
+        "destinos",
+        "precio",
+        "contacto",
+        "vehículo oficial opcional"
+      ],
+      "status": "premium"
+    },
+    {
+      "id": "AB-MASTER-03",
+      "domain": "DOM-AB",
+      "name": "Testimonios",
+      "objective": "Combinar testimonio real, contexto territorial y beneficio concreto sin sobreactuar.",
+      "formats": [
+        "reel",
+        "carousel",
+        "story"
+      ],
+      "templateIds": [
+        "REEL-008",
+        "REEL-014",
+        "CAR-019",
+        "CAR-007",
+        "STO-004"
+      ],
+      "requiredCapabilities": [
+        "real-photo-slot"
+      ],
+      "recommendedCapabilities": [
+        "quote-frame",
+        "lower-third",
+        "brand-logo-slot"
+      ],
+      "materials": [
+        "video o foto real",
+        "cita autorizada",
+        "colonia",
+        "beneficio"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "AB-MASTER-04",
+      "domain": "DOM-AB",
+      "name": "Cómo funciona",
+      "objective": "Explicar proceso, precio, cobertura y funcionamiento en pasos conectados.",
+      "formats": [
+        "carousel",
+        "reel",
+        "story",
+        "data"
+      ],
+      "templateIds": [
+        "REEL-015",
+        "CAR-005",
+        "CAR-018",
+        "DAT-004",
+        "STO-007"
+      ],
+      "requiredCapabilities": [
+        "process-line"
+      ],
+      "recommendedCapabilities": [
+        "water-symbol",
+        "data-ring",
+        "cta-strip"
+      ],
+      "materials": [
+        "pasos",
+        "precio",
+        "cobertura",
+        "contacto"
+      ],
+      "status": "premium"
+    },
+    {
+      "id": "OBRA-MASTER-01",
+      "domain": "DOM-OBRA",
+      "name": "Rehabilitación de pozo",
+      "objective": "Mostrar problema previo, intervención técnica, recuperación de capacidad e impacto.",
+      "formats": [
+        "carousel",
+        "reel",
+        "data",
+        "presentation"
+      ],
+      "templateIds": [
+        "CAR-002",
+        "CAR-018",
+        "REEL-014",
+        "DAT-009",
+        "PRE-004"
+      ],
+      "requiredCapabilities": [
+        "real-photo-slot"
+      ],
+      "recommendedCapabilities": [
+        "pipeline-section",
+        "metric-bars",
+        "lower-third"
+      ],
+      "materials": [
+        "fotos reales",
+        "capacidad antes/ahora",
+        "intervención",
+        "impacto"
+      ],
+      "status": "premium"
+    },
+    {
+      "id": "OBRA-MASTER-02",
+      "domain": "DOM-OBRA",
+      "name": "Sustitución de tubería",
+      "objective": "Explicar tramo intervenido, material anterior/nuevo, causa y beneficio operativo.",
+      "formats": [
+        "carousel",
+        "reel",
+        "data"
+      ],
+      "templateIds": [
+        "CAR-004",
+        "CAR-018",
+        "REEL-016",
+        "DAT-002",
+        "DAT-006"
+      ],
+      "requiredCapabilities": [
+        "pipeline-section"
+      ],
+      "recommendedCapabilities": [
+        "comparison-arrow",
+        "real-photo-slot",
+        "metric-bars"
+      ],
+      "materials": [
+        "longitud",
+        "material",
+        "fotos",
+        "impacto"
+      ],
+      "status": "premium"
+    },
+    {
+      "id": "OBRA-MASTER-03",
+      "domain": "DOM-OBRA",
+      "name": "Gran infraestructura",
+      "objective": "Narrar una obra mayor con inversión, beneficiarios, etapas, territorio y continuidad.",
+      "formats": [
+        "reel",
+        "carousel",
+        "presentation",
+        "data"
+      ],
+      "templateIds": [
+        "REEL-020",
+        "CAR-016",
+        "CAR-022",
+        "PRE-007",
+        "DAT-010"
+      ],
+      "requiredCapabilities": [
+        "timeline-node"
+      ],
+      "recommendedCapabilities": [
+        "map-grid",
+        "metric-bars",
+        "real-photo-slot"
+      ],
+      "materials": [
+        "inversión",
+        "beneficiarios",
+        "etapas",
+        "mapa",
+        "fotos"
+      ],
+      "status": "premium"
+    },
+    {
+      "id": "OBRA-MASTER-04",
+      "domain": "DOM-OBRA",
+      "name": "Antes / después",
+      "objective": "Contrastar situación inicial y resultado con evidencia y delta verificable.",
+      "formats": [
+        "carousel",
+        "reel",
+        "story",
+        "data"
+      ],
+      "templateIds": [
+        "CAR-004",
+        "REEL-016",
+        "STO-006",
+        "DAT-002"
+      ],
+      "requiredCapabilities": [
+        "comparison-arrow"
+      ],
+      "recommendedCapabilities": [
+        "real-photo-slot",
+        "photo-mask"
+      ],
+      "materials": [
+        "antes",
+        "después",
+        "dato de cambio"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "BRIG-MASTER-01",
+      "domain": "DOM-BRIG",
+      "name": "Reparación operativa",
+      "objective": "Comunicar problema, intervención en curso y efecto esperado de forma ágil.",
+      "formats": [
+        "carousel",
+        "story",
+        "reel"
+      ],
+      "templateIds": [
+        "CAR-018",
+        "CAR-002",
+        "STO-008",
+        "REEL-004"
+      ],
+      "requiredCapabilities": [
+        "real-photo-slot"
+      ],
+      "recommendedCapabilities": [
+        "lower-third",
+        "cta-strip"
+      ],
+      "materials": [
+        "fotos",
+        "tipo de trabajo",
+        "zona general",
+        "estado"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "BRIG-MASTER-02",
+      "domain": "DOM-BRIG",
+      "name": "Drenaje y colectores",
+      "objective": "Explicar obstrucción, reparación, limpieza o sustitución con lectura técnica accesible.",
+      "formats": [
+        "carousel",
+        "reel",
+        "data"
+      ],
+      "templateIds": [
+        "CAR-005",
+        "CAR-018",
+        "REEL-015",
+        "DAT-006"
+      ],
+      "requiredCapabilities": [
+        "pipeline-section"
+      ],
+      "recommendedCapabilities": [
+        "process-line",
+        "real-photo-slot"
+      ],
+      "materials": [
+        "problema",
+        "intervención",
+        "tramo general",
+        "resultado"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "BRIG-MASTER-03",
+      "domain": "DOM-BRIG",
+      "name": "Atención extraordinaria",
+      "objective": "Cubrir jornadas intensivas, guardias o trabajos continuos con secuencia territorial.",
+      "formats": [
+        "reel",
+        "carousel",
+        "story"
+      ],
+      "templateIds": [
+        "REEL-014",
+        "REEL-019",
+        "CAR-014",
+        "STO-004"
+      ],
+      "requiredCapabilities": [
+        "real-photo-slot"
+      ],
+      "recommendedCapabilities": [
+        "timeline-node",
+        "map-grid"
+      ],
+      "materials": [
+        "fotos",
+        "frentes de trabajo",
+        "periodo",
+        "impacto"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "CULT-MASTER-01",
+      "domain": "DOM-CULT",
+      "name": "Taller / escuela",
+      "objective": "Comunicar actividad educativa con aprendizaje, participación y evidencia visual.",
+      "formats": [
+        "carousel",
+        "story",
+        "reel"
+      ],
+      "templateIds": [
+        "CAR-005",
+        "CAR-017",
+        "REEL-003",
+        "STO-007"
+      ],
+      "requiredCapabilities": [
+        "real-photo-slot"
+      ],
+      "recommendedCapabilities": [
+        "water-symbol",
+        "quote-frame"
+      ],
+      "materials": [
+        "fotos",
+        "tema",
+        "participantes",
+        "aprendizaje"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "CULT-MASTER-02",
+      "domain": "DOM-CULT",
+      "name": "Campaña de cuidado",
+      "objective": "Convertir consejos o hábitos en una pieza didáctica clara y memorable.",
+      "formats": [
+        "carousel",
+        "story",
+        "reel"
+      ],
+      "templateIds": [
+        "CAR-009",
+        "CAR-020",
+        "REEL-017",
+        "STO-002"
+      ],
+      "requiredCapabilities": [
+        "water-symbol"
+      ],
+      "recommendedCapabilities": [
+        "process-line",
+        "cta-strip"
+      ],
+      "materials": [
+        "mensaje central",
+        "consejos",
+        "llamado"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "TEST-MASTER-01",
+      "domain": "DOM-TEST",
+      "name": "Testimonio corto",
+      "objective": "Dar protagonismo a una voz real con cita, contexto y evidencia documental.",
+      "formats": [
+        "carousel",
+        "reel",
+        "story",
+        "presentation"
+      ],
+      "templateIds": [
+        "CAR-019",
+        "REEL-008",
+        "STO-004",
+        "PRE-004"
+      ],
+      "requiredCapabilities": [
+        "real-photo-slot"
+      ],
+      "recommendedCapabilities": [
+        "quote-frame",
+        "lower-third"
+      ],
+      "materials": [
+        "foto/video",
+        "cita",
+        "nombre autorizado",
+        "contexto"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "AMBI-MASTER-01",
+      "domain": "DOM-AMBI",
+      "name": "Acción ambiental",
+      "objective": "Narrar reforestación, limpieza o cuidado de ecosistemas con evidencia y propósito.",
+      "formats": [
+        "carousel",
+        "reel",
+        "story"
+      ],
+      "templateIds": [
+        "CAR-014",
+        "CAR-017",
+        "REEL-014",
+        "STO-004"
+      ],
+      "requiredCapabilities": [
+        "real-photo-slot"
+      ],
+      "recommendedCapabilities": [
+        "map-grid",
+        "water-symbol"
+      ],
+      "materials": [
+        "fotos",
+        "actividad",
+        "impacto",
+        "participación"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "AVIS-MASTER-01",
+      "domain": "DOM-AVIS",
+      "name": "Aviso de servicio",
+      "objective": "Informar una afectación o actualización operativa con prioridad y claridad.",
+      "formats": [
+        "story",
+        "carousel",
+        "route"
+      ],
+      "templateIds": [
+        "STO-008",
+        "STO-012",
+        "RTE-004",
+        "CAR-009"
+      ],
+      "requiredCapabilities": [
+        "notice-frame"
+      ],
+      "recommendedCapabilities": [
+        "cta-strip",
+        "map-grid"
+      ],
+      "materials": [
+        "qué ocurre",
+        "zona general",
+        "recomendación",
+        "contacto"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "AVIS-MASTER-02",
+      "domain": "DOM-AVIS",
+      "name": "Contingencia / emergencia",
+      "objective": "Comunicar situación extraordinaria, prioridades y recuperación gradual sin saturación.",
+      "formats": [
+        "story",
+        "carousel",
+        "reel",
+        "route"
+      ],
+      "templateIds": [
+        "STO-008",
+        "REEL-019",
+        "CAR-018",
+        "RTE-006"
+      ],
+      "requiredCapabilities": [
+        "notice-frame"
+      ],
+      "recommendedCapabilities": [
+        "priority-marker",
+        "map-grid",
+        "cta-strip"
+      ],
+      "materials": [
+        "situación",
+        "prioridades",
+        "acciones",
+        "contacto"
+      ],
+      "status": "premium"
+    },
+    {
+      "id": "RES-MASTER-01",
+      "domain": "DOM-RES",
+      "name": "Informe de resultados",
+      "objective": "Sintetizar métricas, hallazgos, evidencia y cierre ejecutivo.",
+      "formats": [
+        "carousel",
+        "reel",
+        "data",
+        "presentation"
+      ],
+      "templateIds": [
+        "CAR-022",
+        "REEL-019",
+        "DAT-009",
+        "DAT-010",
+        "PRE-008"
+      ],
+      "requiredCapabilities": [
+        "metric-bars"
+      ],
+      "recommendedCapabilities": [
+        "data-ring",
+        "real-photo-slot"
+      ],
+      "materials": [
+        "cifras verificadas",
+        "periodo",
+        "hallazgo",
+        "fuente"
+      ],
+      "status": "premium"
+    },
+    {
+      "id": "RES-MASTER-02",
+      "domain": "DOM-RES",
+      "name": "Contraste histórico",
+      "objective": "Mostrar evolución antes/ahora con series o comparativos verificables.",
+      "formats": [
+        "carousel",
+        "reel",
+        "data",
+        "presentation"
+      ],
+      "templateIds": [
+        "CAR-004",
+        "CAR-011",
+        "REEL-016",
+        "DAT-010",
+        "PRE-005"
+      ],
+      "requiredCapabilities": [
+        "comparison-arrow"
+      ],
+      "recommendedCapabilities": [
+        "timeline-node",
+        "metric-bars"
+      ],
+      "materials": [
+        "dato anterior",
+        "dato actual",
+        "periodo",
+        "fuente"
+      ],
+      "status": "premium"
+    },
+    {
+      "id": "INST-MASTER-01",
+      "domain": "DOM-INST",
+      "name": "Reunión / colaboración",
+      "objective": "Comunicar coordinación, objetivo común y siguiente paso con sobriedad.",
+      "formats": [
+        "carousel",
+        "story",
+        "presentation"
+      ],
+      "templateIds": [
+        "CAR-001",
+        "CAR-007",
+        "CAR-012",
+        "STO-004",
+        "PRE-004"
+      ],
+      "requiredCapabilities": [
+        "real-photo-slot"
+      ],
+      "recommendedCapabilities": [
+        "lower-third",
+        "brand-logo-slot"
+      ],
+      "materials": [
+        "foto",
+        "instituciones",
+        "objetivo",
+        "acuerdo"
+      ],
+      "status": "approved"
+    }
+  ],
+  "templates": [
+    {
+      "id": "CAR-001",
+      "name": "Portada editorial limpia",
+      "type": "carousel",
+      "subtype": "cover",
+      "format": "4:5",
+      "density": "low",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "portada",
+        "institucional",
+        "programa",
+        "anuncio"
+      ],
+      "description": "Portada sobria con gran titular y un recurso visual dominante.",
+      "recipe": "hero-editorial",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "CAR-002",
+      "name": "Documental de obra",
+      "type": "carousel",
+      "subtype": "documentary",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "required",
+      "route": false,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "obra",
+        "infraestructura",
+        "foto",
+        "territorio"
+      ],
+      "description": "Secuencia documental foto + contexto + cierre.",
+      "recipe": "documentary-story",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "CAR-003",
+      "name": "Dato protagonista",
+      "type": "carousel",
+      "subtype": "data",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "cifra",
+        "dato",
+        "resultado",
+        "impacto"
+      ],
+      "description": "Un dato domina la composición y dos apoyos explican contexto.",
+      "recipe": "hero-stat",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "CAR-004",
+      "name": "Antes / después",
+      "type": "carousel",
+      "subtype": "comparison",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "required",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "antes",
+        "despues",
+        "comparativo",
+        "obra"
+      ],
+      "description": "Comparativo visual de transformación con dos estados.",
+      "recipe": "comparison-photo",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "CAR-005",
+      "name": "Explicador por pasos",
+      "type": "carousel",
+      "subtype": "explainer",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "como funciona",
+        "proceso",
+        "pasos",
+        "servicio"
+      ],
+      "description": "Explica un proceso en tres a cuatro pasos.",
+      "recipe": "step-explainer",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "CAR-006",
+      "name": "Ruta semanal editorial",
+      "type": "carousel",
+      "subtype": "route",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "ruta",
+        "calendario",
+        "colonias",
+        "horarios"
+      ],
+      "description": "Calendario editorial de alta densidad sin aspecto de app.",
+      "recipe": "route-calendar",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "CAR-007",
+      "name": "Foto + frase fuerte",
+      "type": "carousel",
+      "subtype": "photo",
+      "format": "4:5",
+      "density": "low",
+      "motion": "low",
+      "photo": "required",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "foto",
+        "testimonio",
+        "evento",
+        "territorio"
+      ],
+      "description": "Fotografía dominante con frase y contexto mínimo.",
+      "recipe": "photo-statement",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "CAR-008",
+      "name": "Cifra + fotografía",
+      "type": "carousel",
+      "subtype": "data-photo",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "required",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "dato",
+        "foto",
+        "beneficiarios",
+        "resultado"
+      ],
+      "description": "Cifra protagonista superpuesta o adyacente a fotografía documental.",
+      "recipe": "data-photo",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "CAR-009",
+      "name": "Pregunta / respuesta",
+      "type": "carousel",
+      "subtype": "qa",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "experimental",
+      "tags": [
+        "pregunta",
+        "respuesta",
+        "educativo",
+        "faq"
+      ],
+      "description": "Carrusel de preguntas breves y respuestas visuales.",
+      "recipe": "qa-stack",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "CAR-010",
+      "name": "Red de conceptos",
+      "type": "carousel",
+      "subtype": "network",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "medium",
+      "photo": "optional",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "red",
+        "sistema",
+        "conexiones",
+        "programa"
+      ],
+      "description": "Visualiza nodos conectados para explicar un sistema integral.",
+      "recipe": "network-system",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "CAR-011",
+      "name": "Cronología compacta",
+      "type": "carousel",
+      "subtype": "timeline",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "historia",
+        "cronologia",
+        "años",
+        "proceso"
+      ],
+      "description": "Línea de tiempo editorial para hechos y cambios.",
+      "recipe": "timeline-editorial",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "CAR-012",
+      "name": "Cierre institucional",
+      "type": "carousel",
+      "subtype": "close",
+      "format": "4:5",
+      "density": "low",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "cierre",
+        "cta",
+        "institucional",
+        "logos"
+      ],
+      "description": "Cierre con mensaje, CTA y respaldo institucional opcional.",
+      "recipe": "close-institutional",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "CAR-013",
+      "name": "Manifiesto tipográfico",
+      "type": "carousel",
+      "subtype": "manifesto",
+      "format": "4:5",
+      "density": "low",
+      "motion": "medium",
+      "photo": "none",
+      "route": false,
+      "data": false,
+      "status": "experimental",
+      "tags": [
+        "frase",
+        "tipografia",
+        "institucional"
+      ],
+      "description": "Composición tipográfica para una idea fuerte.",
+      "recipe": "typographic-manifesto",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "CAR-014",
+      "name": "Mosaico de evidencias",
+      "type": "carousel",
+      "subtype": "evidence-grid",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "required",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "evidencias",
+        "fotos",
+        "datos"
+      ],
+      "description": "Grid editorial de fotos, cifras y breves hallazgos.",
+      "recipe": "evidence-grid",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "REEL-001",
+      "name": "Ruta en movimiento 15s",
+      "type": "reel",
+      "subtype": "route-journey",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "optional",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "ruta",
+        "camino",
+        "vehiculo",
+        "territorio",
+        "15s"
+      ],
+      "description": "Trayectoria dibujada con vehículo/objeto siguiendo el camino.",
+      "recipe": "reel-route-journey",
+      "pack": "video",
+      "duration": 15,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "REEL-002",
+      "name": "Dato cinético 15s",
+      "type": "reel",
+      "subtype": "kinetic-data",
+      "format": "9:16",
+      "density": "low",
+      "motion": "high",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "dato",
+        "cifra",
+        "kinetic",
+        "15s"
+      ],
+      "description": "Una cifra evoluciona con motion tipográfico y módulos.",
+      "recipe": "reel-kinetic-data",
+      "pack": "video",
+      "duration": 15,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "REEL-003",
+      "name": "Explicador continuo 30s",
+      "type": "reel",
+      "subtype": "continuous-explainer",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "explicador",
+        "programa",
+        "continuo",
+        "30s"
+      ],
+      "description": "Cadena visual continua donde un elemento genera el siguiente.",
+      "recipe": "reel-continuous",
+      "pack": "video",
+      "duration": 30,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "REEL-004",
+      "name": "Documental dinámico 30s",
+      "type": "reel",
+      "subtype": "documentary",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "medium",
+      "photo": "required",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "foto",
+        "video",
+        "territorio",
+        "30s"
+      ],
+      "description": "Clips/fotos documentales con capas editoriales y transiciones sobrias.",
+      "recipe": "reel-documentary",
+      "pack": "video",
+      "duration": 30,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "REEL-005",
+      "name": "Transformación 30s",
+      "type": "reel",
+      "subtype": "before-after",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "required",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "antes",
+        "despues",
+        "obra",
+        "30s"
+      ],
+      "description": "Reel de transformación con comparación y dato final.",
+      "recipe": "reel-transform",
+      "pack": "video",
+      "duration": 30,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "REEL-006",
+      "name": "Historia de programa 45s",
+      "type": "reel",
+      "subtype": "program-story",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "optional",
+      "route": true,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "programa",
+        "historia",
+        "datos",
+        "45s"
+      ],
+      "description": "Narrativa integral: origen → sistema → impacto → cierre.",
+      "recipe": "reel-program-story",
+      "pack": "video",
+      "duration": 45,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "REEL-007",
+      "name": "Calendario animado 45s",
+      "type": "reel",
+      "subtype": "route-calendar",
+      "format": "9:16",
+      "density": "high",
+      "motion": "high",
+      "photo": "optional",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "calendario",
+        "rutas",
+        "dias",
+        "45s"
+      ],
+      "description": "Días y destinos aparecen conforme avanza una ruta continua.",
+      "recipe": "reel-route-calendar",
+      "pack": "video",
+      "duration": 45,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "REEL-008",
+      "name": "Entrevista editorial 45s",
+      "type": "reel",
+      "subtype": "quote-led",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "medium",
+      "photo": "required",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "testimonio",
+        "entrevista",
+        "frases",
+        "45s"
+      ],
+      "description": "Video/foto con frases clave, datos de apoyo y subtítulos limpios.",
+      "recipe": "reel-quote-led",
+      "pack": "video",
+      "duration": 45,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "REEL-009",
+      "name": "Sistema en red 45s",
+      "type": "reel",
+      "subtype": "network",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "optional",
+      "route": true,
+      "data": true,
+      "status": "experimental",
+      "tags": [
+        "red",
+        "conexiones",
+        "infraestructura",
+        "45s"
+      ],
+      "description": "Explica una red de servicios usando nodos, rutas y datos.",
+      "recipe": "reel-network",
+      "pack": "video",
+      "duration": 45,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "REEL-010",
+      "name": "Reel extendido 70s",
+      "type": "reel",
+      "subtype": "extended-story",
+      "format": "9:16",
+      "density": "high",
+      "motion": "high",
+      "photo": "optional",
+      "route": true,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "70s",
+        "explicador",
+        "ruta",
+        "datos",
+        "institucional"
+      ],
+      "description": "Timeline extendida para narrativas complejas sin efecto diapositiva.",
+      "recipe": "reel-extended",
+      "pack": "video",
+      "duration": 70,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "REEL-011",
+      "name": "Kinetic manifesto 30s",
+      "type": "reel",
+      "subtype": "kinetic-type",
+      "format": "9:16",
+      "density": "low",
+      "motion": "high",
+      "photo": "none",
+      "route": false,
+      "data": false,
+      "status": "experimental",
+      "tags": [
+        "kinetic",
+        "tipografia",
+        "30s"
+      ],
+      "description": "Motion tipográfico para mensajes institucionales breves.",
+      "recipe": "reel-kinetic-manifesto",
+      "pack": "video",
+      "duration": 30,
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "STO-001",
+      "name": "Anuncio directo",
+      "type": "story",
+      "subtype": "announcement",
+      "format": "9:16",
+      "density": "low",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "anuncio",
+        "story",
+        "titular"
+      ],
+      "description": "Titular grande, contexto mínimo y recurso visual.",
+      "recipe": "story-announcement",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "STO-002",
+      "name": "Dato hero",
+      "type": "story",
+      "subtype": "data",
+      "format": "9:16",
+      "density": "low",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "dato",
+        "story",
+        "cifra"
+      ],
+      "description": "Dato grande con unidad y contexto.",
+      "recipe": "story-data",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "STO-003",
+      "name": "Ruta del día",
+      "type": "story",
+      "subtype": "route",
+      "format": "9:16",
+      "density": "high",
+      "motion": "low",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "ruta",
+        "story",
+        "dia",
+        "colonias"
+      ],
+      "description": "Información de ruta con alta legibilidad.",
+      "recipe": "story-route",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "STO-004",
+      "name": "Foto documental",
+      "type": "story",
+      "subtype": "photo",
+      "format": "9:16",
+      "density": "low",
+      "motion": "low",
+      "photo": "required",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "foto",
+        "story",
+        "territorio"
+      ],
+      "description": "Fotografía dominante y caption mínimo.",
+      "recipe": "story-photo",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "STO-005",
+      "name": "CTA institucional",
+      "type": "story",
+      "subtype": "cta",
+      "format": "9:16",
+      "density": "low",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "cta",
+        "story",
+        "informacion"
+      ],
+      "description": "Llamado a consulta/acción con jerarquía clara.",
+      "recipe": "story-cta",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "STO-006",
+      "name": "Antes / después",
+      "type": "story",
+      "subtype": "comparison",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "low",
+      "photo": "required",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "antes",
+        "despues",
+        "story"
+      ],
+      "description": "Comparación vertical con separación clara.",
+      "recipe": "story-comparison",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "STO-007",
+      "name": "Paso a paso",
+      "type": "story",
+      "subtype": "explainer",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "medium",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "pasos",
+        "story",
+        "explicador"
+      ],
+      "description": "Tres pasos secuenciales con iconos.",
+      "recipe": "story-steps",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "STO-008",
+      "name": "Aviso operativo",
+      "type": "story",
+      "subtype": "notice",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "low",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "aviso",
+        "operativo",
+        "ruta",
+        "story"
+      ],
+      "description": "Aviso de servicio con fecha, zona y acción siguiente.",
+      "recipe": "story-notice",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "DAT-001",
+      "name": "Hero Stat",
+      "type": "data",
+      "subtype": "hero",
+      "format": "4:5",
+      "density": "low",
+      "motion": "low",
+      "photo": "none",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "dato",
+        "hero",
+        "cifra"
+      ],
+      "description": "Una cifra dominante y contexto mínimo.",
+      "recipe": "data-hero",
+      "pack": "data",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "DAT-002",
+      "name": "Dos cifras comparables",
+      "type": "data",
+      "subtype": "comparison",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "none",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "comparacion",
+        "dos datos"
+      ],
+      "description": "Comparación equilibrada sin asumir positivo/negativo.",
+      "recipe": "data-comparison",
+      "pack": "data",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "DAT-003",
+      "name": "Cobertura / avance",
+      "type": "data",
+      "subtype": "coverage",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "porcentaje",
+        "avance",
+        "cobertura"
+      ],
+      "description": "Visual de avance con escala clara y fuente.",
+      "recipe": "data-coverage",
+      "pack": "data",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "DAT-004",
+      "name": "Costo social",
+      "type": "data",
+      "subtype": "price",
+      "format": "4:5",
+      "density": "low",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "precio",
+        "costo social",
+        "economia"
+      ],
+      "description": "Precio/costo sin estética comercial.",
+      "recipe": "data-price",
+      "pack": "data",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "DAT-005",
+      "name": "Serie de resultados",
+      "type": "data",
+      "subtype": "results",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "resultados",
+        "indicadores",
+        "datos"
+      ],
+      "description": "Tres a cinco indicadores agrupados jerárquicamente.",
+      "recipe": "data-results",
+      "pack": "data",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "DAT-006",
+      "name": "Dato + fuente",
+      "type": "data",
+      "subtype": "evidence",
+      "format": "1:1",
+      "density": "medium",
+      "motion": "low",
+      "photo": "none",
+      "route": false,
+      "data": true,
+      "status": "experimental",
+      "tags": [
+        "fuente",
+        "evidencia",
+        "cifra"
+      ],
+      "description": "Dato con fuente/periodo especialmente visibles.",
+      "recipe": "data-evidence",
+      "pack": "data",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "RTE-001",
+      "name": "Día único",
+      "type": "route",
+      "subtype": "single-day",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "ruta",
+        "dia",
+        "colonias"
+      ],
+      "description": "Un día con múltiples destinos y horarios.",
+      "recipe": "route-single-day",
+      "pack": "route",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "RTE-002",
+      "name": "Semana completa",
+      "type": "route",
+      "subtype": "week",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "semana",
+        "rutas",
+        "calendario"
+      ],
+      "description": "Agrupa días en bloques editables con paginación.",
+      "recipe": "route-week",
+      "pack": "route",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "RTE-003",
+      "name": "Directorio",
+      "type": "route",
+      "subtype": "directory",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "directorio",
+        "plantas",
+        "puntos"
+      ],
+      "description": "Listado editorial de ubicaciones y datos asociados.",
+      "recipe": "route-directory",
+      "pack": "route",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "RTE-004",
+      "name": "Aviso de ruta",
+      "type": "route",
+      "subtype": "notice",
+      "format": "1:1",
+      "density": "medium",
+      "motion": "low",
+      "photo": "optional",
+      "route": true,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "aviso",
+        "cambio",
+        "ruta"
+      ],
+      "description": "Aviso operativo de cambio o ajuste con contexto.",
+      "recipe": "route-notice",
+      "pack": "route",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "RTE-005",
+      "name": "Journey visual",
+      "type": "route",
+      "subtype": "journey",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "optional",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "camino",
+        "vehiculo",
+        "ruta",
+        "motion"
+      ],
+      "description": "Camino visual con nodos y movimiento progresivo.",
+      "recipe": "route-journey",
+      "pack": "route",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-v0.2"
+    },
+    {
+      "id": "PRE-001",
+      "name": "Portada ejecutiva",
+      "type": "presentation",
+      "subtype": "cover",
+      "format": "16:9",
+      "density": "low",
+      "motion": "none",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "presentacion",
+        "portada"
+      ],
+      "description": "Portada institucional con aire y jerarquía.",
+      "recipe": "presentation-cover",
+      "pack": "presentation",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "PRE-002",
+      "name": "Sección",
+      "type": "presentation",
+      "subtype": "section",
+      "format": "16:9",
+      "density": "low",
+      "motion": "none",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "presentacion",
+        "seccion"
+      ],
+      "description": "Separador temático con mínimo contenido.",
+      "recipe": "presentation-section",
+      "pack": "presentation",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "PRE-003",
+      "name": "Dato ejecutivo",
+      "type": "presentation",
+      "subtype": "data",
+      "format": "16:9",
+      "density": "medium",
+      "motion": "none",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "presentacion",
+        "dato"
+      ],
+      "description": "Dato grande y explicación concisa.",
+      "recipe": "presentation-data",
+      "pack": "presentation",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "PRE-004",
+      "name": "Foto + hallazgo",
+      "type": "presentation",
+      "subtype": "photo",
+      "format": "16:9",
+      "density": "medium",
+      "motion": "none",
+      "photo": "required",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "presentacion",
+        "foto",
+        "hallazgo"
+      ],
+      "description": "Foto documental y dato/contexto.",
+      "recipe": "presentation-photo",
+      "pack": "presentation",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "PRE-005",
+      "name": "Comparación",
+      "type": "presentation",
+      "subtype": "comparison",
+      "format": "16:9",
+      "density": "medium",
+      "motion": "none",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "presentacion",
+        "comparacion"
+      ],
+      "description": "Dos columnas comparables con eje común.",
+      "recipe": "presentation-comparison",
+      "pack": "presentation",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "PRE-006",
+      "name": "Cierre ejecutivo",
+      "type": "presentation",
+      "subtype": "close",
+      "format": "16:9",
+      "density": "low",
+      "motion": "none",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "presentacion",
+        "cierre"
+      ],
+      "description": "Cierre con conclusión y respaldo institucional.",
+      "recipe": "presentation-close",
+      "pack": "presentation",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe"
+    },
+    {
+      "id": "CAR-015",
+      "name": "Portada de lanzamiento",
+      "type": "carousel",
+      "subtype": "launch-cover",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "lanzamiento",
+        "programa",
+        "portada",
+        "hero"
+      ],
+      "description": "Portada con titular, sello temático y ancla visual modular.",
+      "recipe": "launch-hero",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3"
+    },
+    {
+      "id": "CAR-016",
+      "name": "Cronología narrativa",
+      "type": "carousel",
+      "subtype": "timeline",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "historia",
+        "cronologia",
+        "proceso",
+        "hitos"
+      ],
+      "description": "Secuencia de hitos con lectura vertical y jerarquía editorial.",
+      "recipe": "timeline-editorial",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3"
+    },
+    {
+      "id": "CAR-017",
+      "name": "Tres beneficios",
+      "type": "carousel",
+      "subtype": "benefits",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "beneficios",
+        "servicio",
+        "programa",
+        "tres"
+      ],
+      "description": "Tres beneficios con iconos, microcopy y cierre.",
+      "recipe": "three-benefits",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "CAR-018",
+      "name": "Problema → acción → resultado",
+      "type": "carousel",
+      "subtype": "logic-chain",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "problema",
+        "accion",
+        "resultado",
+        "explicador"
+      ],
+      "description": "Cadena causal con tres momentos y evidencia final.",
+      "recipe": "logic-chain",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3"
+    },
+    {
+      "id": "CAR-019",
+      "name": "Cita + evidencia",
+      "type": "carousel",
+      "subtype": "quote-evidence",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "required",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "cita",
+        "foto",
+        "evidencia",
+        "territorio"
+      ],
+      "description": "Cita protagonista acompañada por evidencia visual y dato.",
+      "recipe": "quote-evidence",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "CAR-020",
+      "name": "Mapa conceptual editorial",
+      "type": "carousel",
+      "subtype": "concept-map",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "red",
+        "conceptos",
+        "conexiones",
+        "sistema"
+      ],
+      "description": "Conceptos conectados con nodos y relaciones claras.",
+      "recipe": "concept-network",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "CAR-021",
+      "name": "Preguntas frecuentes premium",
+      "type": "carousel",
+      "subtype": "faq",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "faq",
+        "preguntas",
+        "respuestas",
+        "servicio"
+      ],
+      "description": "FAQ con navegación visual y respuestas cortas de alta legibilidad.",
+      "recipe": "faq-editorial",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "CAR-022",
+      "name": "Reporte visual",
+      "type": "carousel",
+      "subtype": "report",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "informe",
+        "resultados",
+        "datos",
+        "gestion"
+      ],
+      "description": "Mini informe con 3–5 métricas, hallazgo y cierre.",
+      "recipe": "visual-report",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3"
+    },
+    {
+      "id": "REEL-012",
+      "name": "Route Journey Premium 30s",
+      "type": "reel",
+      "subtype": "route-journey",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "optional",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "ruta",
+        "vehiculo",
+        "territorio",
+        "recorrido"
+      ],
+      "description": "Ruta continua con path, vehículo, destinos y módulos persistentes.",
+      "recipe": "reel-route-premium",
+      "pack": "video",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3",
+      "duration": 30
+    },
+    {
+      "id": "REEL-013",
+      "name": "Data Cascade 20s",
+      "type": "reel",
+      "subtype": "data-cascade",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "none",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "datos",
+        "cifras",
+        "contador",
+        "resultados"
+      ],
+      "description": "Cascada cinética de cifras con jerarquía y source note.",
+      "recipe": "reel-data-cascade",
+      "pack": "video",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3",
+      "duration": 20
+    },
+    {
+      "id": "REEL-014",
+      "name": "Foto documental premium 30s",
+      "type": "reel",
+      "subtype": "photo-documentary",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "medium",
+      "photo": "required",
+      "route": false,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "foto",
+        "obra",
+        "territorio",
+        "documental"
+      ],
+      "description": "Secuencia fotográfica con máscaras, captions y continuidad editorial.",
+      "recipe": "reel-photo-premium",
+      "pack": "video",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3",
+      "duration": 30
+    },
+    {
+      "id": "REEL-015",
+      "name": "Proceso conectado 35s",
+      "type": "reel",
+      "subtype": "process",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "optional",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "proceso",
+        "como funciona",
+        "flujo",
+        "conexiones"
+      ],
+      "description": "Proceso de 4–6 etapas unido por una línea continua.",
+      "recipe": "reel-process-connected",
+      "pack": "video",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3",
+      "duration": 35
+    },
+    {
+      "id": "REEL-016",
+      "name": "Comparativo dinámico 25s",
+      "type": "reel",
+      "subtype": "comparison",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "required",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "antes",
+        "despues",
+        "comparativo",
+        "transformacion"
+      ],
+      "description": "Comparación visual con wipe, delta y conclusión.",
+      "recipe": "reel-comparison",
+      "pack": "video",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3",
+      "duration": 25
+    },
+    {
+      "id": "REEL-017",
+      "name": "Manifiesto editorial 30s",
+      "type": "reel",
+      "subtype": "manifesto",
+      "format": "9:16",
+      "density": "low",
+      "motion": "high",
+      "photo": "none",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "manifiesto",
+        "frases",
+        "tipografia",
+        "kinetic"
+      ],
+      "description": "Tipografía cinética sobria con palabras clave y cierre institucional.",
+      "recipe": "reel-manifesto",
+      "pack": "video",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3",
+      "duration": 30
+    },
+    {
+      "id": "REEL-018",
+      "name": "Calendario territorial 45s",
+      "type": "reel",
+      "subtype": "route-calendar",
+      "format": "9:16",
+      "density": "high",
+      "motion": "high",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "calendario",
+        "ruta",
+        "dias",
+        "colonias"
+      ],
+      "description": "Calendario animado con día protagonista, ruta y destinos progresivos.",
+      "recipe": "reel-calendar-premium",
+      "pack": "video",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3",
+      "duration": 45
+    },
+    {
+      "id": "REEL-019",
+      "name": "Informe ejecutivo 45s",
+      "type": "reel",
+      "subtype": "executive-report",
+      "format": "9:16",
+      "density": "high",
+      "motion": "medium",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "informe",
+        "resultados",
+        "gestion",
+        "datos"
+      ],
+      "description": "Resumen ejecutivo con datos, evidencia y continuidad entre bloques.",
+      "recipe": "reel-executive-report",
+      "pack": "video",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3",
+      "duration": 45
+    },
+    {
+      "id": "REEL-020",
+      "name": "Historia extendida 60–75s",
+      "type": "reel",
+      "subtype": "longform",
+      "format": "9:16",
+      "density": "high",
+      "motion": "high",
+      "photo": "optional",
+      "route": true,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "historia",
+        "programa",
+        "explicador",
+        "largo"
+      ],
+      "description": "Arquitectura long-form con capítulos, persistent identity y cierre.",
+      "recipe": "reel-longform",
+      "pack": "video",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3",
+      "duration": 70
+    },
+    {
+      "id": "STO-009",
+      "name": "Encuesta editorial",
+      "type": "story",
+      "subtype": "poll",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "encuesta",
+        "pregunta",
+        "participacion"
+      ],
+      "description": "Story preparada para pregunta y dos opciones visuales.",
+      "recipe": "story-poll",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "STO-010",
+      "name": "Dato + explicación",
+      "type": "story",
+      "subtype": "data-explain",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "low",
+      "photo": "none",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "dato",
+        "explicacion",
+        "cifra"
+      ],
+      "description": "Dato hero y una explicación de máximo dos líneas.",
+      "recipe": "story-data-explain",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "STO-011",
+      "name": "Ruta hoy",
+      "type": "story",
+      "subtype": "route-today",
+      "format": "9:16",
+      "density": "high",
+      "motion": "medium",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "ruta",
+        "hoy",
+        "colonias",
+        "horario"
+      ],
+      "description": "Ruta de un solo día con path y lista legible.",
+      "recipe": "story-route-today",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3"
+    },
+    {
+      "id": "STO-012",
+      "name": "Recordatorio operativo",
+      "type": "story",
+      "subtype": "reminder",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "recordatorio",
+        "aviso",
+        "operativo"
+      ],
+      "description": "Aviso con fecha, acción principal y nota secundaria.",
+      "recipe": "story-reminder",
+      "pack": "social",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "DAT-007",
+      "name": "Waterfall de resultados",
+      "type": "data",
+      "subtype": "waterfall",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "none",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "resultados",
+        "desglose",
+        "aporte",
+        "datos"
+      ],
+      "description": "Desglose visual de componentes que construyen un total.",
+      "recipe": "data-waterfall",
+      "pack": "data",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "DAT-008",
+      "name": "Progreso radial editorial",
+      "type": "data",
+      "subtype": "progress",
+      "format": "4:5",
+      "density": "medium",
+      "motion": "low",
+      "photo": "none",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "avance",
+        "progreso",
+        "porcentaje"
+      ],
+      "description": "Progreso sin apariencia de dashboard; cifra + arco editorial.",
+      "recipe": "data-progress",
+      "pack": "data",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "DAT-009",
+      "name": "Tres métricas + hallazgo",
+      "type": "data",
+      "subtype": "three-metrics",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "tres cifras",
+        "hallazgo",
+        "informe"
+      ],
+      "description": "Tres métricas coordinadas y un insight principal.",
+      "recipe": "data-three-metrics",
+      "pack": "data",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3"
+    },
+    {
+      "id": "DAT-010",
+      "name": "Serie temporal anotada",
+      "type": "data",
+      "subtype": "time-series",
+      "format": "16:9",
+      "density": "high",
+      "motion": "low",
+      "photo": "none",
+      "route": false,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "serie",
+        "tiempo",
+        "evolucion",
+        "tendencia"
+      ],
+      "description": "Serie temporal con anotación de hitos y fuente.",
+      "recipe": "data-time-series",
+      "pack": "data",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "RTE-006",
+      "name": "Ruta con prioridades",
+      "type": "route",
+      "subtype": "priority-route",
+      "format": "4:5",
+      "density": "high",
+      "motion": "medium",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "ruta",
+        "prioridades",
+        "destinos",
+        "secuencia"
+      ],
+      "description": "Recorrido con destinos priorizados y leyenda mínima.",
+      "recipe": "route-priority",
+      "pack": "route",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "RTE-007",
+      "name": "Ruta + directorio",
+      "type": "route",
+      "subtype": "route-directory",
+      "format": "4:5",
+      "density": "high",
+      "motion": "low",
+      "photo": "none",
+      "route": true,
+      "data": false,
+      "status": "approved",
+      "tags": [
+        "ruta",
+        "directorio",
+        "horarios",
+        "ubicaciones"
+      ],
+      "description": "Ruta y directorio en módulos coordinados.",
+      "recipe": "route-directory",
+      "pack": "route",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "RTE-008",
+      "name": "Journey cinematográfico",
+      "type": "route",
+      "subtype": "cinematic-journey",
+      "format": "9:16",
+      "density": "medium",
+      "motion": "high",
+      "photo": "optional",
+      "route": true,
+      "data": false,
+      "status": "premium",
+      "tags": [
+        "ruta",
+        "journey",
+        "video",
+        "vehiculo"
+      ],
+      "description": "Escena vertical de trayectoria con capas, parallax y destinos.",
+      "recipe": "route-cinematic",
+      "pack": "route",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3"
+    },
+    {
+      "id": "PRE-007",
+      "name": "Roadmap visual",
+      "type": "presentation",
+      "subtype": "roadmap",
+      "format": "16:9",
+      "density": "high",
+      "motion": "low",
+      "photo": "optional",
+      "route": true,
+      "data": true,
+      "status": "approved",
+      "tags": [
+        "roadmap",
+        "plan",
+        "fases",
+        "hitos"
+      ],
+      "description": "Roadmap de fases con hitos y responsables opcionales.",
+      "recipe": "presentation-roadmap",
+      "pack": "presentation",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "recipe-v0.3"
+    },
+    {
+      "id": "PRE-008",
+      "name": "Executive one-page",
+      "type": "presentation",
+      "subtype": "one-page",
+      "format": "16:9",
+      "density": "high",
+      "motion": "low",
+      "photo": "optional",
+      "route": false,
+      "data": true,
+      "status": "premium",
+      "tags": [
+        "ejecutivo",
+        "resumen",
+        "one page",
+        "datos"
+      ],
+      "description": "Una diapositiva resumen con headline, 3 métricas y evidencia.",
+      "recipe": "presentation-one-page",
+      "pack": "presentation",
+      "loadPolicy": "on-demand",
+      "brandMode": "inherit-active-design-system",
+      "demoContent": "non-production",
+      "implementation": "premium-runtime-v0.3"
+    }
+  ],
+  "assets": [
+    {
+      "id": "AST-ROUTE-001",
+      "name": "Carretera curva",
+      "category": "route",
+      "capabilities": [
+        "route-path"
+      ],
+      "file": "public/assets/original/route-curved.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "route-path"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-ROUTE-002",
+      "name": "Carretera diagonal",
+      "category": "route",
+      "capabilities": [
+        "route-path"
+      ],
+      "file": "public/assets/original/route-diagonal.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "route-path"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-ROUTE-003",
+      "name": "Nodos de ruta",
+      "category": "route",
+      "capabilities": [
+        "location-node"
+      ],
+      "file": "public/assets/original/route-nodes.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "location-node"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-ROUTE-004",
+      "name": "Marcador de prioridad",
+      "category": "route",
+      "capabilities": [
+        "priority-marker"
+      ],
+      "file": "public/assets/original/priority-marker.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "priority-marker"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-VEH-001",
+      "name": "Van genérica de reparto",
+      "category": "vehicle",
+      "capabilities": [
+        "vehicle-generic"
+      ],
+      "file": "public/assets/original/delivery-van.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "vehicle-generic"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-VEH-002",
+      "name": "Pickup operativa genérica",
+      "category": "vehicle",
+      "capabilities": [
+        "vehicle-generic"
+      ],
+      "file": "public/assets/original/utility-pickup.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "vehicle-generic"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-WATER-001",
+      "name": "Gota lineal",
+      "category": "water",
+      "capabilities": [
+        "water-symbol"
+      ],
+      "file": "public/assets/original/water-drop.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "water-symbol"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-WATER-002",
+      "name": "Onda modular",
+      "category": "water",
+      "capabilities": [
+        "water-symbol",
+        "wave-ribbon"
+      ],
+      "file": "public/assets/original/wave-ribbon.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "water-symbol",
+        "wave-ribbon"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-WATER-003",
+      "name": "Flujo de agua",
+      "category": "water",
+      "capabilities": [
+        "water-symbol",
+        "process-line"
+      ],
+      "file": "public/assets/original/water-flow.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "water-symbol",
+        "process-line"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-MAP-001",
+      "name": "Retícula territorial",
+      "category": "map",
+      "capabilities": [
+        "map-grid"
+      ],
+      "file": "public/assets/original/map-grid.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "map-grid"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-MAP-002",
+      "name": "Pin territorial",
+      "category": "map",
+      "capabilities": [
+        "location-node"
+      ],
+      "file": "public/assets/original/map-pin.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "location-node"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-HOME-001",
+      "name": "Conjunto de viviendas",
+      "category": "scene",
+      "capabilities": [
+        "house-cluster"
+      ],
+      "file": "public/assets/original/house-cluster.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "house-cluster"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-PIPE-001",
+      "name": "Sección de tubería",
+      "category": "infrastructure",
+      "capabilities": [
+        "pipeline-section"
+      ],
+      "file": "public/assets/original/pipeline-section.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "pipeline-section"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-DATA-001",
+      "name": "Anillo de dato",
+      "category": "data",
+      "capabilities": [
+        "data-ring"
+      ],
+      "file": "public/assets/original/data-ring.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "data-ring"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-DATA-002",
+      "name": "Barras métricas",
+      "category": "data",
+      "capabilities": [
+        "metric-bars"
+      ],
+      "file": "public/assets/original/metric-bars.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "metric-bars"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-DATA-003",
+      "name": "Flecha comparativa",
+      "category": "data",
+      "capabilities": [
+        "comparison-arrow"
+      ],
+      "file": "public/assets/original/comparison-arrow.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "comparison-arrow"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-COMP-001",
+      "name": "Lower third neutro",
+      "category": "component",
+      "capabilities": [
+        "lower-third"
+      ],
+      "file": "public/assets/original/lower-third.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "lower-third"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-COMP-002",
+      "name": "Cintillo CTA neutro",
+      "category": "component",
+      "capabilities": [
+        "cta-strip"
+      ],
+      "file": "public/assets/original/cta-strip.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "cta-strip"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-COMP-003",
+      "name": "Footer institucional neutro",
+      "category": "component",
+      "capabilities": [
+        "institutional-footer"
+      ],
+      "file": "public/assets/original/institutional-footer.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "institutional-footer"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-COMP-004",
+      "name": "Marco de lanzamiento",
+      "category": "component",
+      "capabilities": [
+        "launch-frame"
+      ],
+      "file": "public/assets/original/launch-frame.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "launch-frame"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-COMP-005",
+      "name": "Marco de aviso",
+      "category": "component",
+      "capabilities": [
+        "notice-frame"
+      ],
+      "file": "public/assets/original/notice-frame.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "notice-frame"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-COMP-006",
+      "name": "Marco de cita",
+      "category": "component",
+      "capabilities": [
+        "quote-frame"
+      ],
+      "file": "public/assets/original/quote-frame.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "quote-frame"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-COMP-007",
+      "name": "Línea de proceso",
+      "category": "component",
+      "capabilities": [
+        "process-line"
+      ],
+      "file": "public/assets/original/process-line.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "process-line"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-PHOTO-001",
+      "name": "Máscara fotográfica diagonal",
+      "category": "photo",
+      "capabilities": [
+        "photo-mask"
+      ],
+      "file": "public/assets/original/photo-mask.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "photo-mask"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "AST-TIME-001",
+      "name": "Nodos de cronología",
+      "category": "timeline",
+      "capabilities": [
+        "timeline-node"
+      ],
+      "file": "public/assets/original/timeline-nodes.svg",
+      "status": "approved",
+      "availability": "bundled",
+      "source": "internal-original",
+      "license": {
+        "kind": "internal-original",
+        "redistributable": true
+      },
+      "tags": [
+        "timeline-node"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "SLOT-BRAND-001",
+      "name": "Logo principal del Design System",
+      "category": "brand",
+      "capabilities": [
+        "brand-logo-slot"
+      ],
+      "file": null,
+      "status": "slot",
+      "availability": "external-required",
+      "source": "active-design-system-or-media-library",
+      "license": {
+        "kind": "external-controlled",
+        "redistributable": false
+      },
+      "tags": [
+        "brand-logo-slot"
+      ],
+      "notes": "Semantic slot only. Must be supplied by the active Design System or verified Media Library; never fabricate."
+    },
+    {
+      "id": "SLOT-BRAND-002",
+      "name": "Logo aliado / co-branding",
+      "category": "brand",
+      "capabilities": [
+        "partner-logo-slot"
+      ],
+      "file": null,
+      "status": "slot",
+      "availability": "external-required",
+      "source": "active-design-system-or-media-library",
+      "license": {
+        "kind": "external-controlled",
+        "redistributable": false
+      },
+      "tags": [
+        "partner-logo-slot"
+      ],
+      "notes": "Semantic slot only. Must be supplied by the active Design System or verified Media Library; never fabricate."
+    },
+    {
+      "id": "SLOT-BRAND-003",
+      "name": "Tipografía oficial",
+      "category": "brand",
+      "capabilities": [
+        "brand-font-slot"
+      ],
+      "file": null,
+      "status": "slot",
+      "availability": "external-required",
+      "source": "active-design-system-or-media-library",
+      "license": {
+        "kind": "external-controlled",
+        "redistributable": false
+      },
+      "tags": [
+        "brand-font-slot"
+      ],
+      "notes": "Semantic slot only. Must be supplied by the active Design System or verified Media Library; never fabricate."
+    },
+    {
+      "id": "SLOT-MEDIA-001",
+      "name": "Fotografía real verificada",
+      "category": "media",
+      "capabilities": [
+        "real-photo-slot"
+      ],
+      "file": null,
+      "status": "slot",
+      "availability": "external-required",
+      "source": "active-design-system-or-media-library",
+      "license": {
+        "kind": "external-controlled",
+        "redistributable": false
+      },
+      "tags": [
+        "real-photo-slot"
+      ],
+      "notes": "Semantic slot only. Must be supplied by the active Design System or verified Media Library; never fabricate."
+    },
+    {
+      "id": "SLOT-MEDIA-002",
+      "name": "Video real verificado",
+      "category": "media",
+      "capabilities": [
+        "real-video-slot"
+      ],
+      "file": null,
+      "status": "slot",
+      "availability": "external-required",
+      "source": "active-design-system-or-media-library",
+      "license": {
+        "kind": "external-controlled",
+        "redistributable": false
+      },
+      "tags": [
+        "real-video-slot"
+      ],
+      "notes": "Semantic slot only. Must be supplied by the active Design System or verified Media Library; never fabricate."
+    },
+    {
+      "id": "SLOT-AB-001",
+      "name": "Vehículo oficial Agua Bienestar",
+      "category": "domain",
+      "capabilities": [
+        "official-vehicle-slot"
+      ],
+      "file": null,
+      "status": "slot",
+      "availability": "external-required",
+      "source": "active-design-system-or-media-library",
+      "license": {
+        "kind": "external-controlled",
+        "redistributable": false
+      },
+      "tags": [
+        "official-vehicle-slot"
+      ],
+      "notes": "Semantic slot only. Must be supplied by the active Design System or verified Media Library; never fabricate."
+    },
+    {
+      "id": "SLOT-AB-002",
+      "name": "Garrafón / producto real",
+      "category": "domain",
+      "capabilities": [
+        "official-product-slot"
+      ],
+      "file": null,
+      "status": "slot",
+      "availability": "external-required",
+      "source": "active-design-system-or-media-library",
+      "license": {
+        "kind": "external-controlled",
+        "redistributable": false
+      },
+      "tags": [
+        "official-product-slot"
+      ],
+      "notes": "Semantic slot only. Must be supplied by the active Design System or verified Media Library; never fabricate."
+    },
+    {
+      "id": "SLOT-AB-003",
+      "name": "Purificadora real",
+      "category": "domain",
+      "capabilities": [
+        "official-plant-slot"
+      ],
+      "file": null,
+      "status": "slot",
+      "availability": "external-required",
+      "source": "active-design-system-or-media-library",
+      "license": {
+        "kind": "external-controlled",
+        "redistributable": false
+      },
+      "tags": [
+        "official-plant-slot"
+      ],
+      "notes": "Semantic slot only. Must be supplied by the active Design System or verified Media Library; never fabricate."
+    },
+    {
+      "id": "SLOT-MAP-001",
+      "name": "Mapa territorial oficial",
+      "category": "map",
+      "capabilities": [
+        "official-map-slot"
+      ],
+      "file": null,
+      "status": "slot",
+      "availability": "external-required",
+      "source": "active-design-system-or-media-library",
+      "license": {
+        "kind": "external-controlled",
+        "redistributable": false
+      },
+      "tags": [
+        "official-map-slot"
+      ],
+      "notes": "Semantic slot only. Must be supplied by the active Design System or verified Media Library; never fabricate."
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "name": "ciapacov-creative-engine",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.7.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,15 +9,17 @@
     "preview": "vite preview",
     "check": "tsc -b --pretty false",
     "validate": "node scripts/validate-registry.mjs",
-    "catalog:build": "node scripts/build-compact-catalog.mjs",
-    "remotion:studio": "remotion studio src/remotion/index.ts --no-open",
-    "remotion:render:route": "remotion render src/remotion/index.ts CE-RouteJourney out/route-journey.mp4",
     "validate:ecosystem": "node scripts/validate-ecosystem.mjs",
-    "validate:all": "npm run validate && npm run validate:ecosystem",
+    "validate:visuals": "node scripts/validate-v07.mjs",
+    "validate:all": "npm run validate && npm run validate:ecosystem && npm run validate:visuals",
+    "catalog:build": "node scripts/build-compact-catalog.mjs",
     "ecosystem:build": "node scripts/build-ecosystem-compact.mjs",
+    "visuals:build": "node scripts/build-visual-library.mjs",
     "contact-sheets": "node scripts/build-contact-sheets.mjs",
-    "catalog:all": "npm run catalog:build && npm run ecosystem:build && npm run contact-sheets",
-    "ingest:asset": "node scripts/ingest-asset.mjs"
+    "catalog:all": "npm run catalog:build && npm run ecosystem:build && npm run visuals:build && npm run contact-sheets",
+    "ingest:asset": "node scripts/ingest-asset.mjs",
+    "remotion:studio": "remotion studio src/remotion/index.ts --no-open",
+    "remotion:render:route": "remotion render src/remotion/index.ts CE-RouteJourney out/route-journey.mp4"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.0.4",

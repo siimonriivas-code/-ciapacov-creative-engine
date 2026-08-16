@@ -27,6 +27,13 @@ export type MasterStoryboard = {
   id:string; masterId:string; name:string; formatStrategy:string; beats:StoryboardBeat[];
   rules:{demoData:string;brand:string;overflow:string}; status:'production-ready'|'draft'
 }
+export type VisualArchitecture = {
+  id:string; name:string; family:string; density:string; motion:string; formats:string[]; bestFor:string[];
+  signature:string; requires:string[]; avoid:string[]; description:string
+}
+export type MasterVisualDirection = { architectureId:string; label:string; reason:string; priority:number }
+export type MasterVisualMap = { masterId:string; directions:MasterVisualDirection[] }
+export type ResolvedVisualDirection = MasterVisualDirection & { architecture:VisualArchitecture; formatFit:boolean }
 export type ProductionPlan = {
   master:OperationalMaster; storyboard:MasterStoryboard; templates:Template[];
   requiredAssets:AssetResolution[]; recommendedAssets:AssetResolution[]; readiness:number;

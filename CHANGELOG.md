@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.7.0 — Visual Production Library
+- added 12 reusable brand-agnostic visual architectures
+- added exactly 3 visual directions for each of 20 Operational Masters (60 total)
+- added visual-direction resolver with format-fit ranking
+- added high-fidelity abstract visual previews in the React gallery
+- added Visual Production Library browsing mode
+- upgraded Production Planner to show/select 3 visual directions before template selection
+- added selected visual direction to copy-ready Claude production prompts
+- added `claude/visual-directions.compact.json`
+- added offline `catalog/visual-production-library.html`
+- added v0.7 validator for visual maps, architecture contracts and capability resolution
+- added v0.7 CI validation path
+
 ## 0.6.0 — Production Planning
 - added 20 production storyboards, one per Operational Master
 - added Production Planner: brief → domain → Master → storyboard → templates → asset readiness → blockers
