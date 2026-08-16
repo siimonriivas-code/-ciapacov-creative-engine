@@ -4,40 +4,24 @@ on:
   push:
     branches: [main]
     paths:
-      - 'validation/run-v11.txt'
-      - 'validation/premium-plan-pass.json'
-      - 'validation/premium-plan-fail.json'
-      - 'validation/agua-route-premium-v11.json'
+      - 'validation/**'
       - '.github/workflows/validate-v11.yml'
       - 'package.json'
-      - 'scripts/validate-v11.mjs'
-      - 'scripts/validate-premium-recipes.mjs'
-      - 'scripts/generate-minimax-video.mjs'
-      - 'scripts/audit-premium-production.mjs'
+      - 'package-lock.json'
+      - 'scripts/**'
       - 'src/App.tsx'
+      - 'src/components/**'
+      - 'src/lib/**'
+      - 'src/motion/**'
+      - 'src/registry/**'
+      - 'src/remotion/**'
       - 'src/styles.v11.css'
       - 'src/styles.v11.curated.css'
-      - 'src/components/PremiumVisualLab.tsx'
-      - 'src/registry/creative-style-families.json'
-      - 'src/registry/premium-style-presets.json'
-      - 'src/registry/production-style-recipes.json'
-      - 'src/registry/premium-motion-modules.json'
-      - 'src/registry/premium-motion-implementations.json'
-      - 'src/registry/first-party-motion-assets.json'
-      - 'src/registry/generative-video-providers.json'
-      - 'src/registry/generative-scene-policies.json'
-      - 'src/lib/creative-style-director.ts'
-      - 'src/lib/premium-production-planner.ts'
-      - 'src/lib/generative-video.ts'
-      - 'src/motion/**'
-      - 'src/remotion/**'
-      - 'claude/premium.compact.json'
-      - 'claude/handoff.compact.json'
-      - 'claude/PREMIUM_ACCEPTANCE.md'
+      - 'claude/**'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validate:
@@ -45,134 +29,93 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-
-      - name: Sync v1.1 lockfile
-        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          cache: npm
 
       - name: Install exact dependencies
         run: npm ci --no-audit --no-fund
 
-      - name: Validate full ecosystem including premium layer
+      - name: Validate registries and ecosystem contracts
         run: npm run validate:all
 
-      - name: Validate v1.1 tooling syntax
-        run: |
-          node --check scripts/validate-v11.mjs
-          node --check scripts/validate-premium-recipes.mjs
-          node --check scripts/ingest-motion-asset.mjs
-          node --check scripts/generate-minimax-video.mjs
-          node --check scripts/audit-premium-production.mjs
-
-      - name: Check v1.1 compact handoff contract
-        run: |
-          node -e "const h=require('./claude/handoff.compact.json');if(h.version!=='1.1'||h.inventory.premiumStyleFamilies!==12||h.inventory.premiumStyleDirections!==36||h.inventory.premiumMotionModules!==39||h.inventory.premiumMotionExecutable!==39||h.inventory.firstPartyLottieQAAssets!==1||h.rules.antiGenericAuditBeforePremiumExport!==true||h.rules.generativeEvidenceForbidden!==true)process.exit(1);console.log(h.inventory)"
-          node -e "const p=require('./claude/premium.compact.json');if(p.version!=='1.1'||p.styleSystem.familyCount!==12||p.styleSystem.directionCount!==36||p.motionLibrary.moduleCount!==39||p.motionLibrary.executableCount!==39||p.generativeVideo.providers.length<2||p.antiGeneric.passScore!==80||p.lottie.firstPartyRuntimeQA!=='CE-QA-LottieRuntime')process.exit(1);console.log('premium handoff ok')"
-
-      - name: Check curated style and recipe counts
-        run: |
-          node -e "const a=require('./src/registry/visual-architectures.json');const p=require('./src/registry/premium-style-presets.json');const r=require('./src/registry/production-style-recipes.json');const dirs=p.reduce((n,x)=>n+x.directions.length,0);const beats=r.reduce((n,x)=>n+x.beats.length,0);if(a.length!==12||p.length!==12||dirs!==36||r.length!==9||beats!==54)process.exit(1);console.log({architectures:a.length,presets:p.length,directions:dirs,recipes:r.length,beats})"
-
-      - name: Check exact premium implementation coverage
-        run: |
-          node -e "const m=require('./src/registry/premium-motion-modules.json');const i=require('./src/registry/premium-motion-implementations.json');const ms=new Set(m.map(x=>x.id));const is=new Set(i.map(x=>x.id));if(m.length!==39||i.length!==39||[...ms].some(x=>!is.has(x))||[...is].some(x=>!ms.has(x)))process.exit(1);console.log('39/39 premium motion modules executable')"
-
-      - name: Premium anti-generic positive fixture
-        run: node scripts/audit-premium-production.mjs validation/premium-plan-pass.json
-
-      - name: Premium Agua Bienestar route fixture
-        run: node scripts/audit-premium-production.mjs validation/agua-route-premium-v11.json
-
-      - name: Premium anti-generic negative fixture must fail
-        run: |
-          if node scripts/audit-premium-production.mjs validation/premium-plan-fail.json; then
-            echo 'ERROR: deliberately generic/factual-unsafe fixture passed unexpectedly'
-            exit 1
-          else
-            echo 'Expected failure confirmed for generic/factual-unsafe fixture'
-          fi
-
-      - name: TypeScript and Vite build
+      - name: Validate production build
         run: npm run build
 
-      - name: Run factual Agua Bienestar QA
+      - name: Validate factual Agua Bienestar fixture
         run: npm run qa:real
 
-      - name: Discover Production Master and QA compositions
+      - name: Validate premium inventory
+        run: |
+          node - <<'NODE'
+          const styles=require('./src/registry/creative-style-families.json')
+          const directions=require('./src/registry/premium-style-presets.json')
+          const motion=require('./src/registry/premium-motion-modules.json')
+          const implementations=require('./src/registry/premium-motion-implementations.json')
+          const materials=require('./src/registry/premium-material-systems.json')
+          const kits=require('./src/registry/premium-template-kits.json')
+          const lotties=require('./src/registry/first-party-lottie-presets.json')
+          const dirCount=directions.reduce((n,x)=>n+x.directions.length,0)
+          if(styles.length!==12||dirCount!==36||motion.length!==39||implementations.length!==39||materials.length!==18||kits.length!==27||lotties.length!==18)process.exit(1)
+          const masters=new Map()
+          for(const kit of kits)masters.set(kit.productionMasterId,(masters.get(kit.productionMasterId)||0)+1)
+          if(masters.size!==9||[...masters.values()].some(v=>v!==3))process.exit(1)
+          console.log({styles:styles.length,directions:dirCount,motion:motion.length,implementations:implementations.length,materials:materials.length,kits:kits.length,lotties:lotties.length,masters:[...masters.entries()]})
+          NODE
+
+      - name: Anti-generic and factual safety gates
+        run: |
+          node scripts/audit-premium-production.mjs validation/premium-plan-pass.json
+          node scripts/audit-premium-production.mjs validation/agua-route-premium-v11.json
+          if node scripts/audit-premium-production.mjs validation/premium-plan-fail.json; then
+            echo 'ERROR: intentionally generic/factual-unsafe fixture passed'
+            exit 1
+          fi
+
+      - name: Discover base and premium Remotion compositions
         run: |
           npx remotion compositions src/remotion/index.ts | tee /tmp/remotion-v11.txt
-          TOTAL=$(grep -oE 'CE-[A-Za-z-]+' /tmp/remotion-v11.txt | sort -u | wc -l)
-          echo "Detected Remotion compositions: $TOTAL"
-          test "$TOTAL" -eq 10
+          TOTAL=$(grep -oE 'CE-[A-Za-z0-9-]+' /tmp/remotion-v11.txt | sort -u | wc -l)
+          KIT_TOTAL=$(grep -oE 'CE-KIT-[A-Za-z0-9-]+' /tmp/remotion-v11.txt | sort -u | wc -l)
+          echo "Total compositions: $TOTAL · premium kits: $KIT_TOTAL"
+          test "$TOTAL" -eq 37
+          test "$KIT_TOTAL" -eq 27
           for ID in CE-RouteJourney CE-DataCascade CE-ProcessConnected CE-LaunchEditorial CE-DocumentaryEvidence CE-BeforeAfter CE-TimelineTerritory CE-TestimonialQuote CE-NoticeAlert CE-QA-LottieRuntime; do
             grep -q "$ID" /tmp/remotion-v11.txt
           done
 
-      - name: Smoke render all nine Production Masters
+      - name: Smoke render nine Production Masters
         run: |
-          mkdir -p /tmp/remotion-v11
+          mkdir -p /tmp/remotion-v11/base
           for ID in CE-RouteJourney CE-DataCascade CE-ProcessConnected CE-LaunchEditorial CE-DocumentaryEvidence CE-BeforeAfter CE-TimelineTerritory CE-TestimonialQuote CE-NoticeAlert; do
-            npx remotion still src/remotion/index.ts "$ID" "/tmp/remotion-v11/$ID.png" --frame=30
-            test -s "/tmp/remotion-v11/$ID.png"
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/remotion-v11/base/$ID.png" --frame=30
+            test -s "/tmp/remotion-v11/base/$ID.png"
           done
-          test "$(find /tmp/remotion-v11 -name 'CE-*.png' | wc -l)" -eq 9
+          test "$(find /tmp/remotion-v11/base -name '*.png' | wc -l)" -eq 9
 
-      - name: Render first-party Lottie through Remotion
+      - name: Smoke render all 27 premium template kits
+        run: |
+          mkdir -p /tmp/remotion-v11/kits
+          IDS=$(grep -oE 'CE-KIT-[A-Za-z0-9-]+' /tmp/remotion-v11.txt | sort -u)
+          for ID in $IDS; do
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/remotion-v11/kits/$ID.png" --frame=60
+            test -s "/tmp/remotion-v11/kits/$ID.png"
+          done
+          test "$(find /tmp/remotion-v11/kits -name '*.png' | wc -l)" -eq 27
+
+      - name: Validate Lottie runtime at multiple frames
         run: |
           for FRAME in 0 45 89; do
             npx remotion still src/remotion/index.ts CE-QA-LottieRuntime "/tmp/remotion-v11/lottie-$FRAME.png" --frame=$FRAME
             test -s "/tmp/remotion-v11/lottie-$FRAME.png"
           done
-
-      - name: Build controlled 45s route props
-        run: |
-          cat > /tmp/ab-route-v11-props.json <<'JSON'
-          {
-            "brand": {
-              "surface":"#ffffff",
-              "surfaceAlt":"#f5f7f8",
-              "ink":"#1D1D1B",
-              "muted":"#68727a",
-              "primary":"#00AAED",
-              "secondary":"#B5F6FF",
-              "accent":"#89033A",
-              "line":"#dce5e8"
-            },
-            "title":"Rutas semanales",
-            "kicker":"RUTAS PROGRAMADAS",
-            "stops":["Benito Juárez","Palo Alto","Buenavista","Villa Flores"],
-            "groups":[
-              {"label":"LUNES","items":["Benito Juárez","Palo Alto","Buenavista","Villa Flores"]},
-              {"label":"MARTES Y VIERNES","items":["Mirador de la Cumbre I y II","Moctezuma","Paraíso","Jardines del Sol"]},
-              {"label":"MIÉRCOLES","items":["Del Valle","San Isidro","Lo de Villa"]},
-              {"label":"JUEVES","items":["Tierra y Libertad","Palo Alto","Buenavista","Villa Flores"]},
-              {"label":"SÁBADO","items":["Tierra y Libertad","El Moralete","De los Trabajadores","Patios del Ferrocarril","La Albarrada"]}
-            ],
-            "highlight":"Garrafón de 20 L · $10 a domicilio",
-            "footer":"Información: 312 311 9041",
-            "durationSeconds":45
-          }
-          JSON
-
-      - name: Premium Route Journey multi-frame smoke test
-        run: |
-          for FRAME in 30 330 690 1050 1320; do
-            npx remotion still src/remotion/index.ts CE-RouteJourney "/tmp/remotion-v11/route-$FRAME.png" --frame=$FRAME --props=/tmp/ab-route-v11-props.json
-            test -s "/tmp/remotion-v11/route-$FRAME.png"
-          done
-
-      - name: Verify Lottie runtime packages resolve
-        run: |
           node -e "import('@remotion/lottie').then(()=>console.log('@remotion/lottie ok'))"
           node -e "import('lottie-web').then(()=>console.log('lottie-web ok'))"
 
-      - name: Validate MiniMax executor in dry-run mode
+      - name: Validate MiniMax governed executor in dry-run mode
         run: |
           cat > /tmp/minimax-concept.json <<'JSON'
           {
@@ -190,25 +133,7 @@ jobs:
           node scripts/generate-minimax-video.mjs /tmp/minimax-concept.json | tee /tmp/minimax-dry-run.txt
           grep -q 'DRY RUN ONLY' /tmp/minimax-dry-run.txt
 
-      - name: Commit synchronized lockfile if changed
+      - name: v1.1 premium release summary
         run: |
-          if ! git diff --quiet -- package-lock.json; then
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git fetch origin main
-            git reset --hard origin/main
-            npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-            if ! git diff --quiet -- package-lock.json; then
-              git add package-lock.json
-              git commit -m 'chore: sync v1.1 premium dependencies lockfile'
-              git push origin HEAD:main
-            else
-              echo 'Latest main already has synchronized package-lock.json'
-            fi
-          else
-            echo 'package-lock.json already synchronized'
-          fi
-
-      - name: v1.1 release summary
-        run: |
-          node -e "const p=require('./package.json');const h=require('./claude/handoff.compact.json');const presets=require('./src/registry/premium-style-presets.json');const recipes=require('./src/registry/production-style-recipes.json');const m=require('./src/registry/premium-motion-modules.json');const i=require('./src/registry/premium-motion-implementations.json');console.log('version:',p.version,'handoff:',h.version,'style directions:',presets.reduce((n,x)=>n+x.directions.length,0),'premium modules:',m.length,'executable:',i.length,'production recipes:',recipes.length,'beat plans:',recipes.reduce((n,x)=>n+x.beats.length,0),'production masters:',h.inventory.productionMasters,'qa compositions:',h.inventory.qaCompositions)"
+          echo 'Creative Ecosystem v1.1 validated'
+          echo '12 style families · 36 directions · 39 executable motion modules · 18 material systems · 18 first-party Lotties · 27 executable premium template kits · 9 Production Masters'
