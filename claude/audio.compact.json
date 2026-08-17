@@ -1,0 +1,28 @@
+{
+  "version":"1.1",
+  "purpose":"Sound-design intelligence for premium motion. Audio supports rhythm and continuity but never overrides readability, factual truth or voice clarity.",
+  "inventory":{"audioRoles":12,"productionMasterSoundPresets":9,"verifiedAudioAssets":0},
+  "registries":{"roles":"src/registry/audio-roles.json","presets":"src/registry/sound-design-presets.json","library":"src/registry/audio-library.json"},
+  "beatGrid":{"planner":"scripts/build-beat-grid.mjs","inputs":["bpm","fps","durationSeconds"],"rule":"Use beat/bar sync when music-led, but visual meaning and factual reading time beat forced synchronization."},
+  "productionRules":[
+    "Use licensed, first-party or otherwise authorized audio only.",
+    "Do not infer usage rights from public availability.",
+    "Do not fabricate location-specific ambience and present it as real documentary sound.",
+    "Do not imply an official vehicle through engine/vehicle sound if no verified official vehicle is present.",
+    "Voice/testimony remains primary; duck music and SFX around speech.",
+    "Do not sonify every action. Silence and holds are legitimate premium choices.",
+    "Avoid generic corporate music by default; choose musical character from the brief and active brand context.",
+    "Avoid the same whoosh/pop on every transition or node.",
+    "Alert sound must remain calm/civic unless the factual situation truly warrants emergency treatment.",
+    "Music/SFX are never required to make a piece production-ready; missing recommended audio is a warning, not permission to use rights-unknown assets."
+  ],
+  "selectionProtocol":[
+    "1. Resolve Production Master first.",
+    "2. Read only its matching sound-design preset.",
+    "3. If a licensed/approved music bed exists, build a BPM frame grid before final timing.",
+    "4. Select only cue roles that support specific storyboard beats.",
+    "5. Keep hero cue count low; do not impact every title/metric.",
+    "6. Verify audio license/provenance before production use.",
+    "7. Check voice/music balance, critical-copy reading time and transition sync during final visual+audio review."
+  ]
+}
