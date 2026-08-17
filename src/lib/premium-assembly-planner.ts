@@ -61,7 +61,6 @@ export function resolvePremiumAssembly(
   if(req.needsCaptions&&!caption)blockers.push('CAPTION_SYSTEM_MISSING')
 
   const sound=soundPresets.find(x=>x.productionMasterId===req.productionMasterId)
-  const audioStatus:req['hasVerifiedAudio'] extends true?'READY':'READY_WITHOUT_AUDIO' = undefined as never
   const requestedAudio=req.hasVerifiedAudio===true
   if(req.bpm&&!requestedAudio)warnings.push('BPM_IGNORED_WITHOUT_VERIFIED_AUDIO: do not synchronize to rights-unknown music.')
 
@@ -72,13 +71,15 @@ export function resolvePremiumAssembly(
     if(!shot)warnings.push('NO_GOVERNED_GENERATIVE_SHOT_MATCH: deterministic production remains available.')
   }
 
+  const audioStatus:PremiumAssemblyPlan['audio']['status']=requestedAudio?'READY':sound?'READY_WITHOUT_AUDIO':'NOT_REQUESTED'
+
   return {
     productionMasterId:req.productionMasterId,
     selectedStyleId:req.selectedStyleId,
     kit:{id:kit.id,name:kit.name,compositionId:compositionId(kit.id),materials:kit.materialIds,motion:kit.motionIds},
     transition:transition?{id:transition.id,reason:`Compatible with ${req.selectedStyleId}; use only where a scene handoff needs continuity.`}:null,
     caption:caption?{id:caption.id,reason:`Selected from style behavior for ${req.selectedStyleId}; captions remain deterministic and safe-area governed.`}:null,
-    audio:{presetFound:Boolean(sound),verifiedAudioAvailable:requestedAudio,musicRole:sound?.musicRole??null,roles:sound?.roles??[],syncPriority:sound?.syncPriority??null,bpm:requestedAudio&&req.bpm?req.bpm:null,status:requestedAudio?'READY':sound?'READY_WITHOUT_AUDIO':'NOT_REQUESTED'},
+    audio:{presetFound:Boolean(sound),verifiedAudioAvailable:requestedAudio,musicRole:sound?.musicRole??null,roles:sound?.roles??[],syncPriority:sound?.syncPriority??null,bpm:requestedAudio&&req.bpm?req.bpm:null,status:audioStatus},
     generative:{enabled:Boolean(req.allowGenerative&&shot),shotId:shot?.id??null,semanticClass:shot?.semanticClass??null,mode:shot?.preferredMode??null,status:req.allowGenerative&&shot?'PLAN_ONLY':'NOT_NEEDED'},
     readiness:{deterministicReady:blockers.length===0,warnings,blockers}
   }
