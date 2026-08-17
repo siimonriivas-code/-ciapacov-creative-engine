@@ -1,0 +1,173 @@
+name: Final Acceptance Creative Ecosystem v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/final-acceptance-v11.yml'
+      - 'validation/run-final-acceptance-v11.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  final-acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Full registry and production validation
+        run: |
+          npm run validate:all
+          npm run build
+          npm run qa:real
+
+      - name: Verify final premium inventories
+        run: |
+          node - <<'NODE'
+          const styles=require('./src/registry/creative-style-families.json')
+          const dirs=require('./src/registry/premium-style-presets.json')
+          const motion=require('./src/registry/premium-motion-modules.json')
+          const impl=require('./src/registry/premium-motion-implementations.json')
+          const mats=require('./src/registry/premium-material-systems.json')
+          const kits=require('./src/registry/premium-template-kits.json')
+          const lottie=require('./src/registry/first-party-lottie-presets.json')
+          const transitions=require('./src/registry/premium-transition-systems.json')
+          const captions=require('./src/registry/caption-systems.json')
+          const audioRoles=require('./src/registry/audio-roles.json')
+          const audioPresets=require('./src/registry/sound-design-presets.json')
+          const audioLib=require('./src/registry/audio-library.json')
+          const shots=require('./src/registry/generative-shot-archetypes.json')
+          const providers=require('./src/registry/generative-provider-catalog.json')
+          const dna=require('./src/registry/reference-analysis-dimensions.json')
+          const benchmark=require('./src/registry/creative-benchmark-gates.json')
+          const dirCount=dirs.reduce((n,x)=>n+x.directions.length,0)
+          const expected=[
+            ['styles',styles.length,12],['directions',dirCount,36],['motion',motion.length,39],['implementations',impl.length,39],
+            ['materials',mats.length,18],['kits',kits.length,27],['lottie',lottie.length,18],['transitions',transitions.transitions.length,12],
+            ['captions',captions.systems.length,6],['audioRoles',audioRoles.length,12],['audioPresets',audioPresets.length,9],['audioLib',audioLib.length,0],
+            ['shots',shots.shots.length,18],['providers',providers.providers.length,10],['dna',dna.dimensions.length,12],['benchmark',benchmark.passScore,82]
+          ]
+          for(const [name,got,want] of expected){if(got!==want){console.error(name,got,'!=',want);process.exit(1)}}
+          const byMaster=new Map();for(const k of kits)byMaster.set(k.productionMasterId,(byMaster.get(k.productionMasterId)||0)+1)
+          if(byMaster.size!==9||[...byMaster.values()].some(v=>v!==3))process.exit(1)
+          const execProviders=providers.providers.filter(p=>['integrated-live','integrated-dry-run'].includes(p.executionStatus))
+          if(execProviders.length!==1||execProviders[0].provider!=='MiniMax')process.exit(1)
+          console.log(Object.fromEntries(expected.map(([n,g])=>[n,g])))
+          NODE
+
+      - name: Validate anti-generic and creative benchmark gates
+        run: |
+          node scripts/audit-premium-production.mjs validation/premium-plan-pass.json
+          node scripts/audit-premium-production.mjs validation/agua-route-premium-v11.json
+          if node scripts/audit-premium-production.mjs validation/premium-plan-fail.json; then exit 1; fi
+          node scripts/audit-creative-benchmark.mjs validation/creative-benchmark-pass.json
+          if node scripts/audit-creative-benchmark.mjs validation/creative-benchmark-fail.json; then exit 1; fi
+
+      - name: Validate audio BPM intelligence
+        run: |
+          node scripts/build-beat-grid.mjs validation/audio-beat-grid-v11.json /tmp/beat-grid.json
+          node -e "const x=require('/tmp/beat-grid.json');if(x.totalFrames!==1350||x.beats.length!==91||x.eighths.length!==181)process.exit(1);console.log('audio BPM grid ok')"
+
+      - name: Validate generative shot and provider routing
+        run: |
+          node scripts/build-generative-shot-plan.mjs GENSHOT-WATER-RIBBON /tmp/genshot.json --mode=text-to-video --duration=6 --resolution=1080P
+          node scripts/select-generative-provider.mjs validation/generative-provider-route-v11.json > /tmp/provider-route.json
+          node -e "const x=require('/tmp/provider-route.json');if(x.recommendations[0].provider!=='MiniMax'||x.recommendations[0].executionStatus!=='integrated-dry-run')process.exit(1);if(x.recommendations.some(r=>r.executionStatus==='adapter-candidate'&&r.executionAllowed))process.exit(1);console.log('provider routing ok')"
+
+      - name: Discover final main runtime
+        run: |
+          npx remotion compositions src/remotion/index.ts | tee /tmp/comps.txt
+          TOTAL=$(grep -oE 'CE-[A-Za-z0-9-]+' /tmp/comps.txt | sort -u | wc -l)
+          KITS=$(grep -oE 'CE-KIT-[A-Za-z0-9-]+' /tmp/comps.txt | sort -u | wc -l)
+          echo "main compositions=$TOTAL kits=$KITS"
+          test "$TOTAL" -eq 39
+          test "$KITS" -eq 27
+          for ID in CE-QA-LottieRuntime CE-QA-PremiumTransitions CE-QA-PremiumCaptions; do grep -q "$ID" /tmp/comps.txt; done
+
+      - name: Render all 27 directed premium kits
+        run: |
+          mkdir -p /tmp/final-kits
+          grep -oE 'CE-KIT-[A-Za-z0-9-]+' /tmp/comps.txt | sort -u > /tmp/kits.txt
+          while read -r ID; do
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/final-kits/$ID.png" --frame=60
+            test -s "/tmp/final-kits/$ID.png"
+          done < /tmp/kits.txt
+          test "$(find /tmp/final-kits -name '*.png' | wc -l)" -eq 27
+
+      - name: Require temporal change in all 27 premium kits
+        run: |
+          mkdir -p /tmp/final-motion
+          STATIC=0
+          while read -r ID; do
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/final-motion/${ID}-A.png" --frame=30
+            npx remotion still src/remotion/index.ts "$ID" "/tmp/final-motion/${ID}-B.png" --frame=240
+            if cmp -s "/tmp/final-motion/${ID}-A.png" "/tmp/final-motion/${ID}-B.png"; then
+              echo "STATIC $ID"; STATIC=$((STATIC+1))
+            fi
+          done < /tmp/kits.txt
+          echo "static_count=$STATIC"
+          test "$STATIC" -eq 0
+
+      - name: Render transition and caption QA
+        run: |
+          mkdir -p /tmp/final-qa
+          for I in $(seq 0 11); do FRAME=$((I*60+30)); npx remotion still src/remotion/index.ts CE-QA-PremiumTransitions "/tmp/final-qa/transition-$I.png" --frame=$FRAME; done
+          for I in $(seq 0 5); do FRAME=$((I*60+30)); npx remotion still src/remotion/index.ts CE-QA-PremiumCaptions "/tmp/final-qa/caption-$I.png" --frame=$FRAME; done
+          for FRAME in 0 45 89; do npx remotion still src/remotion/index.ts CE-QA-LottieRuntime "/tmp/final-qa/lottie-$FRAME.png" --frame=$FRAME; done
+          test "$(find /tmp/final-qa -name 'transition-*.png' | wc -l)" -eq 12
+          test "$(find /tmp/final-qa -name 'caption-*.png' | wc -l)" -eq 6
+          test "$(find /tmp/final-qa -name 'lottie-*.png' | wc -l)" -eq 3
+
+      - name: Discover and render six-beat Agua premium acceptance
+        run: |
+          npx remotion compositions src/remotion/index-premium-qa.tsx | tee /tmp/agua-comps.txt
+          grep -q 'CE-QA-AguaRoutePremium45' /tmp/agua-comps.txt
+          mkdir -p /tmp/agua-qa
+          for FRAME in 45 180 420 735 1000 1240; do
+            npx remotion still src/remotion/index-premium-qa.tsx CE-QA-AguaRoutePremium45 "/tmp/agua-qa/frame-$FRAME.png" --frame=$FRAME
+            test -s "/tmp/agua-qa/frame-$FRAME.png"
+          done
+          test "$(find /tmp/agua-qa -name '*.png' | wc -l)" -eq 6
+
+      - name: Validate MiniMax governed executor dry-run
+        run: |
+          cat > /tmp/minimax.json <<'JSON'
+          {"id":"FINAL-QA-CONCEPT","semanticClass":"SCENE-CONCEPTUAL","purpose":"Abstract water transition","prompt":"Abstract translucent water ribbon crossing a neutral editorial field, elegant controlled motion, no text, no logos, no real location.","mode":"text-to-video","model":"MiniMax-Hailuo-2.3","durationSeconds":6,"resolution":"1080P","cameraCommands":["Static shot"]}
+          JSON
+          node scripts/generate-minimax-video.mjs /tmp/minimax.json | tee /tmp/minimax.txt
+          grep -q 'DRY RUN ONLY' /tmp/minimax.txt
+
+      - name: Record final validated status
+        run: |
+          mkdir -p status
+          cat > status/FINAL_ACCEPTANCE_V11.md <<EOF
+          # Creative Ecosystem v1.1 — Final repository acceptance
+
+          STATUS=SUCCESS
+          RUN_ID=${GITHUB_RUN_ID}
+          SOURCE_SHA=${GITHUB_SHA}
+          DATE_UTC=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+          Validated: full build + factual QA + 27/27 directed premium kits + 27/27 temporal change + 18 materials + 39 premium motion implementations + 18 Lotties + 12 transitions + 6 caption systems + audio/BPM intelligence + provider routing + anti-generic QA + creative benchmark >=82 + six-beat 45s Agua Bienestar premium QA + MiniMax governed dry-run.
+
+          Remaining product-level proof: Claude Design Stage A/B and human visual acceptance of its real output. Live paid generative-provider execution remains a separate optional proof path.
+          EOF
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add status/FINAL_ACCEPTANCE_V11.md
+          git commit -m "chore: record successful v1.1 final acceptance ${GITHUB_RUN_ID}"
+          git push origin HEAD:main
