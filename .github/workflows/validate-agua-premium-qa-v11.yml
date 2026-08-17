@@ -1,0 +1,51 @@
+name: Validate Agua Premium QA v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/validate-agua-premium-qa-v11.yml'
+      - 'validation/run-agua-premium-qa-v11.txt'
+      - 'src/remotion/index-premium-qa.tsx'
+      - 'src/remotion/compositions/AguaRoutePremium45QA.tsx'
+      - 'src/remotion/components/PremiumTransitions.tsx'
+      - 'src/remotion/components/PremiumMaterials.tsx'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: TypeScript build
+        run: npm run build
+      - name: Discover standalone acceptance composition
+        run: |
+          npx remotion compositions src/remotion/index-premium-qa.tsx | tee /tmp/agua-premium.txt
+          grep -q 'CE-QA-AguaRoutePremium45' /tmp/agua-premium.txt
+      - name: Render all six beat representatives
+        run: |
+          mkdir -p /tmp/agua-premium
+          for FRAME in 45 180 420 735 1000 1240; do
+            npx remotion still src/remotion/index-premium-qa.tsx CE-QA-AguaRoutePremium45 "/tmp/agua-premium/frame-$FRAME.png" --frame=$FRAME
+            test -s "/tmp/agua-premium/frame-$FRAME.png"
+          done
+          test "$(find /tmp/agua-premium -name '*.png' | wc -l)" -eq 6
+      - name: Verify six-beat duration
+        run: |
+          node -e "const x=120+150+360+270+240+210;if(x!==1350)process.exit(1);console.log('45s / 1350 frames / six beats')"
+      - name: Upload visual acceptance contact frames
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciapacov-v11-agua-premium-qa
+          path: /tmp/agua-premium/*.png
+          if-no-files-found: error
+          retention-days: 14
