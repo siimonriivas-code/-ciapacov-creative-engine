@@ -1,0 +1,61 @@
+name: Validate Premium Audio v1.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/validate-audio-v11.yml'
+      - 'src/registry/audio-roles.json'
+      - 'src/registry/sound-design-presets.json'
+      - 'src/registry/audio-library.json'
+      - 'scripts/build-beat-grid.mjs'
+      - 'validation/audio-beat-grid-v11.json'
+      - 'claude/audio.compact.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validate audio registries
+        run: |
+          node - <<'NODE'
+          const roles=require('./src/registry/audio-roles.json')
+          const presets=require('./src/registry/sound-design-presets.json')
+          const library=require('./src/registry/audio-library.json')
+          if(roles.length!==12||presets.length!==9||library.length!==0)process.exit(1)
+          const masters=new Set(presets.map(x=>x.productionMasterId))
+          if(masters.size!==9)process.exit(1)
+          const ids=new Set(roles.map(x=>x.id))
+          for(const p of presets){for(const role of p.roles){if(!ids.has(role))process.exit(1)}if(p.musicRole&&!ids.has(p.musicRole))process.exit(1)}
+          console.log({roles:roles.length,presets:presets.length,verifiedAudio:library.length})
+          NODE
+
+      - name: Validate BPM planner syntax
+        run: node --check scripts/build-beat-grid.mjs
+
+      - name: Validate 45-second beat grid
+        run: |
+          node scripts/build-beat-grid.mjs validation/audio-beat-grid-v11.json /tmp/beat-grid.json
+          node - <<'NODE'
+          const x=require('/tmp/beat-grid.json')
+          if(x.bpm!==120||x.fps!==30||x.durationSeconds!==45||x.totalFrames!==1350)process.exit(1)
+          if(x.beats.length!==91||x.eighths.length!==181)process.exit(1)
+          if(x.beats[1].frame!==15||x.beats[4].frame!==60)process.exit(1)
+          console.log({frames:x.totalFrames,beats:x.beats.length,eighths:x.eighths.length,secondsPerBeat:x.secondsPerBeat})
+          NODE
+
+      - name: Audio policy summary
+        run: |
+          echo '12 audio roles · 9 Production Master sound presets · 0 rights-verified audio assets by design · deterministic BPM frame grid validated'
