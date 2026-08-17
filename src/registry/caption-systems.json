@@ -1,0 +1,20 @@
+{
+  "version":"1.1",
+  "systems":[
+    {"id":"CAP-EDITORIAL-LOWER","name":"Editorial Lower","placement":"lower-third","maxLines":2,"maxCharsPerLine":34,"surface":"solid-or-high-contrast","motion":"short controlled rise + opacity","bestFor":["launch","data","statement"],"avoid":["word-by-word-bounce","full-width-pill"]},
+    {"id":"CAP-DOCUMENTARY","name":"Documentary Subtitle","placement":"lower-safe","maxLines":2,"maxCharsPerLine":38,"surface":"media-scrim-when-needed","motion":"opacity + 8px vertical settle","bestFor":["documentary","testimonial","real-media"],"avoid":["covering-faces","decorative-highlight-every-word"]},
+    {"id":"CAP-QUIET","name":"Quiet Subtitle","placement":"lower-center","maxLines":2,"maxCharsPerLine":34,"surface":"neutral","motion":"slow opacity","bestFor":["quiet-luxury","testimonial","close"],"avoid":["large-box","high-frequency-motion"]},
+    {"id":"CAP-TECH-RAIL","name":"Technical Caption Rail","placement":"lower-left-rail","maxLines":3,"maxCharsPerLine":30,"surface":"technical-panel","motion":"scan/focus marker + opacity","bestFor":["process","route","alert","timeline"],"avoid":["sci-fi-hud","microtext"]},
+    {"id":"CAP-KINETIC-EMPHASIS","name":"Kinetic Emphasis Caption","placement":"lower-mid","maxLines":2,"maxCharsPerLine":28,"surface":"transparent-or-neutral","motion":"phrase-level scale/slide only","bestFor":["kinetic-type","launch","short-statement"],"avoid":["karaoke-every-word","spring","bounce"]},
+    {"id":"CAP-ACCESSIBLE-HC","name":"Accessible High Contrast","placement":"lower-safe","maxLines":3,"maxCharsPerLine":34,"surface":"solid-high-contrast","motion":"minimal opacity","bestFor":["dense-information","alerts","accessibility-first"],"avoid":["transparent-over-busy-media","low-contrast-brand-color"]}
+  ],
+  "globalRules":[
+    "Captions remain inside the active Design System safe area.",
+    "Never cover a face, critical evidence, route node, metric or CTA when a lower/alternate placement is available.",
+    "Break dense copy across time instead of shrinking to microtext.",
+    "Animate phrases or caption blocks, not every word by default.",
+    "No bounce/spring/elastic for Agua Bienestar.",
+    "Caption text is deterministic and factual; never bake it into generative video pixels.",
+    "Use high-contrast solid/scrim surfaces when media underneath makes text unstable."
+  ]
+}
