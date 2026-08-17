@@ -170,4 +170,14 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add status/FINAL_ACCEPTANCE_V11.md
           git commit -m "chore: record successful v1.1 final acceptance ${GITHUB_RUN_ID}"
-          git push origin HEAD:main
+          for ATTEMPT in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "Final acceptance status recorded on attempt ${ATTEMPT}."
+              exit 0
+            fi
+            sleep 2
+          done
+          echo 'Unable to record final acceptance status after 5 attempts.'
+          exit 1
