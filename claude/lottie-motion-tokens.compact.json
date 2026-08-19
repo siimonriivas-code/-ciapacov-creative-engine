@@ -1,0 +1,12 @@
+{
+  "version":"1.0",
+  "status":"PREPARED_NOT_RUNTIME_ENABLED",
+  "purpose":"Plan reusable dotLottie Motion Token assets for CIAPACOV/Agua Bienestar without pretending the current @remotion/lottie JSON runtime already executes token bindings.",
+  "officialFeatureContext":{"source":"LottieFiles Motion Tokens","supports":["text","font","size","alignment","colors","gradients","position","scale","rotation","opacity","skew","skew-axis"],"authoring":"Lottie Creator / dotLottie","aiGuidance":"LottieFiles publishes Motion Token skills/reference material for LLM-assisted control"},
+  "registry":"src/registry/motion-token-contracts.json",
+  "currentRuntime":{"remotion":"@remotion/lottie + lottie-web","motionTokensNative":false,"rule":"Do not claim runtime support until a dotLottie Motion Token adapter and deterministic smoke render exist."},
+  "targetUseCases":["brandable-first-party-icons","parameterized-data-heroes","route-day-and-node-assets","reusable-title-reveals","themeable-animation-variants"],
+  "whyItMatters":"One governed motion asset can become many editable template variants by injecting approved text/color/transform values instead of rebuilding the animation.",
+  "productionAuthority":{"brandTokens":"active Design System","factualTokens":"QA/verified production data","motionBehavior":"CIAPACOV Motion Director","assetLicense":"first-party or verified provenance"},
+  "nextMilestone":["Create one tokenized first-party pilot in Lottie Creator","Export dotLottie with semantic tokens","Build a read/inspect adapter","Build deterministic render bridge or pre-rendered approved fallback","Add QA for missing/demo/factual token values","Only then mark runtime-enabled"]
+}
