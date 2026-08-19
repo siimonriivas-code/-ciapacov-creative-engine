@@ -1,0 +1,101 @@
+{
+  "version": "1.0",
+  "status": "PREPARED_FOR_DOTLOTTIE_ADAPTER",
+  "purpose": "Stable semantic contracts for parameterized first-party motion assets. Designed for LottieFiles Motion Tokens / dotLottie authoring while keeping factual values and identity controlled by the active Design System and QA.",
+  "authority": {
+    "identity": "active-design-system",
+    "facts": "qa-and-verified-production-data",
+    "motion": "ciapacov-motion-director",
+    "tokenValues": "deterministic-injection-only-for-factual-or-brand-critical-fields"
+  },
+  "supportedPropertyClasses": [
+    "text-content",
+    "text-font",
+    "text-size",
+    "text-alignment",
+    "solid-color",
+    "gradient",
+    "position",
+    "scale",
+    "rotation",
+    "opacity",
+    "skew",
+    "skew-axis"
+  ],
+  "namespaces": {
+    "brand": [
+      "brand.primary",
+      "brand.secondary",
+      "brand.accent",
+      "brand.neutral",
+      "brand.surface"
+    ],
+    "type": [
+      "type.headline.text",
+      "type.headline.size",
+      "type.label.text",
+      "type.body.text",
+      "type.caption.text"
+    ],
+    "data": [
+      "data.value.text",
+      "data.unit.text",
+      "data.context.text",
+      "data.progress"
+    ],
+    "route": [
+      "route.day.text",
+      "route.destination.text",
+      "route.progress",
+      "route.node.opacity",
+      "route.node.scale"
+    ],
+    "motion": [
+      "motion.intensity",
+      "motion.depth",
+      "motion.accent.opacity"
+    ]
+  },
+  "contracts": [
+    {
+      "id": "MT-CONTRACT-BRANDABLE-ICON",
+      "for": ["icon", "utility", "water", "location"],
+      "required": ["brand.primary", "brand.accent"],
+      "optional": ["motion.intensity", "motion.accent.opacity"],
+      "factual": false
+    },
+    {
+      "id": "MT-CONTRACT-DATA-HERO",
+      "for": ["metric", "price", "impact", "progress"],
+      "required": ["data.value.text", "data.unit.text", "data.context.text", "brand.primary", "brand.accent"],
+      "optional": ["data.progress", "motion.intensity", "motion.depth"],
+      "factual": true,
+      "rule": "data.* values must come from QA/production data, never from generative pixels or demo defaults"
+    },
+    {
+      "id": "MT-CONTRACT-ROUTE-NODE",
+      "for": ["route", "calendar", "territory"],
+      "required": ["route.day.text", "route.destination.text", "route.progress", "brand.primary", "brand.accent"],
+      "optional": ["route.node.opacity", "route.node.scale", "motion.depth"],
+      "factual": true,
+      "rule": "day/destination values remain deterministic and validated; geometry may be abstract unless official geography is verified"
+    },
+    {
+      "id": "MT-CONTRACT-TITLE-REVEAL",
+      "for": ["headline", "section-title", "hook"],
+      "required": ["type.headline.text", "brand.primary"],
+      "optional": ["type.headline.size", "brand.accent", "motion.intensity"],
+      "factual": "depends-on-copy",
+      "rule": "official/legal/factual copy must be injected from approved text; AI may not silently rewrite a locked title"
+    }
+  ],
+  "productionRules": [
+    "Motion Tokens make an asset reusable; they do not make its contents factual or brand-approved.",
+    "Brand token values are resolved from the active Design System at production time.",
+    "Factual text/value tokens are resolved from QA/verified production data at production time.",
+    "Demo/default token values must be visibly marked and rejected by production QA.",
+    "Do not expose official logo geometry as a generative/morphable motion token.",
+    "Do not use tokenized movement to distort official marks or waves.",
+    "A dotLottie/Motion Token asset is not production-ready until its adapter and deterministic render test pass in this repository."
+  ]
+}
