@@ -1,4 +1,4 @@
-# CIAPACOV Creative Ecosystem v1.1 — START HERE
+# CIAPACOV Creative Ecosystem v1.2 — START HERE
 
 Use this file as the first entrypoint when the repository is attached to Claude Design or Claude Code.
 
@@ -16,23 +16,25 @@ Never treat this repository as permission to invent or replace official brand as
 6. If a Brand Bridge is applicable, read `claude/qa.compact.json` and apply its language/motion/factual gates.
 7. Read only candidate template IDs from `claude/catalog.compact.json`.
 8. When the user wants premium art direction, richer composition, advanced motion, Lottie, transitions, captions, reference-quality treatment or generative video, read `claude/premium.compact.json` **after** architecture selection.
-9. If the user supplied a visual/video reference, use `claude/REFERENCE_TO_PREMIUM.md` to extract its Visual DNA as principles. Never interpret a public reference as permission to copy its protected artwork/template.
-10. From the premium compact index, use the three materially different style directions compatible with the selected architecture. Do not default to a full-frame primary brand color merely because it exists in the Design System.
-11. Prefer a compatible **executable directed Premium Template Kit** from `src/registry/premium-template-kits.json` when it solves the brief. There are exactly three per Production Master and 27/27 are executable as `CE-KIT-*` Remotion compositions.
-12. Read only the selected kit's material and motion IDs. Add first-party Lottie only when a beat benefits from it.
-13. Choose a coherent first-party transition grammar when scene handoffs need it. Do not assemble random transitions just to create novelty.
-14. If captions/subtitles are needed, select one governed caption system and keep it inside the active Design System safe area. Caption text remains deterministic.
-15. If music/sound design is relevant, read `claude/audio.compact.json`. Use only licensed/authorized audio and synchronize to BPM only when that serves the story. Voice/factual reading time overrides forced musical sync.
-16. If generative video materially improves atmosphere, depth, explanation or continuity, select a governed archetype from `src/registry/generative-shot-archetypes.json`. If provider choice matters, use `src/registry/generative-provider-catalog.json` and the capability router. A routing recommendation is not API execution permission.
-17. Prefer approved-first-frame image-to-video when composition continuity matters.
-18. Factual evidence and factual/official overlays are never generated pixels. Keep logos, names, figures, prices, routes, phone numbers, metrics, captions and documentary truth deterministic and verified.
-19. Surface missing factual media, official assets or licensed audio accurately; do not turn recommended media into mandatory blockers and never fabricate missing evidence.
-20. Before premium final export run factual QA + safe-area/caption-readability QA + anti-generic QA + `scripts/audit-creative-benchmark.mjs`. Premium creative benchmark must score **82 or higher with zero factual/readability blockers**.
-21. Motion templates must show meaningful temporal evolution. A visually static video template is a QA failure even if it compiles.
-22. A passing validator is not proof of beauty: inspect representative rendered frames or the actual animation, and the audio mix when applicable, before declaring the result final.
+9. For motion-heavy work, after the Premium Kit is selected read `claude/motion-direction.compact.json` before writing animation code. It improves timing, easing, choreography, motion personality and primary/secondary/ambient staging but never overrides brand or facts.
+10. Read `claude/upstream-motion-intelligence.compact.json` only when implementation/tool choice or external authoring is relevant. It distinguishes adopted knowledge/runtime from external bridges, labs and watchlist tools. Popularity is not execution permission.
+11. If the user supplied a visual/video reference, use `claude/REFERENCE_TO_PREMIUM.md` to extract its Visual DNA as principles. Never interpret a public reference as permission to copy its protected artwork/template.
+12. From the premium compact index, use the three materially different style directions compatible with the selected architecture. Do not default to a full-frame primary brand color merely because it exists in the Design System.
+13. Prefer a compatible **executable directed Premium Template Kit** from `src/registry/premium-template-kits.json` when it solves the brief. There are exactly three per Production Master and 27/27 are executable as `CE-KIT-*` Remotion compositions.
+14. Read only the selected kit's material and motion IDs. Add first-party Lottie only when a beat benefits from it.
+15. Choose a coherent first-party transition grammar when scene handoffs need it. Do not assemble random transitions just to create novelty.
+16. If captions/subtitles are needed, select one governed caption system and keep it inside the active Design System safe area. Caption text remains deterministic.
+17. If music/sound design is relevant, read `claude/audio.compact.json`. Use only licensed/authorized audio and synchronize to BPM only when that serves the story. Voice/factual reading time overrides forced musical sync.
+18. If generative video materially improves atmosphere, depth, explanation or continuity, select a governed archetype from `src/registry/generative-shot-archetypes.json`. If provider choice matters, use `src/registry/generative-provider-catalog.json` and the capability router. A routing recommendation is not API execution permission.
+19. Prefer approved-first-frame image-to-video when composition continuity matters.
+20. Factual evidence and factual/official overlays are never generated pixels. Keep logos, names, figures, prices, routes, phone numbers, metrics, captions and documentary truth deterministic and verified.
+21. Surface missing factual media, official assets or licensed audio accurately; do not turn recommended media into mandatory blockers and never fabricate missing evidence.
+22. Before premium final export run factual QA + safe-area/caption-readability QA + anti-generic QA + `scripts/audit-creative-benchmark.mjs`. Premium creative benchmark must score **82 or higher with zero factual/readability blockers**.
+23. Motion templates must show meaningful temporal evolution. A visually static video template is a QA failure even if it compiles.
+24. A passing validator is not proof of beauty: inspect representative rendered frames or the actual animation, and the audio mix when applicable, before declaring the result final. For subtle timing/easing problems, review at reduced playback speed as well as normal speed.
 
 ## User-facing behavior
-The user should not need to know IDs. Translate a normal brief into: domain → Operational Master → three visual architectures → Production Master when applicable → premium style directions when relevant → executable kit → material/motion/transition/caption/audio choices as needed → asset/media readiness → production.
+The user should not need to know IDs. Translate a normal brief into: domain → Operational Master → three visual architectures → Production Master when applicable → premium style directions when relevant → executable kit → motion direction → material/motion/transition/caption/audio choices as needed → asset/media readiness → production.
 
 For a first recommendation, do **not** scan the repository and do **not** open every template. Return a compact shortlist and wait for the visual/style direction selection unless the user explicitly asks for automatic execution.
 
@@ -53,6 +55,34 @@ Hard anti-generic rules:
 - do not add the same whoosh/pop to every beat;
 - use contrast in scale, crop, surface, density, media, depth, motion and sound before adding more decoration;
 - every decorative element must support hierarchy, continuity, evidence, location, time, data, atmosphere or transition.
+
+## Motion Intelligence v1.2
+For motion-heavy work, motion direction is now an explicit production layer rather than an implementation afterthought.
+
+Use `claude/motion-direction.compact.json` to establish:
+- emotional/communication intent;
+- one hero action or payoff;
+- setup → action → resolution per beat;
+- primary motion first, secondary response/depth second, ambient motion last;
+- one coherent timing/easing family;
+- choreography precedence instead of every element animating simultaneously;
+- path anchoring and visual handoffs between related states;
+- purposeful holds/negative space;
+- final render inspection at multiple timestamps and, when useful, slow-motion timing review.
+
+For Agua Bienestar the motion personality is **premium-institutional**: smooth controlled curves, precise staging, restrained depth and water-linked continuity where relevant. Overshoot, bounce, spring, elastic and squash/stretch are disabled.
+
+Implementation routing is deliberate:
+- **Remotion** remains the frame-accurate source of truth for exported video.
+- **GSAP** is preferred for complex deterministic timelines, MotionPath/SVG choreography and advanced easing when those capabilities materially help.
+- **Motion** is for small/simple React motion primitives.
+- **First-party Lottie** is the default reusable deterministic vector-motion asset format.
+- **Lottie Creator MCP** is an optional external authoring bridge only when the user's actual MCP-capable client is connected; documentation in this repo is not proof that Claude Design itself can execute MCP tools.
+- **Rive** and **Theatre.js** are lab candidates, not automatic production dependencies.
+- **Spline** is an external 3D authoring candidate; generated 3D never becomes documentary truth merely because it looks realistic.
+- **Motion Canvas** remains on the watchlist because it substantially overlaps Remotion for our current use cases.
+
+Never run remote `npx` installers blindly from social posts or popularity signals. Curate official upstream knowledge, preserve license/provenance, and add a new runtime only when it materially improves quality, editability, reuse or speed.
 
 ## Agua Bienestar
 When the brief is clearly about Agua Bienestar, use `BRIDGE-AGUA-BIENESTAR-V1` from the QA compact catalog. The Design System remains authoritative for its actual identity. The bridge only adds compatibility rules, approved wording gates and motion behavior.
