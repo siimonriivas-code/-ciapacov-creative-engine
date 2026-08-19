@@ -9,6 +9,8 @@ const exists = (p) => fs.existsSync(path.join(root, p));
 const requiredFiles = [
   'claude/motion-direction.compact.json',
   'claude/upstream-motion-intelligence.compact.json',
+  'claude/lottie-motion-tokens.compact.json',
+  'src/registry/motion-token-contracts.json',
   '.agents/skills/ciapacov-motion-director/SKILL.md',
   'claude/premium.compact.json',
   'claude/handoff.compact.json',
@@ -20,10 +22,16 @@ for (const p of requiredFiles) {
 
 const motion = json('claude/motion-direction.compact.json');
 const upstream = json('claude/upstream-motion-intelligence.compact.json');
+const motionTokens = json('claude/lottie-motion-tokens.compact.json');
+const tokenContracts = json('src/registry/motion-token-contracts.json');
+const handoff = json('claude/handoff.compact.json');
+const premium = json('claude/premium.compact.json');
 const pkg = json('package.json');
 
 if (motion.version !== '1.2') throw new Error(`motion-direction version must be 1.2, got ${motion.version}`);
 if (upstream.version !== '1.2') throw new Error(`upstream-motion-intelligence version must be 1.2, got ${upstream.version}`);
+if (handoff.version !== '1.2') throw new Error(`handoff version must be 1.2, got ${handoff.version}`);
+if (premium.version !== '1.2') throw new Error(`premium version must be 1.2, got ${premium.version}`);
 
 const authority = motion.authorityOrder || [];
 const requiredAuthority = ['active-design-system', 'brand-bridge', 'factual-qa'];
@@ -69,6 +77,32 @@ if (upstream.policy?.noBlindNpxExecution !== true) throw new Error('noBlindNpxEx
 if (upstream.policy?.activeDesignSystemStillWins !== true) throw new Error('activeDesignSystemStillWins must remain true');
 if (upstream.policy?.factualTruthStillComesFromQaAndVerifiedMedia !== true) throw new Error('factual truth authority must remain QA + verified media');
 
+if (motionTokens.status !== 'PREPARED_NOT_RUNTIME_ENABLED') {
+  throw new Error(`Motion Tokens must remain explicitly non-runtime until adapter QA passes; got ${motionTokens.status}`);
+}
+if (motionTokens.currentRuntime?.motionTokensNative !== false) {
+  throw new Error('Current Remotion/Lottie runtime must not claim native Motion Token support');
+}
+if (tokenContracts.status !== 'PREPARED_FOR_DOTLOTTIE_ADAPTER') {
+  throw new Error(`Unexpected Motion Token contract status: ${tokenContracts.status}`);
+}
+if (!Array.isArray(tokenContracts.contracts) || tokenContracts.contracts.length < 4) {
+  throw new Error('Expected at least four governed Motion Token contracts');
+}
+for (const c of tokenContracts.contracts) {
+  if (!c.id || !Array.isArray(c.required)) throw new Error(`Invalid Motion Token contract: ${JSON.stringify(c)}`);
+}
+
+if (handoff.rules?.motionUpstreamNeverOverridesBrandOrFacts !== true) {
+  throw new Error('handoff must preserve motion upstream authority boundary');
+}
+if (handoff.rules?.blindNpxInstallForbidden !== true) {
+  throw new Error('handoff must forbid blind remote npx installation');
+}
+if (premium.motionDirection?.compact !== 'claude/motion-direction.compact.json') {
+  throw new Error('premium routing must point to the governed motion-direction compact');
+}
+
 for (const dep of ['remotion', 'gsap', 'motion', '@remotion/lottie', 'lottie-web']) {
   if (!pkg.dependencies?.[dep]) throw new Error(`Expected existing runtime dependency is missing: ${dep}`);
 }
@@ -84,3 +118,4 @@ console.log(`Adopted knowledge: ${adopted.length}`);
 console.log(`External bridges: ${(upstream.externalBridges || []).length}`);
 console.log(`Lab candidates: ${(upstream.labCandidates || []).length}`);
 console.log(`Watchlist: ${(upstream.watchlist || []).length}`);
+console.log(`Motion Token contracts: ${tokenContracts.contracts.length} (adapter prepared, runtime disabled)`);
