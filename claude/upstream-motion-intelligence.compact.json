@@ -1,0 +1,117 @@
+{
+  "version":"1.2",
+  "purpose":"Curated upstream motion/design intelligence for CIAPACOV Creative Ecosystem. This registry separates adopted knowledge, executable runtime, external bridges, lab candidates and watchlist tools so agents do not confuse popularity with permission or integration status.",
+  "policy":{
+    "preferOfficialSources":true,
+    "preferMaintainedSources":true,
+    "noBlindNpxExecution":true,
+    "noThirdPartyAssetWithoutLicenseAndProvenance":true,
+    "activeDesignSystemStillWins":true,
+    "factualTruthStillComesFromQaAndVerifiedMedia":true,
+    "upstreamKnowledgeMayImproveCraftButNeverOverrideBrandOrFacts":true
+  },
+  "adoptedKnowledge":[
+    {
+      "id":"UP-MOTION-LOTTIEFILES-DIRECTOR",
+      "name":"LottieFiles Motion Design Skill",
+      "source":"LottieFiles/motion-design-skill",
+      "license":"MIT",
+      "status":"ADOPTED_KNOWLEDGE",
+      "useFor":["emotional-intent","motion-personality","timing","easing","choreography","primary-secondary-ambient-layering","animation-smell-review"],
+      "localInterpretation":"claude/motion-direction.compact.json",
+      "notes":"Philosophy-first and implementation-agnostic. Agua Bienestar overrides playful/bouncy guidance with its own no-bounce/no-spring/no-elastic rules."
+    },
+    {
+      "id":"UP-REMOTION-AGENT-SKILLS",
+      "name":"Remotion Agent Skills",
+      "source":"remotion-dev/skills",
+      "license":"upstream project terms",
+      "status":"ADOPTED_EXECUTION_KNOWLEDGE",
+      "useFor":["remotion-markup","timing","sequencing","transitions","captions","maps","multimedia","rendering","interactivity","studio-preview"],
+      "notes":"Primary implementation knowledge for the deterministic video runtime. Remotion remains the source of truth for frame-accurate video assembly."
+    },
+    {
+      "id":"UP-GSAP-OFFICIAL-SKILLS",
+      "name":"GSAP AI Skills",
+      "source":"greensock/gsap-skills",
+      "license":"MIT for skills; GSAP runtime uses GreenSock standard no-charge license",
+      "status":"ADOPTED_EXECUTION_KNOWLEDGE",
+      "useFor":["timelines","sequencing","motion-path","svg-draw","morph-svg","split-text","custom-ease","performance","react-cleanup"],
+      "notes":"GSAP runtime is already installed. Prefer timelines for multi-step choreography and MotionPath for complex deterministic paths where frame-driven Remotion composition benefits from GSAP calculations."
+    },
+    {
+      "id":"UP-MOTION-RUNTIME",
+      "name":"Motion",
+      "source":"motiondivision/motion",
+      "license":"MIT",
+      "status":"ADOPTED_RUNTIME",
+      "useFor":["simple-react-motion","layout-transitions","gesture-style-components","small-reusable-motion-primitives"],
+      "notes":"Already installed. Do not introduce spring defaults into Agua Bienestar unless explicitly permitted by the active Brand Bridge."
+    }
+  ],
+  "externalBridges":[
+    {
+      "id":"UP-LOTTIE-CREATOR-MCP",
+      "name":"Lottie Creator MCP",
+      "source":"LottieFiles Creator MCP",
+      "status":"RECOMMENDED_EXTERNAL_BRIDGE_NOT_REPO_EXECUTOR",
+      "capabilities":["create-lottie-scenes","edit-existing-lotties","batch-brand-variants","keyframes","bezier-easing","masks-mattes","blend-modes","svg-import","lottie-json-export","brand-accessibility-review"],
+      "requirements":["Node.js 18+","LottieFiles Creator browser tab open","MCP-compatible client","explicit local user setup"],
+      "rule":"Do not claim Claude Design codebase access to this MCP unless the user's actual client has connected it. Repo may prepare assets and prompts; MCP execution is external."
+    }
+  ],
+  "labCandidates":[
+    {
+      "id":"LAB-RIVE",
+      "name":"Rive",
+      "status":"LAB_CANDIDATE",
+      "bestFor":["interactive-vector-assets","state-machines","data-binding","reusable-reactive-motion-components"],
+      "reason":"Strong designer/developer contract via state machines and data binding. Valuable for reusable animated components, but not necessary for every exported social video.",
+      "integrationRule":"Prototype one isolated adapter before adding as production dependency."
+    },
+    {
+      "id":"LAB-THEATRE-JS",
+      "name":"Theatre.js",
+      "status":"LAB_CANDIDATE",
+      "bestFor":["high-fidelity-manual-timeline","threejs-choreography","keyframe-curve-editing","audio-synced-sequences"],
+      "reason":"Excellent timeline/editor model for nuanced 2D/3D animation. Public repo notes 1.0 development is temporarily private; Studio is AGPL while core is Apache-2.0.",
+      "integrationRule":"Keep out of production runtime until 1.0/public status and licensing fit are re-evaluated."
+    },
+    {
+      "id":"LAB-SPLINE-3D",
+      "name":"Spline",
+      "status":"EXTERNAL_3D_CANDIDATE",
+      "bestFor":["3d-scenes","materials","lighting","interactive-3d","ai-generated-3d-objects","spatial-reference-frames"],
+      "reason":"Useful for premium conceptual 3D shots and object references; several AI features are paid and live outside the repo.",
+      "integrationRule":"Treat as an external authoring source; import only exported/rights-cleared assets into deterministic production."
+    }
+  ],
+  "watchlist":[
+    {
+      "id":"WATCH-MOTION-CANVAS",
+      "name":"Motion Canvas",
+      "status":"WATCHLIST_REDUNDANT_WITH_REMOTION",
+      "bestFor":["informative-vector-animation","voiceover-synced-explainers"],
+      "reason":"High-quality open-source system, but overlaps heavily with Remotion. Do not create a second primary renderer without a concrete use case."
+    },
+    {
+      "id":"WATCH-MOTION-PRIMITIVES",
+      "name":"Motion Primitives",
+      "status":"REFERENCE_EDITOR_UI_ONLY",
+      "bestFor":["animated-editor-ui","microinteraction-inspiration"],
+      "reason":"Useful for the future Creative Engine UI/editor, not a primary exported-video engine."
+    }
+  ],
+  "routing":{
+    "motionDirection":"claude/motion-direction.compact.json",
+    "deterministicVideo":"Remotion",
+    "complexTimelineOrMotionPath":"GSAP",
+    "simpleReactMotion":"Motion",
+    "reusableVectorAsset":"first-party Lottie; optionally Lottie Creator MCP externally",
+    "interactiveVectorLab":"Rive",
+    "manual3dTimelineLab":"Theatre.js",
+    "external3dAuthoring":"Spline",
+    "never":"Add a second renderer just because it is popular. A new tool must materially improve quality, editability, reuse, or production speed."
+  },
+  "reviewCadence":"Revalidate active upstream candidates before major version upgrades or when a provider/tool materially changes."
+}
