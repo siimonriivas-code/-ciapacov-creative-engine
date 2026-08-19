@@ -1,0 +1,44 @@
+{
+  "version":"1.2",
+  "purpose":"Governed motion-direction layer derived from curated official upstream knowledge plus CIAPACOV/Agua Bienestar constraints. Use after visual architecture + premium kit are selected and before implementation details.",
+  "authorityOrder":["active-design-system","brand-bridge","factual-qa","selected-operational-master","selected-production-master","selected-premium-kit","motion-direction-knowledge","implementation-library"],
+  "threePillars":[
+    {"id":"intent","question":"What should the viewer feel or understand?","drives":["timing","easing","amplitude","pause-length"]},
+    {"id":"narrative","question":"What changes from setup to action to resolution?","drives":["staging","sequence","focus","hero-payoff"]},
+    {"id":"craft","question":"How does movement feel believable, precise and intentional?","drives":["paths","secondary-motion","depth","occlusion","continuity"]}
+  ],
+  "layering":{"primary":"Main action/focus the viewer follows.","secondary":"Supports primary action with depth, response, shadow, refraction, node reaction or annotation.","ambient":"Background life only. Must never compete with primary action.","ambientEnergyMaxRatio":0.2,"rule":"Flat premium motion usually lacks secondary/ambient layers; noisy motion usually lets those layers compete with the primary action."},
+  "brandMotionPersonality":{
+    "AguaBienestar":{"base":"premium-institutional","emotion":["clarity","trust","care","continuity","public-service"],"signature":"smooth controlled curves, precise staging, generous but efficient holds, restrained depth, purposeful water-linked continuity","overshoot":0,"squashStretch":false,"bounce":false,"spring":false,"elastic":false,"defaultEase":"controlled cubic-bezier / deterministic custom ease compatible with active motion bridge","quickMs":[180,280],"standardMs":[320,520],"slowMs":[550,900]},
+    "GenericCIAPACOV":{"base":"professional-editorial","emotion":["clarity","competence","proximity","service"],"overshootMax":0.03,"rule":"Operational pieces prioritize comprehension; campaign/educational pieces may borrow a small amount of playful geometry only when context supports it."}
+  },
+  "decisionChecklist":[
+    "1. State the emotional/communication target in one phrase.",
+    "2. Identify the hero element or hero datum; there should normally be one dominant payoff per short piece.",
+    "3. Define the primary motion path or focus change before secondary decoration.",
+    "4. Choose one coherent easing/timing family for the piece; exceptions need narrative reason.",
+    "5. Build setup → action → resolution per beat instead of independent entrance animations.",
+    "6. Add secondary motion only if it explains response, depth, continuity or hierarchy.",
+    "7. Add ambient motion only after primary/secondary are readable; keep ambient visual energy <=20% of primary.",
+    "8. Ensure multi-element choreography has precedence: hero first, supporting information second, ambient last.",
+    "9. Verify motion over time at multiple timestamps; a premium composition that becomes static unintentionally fails.",
+    "10. Inspect final rendered frames/video, not only code or calculated bounds."
+  ],
+  "choreographyRules":[
+    "Do not animate every element at once.",
+    "Use stagger only when it communicates sequence or hierarchy; stagger is not a default decoration.",
+    "For related nodes, the previous state should seed the next state where possible (handoff/match/path continuity).",
+    "When a path is narratively important, objects riding it must be mathematically/visually anchored to that path; floating-object is a blocker.",
+    "Preserve a persistent anchor through transitions when continuity matters.",
+    "Prefer one transition grammar per piece; variation comes from intensity, crop, timing and context, not random transition packs.",
+    "Use negative space and holds as part of choreography; motion does not need constant activity."
+  ],
+  "propertyRules":{"prefer":["transform","opacity","clip/mask","path-progress","filter-used-sparingly","camera/depth transforms"],"avoidWhenPossible":["layout-thrashing top/left/width/height animation","heavy blur over readable text","unnecessary full-frame color tween","per-letter logo animation"],"text":"Animate phrase/block hierarchy by default, not every letter/word unless the selected style explicitly requires kinetic typography and readability remains safe."},
+  "gsapGuidance":{"timelineForMultiStep":true,"motionPathForComplexPaths":true,"customEaseAllowed":true,"svgDrawMorphAllowedForConceptualFirstPartyAssets":true,"logoMorphForbidden":true,"cleanupRequiredInInteractiveReact":true,"note":"GSAP knowledge improves sequencing/paths but Remotion frame timing remains authoritative for export."},
+  "remotionGuidance":{"frameIsSourceOfTruth":true,"useCurrentFrameForDeterminism":true,"renderStillChecksBeforeFullRender":true,"inspectMultipleFrames":true,"parameterizeReusableCompositions":true,"note":"Agent skill guidance should be consulted for captions, maps, multimedia, rendering and interactivity when those domains are active."},
+  "lottieGuidance":{"firstPartyPreferred":true,"thirdPartyRequiresLicenseProvenance":true,"externalCreatorMcpOptional":true,"bestPractice":"Start from approved SVG/vector assets and ask AI to animate them rather than inventing brand-critical illustration geometry from scratch.","naming":"Use semantic layer names so agents can target elements reliably."},
+  "qualitySmells":["same entrance on every element","same card layout repeated beat after beat","everything moves continuously","everything is centered","floating decorative objects","bounce in premium institutional work","full-frame primary-color flood","random transition variety","hero datum competes with secondary copy","ambient particles compete with text","microtext caused by layout avoidance","code QA says PASS while rendered frame visibly overflows"],
+  "slowMotionReview":{"recommended":true,"purpose":"Reveal timing/easing/choreography defects that are hard to perceive at full speed.","checks":["jerky easing","unmotivated direction changes","secondary motion starting too early","objects detaching from paths","transition discontinuity","insufficient holds"]},
+  "reducedMotion":{"requiredForInteractiveSurfaces":true,"videoExport":"Not a separate export by default, but avoid physically uncomfortable flashes, extreme strobing or needless camera aggression."},
+  "neverOverride":["Design System identity","factual QA","safe areas","verified-media rules","rights/licensing rules","Agua Bienestar no-bounce/no-spring/no-elastic rule"]
+}
