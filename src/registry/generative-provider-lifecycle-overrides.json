@@ -1,0 +1,32 @@
+{
+  "version":"1.0",
+  "verifiedAt":"2026-08-18",
+  "purpose":"Time-sensitive lifecycle overlay for the generative provider catalog. Read this before investing in a new adapter or routing to a model whose product/API lifecycle changed after the base catalog was authored.",
+  "overrides":[
+    {
+      "catalogIds":["GENCAT-OPENAI-SORA-2","GENCAT-OPENAI-SORA-2-PRO"],
+      "provider":"OpenAI",
+      "status":"SUNSET_SCHEDULED_DO_NOT_BUILD_NEW_ADAPTER",
+      "effective":"2026-09-24",
+      "rule":"Do not begin a new Sora API adapter for this Creative Engine. Existing API routing knowledge may remain for historical/temporary awareness until the sunset date, but should not be recommended as strategic production infrastructure.",
+      "officialSources":["https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation","https://platform.openai.com/docs/api-reference/videos"]
+    },
+    {
+      "catalogIds":["GENCAT-MINIMAX-H3"],
+      "provider":"MiniMax",
+      "model":"MiniMax H3",
+      "status":"OFFICIAL_MODEL_WATCHLIST_API_PROFILE_NOT_VALIDATED",
+      "announced":"2026-07-31",
+      "openSourceAnnounced":"2026-08-03",
+      "reportedCapabilities":{"durationSeconds":"4-15","resolution":"up-to-2K","aspectRatiosInclude":"9:16","nativeStereoAudio":true,"multimodalContext":["text","image","video","audio"],"notable":["multimodal generation/editing","V2V Motion Transfer"]},
+      "rule":"Do not invoke from this repository until MiniMax's official API reference exposes a concrete H3 model identifier/endpoint and a governed adapter is implemented. Current public video-generation API docs still enumerate Hailuo 2.3 family models for the existing endpoint.",
+      "officialSources":["https://www.minimax.io/blog/minimax-h3","https://www.minimax.io/news/minimax-h3-open-source","https://platform.minimax.io/docs/api-reference/api-overview"]
+    }
+  ],
+  "routingRules":[
+    "Lifecycle overrides outrank stale capability profiles.",
+    "A newly announced model is not executable merely because the vendor website offers an API button; require concrete current API model/endpoint documentation.",
+    "A scheduled-sunset model should not receive new adapter investment unless the user explicitly requests short-lived migration work.",
+    "Revalidate this file before enabling any new generative-video adapter."
+  ]
+}
