@@ -1,0 +1,43 @@
+{
+  "version":"1.0",
+  "purpose":"Governed advanced-runtime pilots that can materially expand motion quality while keeping Remotion as the single export authority.",
+  "rule":"Pilot before dependency. A candidate becomes production runtime only after one real use case, deterministic render QA, license review, performance check and measurable creative benefit.",
+  "pilots":[
+    {
+      "id":"PILOT-REMOTION-RIVE",
+      "name":"Rive inside Remotion",
+      "status":"PILOT_READY_DEPENDENCY_NOT_INSTALLED",
+      "officialBridge":"@remotion/rive",
+      "authoringRuntime":"Rive .riv + state machines/data binding where useful",
+      "why":"Official Remotion bridge removes the need for a separate export pipeline. Rive is strong for reusable reactive vector components and designer/developer state contracts.",
+      "bestFor":["parameterized-route-indicators","stateful-data-heroes","interactive-brand-components","reusable-vector-systems"],
+      "notFor":["documentary-evidence","one-off-decoration","official-logo-morphing"],
+      "acceptance":["build one first-party .riv pilot","render through @remotion/rive","compare against equivalent Lottie/Remotion implementation","verify frame determinism and brand token behavior","keep only if reuse/editability or visual quality is materially better"]
+    },
+    {
+      "id":"PILOT-REMOTION-THREE",
+      "name":"React Three Fiber / Three.js inside Remotion",
+      "status":"PILOT_READY_DEPENDENCIES_NOT_INSTALLED",
+      "officialBridge":"@remotion/three",
+      "ecosystem":"three + @react-three/fiber + @remotion/three",
+      "why":"Official Remotion integration keeps 3D frame-accurate and exposes current-frame-driven R3F scenes; WebGPU canvas/TSL materials can support richer premium surfaces without a second video renderer.",
+      "bestFor":["conceptual-water-depth","3d-product-or-infrastructure-explainer","premium-light-material-scenes","camera-depth-transitions","approved-video-as-3d-texture"],
+      "notFor":["fake-documentary-infrastructure","invented-official-vehicle","3d-for-decoration-only"],
+      "acceptance":["build one abstract first-party water/material scene","render 9:16 through @remotion/three","test ANGLE/server render path","benchmark render time and memory","verify it adds depth/material richness beyond 2D solution","keep deterministic factual overlays outside 3D scene"]
+    }
+  ],
+  "externalAuthoring":[
+    {
+      "id":"EXT-SPLINE-3D",
+      "status":"OPTIONAL_EXTERNAL_AUTHORING",
+      "use":"Create approved conceptual 3D assets/reference frames, then import/export into governed production.",
+      "warning":"Spline AI output is conceptual, not documentary truth. Paid/external authoring does not grant factual status."
+    },
+    {
+      "id":"EXT-THEATRE-JS",
+      "status":"DEFERRED_TIMELINE_LAB",
+      "use":"Potential manual high-fidelity timeline for difficult Three.js choreography.",
+      "warning":"Re-evaluate when Theatre.js 1.0 is public; Studio licensing differs from core."
+    }
+  ]
+}
