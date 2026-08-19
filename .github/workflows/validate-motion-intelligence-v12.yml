@@ -1,0 +1,32 @@
+name: Validate Motion Intelligence v1.2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'claude/motion-direction.compact.json'
+      - 'claude/upstream-motion-intelligence.compact.json'
+      - 'claude/handoff.compact.json'
+      - 'claude/START_HERE.md'
+      - '.agents/skills/ciapacov-motion-director/**'
+      - 'scripts/validate-motion-intelligence.mjs'
+      - 'package.json'
+      - '.github/workflows/validate-motion-intelligence-v12.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run validate:motion-intelligence
+      - run: npm run check
