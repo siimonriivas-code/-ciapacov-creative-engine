@@ -1,0 +1,95 @@
+name: Final Acceptance Motion Intelligence v1.2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/final-acceptance-motion-intelligence-v12.yml'
+      - 'validation/run-motion-intelligence-v12.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  final-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Validate Motion Intelligence v1.2
+        run: npm run validate:motion-intelligence
+
+      - name: Typecheck
+        run: npm run check
+
+      - name: Preserve premium compatibility
+        run: npm run validate:premium
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify routing and authority contracts
+        run: |
+          node - <<'NODE'
+          const fs=require('fs')
+          const motion=JSON.parse(fs.readFileSync('claude/motion-direction.compact.json','utf8'))
+          const upstream=JSON.parse(fs.readFileSync('claude/upstream-motion-intelligence.compact.json','utf8'))
+          const handoff=JSON.parse(fs.readFileSync('claude/handoff.compact.json','utf8'))
+          const premium=JSON.parse(fs.readFileSync('claude/premium.compact.json','utf8'))
+          const tokens=JSON.parse(fs.readFileSync('claude/lottie-motion-tokens.compact.json','utf8'))
+          const labs=JSON.parse(fs.readFileSync('claude/advanced-runtime-labs.compact.json','utf8'))
+          if(motion.version!=='1.2'||upstream.version!=='1.2'||handoff.version!=='1.2'||premium.version!=='1.2')process.exit(1)
+          if(tokens.status!=='PREPARED_NOT_RUNTIME_ENABLED')process.exit(1)
+          if(!labs.pilots.some(x=>x.id==='PILOT-REMOTION-RIVE'))process.exit(1)
+          if(!labs.pilots.some(x=>x.id==='PILOT-REMOTION-THREE'))process.exit(1)
+          if(upstream.policy.noBlindNpxExecution!==true)process.exit(1)
+          if(handoff.rules.activeDesignSystemWins!==true||handoff.rules.motionUpstreamNeverOverridesBrandOrFacts!==true)process.exit(1)
+          console.log('Motion Intelligence authority/routing contracts PASS')
+          NODE
+
+      - name: Record validated v1.2 status
+        run: |
+          mkdir -p status
+          cat > status/FINAL_ACCEPTANCE_MOTION_INTELLIGENCE_V12.md <<EOF
+          # Motion Intelligence v1.2 — Final repository acceptance
+
+          STATUS=SUCCESS
+          RUN_ID=${GITHUB_RUN_ID}
+          SOURCE_SHA=${GITHUB_SHA}
+          DATE_UTC=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+          Validated: npm ci + Motion Intelligence governance + authority boundaries + Agua Bienestar motion personality + no-blind-npx policy + curated upstream registry + custom Agent Skill + premium compatibility + TypeScript + build + Motion Token contracts held in PREPARED_NOT_RUNTIME_ENABLED state + Rive/Three pilots held as dependency-not-installed labs.
+
+          Runtime policy: Remotion remains export authority; GSAP handles complex deterministic timelines/paths; Motion handles simple React motion; first-party Lottie remains reusable vector-motion runtime. External MCP/labs are never claimed executable merely because they are documented.
+
+          Remaining expansion proofs: first dotLottie Motion Token pilot; optional Rive pilot; optional @remotion/three pilot; future-provider revalidation before any new generative-video adapter is enabled.
+          EOF
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add status/FINAL_ACCEPTANCE_MOTION_INTELLIGENCE_V12.md
+          git commit -m "chore: record successful Motion Intelligence v1.2 acceptance ${GITHUB_RUN_ID}"
+          for ATTEMPT in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "Motion Intelligence v1.2 status recorded on attempt ${ATTEMPT}."
+              exit 0
+            fi
+            sleep 2
+          done
+          echo 'Unable to record Motion Intelligence v1.2 status after 5 attempts.'
+          exit 1
