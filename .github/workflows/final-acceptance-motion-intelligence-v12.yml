@@ -33,6 +33,9 @@ jobs:
       - name: Validate Motion Intelligence v1.2
         run: npm run validate:motion-intelligence
 
+      - name: Validate current generative-provider lifecycle
+        run: npm run validate:provider-lifecycle
+
       - name: Typecheck
         run: npm run check
 
@@ -52,13 +55,16 @@ jobs:
           const premium=JSON.parse(fs.readFileSync('claude/premium.compact.json','utf8'))
           const tokens=JSON.parse(fs.readFileSync('claude/lottie-motion-tokens.compact.json','utf8'))
           const labs=JSON.parse(fs.readFileSync('claude/advanced-runtime-labs.compact.json','utf8'))
+          const lifecycle=JSON.parse(fs.readFileSync('src/registry/generative-provider-lifecycle-overrides.json','utf8'))
           if(motion.version!=='1.2'||upstream.version!=='1.2'||handoff.version!=='1.2'||premium.version!=='1.2')process.exit(1)
           if(tokens.status!=='PREPARED_NOT_RUNTIME_ENABLED')process.exit(1)
           if(!labs.pilots.some(x=>x.id==='PILOT-REMOTION-RIVE'))process.exit(1)
           if(!labs.pilots.some(x=>x.id==='PILOT-REMOTION-THREE'))process.exit(1)
           if(upstream.policy.noBlindNpxExecution!==true)process.exit(1)
           if(handoff.rules.activeDesignSystemWins!==true||handoff.rules.motionUpstreamNeverOverridesBrandOrFacts!==true)process.exit(1)
-          console.log('Motion Intelligence authority/routing contracts PASS')
+          if(!lifecycle.overrides.some(x=>x.model==='MiniMax H3'&&x.status==='OFFICIAL_MODEL_WATCHLIST_API_PROFILE_NOT_VALIDATED'))process.exit(1)
+          if(!lifecycle.overrides.some(x=>(x.catalogIds||[]).includes('GENCAT-OPENAI-SORA-2')&&x.status==='SUNSET_SCHEDULED_DO_NOT_BUILD_NEW_ADAPTER'))process.exit(1)
+          console.log('Motion Intelligence authority/routing/lifecycle contracts PASS')
           NODE
 
       - name: Record validated v1.2 status
@@ -72,9 +78,9 @@ jobs:
           SOURCE_SHA=${GITHUB_SHA}
           DATE_UTC=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
-          Validated: npm ci + Motion Intelligence governance + authority boundaries + Agua Bienestar motion personality + no-blind-npx policy + curated upstream registry + custom Agent Skill + premium compatibility + TypeScript + build + Motion Token contracts held in PREPARED_NOT_RUNTIME_ENABLED state + Rive/Three pilots held as dependency-not-installed labs.
+          Validated: npm ci + Motion Intelligence governance + authority boundaries + Agua Bienestar motion personality + no-blind-npx policy + curated upstream registry + custom Agent Skill + premium compatibility + TypeScript + build + Motion Token contracts held in PREPARED_NOT_RUNTIME_ENABLED state + Rive/Three pilots held as dependency-not-installed labs + current generative-provider lifecycle overlay.
 
-          Runtime policy: Remotion remains export authority; GSAP handles complex deterministic timelines/paths; Motion handles simple React motion; first-party Lottie remains reusable vector-motion runtime. External MCP/labs are never claimed executable merely because they are documented.
+          Runtime policy: Remotion remains export authority; GSAP handles complex deterministic timelines/paths; Motion handles simple React motion; first-party Lottie remains reusable vector-motion runtime. External MCP/labs are never claimed executable merely because they are documented. Sora receives no new adapter investment because its API sunset is scheduled; MiniMax H3 remains official-model watchlist until a concrete current API model/endpoint is validated.
 
           Remaining expansion proofs: first dotLottie Motion Token pilot; optional Rive pilot; optional @remotion/three pilot; future-provider revalidation before any new generative-video adapter is enabled.
           EOF
